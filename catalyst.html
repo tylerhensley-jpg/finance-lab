@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalyst — by The Finance Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F4F6F9;
+  --cream-dark: #E4E8EE;
+  --parchment: #EDF0F5;
+  --forest: #1B2E4A;
+  --forest-light: #2A4470;
+  --forest-dark: #0F1D33;
+  --terra: #2ECC71;
+  --terra-light: #5DEFA0;
+  --terra-dark: #1FA855;
+  --sage: #5AADCF;
+  --sage-light: #A8D8EA;
+  --bark: #2C3E50;
+  --text: #1A2332;
+  --text-light: #4A5568;
+  --text-muted: #7B8794;
+  --gold: #3498DB;
+  --gold-light: #85C1E9;
+  --storm-bg: #0F1D33;
+  --storm-text: #ECF0F1;
+  --danger-red: #E74C3C;
+  --danger-bg: #FDF2F0;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow: 0 2px 16px rgba(15,29,51,0.07);
+  --shadow-lg: 0 8px 32px rgba(15,29,51,0.12);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.25; color: var(--forest-dark); }
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 0.5em; }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); margin-bottom: 0.4em; }
+
+a { color: var(--forest); text-decoration-color: var(--terra-light); text-underline-offset: 3px; }
+a:hover { color: var(--terra); }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(15,29,51,0.65); z-index: 10000;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+  backdrop-filter: blur(4px); animation: fadeIn 0.4s ease;
+}
+.modal {
+  background: var(--cream); border-radius: var(--radius-lg); max-width: 560px; width: 100%;
+  padding: 48px 40px 36px; box-shadow: var(--shadow-lg); position: relative;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid var(--sage-light);
+}
+.modal-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+.modal h2 { color: var(--forest); margin-bottom: 12px; }
+.modal p { color: var(--text-light); margin-bottom: 16px; font-size: 1.05rem; }
+.modal .highlight-box {
+  background: var(--parchment); border-left: 4px solid var(--terra); padding: 16px 20px;
+  border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; font-size: 0.95rem;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 1rem;
+  padding: 12px 28px; border-radius: 50px; border: none; cursor: pointer;
+  transition: var(--transition); text-decoration: none;
+}
+.btn-primary {
+  background: var(--forest); color: var(--cream); box-shadow: 0 2px 8px rgba(27,46,74,0.3);
+}
+.btn-primary:hover { background: var(--forest-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(27,46,74,0.3); }
+.btn-secondary {
+  background: transparent; color: var(--forest); border: 2px solid var(--forest);
+}
+.btn-secondary:hover { background: var(--forest); color: var(--cream); }
+.btn-terra { background: var(--terra); color: white; }
+.btn-terra:hover { background: var(--terra-dark); }
+.btn-sm { padding: 8px 20px; font-size: 0.9rem; }
+.btn-ghost { background: transparent; color: var(--forest); padding: 8px 16px; }
+.btn-ghost:hover { background: rgba(27,46,74,0.08); }
+
+/* ─── DEPTH TOGGLE ─── */
+.depth-toggle {
+  display: inline-flex; background: var(--cream-dark); border-radius: 50px; padding: 4px;
+  margin-bottom: 24px; border: 1px solid rgba(27,46,74,0.1);
+}
+.depth-btn {
+  padding: 8px 20px; border-radius: 50px; border: none; cursor: pointer;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.85rem;
+  background: transparent; color: var(--text-muted); transition: var(--transition);
+}
+.depth-btn.active { background: var(--forest); color: var(--cream); box-shadow: 0 2px 8px rgba(27,46,74,0.2); }
+
+/* ─── HEADER ─── */
+.app-header {
+  background: var(--forest-dark);
+  color: var(--cream);
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 32px; height: 32px; background: var(--terra);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.header-nav { display: flex; gap: 4px; align-items: center; }
+.header-nav button {
+  background: transparent; border: none; color: rgba(250,246,240,0.7);
+  padding: 8px 14px; border-radius: 8px; cursor: pointer;
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+  transition: var(--transition);
+}
+.header-nav button:hover, .header-nav button.active { background: rgba(250,246,240,0.12); color: var(--cream); }
+
+/* ─── TRAIL / PROGRESS ─── */
+.trail-progress {
+  background: var(--parchment);
+  border-bottom: 1px solid rgba(27,46,74,0.08);
+  padding: 16px 24px;
+  overflow-x: auto;
+}
+.trail-steps {
+  display: flex; align-items: center; gap: 0; min-width: max-content;
+  justify-content: center; max-width: 900px; margin: 0 auto;
+}
+.trail-step {
+  display: flex; align-items: center; gap: 0; cursor: pointer;
+}
+.trail-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--cream-dark); border: 3px solid rgba(27,46,74,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+  transition: var(--transition); flex-shrink: 0;
+}
+.trail-step.completed .trail-dot { background: var(--forest); border-color: var(--forest); color: white; }
+.trail-step.active .trail-dot { background: var(--terra); border-color: var(--terra); color: white; transform: scale(1.15); }
+.trail-line { width: 60px; height: 3px; background: rgba(27,46,74,0.15); flex-shrink: 0; }
+.trail-step.completed + .trail-step .trail-line,
+.trail-step.completed .trail-line { background: var(--forest); }
+.trail-label { position: absolute; top: 44px; font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; font-weight: 600; }
+.trail-step-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
+
+/* ─── MAIN CONTENT ─── */
+.main-content { max-width: 900px; margin: 0 auto; padding: 40px 24px 100px; }
+
+.section { display: none; animation: fadeIn 0.4s ease; }
+.section.active { display: block; }
+
+.section-header { margin-bottom: 32px; }
+.section-header .overline {
+  font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--terra); margin-bottom: 8px;
+}
+
+.card {
+  background: white; border-radius: var(--radius-lg); padding: 32px;
+  box-shadow: var(--shadow); margin-bottom: 24px;
+  border: 1px solid rgba(27,46,74,0.06);
+}
+.card-sm { padding: 20px; }
+
+/* ─── TABLES ─── */
+.comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+.comparison-table th {
+  background: var(--forest); color: var(--cream); padding: 14px 16px;
+  text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+}
+.comparison-table th:first-child { border-radius: var(--radius) 0 0 0; }
+.comparison-table th:last-child { border-radius: 0 var(--radius) 0 0; }
+.comparison-table td { padding: 14px 16px; border-bottom: 1px solid var(--cream-dark); }
+.comparison-table tr:nth-child(even) { background: var(--parchment); }
+.comparison-table tr:hover { background: var(--cream-dark); }
+
+/* ─── QUIZ ─── */
+.quiz-question { margin-bottom: 28px; }
+.quiz-question p { font-weight: 600; margin-bottom: 12px; color: var(--forest-dark); font-size: 1.05rem; }
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-option {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; border-radius: var(--radius); border: 2px solid var(--cream-dark);
+  cursor: pointer; transition: var(--transition); background: white;
+}
+.quiz-option:hover { border-color: var(--sage); background: rgba(139,175,156,0.05); }
+.quiz-option.selected { border-color: var(--forest); background: rgba(27,46,74,0.04); }
+.quiz-option input { display: none; }
+.quiz-radio {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--text-muted);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: var(--transition);
+}
+.quiz-option.selected .quiz-radio { border-color: var(--forest); background: var(--forest); }
+.quiz-option.selected .quiz-radio::after { content: ''; width: 8px; height: 8px; background: white; border-radius: 50%; }
+.quiz-progress-bar { height: 6px; background: var(--cream-dark); border-radius: 3px; margin-bottom: 24px; overflow: hidden; }
+.quiz-progress-fill { height: 100%; background: var(--forest); border-radius: 3px; transition: width 0.4s ease; }
+
+/* ─── RESULT CARDS ─── */
+.result-card {
+  background: linear-gradient(135deg, var(--forest-dark), var(--forest));
+  color: var(--cream); border-radius: var(--radius-lg); padding: 40px;
+  text-align: center; margin-bottom: 24px;
+}
+.result-card h2 { color: var(--cream); }
+.result-label {
+  display: inline-block; background: var(--terra); color: white;
+  padding: 6px 24px; border-radius: 50px; font-weight: 700; font-size: 1.1rem;
+  margin: 12px 0;
+}
+
+/* ─── PIE / BAR CHART ─── */
+.portfolio-bar { display: flex; height: 40px; border-radius: 20px; overflow: hidden; margin: 16px 0; }
+.portfolio-bar div { display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: 700; transition: width 0.6s ease; }
+.portfolio-legend { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 12px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+/* ─── STORM SHELTER ─── */
+.storm-section {
+  background: linear-gradient(180deg, #1B2E4A 0%, #0F1D33 100%);
+  min-height: 100vh; margin: -40px -24px -100px; padding: 60px 24px 100px;
+  color: var(--storm-text);
+}
+.storm-section h2, .storm-section h3 { color: #ECF0F1; }
+.storm-emotions { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+.emotion-btn {
+  padding: 20px; border-radius: var(--radius); border: 2px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04); cursor: pointer; text-align: center;
+  transition: var(--transition); color: #ccc; font-family: var(--font-body); font-size: 1rem;
+}
+.emotion-btn:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
+.emotion-btn.active { border-color: var(--terra); background: rgba(46,204,113,0.15); color: white; }
+.emotion-icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+
+.storm-quote {
+  background: rgba(255,255,255,0.06); border-radius: var(--radius-lg);
+  padding: 28px 32px; margin-bottom: 16px; border-left: 4px solid var(--terra);
+  animation: fadeIn 0.5s ease;
+}
+.storm-quote blockquote {
+  font-family: var(--font-display); font-style: italic; font-size: 1.15rem;
+  line-height: 1.5; margin-bottom: 12px; color: #e8e4df;
+}
+.storm-quote .attribution { font-size: 0.85rem; color: #8899aa; }
+.storm-quote .attribution strong { color: var(--terra-light); }
+.storm-quote .context { font-size: 0.8rem; color: #667788; margin-top: 4px; font-style: italic; }
+
+/* ─── CALCULATORS ─── */
+.calc-input-group { margin-bottom: 16px; }
+.calc-input-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: var(--forest-dark); }
+.calc-input {
+  width: 100%; padding: 12px 16px; border-radius: var(--radius); border: 2px solid var(--cream-dark);
+  font-family: var(--font-body); font-size: 1rem; background: white; color: var(--text);
+  transition: var(--transition);
+}
+.calc-input:focus { outline: none; border-color: var(--forest); box-shadow: 0 0 0 3px rgba(27,46,74,0.1); }
+.calc-slider { width: 100%; margin-top: 6px; accent-color: var(--forest); }
+.calc-value { font-weight: 700; color: var(--forest); }
+
+.chart-container {
+  background: white; border-radius: var(--radius); padding: 20px;
+  margin: 20px 0; position: relative; height: 300px;
+}
+canvas { width: 100% !important; height: 100% !important; }
+
+/* ─── EXPENSE RATIO VIZ ─── */
+.fee-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+.fee-bar-container { text-align: center; }
+.fee-bar-track { height: 200px; background: var(--cream-dark); border-radius: var(--radius); position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+.fee-bar-fill { width: 100%; border-radius: var(--radius) var(--radius) 0 0; transition: height 1s ease; display: flex; align-items: flex-start; justify-content: center; padding-top: 12px; color: white; font-weight: 700; font-size: 0.85rem; }
+
+/* ─── GOAL SETTING ─── */
+.goal-form { display: grid; gap: 16px; }
+.goal-output { margin-top: 24px; padding: 24px; background: var(--parchment); border-radius: var(--radius); }
+
+/* ─── INFO BOXES ─── */
+.info-box {
+  background: rgba(139,175,156,0.12); border-radius: var(--radius);
+  padding: 20px 24px; margin: 16px 0; border-left: 4px solid var(--sage);
+}
+.info-box.warning { background: rgba(46,204,113,0.08); border-left-color: var(--terra); }
+.info-box-title { font-weight: 700; color: var(--forest-dark); margin-bottom: 4px; }
+
+.tip-callout {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--parchment); padding: 16px 20px; border-radius: var(--radius);
+  margin: 16px 0; font-size: 0.95rem;
+}
+.tip-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+
+/* ─── ACCORDION ─── */
+.accordion-item { border-bottom: 1px solid var(--cream-dark); }
+.accordion-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 0; cursor: pointer; font-weight: 600; color: var(--forest-dark);
+  font-size: 1.05rem;
+}
+.accordion-header:hover { color: var(--terra); }
+.accordion-arrow { transition: transform 0.3s ease; font-size: 0.8rem; }
+.accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.accordion-item.open .accordion-body { max-height: 2000px; }
+.accordion-content { padding-bottom: 18px; color: var(--text-light); line-height: 1.7; }
+
+/* ─── FOOTER ─── */
+.app-footer {
+  background: var(--forest-dark); color: rgba(250,246,240,0.6);
+  text-align: center; padding: 24px; font-size: 0.82rem; line-height: 1.6;
+}
+.app-footer strong { color: var(--terra-light); }
+
+/* ─── TABS ─── */
+.tab-bar { display: flex; gap: 4px; margin-bottom: 24px; flex-wrap: wrap; }
+.tab-btn {
+  padding: 10px 20px; border-radius: 50px; border: 2px solid transparent;
+  background: var(--cream-dark); cursor: pointer; font-family: var(--font-body);
+  font-weight: 600; font-size: 0.85rem; color: var(--text-muted); transition: var(--transition);
+}
+.tab-btn:hover { color: var(--forest); background: var(--sage-light); }
+.tab-btn.active { background: var(--forest); color: var(--cream); border-color: var(--forest); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .main-content { padding: 24px 16px 80px; }
+  .card { padding: 24px 20px; }
+  .comparison-table { font-size: 0.8rem; }
+  .comparison-table th, .comparison-table td { padding: 10px 8px; }
+  .fee-comparison { grid-template-columns: 1fr; }
+  .header-nav { display: none; }
+  .trail-line { width: 30px; }
+  .result-card { padding: 28px 20px; }
+  .storm-section { padding: 40px 16px 80px; }
+}
+
+/* ─── MARK COMPLETE BTN ─── */
+.complete-section-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 16px; margin-top: 32px;
+  background: var(--parchment); border: 2px dashed var(--sage);
+  border-radius: var(--radius); cursor: pointer; font-family: var(--font-body);
+  font-weight: 600; color: var(--forest); font-size: 1rem;
+  transition: var(--transition);
+}
+.complete-section-btn:hover { background: var(--sage-light); border-style: solid; }
+.complete-section-btn.done { background: var(--forest); color: var(--cream); border-color: var(--forest); border-style: solid; }
+
+/* Beginner / Advanced content */
+.content-beginner, .content-advanced { display: none; }
+.content-beginner.active, .content-advanced.active { display: block; }
+
+/* DCA example */
+.dca-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+.dca-table th { background: var(--forest); color: var(--cream); padding: 10px; text-align: center; font-size: 0.8rem; }
+.dca-table td { padding: 10px; text-align: center; border-bottom: 1px solid var(--cream-dark); }
+.dca-table tr:nth-child(even) { background: var(--parchment); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream-dark); }
+::-webkit-scrollbar-thumb { background: var(--sage); border-radius: 4px; }
+
+/* Life Stage Calculator */
+.life-stage-row { display: grid; grid-template-columns: 1fr 120px 100px; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--cream-dark); }
+.life-stage-row:last-child { border-bottom: none; }
+.life-stage-label { font-weight: 600; color: var(--forest-dark); font-size: .95rem; }
+.life-stage-input { padding: 10px; border-radius: var(--radius); border: 2px solid var(--cream-dark); font-family: var(--font-body); font-size: .95rem; text-align: center; width: 100%; }
+.life-stage-input:focus { outline: none; border-color: var(--forest); }
+
+/* Time horizon visual */
+.horizon-bar-wrap { margin: 8px 0; }
+.horizon-bar {
+  height: 32px; border-radius: 16px; display: flex; align-items: center;
+  padding: 0 16px; color: white; font-weight: 600; font-size: 0.85rem;
+  transition: width 0.8s ease;
+}
+
+.schwab-promo {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+  color: var(--cream); border-radius: var(--radius-lg); padding: 24px 28px;
+  margin: 20px 0; display: flex; align-items: center; gap: 16px;
+}
+.schwab-promo .promo-badge {
+  background: var(--terra); padding: 6px 14px; border-radius: 50px;
+  font-weight: 700; font-size: 0.8rem; white-space: nowrap;
+}
+
+/* PLAN SECTION */
+.plan-section {
+  background: linear-gradient(135deg, #F4F6F9, #E4E8EE);
+  border: 2px solid var(--sage); border-radius: var(--radius-lg);
+  padding: 32px; margin-bottom: 24px;
+}
+.plan-section h2, .philosophy-card h3.plan-title {
+  font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem);
+  text-align: center; margin-bottom: 4px;
+}
+.plan-section .plan-subtitle, .philosophy-card .plan-subtitle {
+  text-align: center; color: var(--text-light); margin-bottom: 24px;
+}
+.plan-step {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 20px 0; border-bottom: 1px solid rgba(27,46,74,0.1);
+}
+.plan-step:last-child { border-bottom: none; }
+.plan-num {
+  width: 44px; height: 44px; min-width: 44px;
+  background: var(--forest); color: var(--cream); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1.1rem; flex-shrink: 0;
+  font-family: var(--font-display);
+}
+.plan-step strong { font-size: 1.05rem; }
+.plan-step p { line-height: 1.65; }
+
+/* PHILOSOPHY CARD */
+.philosophy-card {
+  background: var(--forest-dark); color: var(--cream);
+  border-radius: var(--radius-lg); padding: 32px; margin-bottom: 24px;
+}
+.philosophy-card h3 { color: var(--cream); }
+.philosophy-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid rgba(250,246,240,0.1);
+}
+.philosophy-item:last-child { border-bottom: none; }
+
+/* RESOURCE CARDS */
+.resource-card {
+  background: #fff; border-radius: var(--radius-lg); padding: 24px;
+  margin-bottom: 16px; border: 1px solid var(--cream-dark);
+  display: flex; gap: 20px; align-items: center;
+  transition: var(--transition);
+}
+.resource-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.resource-icon { font-size: 2.2rem; flex-shrink: 0; }
+.resource-link {
+  color: var(--forest); font-weight: 700; text-decoration: none; font-size: 1.05rem;
+}
+.resource-link:hover { color: var(--terra); }
+
+/* PRINT */
+@media print {
+  body { background: #fff !important; }
+  body::before { display: none !important; }
+  .app-header, .trail-progress, .complete-section-btn, .header-nav,
+  .modal-overlay, .app-footer, .depth-toggle, .btn { display: none !important; }
+  .section { display: none !important; }
+  #section-7 { display: block !important; }
+  #section-7 .section-header { display: block !important; }
+  #planGenerated { display: block !important; }
+  #planContent { display: none !important; }
+  .main-content { max-width: 100%; padding: 0 20px; }
+  .plan-section, .philosophy-card, .card {
+    break-inside: avoid; page-break-inside: avoid;
+    box-shadow: none !important; border: 1px solid #ddd;
+  }
+  .plan-step { break-inside: avoid; page-break-inside: avoid; }
+  .storm-section { background: #fff !important; color: #333 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ DISCLAIMER MODAL ═══════════════ -->
+<div class="modal-overlay" id="disclaimerModal">
+  <div class="modal">
+    <span class="modal-icon">⚡</span>
+    <h2>Welcome to Catalyst</h2>
+    <p>Before we dig in, a quick heads-up in plain English:</p>
+    <div class="highlight-box">
+      <strong>This app is here to teach you about investing concepts</strong> — it's not telling you what to buy, when to sell, or where to put your money. Think of it like a really solid textbook, not a financial advisor.<br><br>
+      Real investing decisions should factor in your specific situation. If you're ever unsure, talk to a fee-only financial advisor (meaning they don't earn commissions from selling you stuff).
+    </div>
+    <p style="font-size:0.9rem; color:var(--text-muted);">We don't sell anything, recommend specific securities, or earn affiliate fees. The brokerages mentioned are examples, not endorsements.</p>
+    <button class="btn btn-primary" onclick="closeModal()" style="width:100%; justify-content:center; margin-top: 16px;">Got it — let's learn ⚡</button>
+  </div>
+</div>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="app-header">
+  <a href="#" class="logo" onclick="goToSection(0); return false;">
+    <div class="logo-icon">⚡</div>
+    Catalyst
+  </a>
+  <nav class="header-nav">
+    <button onclick="goToSection(0)" id="nav-0">Start</button>
+    <button onclick="goToSection(1)" id="nav-1">Know You</button>
+    <button onclick="goToSection(2)" id="nav-2">Invest</button>
+    <button onclick="goToSection(3)" id="nav-3">Danger</button>
+    <button onclick="goToSection(4)" id="nav-4">Shelter</button>
+    <button onclick="goToSection(5)" id="nav-5">Long Game</button>
+    <button onclick="goToSection(6)" id="nav-6">Calc</button>
+    <button onclick="goToSection(7)" id="nav-7">My Plan</button>
+    <button onclick="goToSection(8)" id="nav-8">Resources</button>
+  </nav>
+</header>
+
+<!-- ═══════════════ TRAIL PROGRESS ═══════════════ -->
+<div class="trail-progress">
+  <div class="trail-steps">
+<div class="trail-step active" onclick="goToSection(0)"><div class="trail-dot">1</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(1)"><div class="trail-dot">2</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(2)"><div class="trail-dot">3</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(3)"><div class="trail-dot">⚠</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(4)"><div class="trail-dot">☂</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(5)"><div class="trail-dot">5</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(6)"><div class="trail-dot">⚙</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(7)"><div class="trail-dot">🗺</div></div><div class="trail-line"></div>
+<div class="trail-step" onclick="goToSection(8)"><div class="trail-dot">📚</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<div class="main-content">
+
+<!-- ═══════ INTRO / WELCOME ═══════ -->
+<div class="section active" id="section-intro" style="text-align:center;">
+  <div style="max-width:660px;margin:0 auto;padding:20px 0 10px;">
+    <span style="font-size:3.5rem;display:block;margin-bottom:16px;">⚡</span>
+    <h1 style="font-size:clamp(2.2rem,5vw,3rem);margin-bottom:12px;">Welcome to Catalyst</h1>
+    <p style="font-family:var(--font-display);font-style:italic;font-size:1.2rem;color:var(--terra);margin-bottom:24px;">Your launchpad for investing.</p>
+    <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:24px;">A product of <strong>The Finance Lab</strong></p>
+    <p style="font-size:1.1rem;color:var(--text-light);line-height:1.7;text-align:left;">
+      Let's be real for a second. Nobody teaches you this stuff in school. You learn about the mitochondria (the powerhouse of the cell — thanks, biology) but not about the one thing that will quietly shape your entire adult life: <strong>what you do with your money</strong>.
+    </p>
+    <p style="font-size:1.1rem;color:var(--text-light);line-height:1.7;margin-top:16px;text-align:left;">
+      Right now, you might have some cash in a savings account. That's great for emergencies — seriously, keep that. But here's the thing your bank isn't rushing to tell you: a typical savings account pays about <strong>0.01% interest</strong>. That means $1,000 sitting there for a whole year earns you… ten cents. A dime. You can't even buy a gumball with your "gains."
+    </p>
+    <p style="font-size:1.1rem;color:var(--text-light);line-height:1.7;margin-top:16px;text-align:left;">
+      Meanwhile, inflation — the thing that makes everything cost more over time — runs around 3% per year. So your savings account isn't growing your money. It's slowly <em>shrinking</em> it. Your $1,000 buys a little less next year, and a little less the year after that.
+    </p>
+
+    <div style="background:var(--parchment);border-radius:var(--radius-lg);padding:24px 28px;margin:28px 0;text-align:left;border-left:4px solid var(--terra);">
+      <p style="font-size:1.05rem;color:var(--text);line-height:1.7;">
+        <strong>Savings accounts are for money you need soon</strong> — rent, emergencies, that car repair you didn't see coming. They're your financial seatbelt.<br><br>
+        <strong>Investing is for money you're growing for the future</strong> — goals, dreams, and the kind of freedom that lets you make choices on your own terms. That's what Catalyst is about.
+      </p>
+    </div>
+
+    <p style="font-size:1.1rem;color:var(--text-light);line-height:1.7;text-align:left;">
+      This app is going to walk you through the whole thing — no finance-bro jargon, no condescension, no sales pitch. Just the stuff you actually need to know, explained like a friend who's been doing this for 20 years and wants to save you from the mistakes they made.
+    </p>
+    <p style="font-size:1.05rem;color:var(--text);line-height:1.7;margin-top:16px;text-align:left;font-weight:600;">
+      You don't need to be rich to start. You don't need to be a math person. You just need to start — and starting is exactly what we're about to do.
+    </p>
+
+    <button class="btn btn-primary" onclick="goToSection(0)" style="margin-top:32px;font-size:1.1rem;padding:16px 40px;">
+      Let's Go ⚡
+    </button>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 1: GETTING STARTED                   ║ -->
+<!-- ╚═══════════════════════════════════════════════╝ -->
+<div class="section" id="section-0">
+  <div class="section-header">
+    <div class="overline">Section 1 of 5</div>
+    <h1>Getting Started</h1>
+    <p style="color:var(--text-light); font-size:1.1rem; margin-top:8px;">Your first steps don't need to be big — they just need to happen.</p>
+  </div>
+
+  <div class="depth-toggle">
+    <button class="depth-btn active" onclick="setDepth(0, 'beginner', this)">I'm New</button>
+    <button class="depth-btn" onclick="setDepth(0, 'advanced', this)">I Know the Basics</button>
+  </div>
+
+  <!-- BEGINNER CONTENT -->
+  <div class="content-beginner active" id="depth-0-beginner">
+    <div class="card">
+      <h3>Why Start Now?</h3>
+      <p>Here's the thing nobody tells you at 18: the single biggest advantage you will ever have as an investor isn't intelligence, connections, or even money. It's <strong>time</strong>.</p>
+      <p style="margin-top:12px;">If you invest $200/month starting at age 18, by 65 you'll have roughly <strong>$1.1 million</strong> (at a 10% average annual return). Wait until 28? You'll end up with about $500k. Same monthly amount — half the result — just because of 10 years.</p>
+      <p style="margin-top:12px;">You don't need to know everything. You don't need a lot of money. You just need to start.</p>
+    </div>
+
+    <div class="card">
+      <h3>Account Types — The Short Version</h3>
+      <p>Think of accounts like different types of garden beds. They all grow plants, but the rules about watering (deposits) and harvesting (withdrawals) are different.</p>
+      <table class="comparison-table">
+        <thead>
+          <tr><th>Account</th><th>Tax Perk</th><th>2025 Limit</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Roth IRA</strong></td><td>Grows tax-free. Withdrawals in retirement = $0 in taxes.</td><td>$7,000/yr</td><td>Young people (you're likely in a low tax bracket now)</td></tr>
+          <tr><td><strong>Traditional IRA</strong></td><td>Tax deduction today; pay taxes when you withdraw.</td><td>$7,000/yr</td><td>Higher earners wanting a tax break now</td></tr>
+          <tr><td><strong>401(k)</strong></td><td>Employer often matches your contributions (free money!).</td><td>$23,500/yr</td><td>Anyone with an employer match</td></tr>
+          <tr><td><strong>Brokerage</strong></td><td>No special tax perks, but no withdrawal rules either.</td><td>No limit</td><td>Saving for goals before retirement</td></tr>
+        </tbody>
+      </table>
+      <div class="tip-callout">
+        <span class="tip-icon">💡</span>
+        <span><strong>Rule of thumb:</strong> If your employer offers a 401(k) match, contribute enough to get the full match first — that's an instant 50-100% return. Then max out a Roth IRA. Then go back to the 401(k) or use a brokerage.</span>
+      </div>
+    </div>
+
+    <div class="card" style="border:2px solid var(--sage);border-left:6px solid var(--forest);">
+      <h3>🏦 Before You Even Pick Stocks: The Risk-Free Upgrade</h3>
+      <p>Remember how we said your savings account pays about 0.01%? Here's why opening a brokerage account is worth it <em>even if you never buy a single stock</em>:</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;">
+        <div style="background:var(--parchment);padding:20px;border-radius:var(--radius);border-top:4px solid var(--forest);">
+          <h4 style="font-size:1rem;margin-bottom:8px;">💰 Money Market Funds</h4>
+          <p style="font-size:.9rem;color:var(--text-light);">A money market fund holds ultra-short-term debt from the government and large corporations. Your money is essentially as accessible as a savings account, but the yield is dramatically better.</p>
+          <div style="background:var(--sage-light);padding:12px;border-radius:8px;margin-top:12px;text-align:center;">
+            <span style="font-size:.8rem;color:var(--text-muted);">Example: Schwab Value Advantage Money Fund</span><br>
+            <strong style="font-size:1.4rem;font-family:var(--font-display);color:var(--forest-dark);">SWVXX — ~3.51% yield</strong><br>
+            <span style="font-size:.85rem;color:var(--text-light);">vs. your bank's 0.01%</span>
+          </div>
+          <p style="font-size:.85rem;color:var(--text-light);margin-top:10px;">That's <strong>350x more</strong> than a typical savings account. On $5,000, that's ~$175/year instead of 50 cents.</p>
+        </div>
+        <div style="background:var(--parchment);padding:20px;border-radius:var(--radius);border-top:4px solid var(--terra);">
+          <h4 style="font-size:1rem;margin-bottom:8px;">🇺🇸 Treasury Bills (T-Bills)</h4>
+          <p style="font-size:.9rem;color:var(--text-light);">T-Bills are short-term loans to the U.S. government — 4 weeks, 13 weeks, 26 weeks, or 1 year. The government borrows your money and pays you interest. Currently yielding in the 4%+ range.</p>
+          <div style="background:rgba(46,204,113,.08);padding:12px;border-radius:8px;margin-top:12px;text-align:center;">
+            <strong style="font-size:1.1rem;font-family:var(--font-display);color:var(--terra);">Backed by the U.S. Government</strong><br>
+            <span style="font-size:.85rem;color:var(--text-light);">The same entity behind FDIC insurance</span>
+          </div>
+          <p style="font-size:.85rem;color:var(--text-light);margin-top:10px;">You can buy T-Bills through your brokerage or directly at TreasuryDirect.gov. They're exempt from state and local taxes, too.</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-title">How safe are these, really?</div>
+        <p style="font-size:.92rem;">Money market funds aim to maintain a $1.00 share price and have an extremely strong track record, though they aren't technically FDIC-insured. In practice, the risk of loss is near zero — major money market funds have "broken the buck" (dropped below $1) only twice in history, and new regulations since 2016 have made government money market funds even safer. T-Bills are backed by the full faith and credit of the U.S. government — the same guarantee behind FDIC insurance itself. If the U.S. government can't pay its T-Bills, FDIC insurance wouldn't mean much either.</p>
+      </div>
+
+      <div class="tip-callout">
+        <span class="tip-icon">🌿</span>
+        <span><strong>Bottom line:</strong> Even before you're ready to invest in stocks, parking your savings in a money market fund or T-Bills inside a brokerage account is an immediate, meaningful upgrade. It's not "investing" in the exciting sense — it's just refusing to let your bank keep the interest that should be yours.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How to Open an Account</h3>
+      <p>It takes about 15 minutes online. Here are three well-regarded brokerages — all free to open, no minimums, no commission on stock/ETF trades:</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; margin: 16px 0;">
+        <div style="background:var(--parchment); padding:16px; border-radius:var(--radius); text-align:center;">
+          <strong style="color:var(--forest-dark);">Fidelity</strong><br>
+          <span style="font-size:0.9rem; color:var(--text-light);">Great research tools. Fractional shares. Zero-fee index funds.</span>
+        </div>
+        <div style="background:var(--parchment); padding:16px; border-radius:var(--radius); text-align:center;">
+          <strong style="color:var(--forest-dark);">Schwab</strong><br>
+          <span style="font-size:0.9rem; color:var(--text-light);">Excellent customer service. Strong all-around.</span>
+        </div>
+        <div style="background:var(--parchment); padding:16px; border-radius:var(--radius); text-align:center;">
+          <strong style="color:var(--forest-dark);">Vanguard</strong><br>
+          <span style="font-size:0.9rem; color:var(--text-light);">The OG. Built by Jack Bogle. Investor-owned.</span>
+        </div>
+      </div>
+      <div class="schwab-promo">
+        <span style="font-size:2rem;">🎁</span>
+        <div>
+          <span class="promo-badge">Current Offer</span>
+          <p style="margin-top:8px; font-size:0.95rem;">Schwab currently offers a Starter Kit™ — fund a new account and get <strong>$50 in fractional shares</strong> to get started. Nice way to plant your first seeds with a little bonus soil. <em>(Subject to change — check Schwab's site for current details.)</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Auto-Invest: Your Secret Weapon</h3>
+      <p>Here's a pattern that will serve you for decades: <strong>set up an automatic monthly transfer into your investment account, and automatic purchases of a broad index fund.</strong></p>
+      <p style="margin-top:12px;">Why? Because the biggest threat to your investment returns isn't a market crash — it's <em>you</em>. Humans are emotional. We panic-sell at bottoms, get greedy at tops, and constantly second-guess ourselves.</p>
+      <p style="margin-top:12px;">Automation removes emotion from the equation. The money goes in whether the market is up, down, or sideways. Over time, that consistency is worth more than any clever market timing.</p>
+      <div class="tip-callout">
+        <span class="tip-icon">🌱</span>
+        <span>Every brokerage above lets you set up automatic investing. Even $25/month is a real start. The habit matters more than the amount.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADVANCED CONTENT -->
+  <div class="content-advanced" id="depth-0-advanced">
+    <div class="card">
+      <h3>Account Types — Deeper Dive</h3>
+      <table class="comparison-table">
+        <thead><tr><th>Feature</th><th>Roth IRA</th><th>Trad. IRA</th><th>401(k)</th><th>Brokerage</th></tr></thead>
+        <tbody>
+          <tr><td><strong>2025 Contribution Limit</strong></td><td>$7,000 ($8,000 if 50+)</td><td>$7,000 ($8,000 if 50+)</td><td>$23,500 ($31,000 if 50+)</td><td>Unlimited</td></tr>
+          <tr><td><strong>Tax on Contributions</strong></td><td>After-tax (no deduction)</td><td>Pre-tax (deductible)</td><td>Pre-tax (deducted from paycheck)</td><td>After-tax</td></tr>
+          <tr><td><strong>Tax on Growth</strong></td><td>Tax-free</td><td>Tax-deferred</td><td>Tax-deferred</td><td>Taxed (dividends, cap gains)</td></tr>
+          <tr><td><strong>Tax on Withdrawal</strong></td><td>$0 (qualified)</td><td>Ordinary income tax</td><td>Ordinary income tax</td><td>Capital gains tax</td></tr>
+          <tr><td><strong>Early Withdrawal</strong></td><td>Contributions anytime; earnings have 10% penalty before 59½</td><td>10% penalty before 59½</td><td>10% penalty before 59½</td><td>No restrictions</td></tr>
+          <tr><td><strong>Income Limits</strong></td><td>Phaseout at $150K-$165K (single)</td><td>Deduction phases out with 401(k)</td><td>No income limit</td><td>None</td></tr>
+          <tr><td><strong>RMDs</strong></td><td>None</td><td>Age 73</td><td>Age 73 (unless still working)</td><td>None</td></tr>
+        </tbody>
+      </table>
+      <div class="info-box">
+        <div class="info-box-title">Backdoor Roth IRA</div>
+        <p style="font-size:0.95rem;">If your income is too high for direct Roth contributions, you can contribute to a Traditional IRA (non-deductible) and then convert it to a Roth. This is the "backdoor Roth" — perfectly legal. Just watch the pro-rata rule if you have other pre-tax IRA money.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Brokerage Selection: What Actually Matters</h3>
+      <p>Commission-free trading is standard now, so the real differentiators are: fund selection and expense ratios, research tools and interface quality, fractional share availability, tax-lot accounting options, and customer service quality.</p>
+      <p style="margin-top:12px;">All three major brokerages (Fidelity, Schwab, Vanguard) are excellent. Schwab is currently offering a $50 Starter Kit for new accounts. The choice rarely matters as much as people think — pick one and go.</p>
+    </div>
+
+    <div class="card">
+      <h3>Auto-Investing Strategy</h3>
+      <p>Beyond basic automation, consider structuring your contributions based on the "waterfall" method: (1) 401(k) up to employer match, (2) Max out Roth IRA, (3) Back to 401(k) toward max, (4) HSA if eligible (triple tax advantage), (5) Taxable brokerage for anything beyond.</p>
+      <p style="margin-top:12px;">Each account gets its own automatic contribution, its own target allocation, and its own rebalancing cadence. Once you set this system up, you interact with it maybe twice a year. That's the goal.</p>
+    </div>
+  </div>
+
+  <!-- WHERE ARE YOU NOW? READINESS ASSESSMENT -->
+  <div class="card" style="border:2px solid var(--forest);border-left:6px solid var(--forest);">
+    <h3>📋 Where Are You Right Now?</h3>
+    <p style="color:var(--text-light);margin-bottom:20px;">Quick check-in — this shapes your personalized plan at the end. Be honest, no judgment.</p>
+
+    <div class="calc-input-group">
+      <label>How old are you?</label>
+      <div class="quiz-options" id="readyAge">
+        <label class="quiz-option" onclick="selectReady('age','under18',this)"><div class="quiz-radio"></div><span>Under 18</span></label>
+        <label class="quiz-option" onclick="selectReady('age','18plus',this)"><div class="quiz-radio"></div><span>18 or older</span></label>
+      </div>
+    </div>
+
+    <div class="calc-input-group">
+      <label>Do you have a job or earn any income?</label>
+      <div class="quiz-options" id="readyJob">
+        <label class="quiz-option" onclick="selectReady('job','yes_steady',this)"><div class="quiz-radio"></div><span>Yes — steady job or regular income</span></label>
+        <label class="quiz-option" onclick="selectReady('job','yes_parttime',this)"><div class="quiz-radio"></div><span>Yes — part-time, gig work, or occasional</span></label>
+        <label class="quiz-option" onclick="selectReady('job','no',this)"><div class="quiz-radio"></div><span>No income right now</span></label>
+      </div>
+    </div>
+
+    <div class="calc-input-group">
+      <label>Do you have a bank account?</label>
+      <div class="quiz-options" id="readyBank">
+        <label class="quiz-option" onclick="selectReady('bank','checking_savings',this)"><div class="quiz-radio"></div><span>Yes — checking and savings</span></label>
+        <label class="quiz-option" onclick="selectReady('bank','checking_only',this)"><div class="quiz-radio"></div><span>Yes — checking/debit only</span></label>
+        <label class="quiz-option" onclick="selectReady('bank','no',this)"><div class="quiz-radio"></div><span>No bank account yet</span></label>
+      </div>
+    </div>
+
+    <div class="calc-input-group">
+      <label>Do you have an emergency fund or cash buffer?</label>
+      <div class="quiz-options" id="readyEmergency">
+        <label class="quiz-option" onclick="selectReady('emergency','yes_3mo',this)"><div class="quiz-radio"></div><span>Yes — 3+ months of expenses saved</span></label>
+        <label class="quiz-option" onclick="selectReady('emergency','yes_some',this)"><div class="quiz-radio"></div><span>Some savings, but not 3 months</span></label>
+        <label class="quiz-option" onclick="selectReady('emergency','no',this)"><div class="quiz-radio"></div><span>No emergency savings yet</span></label>
+      </div>
+    </div>
+
+    <div class="calc-input-group">
+      <label>Do you already have an investment or retirement account?</label>
+      <div class="quiz-options" id="readyAccounts">
+        <label class="quiz-option" onclick="selectReady('accounts','roth_and_brokerage',this)"><div class="quiz-radio"></div><span>Yes — Roth IRA and/or brokerage account</span></label>
+        <label class="quiz-option" onclick="selectReady('accounts','just_brokerage',this)"><div class="quiz-radio"></div><span>Yes — just a brokerage (like Robinhood, etc.)</span></label>
+        <label class="quiz-option" onclick="selectReady('accounts','no',this)"><div class="quiz-radio"></div><span>No investment accounts yet</span></label>
+      </div>
+    </div>
+
+    <div class="calc-input-group">
+      <label>How much could you realistically invest per month (outside of emergency savings)?</label>
+      <div class="quiz-options" id="readyMonthly">
+        <label class="quiz-option" onclick="selectReady('monthly','0',this)"><div class="quiz-radio"></div><span>$0 right now — and that's okay</span></label>
+        <label class="quiz-option" onclick="selectReady('monthly','10_50',this)"><div class="quiz-radio"></div><span>$10–$50/month</span></label>
+        <label class="quiz-option" onclick="selectReady('monthly','50_200',this)"><div class="quiz-radio"></div><span>$50–$200/month</span></label>
+        <label class="quiz-option" onclick="selectReady('monthly','200plus',this)"><div class="quiz-radio"></div><span>$200+/month</span></label>
+      </div>
+    </div>
+
+    <div id="readinessStatus" style="display:none;margin-top:16px;background:var(--sage-light);padding:16px 20px;border-radius:var(--radius);text-align:center;">
+      <span style="font-size:1.2rem;">✓</span> <strong>Got it!</strong> Your answers are saved — they'll power your personalized plan at the end.
+    </div>
+  </div>
+
+  <button class="complete-section-btn" onclick="completeSection(0)">
+    <span>✓</span> Mark as Complete & Continue →
+  </button>
+</div>
+
+<!-- ╔═══════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 2: KNOW YOURSELF                     ║ -->
+<!-- ╚═══════════════════════════════════════════════╝ -->
+<div class="section" id="section-1">
+  <div class="section-header">
+    <div class="overline">Section 2 of 5</div>
+    <h1>Know Yourself</h1>
+    <p style="color:var(--text-light); font-size:1.1rem; margin-top:8px;">Your portfolio should fit your personality — not someone else's.</p>
+  </div>
+
+  <div class="depth-toggle">
+    <button class="depth-btn active" onclick="setDepth(1, 'beginner', this)">I'm New</button>
+    <button class="depth-btn" onclick="setDepth(1, 'advanced', this)">I Know the Basics</button>
+  </div>
+
+  <div class="content-beginner active" id="depth-1-beginner">
+    <div class="card">
+      <h3>Why This Matters</h3>
+      <p>The "best" investment strategy is the one you can actually stick with. If aggressive growth makes you lose sleep, you'll sell at the worst possible time. If ultra-conservative makes you bored and you start chasing meme stocks, same problem.</p>
+      <p style="margin-top:12px;">Let's figure out where you land.</p>
+    </div>
+  </div>
+  <div class="content-advanced" id="depth-1-advanced">
+    <div class="card">
+      <h3>Risk Tolerance vs. Risk Capacity</h3>
+      <p>There's a useful distinction here. <strong>Risk tolerance</strong> is psychological — how much volatility can you handle emotionally? <strong>Risk capacity</strong> is financial — how much can you afford to lose without derailing your goals?</p>
+      <p style="margin-top:12px;">A 22-year-old with a 40-year horizon has massive risk capacity even if their tolerance feels low. The quiz below focuses on tolerance. Your time horizon (covered next) shapes your capacity.</p>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="card" id="quizCard">
+    <h3>🧭 Risk Tolerance Quiz</h3>
+    <p style="margin-bottom: 20px; color:var(--text-light);">Answer honestly — there's no "right" answer. This is about self-knowledge.</p>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div></div>
+    <div id="quizContainer"></div>
+    <div style="display:flex; gap:12px; margin-top:20px;">
+      <button class="btn btn-secondary btn-sm" id="quizPrev" onclick="quizNav(-1)" style="display:none;">← Back</button>
+      <button class="btn btn-primary btn-sm" id="quizNext" onclick="quizNav(1)">Next →</button>
+    </div>
+  </div>
+
+  <!-- QUIZ RESULT (hidden initially) -->
+  <div id="quizResult" style="display:none;">
+    <div class="result-card">
+      <p style="opacity:0.8; font-size:0.9rem;">Your Investor Profile</p>
+      <h2 id="resultLabel" style="font-size:2rem; margin:8px 0;"></h2>
+      <div class="result-label" id="resultBadge"></div>
+      <p id="resultDesc" style="margin-top:16px; opacity:0.85; max-width:600px; margin-left:auto; margin-right:auto;"></p>
+    </div>
+    <div class="card">
+      <h3>Suggested Portfolio Mix</h3>
+      <div class="portfolio-bar" id="portfolioBar"></div>
+      <div class="portfolio-legend" id="portfolioLegend"></div>
+      <p style="margin-top:16px; font-size:0.9rem; color:var(--text-light);">This is a starting framework — not a prescription. Your actual allocation should also factor in your timeline and specific goals.</p>
+    </div>
+    <div class="card" id="quizQuotes"></div>
+  </div>
+
+  <!-- GOAL SETTING -->
+  <div class="card" style="margin-top:24px;">
+    <h3>🎯 Set a Goal</h3>
+    <p style="color:var(--text-light); margin-bottom:20px;">Investing works best when you know what you're growing toward.</p>
+    <div class="goal-form">
+      <div class="calc-input-group">
+        <label>What are you saving for?</label>
+        <input type="text" class="calc-input" id="goalName" placeholder="e.g., Emergency fund, First home, Retirement">
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+        <div class="calc-input-group">
+          <label>Target Amount ($)</label>
+          <input type="number" class="calc-input" id="goalTarget" placeholder="50000" value="50000">
+        </div>
+        <div class="calc-input-group">
+          <label>Timeframe (years)</label>
+          <input type="number" class="calc-input" id="goalYears" placeholder="10" value="10">
+        </div>
+      </div>
+      <button class="btn btn-terra" onclick="setGoal()">See My Path</button>
+    </div>
+    <div class="goal-output" id="goalOutput" style="display:none;"></div>
+  </div>
+
+  <!-- TIME HORIZON VISUAL -->
+  <div class="card">
+    <h3>⏳ Time Horizon = Risk Capacity</h3>
+    <p style="margin-bottom:16px;">The longer your runway, the more short-term bumps you can absorb. Here's how investment professionals typically think about it:</p>
+    <div class="horizon-bar-wrap">
+      <div style="font-size:0.85rem; font-weight:600; margin-bottom:4px;">1–3 years: Very Conservative</div>
+      <div class="horizon-bar" style="width:25%; background: var(--sage);">Bonds, Cash</div>
+    </div>
+    <div class="horizon-bar-wrap">
+      <div style="font-size:0.85rem; font-weight:600; margin-bottom:4px;">3–7 years: Moderate</div>
+      <div class="horizon-bar" style="width:55%; background: var(--forest-light);">Balanced Mix</div>
+    </div>
+    <div class="horizon-bar-wrap">
+      <div style="font-size:0.85rem; font-weight:600; margin-bottom:4px;">7–15 years: Growth</div>
+      <div class="horizon-bar" style="width:78%; background: var(--forest);">Stock-Heavy</div>
+    </div>
+    <div class="horizon-bar-wrap">
+      <div style="font-size:0.85rem; font-weight:600; margin-bottom:4px;">15+ years: Aggressive Growth</div>
+      <div class="horizon-bar" style="width:100%; background: var(--forest-dark);">Nearly All Stocks</div>
+    </div>
+    <p style="margin-top:16px; font-size:0.9rem; color:var(--text-light);">If you're 18 and investing for retirement, your horizon is 40+ years. You can afford to ride out every storm.</p>
+  </div>
+
+  <button class="complete-section-btn" onclick="completeSection(1)">
+    <span>✓</span> Mark as Complete & Continue →
+  </button>
+</div>
+
+<!-- ╔═══════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 3: PICK YOUR INVESTMENTS             ║ -->
+<!-- ╚═══════════════════════════════════════════════╝ -->
+<div class="section" id="section-2">
+  <div class="section-header">
+    <div class="overline">Section 3 of 5</div>
+    <h1>Pick Your Investments</h1>
+    <p style="color:var(--text-light); font-size:1.1rem; margin-top:8px;">You don't need to pick the perfect stock. You need to own the whole garden.</p>
+  </div>
+
+  <div class="depth-toggle">
+    <button class="depth-btn active" onclick="setDepth(2, 'beginner', this)">I'm New</button>
+    <button class="depth-btn" onclick="setDepth(2, 'advanced', this)">I Know the Basics</button>
+  </div>
+
+  <div class="content-beginner active" id="depth-2-beginner">
+    <div class="card">
+      <h3>The Big Four Investment Types</h3>
+      <div class="accordion-item open">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          📊 Index Funds — The "Buy Everything" Strategy
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>An index fund tries to match a whole market. When you buy a total stock market index fund, you own a tiny piece of every major company in America — Apple, Walmart, your local bank, all of them.</p>
+          <p style="margin-top:10px;">Why this is great: you don't have to pick winners. If one company tanks but another doubles, the fund absorbs both. Over long periods, the overall market has always gone up (roughly 10% per year historically, before inflation).</p>
+          <p style="margin-top:10px;"><strong>Example:</strong> A total stock market index fund (like VTI or FSKAX) gives you exposure to 3,000+ companies for an annual fee of about 0.03% — that's 30 cents per $1,000 invested per year.</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          📦 ETFs — Index Funds That Trade Like Stocks
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>ETFs (Exchange-Traded Funds) hold the same baskets of stocks or bonds that index funds do, but they trade throughout the day like individual stocks. Mutual fund versions of index funds only trade once a day at market close.</p>
+          <p style="margin-top:10px;">For most young investors, the practical difference is small. ETFs are slightly more tax-efficient in taxable accounts, and you can buy fractional shares of most ETFs. Popular ones: VTI (total US stock market), VXUS (international stocks), BND (bonds).</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          🎯 Individual Stocks — Picking Your Own Plants
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>Buying individual stocks means you're betting on specific companies. This can work — Buffett made billions doing it. But here's the honest truth: most professional fund managers fail to beat the market over 15+ year periods.</p>
+          <p style="margin-top:10px;">If you do want to pick stocks, a good rule is the "90/10" approach: put 90% in broad index funds and use 10% as a "play" portfolio for individual picks. That way you satisfy the curiosity without betting your future on one company's earnings report.</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          🏛️ Bonds — The Boring Safety Net
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>When you buy a bond, you're lending money to a government or company. They pay you interest, then return your money at a set date. Less exciting than stocks, but they cushion your portfolio during crashes.</p>
+          <p style="margin-top:10px;">At your age? You probably don't need many bonds. Maybe 10% or less. As you age and your time horizon shrinks, you'll gradually increase bonds — that's what "rebalancing" means (we'll cover it in The Long Game).</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-advanced" id="depth-2-advanced">
+    <div class="card">
+      <h3>Index Construction & Weighting</h3>
+      <p>Not all index funds are equal. Most popular funds are <strong>market-cap weighted</strong>, meaning bigger companies get more weight. The S&P 500 is currently top-heavy — the largest 10 companies make up roughly 30-35% of the index.</p>
+      <p style="margin-top:12px;">Alternatives include equal-weight indexes (each company gets the same slice), factor-based funds (targeting value, momentum, or quality), and fundamentally-weighted indexes. For most people, standard cap-weighted total market funds remain the best default.</p>
+      <div class="info-box">
+        <div class="info-box-title">International Diversification</div>
+        <p style="font-size:0.95rem;">US stocks have outperformed international markets for the last 15 years. Before that, international outperformed for a decade. A 60/40 or 70/30 US/International split gives you exposure to both without taking a strong directional bet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPENSE RATIO VISUALIZER -->
+  <div class="card">
+    <h3>💸 The Fee Drag: Why 1% Is a Big Deal</h3>
+    <p style="margin-bottom:16px;">Fees look tiny on paper. But compounded over 30 years, they eat an enormous chunk of your money. Here's $10,000 invested with 8% annual return:</p>
+    <div class="fee-comparison">
+      <div class="fee-bar-container">
+        <div class="fee-bar-track">
+          <div class="fee-bar-fill" id="feeLow" style="height:90%; background: var(--forest);">$98,580</div>
+        </div>
+        <p style="margin-top:10px; font-weight:700; color:var(--forest);">0.03% Fee</p>
+        <p style="font-size:0.85rem; color:var(--text-light);">e.g., VTI, FSKAX</p>
+      </div>
+      <div class="fee-bar-container">
+        <div class="fee-bar-track">
+          <div class="fee-bar-fill" id="feeHigh" style="height:62%; background: var(--terra);">$76,120</div>
+        </div>
+        <p style="margin-top:10px; font-weight:700; color:var(--terra);">1.00% Fee</p>
+        <p style="font-size:0.85rem; color:var(--text-light);">Typical actively managed fund</p>
+      </div>
+    </div>
+    <div class="info-box warning">
+      <div class="info-box-title">That 1% fee cost you $22,460</div>
+      <p style="font-size:0.95rem;">That's nearly 23% of your ending balance — gone to fees, not to you. And that's on just $10k. On a $500k portfolio over 30 years, a 1% fee costs over $350,000. This is why Bogle and Buffett are so obsessed with low fees.</p>
+    </div>
+  </div>
+
+  <!-- DOLLAR COST AVERAGING -->
+  <div class="card">
+    <h3>📅 Dollar-Cost Averaging (DCA)</h3>
+    <p>Instead of investing a lump sum all at once, DCA means investing a fixed dollar amount at regular intervals — like $200 on the 1st of every month, regardless of prices.</p>
+    <p style="margin-top:12px;">Here's a simplified example of investing $200/month over 5 months while the price fluctuates:</p>
+    <table class="dca-table">
+      <thead><tr><th>Month</th><th>Share Price</th><th>You Invest</th><th>Shares Bought</th></tr></thead>
+      <tbody>
+        <tr><td>Jan</td><td>$50</td><td>$200</td><td>4.00</td></tr>
+        <tr><td>Feb</td><td>$40</td><td>$200</td><td>5.00</td></tr>
+        <tr><td>Mar</td><td>$33</td><td>$200</td><td>6.06</td></tr>
+        <tr><td>Apr</td><td>$45</td><td>$200</td><td>4.44</td></tr>
+        <tr><td>May</td><td>$50</td><td>$200</td><td>4.00</td></tr>
+        <tr style="background:var(--sage-light);"><td><strong>Total</strong></td><td><strong>Avg: $43.24</strong></td><td><strong>$1,000</strong></td><td><strong>23.50 shares</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;">You invested $1,000 total and got 23.50 shares. Your average cost per share is $42.55, which is <em>lower</em> than the simple average price of $43.60. That's because you automatically bought more shares when prices were low. DCA works in your favor over time without you having to think about it.</p>
+    <div class="tip-callout">
+      <span class="tip-icon">🌿</span>
+      <span>DCA isn't guaranteed to beat lump-sum investing (mathematically, markets go up more than down, so lump sum often wins). But DCA is psychologically easier, and it's what automatic monthly investing naturally does.</span>
+    </div>
+  </div>
+
+  <button class="complete-section-btn" onclick="completeSection(2)">
+    <span>✓</span> Mark as Complete & Continue →
+  </button>
+</div>
+
+<!-- ═══════ DANGER ZONE ═══════ -->
+<div class="section" id="section-3">
+<div class="section-header">
+<div class="overline" style="color:var(--danger-red);">⚠ Danger Zone</div>
+<h1 style="color:var(--danger-red);">The Snake Oil Section</h1>
+<p style="color:var(--text-light);font-size:1.1rem;margin-top:8px;">The investing world is full of people trying to separate you from your money.</p>
+</div>
+<div class="danger-card"><span class="danger-icon">🎰</span><span class="danger-badge">HIGH RISK</span>
+<h3>FOMO Investing</h3>
+<p style="margin-top:8px;">When someone posts 500% gains on a meme stock, your brain screams <em>"I need in!"</em> Reality: you're seeing survivorship bias. The 5 who won post screenshots. The 500 who lost are silent.</p>
+<div class="tip-callout" style="background:var(--danger-bg);"><span class="tip-icon">📊</span><span>Studies show meme stock traders lose an average of 30% within 6 months. Luck is not a strategy.</span></div></div>
+<div class="danger-card"><span class="danger-icon">🐍</span><span class="danger-badge">SCAM ALERT</span>
+<h3>Modern Snake Oil Salesmen</h3>
+<p style="margin-top:8px;">They have podcasts and blue checkmarks now, but the pitch hasn't changed:</p>
+<div style="margin:16px 0;padding:16px;background:var(--danger-bg);border-radius:var(--radius);font-style:italic;color:var(--danger-red);">"Secret strategy / inner circle / last chance / $497 course / AI trading bot / guaranteed returns"</div>
+<p>→ If they're guaranteed to profit, they wouldn't need your money.<br>→ If the strategy worked, they'd use it quietly — not sell courses.<br>→ No legitimate investment guarantees returns. Ever.</p></div>
+<div class="danger-card"><span class="danger-icon">📱</span><span class="danger-badge">CAUTION</span>
+<h3>Speculating ≠ Investing</h3>
+<table class="comparison-table" style="margin:16px 0;">
+<thead><tr><th>Investing</th><th>Speculating / Gambling</th></tr></thead>
+<tbody><tr><td>Based on fundamentals</td><td>Based on hype or "feelings"</td></tr>
+<tr><td>You can explain why you own it</td><td>You own it because someone said to</td></tr>
+<tr><td>Boring and slow — that's the point</td><td>Exciting and fast — that's the trap</td></tr></tbody></table>
+<div class="tip-callout"><span class="tip-icon">💡</span><span><strong>The 5% rule:</strong> Want to speculate? Max 5% as "play money" you can lose entirely. The other 95% stays boring.</span></div></div>
+<div class="danger-card"><span class="danger-icon">⏰</span><span class="danger-badge">BEHAVIORAL TRAP</span>
+<h3>Other Dangerous Behaviors</h3>
+<p style="margin-top:8px;"><strong>🔄 Day Trading:</strong> 70-90% lose money. <strong>🏋️ Leverage:</strong> You can lose more than you invested. <strong>🔮 YOLO Options:</strong> Worse odds than a casino. <strong>👥 Finfluencers:</strong> Many are paid promoters. Their interests ≠ yours.</p></div>
+<div class="card" style="border:2px solid var(--forest);text-align:center;padding:40px;">
+<h3 style="color:var(--forest);">The Antidote</h3>
+<p style="font-size:1.1rem;margin-top:12px;">Invest in what you understand. Keep it simple. Keep it boring. Keep it consistent. The slow path IS the fast path.</p></div>
+<button class="complete-section-btn" onclick="completeSection(3)"><span>✓</span> Mark as Complete & Continue →</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- STORM SHELTER                                   -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section" id="section-4">
+  <div class="storm-section">
+    <div style="max-width:800px; margin:0 auto;">
+      <div class="section-header" style="text-align:center;">
+        <div class="overline" style="color:var(--terra-light);">Section 4 of 5</div>
+        <h1 style="color:#ECF0F1;">The Storm Shelter</h1>
+        <p style="color:#8899aa; font-size:1.1rem; margin-top:8px;">When the market shakes you, come here. Breathe. Read. Remember the plan.</p>
+      </div>
+
+      <p style="text-align:center; color:#8899aa; margin-bottom:24px;">What are you feeling right now?</p>
+
+      <div class="storm-emotions">
+        <div class="emotion-btn" onclick="selectEmotion('fear', this)">
+          <span class="emotion-icon">😰</span>
+          Fear
+          <div style="font-size:0.8rem; color:#888; margin-top:4px;">"It's all going down"</div>
+        </div>
+        <div class="emotion-btn" onclick="selectEmotion('doubt', this)">
+          <span class="emotion-icon">🤔</span>
+          Doubt
+          <div style="font-size:0.8rem; color:#888; margin-top:4px;">"Am I doing this right?"</div>
+        </div>
+        <div class="emotion-btn" onclick="selectEmotion('impatience', this)">
+          <span class="emotion-icon">⏰</span>
+          Impatience
+          <div style="font-size:0.8rem; color:#888; margin-top:4px;">"Nothing's happening fast enough"</div>
+        </div>
+        <div class="emotion-btn" onclick="selectEmotion('temptation', this)">
+          <span class="emotion-icon">🎰</span>
+          Temptation to Sell
+          <div style="font-size:0.8rem; color:#888; margin-top:4px;">"I should cash out"</div>
+        </div>
+      </div>
+
+      <div id="stormQuotes"></div>
+    </div>
+  </div>
+
+  <div style="padding: 24px;">
+    <button class="complete-section-btn" onclick="completeSection(4)">
+      <span>✓</span> Mark as Complete & Continue →
+    </button>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 5: THE LONG GAME                     ║ -->
+<!-- ╚═══════════════════════════════════════════════╝ -->
+<div class="section" id="section-5">
+  <div class="section-header">
+    <div class="overline">Section 5 of 5</div>
+    <h1>The Long Game</h1>
+    <p style="color:var(--text-light); font-size:1.1rem; margin-top:8px;">The real edge isn't what you do — it's what you avoid doing.</p>
+  </div>
+
+  <div class="depth-toggle">
+    <button class="depth-btn active" onclick="setDepth(5, 'beginner', this)">I'm New</button>
+    <button class="depth-btn" onclick="setDepth(5, 'advanced', this)">I Know the Basics</button>
+  </div>
+
+  <div class="content-beginner active" id="depth-5-beginner">
+    <div class="card">
+      <h3>🔄 Rebalancing: Tending the Garden</h3>
+      <p>Say you decide on 80% stocks and 20% bonds. After a great year in stocks, you might be at 88% stocks and 12% bonds. Rebalancing means selling some stocks and buying bonds to get back to 80/20.</p>
+      <p style="margin-top:12px;">It feels weird — you're selling what did well and buying what lagged. But that's exactly what "buy low, sell high" looks like in practice. You're automatically taking profits from winners and buying more of the undervalued piece.</p>
+      <div class="tip-callout">
+        <span class="tip-icon">📅</span>
+        <span><strong>How often?</strong> Once or twice a year is plenty. Some people do it when any asset class drifts more than 5% from its target. Don't overthink this.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>💰 Tax Basics for Investors</h3>
+      <div class="accordion-item open">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          Short-Term vs. Long-Term Capital Gains
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>When you sell an investment for more than you paid, the profit is a "capital gain." How it's taxed depends on how long you held it:</p>
+          <p style="margin-top:8px;"><strong>Short-term (held &lt; 1 year):</strong> Taxed as regular income (could be 22-37% depending on your bracket).</p>
+          <p><strong>Long-term (held ≥ 1 year):</strong> Special lower tax rates — most people pay 0% or 15%. Much better.</p>
+          <p style="margin-top:8px;">Takeaway: don't sell investments you've held for 11 months if you can wait one more month. That patience alone could save you thousands.</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          Tax-Loss Harvesting
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>If some of your investments are down, you can sell them at a loss to offset gains elsewhere. This lowers your tax bill. You can then buy a <em>similar</em> (but not identical) fund to maintain your exposure.</p>
+          <p style="margin-top:8px;">Example: If you have $3,000 in gains and $2,000 in losses, you only owe taxes on $1,000 net. And if your losses exceed your gains, you can deduct up to $3,000/year against your ordinary income. The rest carries forward to future years.</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          The Wash Sale Rule ⚠️
+          <span class="accordion-arrow">▼</span>
+        </div>
+        <div class="accordion-body"><div class="accordion-content">
+          <p>You can't sell an investment at a loss for the tax benefit and then buy the <em>same</em> investment (or a "substantially identical" one) within 30 days before or after the sale. The IRS calls this a "wash sale" and disallows the loss.</p>
+          <p style="margin-top:8px;"><strong>Example:</strong> You sell VTI at a loss. You can't buy VTI back within 30 days. But you <em>could</em> buy ITOT (a similar but not identical total market ETF) and maintain basically the same exposure while claiming the tax loss.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-advanced" id="depth-5-advanced">
+    <div class="card">
+      <h3>Advanced Rebalancing Strategies</h3>
+      <p><strong>Cash-flow rebalancing:</strong> Instead of selling winners, direct new contributions to the lagging asset class. This avoids triggering capital gains in taxable accounts.</p>
+      <p style="margin-top:12px;"><strong>Tax-aware rebalancing:</strong> Rebalance in tax-advantaged accounts first (IRA/401k) where there are no tax consequences. Only rebalance in taxable accounts when drift is significant.</p>
+      <p style="margin-top:12px;"><strong>Band-based triggers:</strong> Rather than rebalancing on a calendar, set bands (e.g., ±5 percentage points). This means you only trade when there's meaningful drift, reducing transaction costs and taxable events.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tax Optimization Deep Dive</h3>
+      <p><strong>Asset location strategy:</strong> Place tax-inefficient investments (bonds, REITs) in tax-advantaged accounts, and tax-efficient ones (index funds, growth stocks) in taxable accounts.</p>
+      <p style="margin-top:12px;"><strong>Tax-gain harvesting:</strong> If your income is low enough (under ~$47,025 single in 2025), your long-term capital gains rate is 0%. You can strategically sell appreciated assets, pay no tax, and reset your cost basis higher — free tax alpha.</p>
+      <p style="margin-top:12px;"><strong>Specific lot identification:</strong> When selling, choose which shares (tax lots) to sell. Generally, sell the lots with the highest cost basis first in taxable accounts to minimize gains.</p>
+    </div>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div class="card">
+    <h3>🚫 Common Mistakes (The Weeds That Kill Gardens)</h3>
+    <div style="display:grid; gap:16px; margin-top:16px;">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:1.5rem; flex-shrink:0;">📉</span>
+        <div>
+          <strong style="color:var(--forest-dark);">Panic Selling</strong>
+          <p style="font-size:0.95rem; color:var(--text-light); margin-top:4px;">The market dropped 34% in March 2020. If you sold, you missed the fastest recovery in history. By the end of the year, you'd have been up. Every major crash has recovered. Every single one.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:1.5rem; flex-shrink:0;">📱</span>
+        <div>
+          <strong style="color:var(--forest-dark);">Checking Daily</strong>
+          <p style="font-size:0.95rem; color:var(--text-light); margin-top:4px;">On any given day, the market is roughly a coin flip between up and down. Over 20+ year stretches, it's been positive essentially 100% of the time. Checking daily just gives your anxiety free rein for no benefit.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🏃</span>
+        <div>
+          <strong style="color:var(--forest-dark);">Chasing Returns</strong>
+          <p style="font-size:0.95rem; color:var(--text-light); margin-top:4px;">By the time you hear about a "hot" stock or fund, the big move has usually already happened. Performance-chasing is one of the most reliable ways to buy high and sell low.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🔍</span>
+        <div>
+          <strong style="color:var(--forest-dark);">Ignoring Fees</strong>
+          <p style="font-size:0.95rem; color:var(--text-light); margin-top:4px;">We showed you earlier how a 1% fee can cost you hundreds of thousands over a lifetime. Always check the expense ratio. If it's above 0.20% for a broad index fund, something's wrong.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="complete-section-btn" onclick="completeSection(5)">
+    <span>✓</span> Mark as Complete — You've finished the trail! 🎉
+  </button>
+
+  <div style="text-align:center;margin-top:20px;">
+    <button class="btn btn-terra" onclick="goToSection(7)" style="font-size:1.1rem;padding:16px 36px;">
+      🗺 Let's See My Plan →
+    </button>
+    <p style="font-size:.85rem;color:var(--text-muted);margin-top:8px;">Or explore the Calculators first to play with the numbers.</p>
+  </div>
+</div>
+
+<!-- ╔═══════════════════════════════════════════════╗ -->
+<!-- ║  SECTION 6: CALCULATORS                       ║ -->
+<!-- ╚═══════════════════════════════════════════════╝ -->
+<div class="section" id="section-6">
+  <div class="section-header">
+    <div class="overline">Interactive Tools</div>
+    <h1>Calculators</h1>
+    <p style="color:var(--text-light); font-size:1.1rem; margin-top:8px;">Numbers make the abstract concrete. Play with these.</p>
+  </div>
+
+  <!-- COMPOUND GROWTH CALCULATOR -->
+  <div class="card">
+    <h3>📈 Compound Growth Calculator</h3>
+    <p style="color:var(--text-light); margin-bottom:20px;">See how starting age and monthly contributions shape your wealth. Adjust the sliders and watch the gap.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="calc-input-group">
+        <label>Monthly Contribution: <span class="calc-value" id="monthlyVal">$200</span></label>
+        <input type="range" class="calc-slider" id="monthlySlider" min="25" max="2000" step="25" value="200" oninput="updateCompound()">
+      </div>
+      <div class="calc-input-group">
+        <label>Annual Return: <span class="calc-value" id="returnVal">10%</span></label>
+        <input type="range" class="calc-slider" id="returnSlider" min="4" max="14" step="0.5" value="10" oninput="updateCompound()">
+      </div>
+    </div>
+    <div class="chart-container">
+      <canvas id="compoundChart"></canvas>
+    </div>
+    <div id="compoundSummary" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px;"></div>
+  </div>
+
+  <!-- GOAL TRACKER -->
+  <div class="card">
+    <h3>🎯 Goal Tracker Calculator</h3>
+    <p style="color:var(--text-light); margin-bottom:20px;">Enter your goal and see what it takes to get there.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div class="calc-input-group">
+        <label>Goal Name</label>
+        <input type="text" class="calc-input" id="calcGoalName" placeholder="e.g., Down payment" value="Down Payment">
+      </div>
+      <div class="calc-input-group">
+        <label>Target Amount ($)</label>
+        <input type="number" class="calc-input" id="calcTarget" value="60000">
+      </div>
+      <div class="calc-input-group">
+        <label>Starting Amount ($)</label>
+        <input type="number" class="calc-input" id="calcStart" value="2000">
+      </div>
+      <div class="calc-input-group">
+        <label>Expected Annual Return (%)</label>
+        <input type="number" class="calc-input" id="calcReturn" value="8" step="0.5">
+      </div>
+      <div class="calc-input-group">
+        <label>Timeframe (years)</label>
+        <input type="number" class="calc-input" id="calcTimeframe" value="10">
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="calculateGoal()" style="margin-top:12px;">Calculate</button>
+    <div id="goalCalcResult" style="display:none; margin-top:20px;">
+      <div class="result-card" id="goalCalcSummary"></div>
+      <div class="chart-container">
+        <canvas id="goalChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- LIFE STAGE CALCULATOR -->
+  <div class="card">
+    <h3>🌱→🌳 Life Stage Growth Calculator</h3>
+    <p style="color:var(--text-light);margin-bottom:20px;">Real life isn't a flat monthly payment. Your contributions grow as your career does.</p>
+    <div style="background:var(--parchment);border-radius:var(--radius);padding:20px;margin-bottom:16px;">
+      <div class="life-stage-row" style="font-weight:700;color:var(--forest-dark);font-size:.8rem;border-bottom:2px solid var(--cream-dark);"><span>Life Stage</span><span style="text-align:center;">Monthly $</span><span style="text-align:center;">Years</span></div>
+      <div class="life-stage-row"><div class="life-stage-label">🎒 Teen/Student <span style="font-weight:400;color:var(--text-muted);font-size:.8rem;">(Part-time, side hustles)</span></div><input type="number" class="life-stage-input" id="ls1amt" value="25"><input type="number" class="life-stage-input" id="ls1yrs" value="4"></div>
+      <div class="life-stage-row"><div class="life-stage-label">🎓 First Job <span style="font-weight:400;color:var(--text-muted);font-size:.8rem;">(Entry-level)</span></div><input type="number" class="life-stage-input" id="ls2amt" value="200"><input type="number" class="life-stage-input" id="ls2yrs" value="5"></div>
+      <div class="life-stage-row"><div class="life-stage-label">📈 Career Growth <span style="font-weight:400;color:var(--text-muted);font-size:.8rem;">(Raises, promotions)</span></div><input type="number" class="life-stage-input" id="ls3amt" value="500"><input type="number" class="life-stage-input" id="ls3yrs" value="10"></div>
+      <div class="life-stage-row"><div class="life-stage-label">💼 Peak Earning <span style="font-weight:400;color:var(--text-muted);font-size:.8rem;">(Established career)</span></div><input type="number" class="life-stage-input" id="ls4amt" value="1200"><input type="number" class="life-stage-input" id="ls4yrs" value="15"></div>
+      <div class="life-stage-row"><div class="life-stage-label">🏡 Pre-Retirement <span style="font-weight:400;color:var(--text-muted);font-size:.8rem;">(Max contributions)</span></div><input type="number" class="life-stage-input" id="ls5amt" value="2000"><input type="number" class="life-stage-input" id="ls5yrs" value="10"></div>
+    </div>
+    <div class="calc-input-group"><label>Annual Return: <span class="calc-value" id="lsReturnVal">9%</span></label><input type="range" class="calc-slider" id="lsReturnSlider" min="4" max="14" step="0.5" value="9" oninput="document.getElementById('lsReturnVal').textContent=this.value+'%'"></div>
+    <button class="btn btn-primary" onclick="calcLifeStage()">Calculate My Life Journey</button>
+    <div id="lifeStageResult" style="display:none;margin-top:24px;">
+      <div class="result-card" id="lifeStageSummary"></div>
+      <div class="chart-container"><canvas id="lifeStageChart"></canvas></div>
+      <div id="lifeStageBreakdown" style="margin-top:16px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ MY PLAN (now section 7) ═══════ -->
+<div class="section" id="section-7">
+  <div class="section-header">
+    <div class="overline">Your Results</div>
+    <h1>🗺 My Investment Plan</h1>
+    <p style="color:var(--text-light);font-size:1.1rem;margin-top:8px;">Everything from Catalyst, distilled into an action plan and investment philosophy.</p>
+  </div>
+  <div id="planContent">
+    <div class="card" style="text-align:center;padding:48px;">
+      <h3>Complete the sections above to build your plan</h3>
+      <p style="color:var(--text-light);margin-top:12px;">As you take the quiz, set goals, and run calculators, your personalized plan builds here.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;text-align:left;">
+        <div style="background:var(--parchment);padding:20px;border-radius:var(--radius);"><h4 style="font-size:1rem;">📋 Action Plan</h4><p style="font-size:.9rem;color:var(--text-light);margin-top:8px;">Step-by-step: what to open, where, how much, and how to automate.</p></div>
+        <div style="background:var(--forest-dark);color:var(--cream);padding:20px;border-radius:var(--radius);"><h4 style="font-size:1rem;color:var(--cream);">🧭 Philosophy</h4><p style="font-size:.9rem;color:rgba(250,246,240,.7);margin-top:8px;">Your risk profile, principles, and quotes to keep you grounded.</p></div>
+      </div>
+      <button class="btn btn-primary" onclick="generatePlan()" style="margin-top:24px;">Generate My Plan Now</button>
+    </div>
+  </div>
+  <div id="planGenerated" style="display:none;">
+    <div class="plan-section">
+      <h2 class="plan-title">📋 Your Action Plan</h2>
+      <p class="plan-subtitle">Follow these steps in order. Each one is concrete and doable.</p>
+      <div id="actionSteps"></div>
+    </div>
+    <div class="philosophy-card">
+      <h3 class="plan-title" style="font-size:clamp(1.5rem,3vw,2rem);text-align:center;margin-bottom:4px;">🧭 Your Investment Philosophy</h3>
+      <p class="plan-subtitle" style="color:rgba(250,246,240,.6);">These are your guardrails. Come back when you feel uncertain.</p>
+      <div id="philosophyItems"></div>
+    </div>
+    <div class="card" id="planStats"></div>
+    <div class="card" id="planQuotes"></div>
+    <div class="card">
+      <h3>🔄 When to Adjust Your Plan</h3>
+      <div style="display:grid;gap:12px;margin-top:12px;">
+        <div style="display:flex;gap:12px;"><span style="color:var(--forest);font-weight:700;">✓</span><div><strong>Income changes significantly</strong> — Increase contributions when you earn more. Decrease if needed.</div></div>
+        <div style="display:flex;gap:12px;"><span style="color:var(--forest);font-weight:700;">✓</span><div><strong>Major life event</strong> — Marriage, kids, home purchase change your goals and timeline.</div></div>
+        <div style="display:flex;gap:12px;"><span style="color:var(--forest);font-weight:700;">✓</span><div><strong>Once a year, review</strong> — Check drift. Rebalance if needed. Increase contributions. Close the app.</div></div>
+        <div style="display:flex;gap:12px;"><span style="color:var(--danger-red);font-weight:700;">✗</span><div><strong>NOT when the market drops</strong> — Visit the Storm Shelter. Doing nothing IS the strategy.</div></div>
+        <div style="display:flex;gap:12px;"><span style="color:var(--danger-red);font-weight:700;">✗</span><div><strong>NOT when someone pitches a "sure thing"</strong> — Revisit the Danger Zone.</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <button class="btn btn-primary" onclick="printPlan()">🖨 Print / Save My Plan</button>
+      <p style="font-size:.85rem;color:var(--text-muted);margin-top:8px;">Use browser's print or "Save as PDF"</p>
+      <button class="btn btn-secondary" onclick="goToSection(8)" style="margin-top:12px;">📚 Browse Resources →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ RESOURCES (now section 8, at the very end) ═══════ -->
+<div class="section" id="section-8">
+  <div class="section-header">
+    <div class="overline">Extra Credit</div>
+    <h1>📚 Go Deeper</h1>
+    <p style="color:var(--text-light);font-size:1.1rem;margin-top:8px;">Curated free and low-cost resources for beginning investors.</p>
+  </div>
+
+  <h3 style="margin-bottom:16px;">📖 Books</h3>
+  <div class="resource-card"><span class="resource-icon">📕</span><div><a href="https://www.amazon.com/Psychology-Money-Timeless-Lessons-Happiness/dp/0857197681" target="_blank" class="resource-link">The Psychology of Money — Morgan Housel</a><p style="font-size:.9rem;color:var(--text-light);margin-top:4px;">The best first investing book. About behavior, patience, and how money really works. Short chapters, no jargon.</p></div></div>
+  <div class="resource-card"><span class="resource-icon">📗</span><div><a href="https://www.amazon.com/One-Up-Wall-Street-Already/dp/0743200403" target="_blank" class="resource-link">One Up on Wall Street — Peter Lynch</a><p style="font-size:.9rem;color:var(--text-light);margin-top:4px;">The legendary Fidelity fund manager explains how everyday people can spot great investments by paying attention to the world around them. Entertaining and practical.</p></div></div>
+  <div class="resource-card"><span class="resource-icon">📘</span><div><a href="https://www.amazon.com/Little-Book-Common-Sense-Investing/dp/1119404509" target="_blank" class="resource-link">The Little Book of Common Sense Investing — Jack Bogle</a><p style="font-size:.9rem;color:var(--text-light);margin-top:4px;">By the founder of Vanguard. The most important argument for low-cost index investing ever made.</p></div></div>
+
+  <h3 style="margin:24px 0 16px;">📝 Howard Marks' Memos</h3>
+  <div class="card">
+    <p>Howard Marks has written free investing memos since 1990. Buffett says: "When I see memos from Howard Marks, they're the first thing I open." Now also available as a podcast.</p>
+    <div style="margin-top:16px;display:grid;gap:12px;">
+      <a href="https://www.oaktreecapital.com/insights/memos" target="_blank" class="resource-link">📄 Read All Memos at Oaktree Capital →</a>
+      <a href="https://podcasts.apple.com/us/podcast/howard-marks-memos/id1667810895" target="_blank" class="resource-link">🎧 Howard Marks Memos Podcast (Apple) →</a>
+      <a href="https://open.spotify.com/show/33fz8EKMTxnFDhIZNO8HGE" target="_blank" class="resource-link">🎧 Howard Marks Memos Podcast (Spotify) →</a>
+    </div>
+    <div class="tip-callout" style="margin-top:16px;"><span class="tip-icon">⭐</span><span><strong>Start with:</strong> "The Most Important Thing" (2003), "Dare to Be Great" (2006), "Nobody Knows" (2008). They'll change how you think about risk.</span></div>
+  </div>
+
+  <h3 style="margin:24px 0 16px;">🎓 Free Learning</h3>
+  <div class="resource-card"><span class="resource-icon">🌐</span><div><a href="https://www.investopedia.com/" target="_blank" class="resource-link">Investopedia</a><p style="font-size:.9rem;color:var(--text-light);margin-top:4px;">The Wikipedia of finance. Look up any term — plain English with examples.</p></div></div>
+  <div class="resource-card"><span class="resource-icon">🎥</span><div><a href="https://www.khanacademy.org/economics-finance-domain" target="_blank" class="resource-link">Khan Academy — Finance & Economics</a><p style="font-size:.9rem;color:var(--text-light);margin-top:4px;">Free video lessons on compound interest, stocks, and more. Great for visual learners.</p></div></div>
+  <div class="resource-card"><span class="resource-icon">📊</span><div><a href="https://www.bogleheads.org/wiki/Getting_started" target="_blank" class="resource-link">Bogleheads Wiki — Getting Started</a><p style="font-size:.9rem;color:var(--text-light);margin-top:4px;">Community of index fund investors. One of the best free investment education wikis online.</p></div></div>
+  <p style="margin-top:24px;font-size:.9rem;color:var(--text-muted);text-align:center;font-style:italic;">More resources coming soon. Have a suggestion? Let your teacher know.</p>
+</div>
+
+</div><!-- /main-content -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="app-footer">
+  <strong>Catalyst</strong> — by The Finance Lab 🚀<br>
+  This app provides financial education only, not financial advice. We are not licensed financial advisors. Investment decisions carry risk, including possible loss of principal. Always do your own research and consult a qualified professional before making financial decisions. <br>
+  <span style="opacity:0.5; font-size:0.75rem;">Built with care for the next generation of investors.</span>
+</footer>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+// ─── QUOTE LIBRARY ───
+const quotes = [
+  // WARREN BUFFETT
+  { text: "Be fearful when others are greedy, and greedy when others are fearful.", author: "Warren Buffett", source: "2004 Berkshire Hathaway annual letter", emotions: ["fear","temptation"], profiles: ["all"] },
+  { text: "The stock market is a device for transferring money from the impatient to the patient.", author: "Warren Buffett", source: "Widely attributed, various shareholder letters", emotions: ["impatience","temptation"], profiles: ["all"] },
+  { text: "Our favorite holding period is forever.", author: "Warren Buffett", source: "1988 Berkshire Hathaway annual report", emotions: ["temptation","impatience"], profiles: ["moderate","aggressive"] },
+  { text: "The most important quality for an investor is temperament, not intellect.", author: "Warren Buffett", source: "Interview with BusinessWeek, 1999", emotions: ["doubt","fear"], profiles: ["all"] },
+  { text: "Risk comes from not knowing what you're doing.", author: "Warren Buffett", source: "Various interviews and speeches", emotions: ["fear","doubt"], profiles: ["conservative","moderate"] },
+  { text: "Someone's sitting in the shade today because someone planted a tree a long time ago.", author: "Warren Buffett", source: "Frequently cited in Berkshire communications", emotions: ["impatience"], profiles: ["all"] },
+
+  // CHARLIE MUNGER
+  { text: "The big money is not in the buying and selling, but in the waiting.", author: "Charlie Munger", source: "Poor Charlie's Almanack", emotions: ["impatience","temptation"], profiles: ["all"] },
+  { text: "The first rule of compounding: never interrupt it unnecessarily.", author: "Charlie Munger", source: "USC Business School talk, 1994", emotions: ["temptation","fear"], profiles: ["all"] },
+  { text: "It's waiting that helps you as an investor, and a lot of people just can't stand to wait.", author: "Charlie Munger", source: "2014 Daily Journal annual meeting", emotions: ["impatience"], profiles: ["aggressive"] },
+  { text: "You don't have to be brilliant, only a little bit wiser than the other guys, on average, for a long, long time.", author: "Charlie Munger", source: "Poor Charlie's Almanack", emotions: ["doubt"], profiles: ["all"] },
+  { text: "Knowing what you don't know is more useful than being brilliant.", author: "Charlie Munger", source: "Wesco Financial annual meeting, 2003", emotions: ["doubt","fear"], profiles: ["conservative","moderate"] },
+
+  // PETER LYNCH
+  { text: "Far more money has been lost by investors preparing for corrections, or trying to anticipate corrections, than has been lost in corrections themselves.", author: "Peter Lynch", source: "One Up on Wall Street, 1989", emotions: ["fear","temptation"], profiles: ["all"] },
+  { text: "In the stock market, the most important organ is the stomach. It's not the brain.", author: "Peter Lynch", source: "Beating the Street, 1993", emotions: ["fear","doubt"], profiles: ["all"] },
+  { text: "The key to making money in stocks is not to get scared out of them.", author: "Peter Lynch", source: "One Up on Wall Street, 1989", emotions: ["fear","temptation"], profiles: ["moderate","aggressive"] },
+  { text: "Everyone has the brainpower to make money in stocks. Not everyone has the stomach.", author: "Peter Lynch", source: "Learn to Earn, 1995", emotions: ["fear","doubt"], profiles: ["all"] },
+  { text: "I've found that when the market's going down and you buy funds wisely, at some point in the future you will be happy.", author: "Peter Lynch", source: "PBS interview, 1996", emotions: ["fear","impatience"], profiles: ["all"] },
+
+  // HOWARD MARKS
+  { text: "The biggest investing errors come not from factors that are informational or analytical, but from those that are psychological.", author: "Howard Marks", source: "The Most Important Thing, 2011", emotions: ["fear","doubt"], profiles: ["all"] },
+  { text: "Resisting — and thereby achieving success as a contrarian — isn't easy. Things combine to make it difficult, including natural herd tendencies.", author: "Howard Marks", source: "Memo to Oaktree clients, 2006", emotions: ["temptation","fear"], profiles: ["moderate","aggressive"] },
+  { text: "You can't predict. You can prepare.", author: "Howard Marks", source: "The Most Important Thing, 2011", emotions: ["fear","doubt"], profiles: ["conservative","moderate"] },
+  { text: "Moving aggressively in response to fear is usually the wrong approach. Neither should one chase returns.", author: "Howard Marks", source: "Oaktree memo, 2008", emotions: ["fear","temptation"], profiles: ["all"] },
+  { text: "In the end, the devil tends to take the hindmost. Those who bought with the greatest confidence and leverage suffer the most.", author: "Howard Marks", source: "The Most Important Thing, 2011", emotions: ["temptation"], profiles: ["aggressive"] },
+
+  // MORGAN HOUSEL
+  { text: "Doing well with money has little to do with how smart you are and a lot to do with how you behave.", author: "Morgan Housel", source: "The Psychology of Money, 2020", emotions: ["doubt"], profiles: ["all"] },
+  { text: "The highest form of wealth is the ability to wake up every morning and say, 'I can do whatever I want today.'", author: "Morgan Housel", source: "The Psychology of Money, 2020", emotions: ["impatience"], profiles: ["all"] },
+  { text: "History is the study of change, ironically used as a map of the future.", author: "Morgan Housel", source: "The Psychology of Money, 2020", emotions: ["fear","doubt"], profiles: ["all"] },
+  { text: "Every past decline looks like an opportunity. Every future decline looks like a risk.", author: "Morgan Housel", source: "Blog post, Collaborative Fund, 2019", emotions: ["fear"], profiles: ["all"] },
+  { text: "The ability to do nothing when nothing should be done is an underrated skill.", author: "Morgan Housel", source: "Same as Ever, 2023", emotions: ["impatience","temptation"], profiles: ["all"] },
+
+  // JACK BOGLE
+  { text: "Don't look for the needle in the haystack. Just buy the haystack.", author: "Jack Bogle", source: "The Little Book of Common Sense Investing, 2007", emotions: ["doubt"], profiles: ["conservative","moderate"] },
+  { text: "Time is your friend; impulse is your enemy.", author: "Jack Bogle", source: "Common Sense on Mutual Funds, 1999", emotions: ["impatience","temptation"], profiles: ["all"] },
+  { text: "Stay the course. Don't let these changes in the market, even the big declines, change your mind.", author: "Jack Bogle", source: "CNBC interview, 2018", emotions: ["fear","temptation"], profiles: ["all"] },
+  { text: "The idea that a bell rings to signal when investors should get into or out of the stock market is simply not credible.", author: "Jack Bogle", source: "The Little Book of Common Sense Investing", emotions: ["temptation","fear"], profiles: ["all"] },
+  { text: "In investing, you get what you don't pay for. Costs matter.", author: "Jack Bogle", source: "Various Vanguard speeches", emotions: ["doubt"], profiles: ["all"] },
+
+  // JOHN TEMPLETON
+  { text: "The four most dangerous words in investing are: 'This time it's different.'", author: "John Templeton", source: "Widely attributed, from various interviews", emotions: ["fear","temptation"], profiles: ["all"] },
+  { text: "Bull markets are born on pessimism, grow on skepticism, mature on optimism, and die on euphoria.", author: "John Templeton", source: "Attributed in multiple financial publications", emotions: ["fear","temptation"], profiles: ["moderate","aggressive"] },
+  { text: "The best time to invest is when you have money. The best time to sell is usually never.", author: "John Templeton", source: "Attributed, compiled from various interviews", emotions: ["impatience","doubt"], profiles: ["all"] },
+  { text: "If you want to have a better performance than the crowd, you must do things differently from the crowd.", author: "John Templeton", source: "Templeton Plan, 1987", emotions: ["doubt","fear"], profiles: ["aggressive"] },
+
+  // RAY DALIO
+  { text: "He who lives by the crystal ball will eat shattered glass.", author: "Ray Dalio", source: "Principles, 2017", emotions: ["temptation","doubt"], profiles: ["all"] },
+  { text: "Pain plus reflection equals progress.", author: "Ray Dalio", source: "Principles, 2017", emotions: ["fear","doubt"], profiles: ["all"] },
+  { text: "Diversifying well is the most important thing you need to do in order to invest well.", author: "Ray Dalio", source: "Principles, 2017", emotions: ["doubt","fear"], profiles: ["conservative","moderate"] },
+  { text: "The biggest mistake investors make is to believe that what happened in the recent past is likely to persist.", author: "Ray Dalio", source: "Bridgewater research, various publications", emotions: ["temptation","impatience"], profiles: ["all"] },
+  { text: "Don't mistake the current conditions for permanent conditions.", author: "Ray Dalio", source: "Principles for Navigating Big Debt Crises, 2018", emotions: ["fear","impatience"], profiles: ["all"] }
+];
+
+// ─── QUIZ DATA ───
+const quizQuestions = [
+  {
+    q: "The market drops 20% in a month. You:",
+    opts: [
+      { text: "Sell everything — I can't handle this", val: 1 },
+      { text: "Feel sick but don't touch anything", val: 2 },
+      { text: "Stay calm, this is normal", val: 3 },
+      { text: "Get excited — time to buy more", val: 4 }
+    ]
+  },
+  {
+    q: "You invest $5,000. What loss would cause you to lose sleep?",
+    opts: [
+      { text: "Any loss at all ($100+)", val: 1 },
+      { text: "Down 10% ($500)", val: 2 },
+      { text: "Down 25% ($1,250)", val: 3 },
+      { text: "Even 40% wouldn't bother me much", val: 4 }
+    ]
+  },
+  {
+    q: "When do you need this money?",
+    opts: [
+      { text: "Within the next 1-3 years", val: 1 },
+      { text: "3-7 years from now", val: 2 },
+      { text: "7-15 years", val: 3 },
+      { text: "15+ years — this is for the long haul", val: 4 }
+    ]
+  },
+  {
+    q: "Which statement best matches how you think about investing?",
+    opts: [
+      { text: "Protecting what I have matters most", val: 1 },
+      { text: "Steady growth with some protection", val: 2 },
+      { text: "Growth is my main goal, I accept ups and downs", val: 3 },
+      { text: "Maximum growth — I can handle wild rides", val: 4 }
+    ]
+  },
+  {
+    q: "Your friend brags about a 200% return on a risky bet. You think:",
+    opts: [
+      { text: "That's terrifying — they could lose it all", val: 1 },
+      { text: "Good for them, but not my style", val: 2 },
+      { text: "Interesting — I'd put a small amount in something like that", val: 3 },
+      { text: "Tell me more — what was the play?", val: 4 }
+    ]
+  },
+  {
+    q: "How would you describe your investing experience?",
+    opts: [
+      { text: "Completely new — never invested before", val: 1 },
+      { text: "I've read about it but not done much", val: 2 },
+      { text: "I have some investments and basic knowledge", val: 3 },
+      { text: "I actively follow markets and manage my portfolio", val: 4 }
+    ]
+  },
+  {
+    q: "If your portfolio dropped 35% but the experts said 'stay the course,' you'd:",
+    opts: [
+      { text: "Probably sell — I can't trust forecasts", val: 1 },
+      { text: "Hold but constantly worry", val: 2 },
+      { text: "Hold and check in quarterly", val: 3 },
+      { text: "Hold and add more — buy the dip", val: 4 }
+    ]
+  },
+  {
+    q: "How stable is your current income?",
+    opts: [
+      { text: "Very unstable — part-time, gig work, or no income", val: 1 },
+      { text: "Somewhat stable but I don't have much saved", val: 2 },
+      { text: "Stable with a growing emergency fund", val: 3 },
+      { text: "Very stable with 3-6 months of expenses saved", val: 4 }
+    ]
+  }
+];
+
+// ─── PORTFOLIO PROFILES ───
+const profiles = {
+  conservative: {
+    label: "The Steady Grower",
+    badge: "Conservative",
+    desc: "You value stability and predictability. Your strength is that you won't make rash decisions — but be careful not to be so cautious that inflation erodes your purchasing power over time. With your long time horizon, you can afford a bit more risk than you think.",
+    allocation: [
+      { name: "US Stocks", pct: 35, color: "var(--forest)" },
+      { name: "Int'l Stocks", pct: 15, color: "var(--forest-light)" },
+      { name: "Bonds", pct: 40, color: "var(--sage)" },
+      { name: "Cash/Money Market", pct: 10, color: "var(--gold)" }
+    ]
+  },
+  moderate: {
+    label: "The Balanced Builder",
+    badge: "Moderate",
+    desc: "You're willing to accept some turbulence in exchange for solid growth. This is where most financial advisors would put a young person who understands the basics. You can weather storms without panicking, and you appreciate both growth and a cushion.",
+    allocation: [
+      { name: "US Stocks", pct: 50, color: "var(--forest)" },
+      { name: "Int'l Stocks", pct: 20, color: "var(--forest-light)" },
+      { name: "Bonds", pct: 25, color: "var(--sage)" },
+      { name: "Cash/Money Market", pct: 5, color: "var(--gold)" }
+    ]
+  },
+  aggressive: {
+    label: "The Growth Seeker",
+    badge: "Aggressive",
+    desc: "You have a strong stomach for volatility and a long time horizon. You understand that big drops are the price of admission for big long-term returns. Just make sure you have an emergency fund in cash so you never have to sell investments at the wrong time.",
+    allocation: [
+      { name: "US Stocks", pct: 60, color: "var(--forest)" },
+      { name: "Int'l Stocks", pct: 30, color: "var(--forest-light)" },
+      { name: "Bonds", pct: 8, color: "var(--sage)" },
+      { name: "Cash/Money Market", pct: 2, color: "var(--gold)" }
+    ]
+  }
+};
+
+// ─── APP STATE ───
+let currentSection = 0;
+let completedSections = new Set();
+let quizStep = 0;
+let quizAnswers = new Array(quizQuestions.length).fill(null);
+let compoundChartInstance = null;
+let goalChartInstance = null;
+let userProfile = null;
+
+// ─── READINESS ASSESSMENT ───
+const readiness = { age:null, job:null, bank:null, emergency:null, accounts:null, monthly:null };
+function selectReady(key, val, el) {
+  readiness[key] = val;
+  el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const allAnswered = Object.values(readiness).every(v => v !== null);
+  const status = document.getElementById('readinessStatus');
+  if (status) status.style.display = allAnswered ? 'block' : 'none';
+}
+
+// ─── MODAL ───
+function closeModal() {
+  document.getElementById('disclaimerModal').style.display = 'none';
+  localStorage.setItem('tillage_disclaimer', 'true');
+}
+if (localStorage.getItem('tillage_disclaimer') === 'true') {
+  document.getElementById('disclaimerModal').style.display = 'none';
+}
+
+// ─── NAVIGATION ───
+function goToSection(idx) {
+  currentSection = idx;
+  // Hide intro
+  const intro = document.getElementById('section-intro');
+  if (intro) intro.classList.remove('active');
+  // Show the correct numbered section
+  for (let i = 0; i <= 8; i++) {
+    const el = document.getElementById('section-' + i);
+    if (el) el.classList.toggle('active', i === idx);
+  }
+  document.querySelectorAll('.header-nav button').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  updateTrail();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (idx === 6) setTimeout(updateCompound, 100);
+  if (idx === 7) setTimeout(generatePlan, 100);
+}
+
+function updateTrail() {
+  document.querySelectorAll('.trail-step').forEach((step, i) => {
+    step.classList.remove('active', 'completed');
+    if (i === currentSection) step.classList.add('active');
+    if (completedSections.has(i)) step.classList.add('completed');
+  });
+}
+
+function completeSection(idx) {
+  completedSections.add(idx);
+  const btns = document.querySelectorAll('.complete-section-btn');
+  if (btns[idx]) { btns[idx].classList.add('done'); btns[idx].innerHTML = '<span>✓</span> Completed!'; }
+  updateTrail();
+  if (idx < 8) setTimeout(() => goToSection(idx + 1), 400);
+}
+
+// ─── DEPTH TOGGLE ───
+function setDepth(section, level, btn) {
+  const parent = btn.closest('.depth-toggle');
+  parent.querySelectorAll('.depth-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const beg = document.getElementById(`depth-${section}-beginner`);
+  const adv = document.getElementById(`depth-${section}-advanced`);
+  if (beg) { beg.classList.toggle('active', level === 'beginner'); }
+  if (adv) { adv.classList.toggle('active', level === 'advanced'); }
+}
+
+// ─── ACCORDION ───
+function toggleAccordion(header) {
+  header.closest('.accordion-item').classList.toggle('open');
+}
+
+// ─── QUIZ ───
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  if (quizStep >= quizQuestions.length) { showQuizResult(); return; }
+  const q = quizQuestions[quizStep];
+  let html = `<div class="quiz-question"><p>Q${quizStep+1}/${quizQuestions.length}: ${q.q}</p><div class="quiz-options">`;
+  q.opts.forEach((opt, i) => {
+    const sel = quizAnswers[quizStep] === i ? 'selected' : '';
+    html += `<label class="quiz-option ${sel}" onclick="selectQuizOption(${i}, this)">
+      <div class="quiz-radio"></div><span>${opt.text}</span></label>`;
+  });
+  html += '</div></div>';
+  container.innerHTML = html;
+  document.getElementById('quizProgress').style.width = ((quizStep / quizQuestions.length) * 100) + '%';
+  document.getElementById('quizPrev').style.display = quizStep > 0 ? 'inline-flex' : 'none';
+  document.getElementById('quizNext').textContent = quizStep === quizQuestions.length - 1 ? 'See Results →' : 'Next →';
+}
+function selectQuizOption(idx, el) {
+  quizAnswers[quizStep] = idx;
+  el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function quizNav(dir) {
+  if (dir === 1 && quizAnswers[quizStep] === null) return;
+  quizStep += dir;
+  if (quizStep < 0) quizStep = 0;
+  renderQuiz();
+}
+
+function showQuizResult() {
+  const score = quizAnswers.reduce((sum, a, i) => sum + quizQuestions[i].opts[a].val, 0);
+  const maxScore = quizQuestions.length * 4;
+  const pct = score / maxScore;
+  let profileKey = pct < 0.4 ? 'conservative' : pct < 0.7 ? 'moderate' : 'aggressive';
+  const profile = profiles[profileKey];
+
+  document.getElementById('quizCard').style.display = 'none';
+  document.getElementById('quizResult').style.display = 'block';
+  document.getElementById('resultLabel').textContent = profile.label;
+  document.getElementById('resultBadge').textContent = profile.badge;
+  document.getElementById('resultDesc').textContent = profile.desc;
+
+  // Portfolio bar
+  let barHtml = '';
+  let legendHtml = '';
+  profile.allocation.forEach(a => {
+    barHtml += `<div style="width:${a.pct}%; background:${a.color};">${a.pct}%</div>`;
+    legendHtml += `<div class="legend-item"><div class="legend-dot" style="background:${a.color};"></div>${a.name} (${a.pct}%)</div>`;
+  });
+  document.getElementById('portfolioBar').innerHTML = barHtml;
+  document.getElementById('portfolioLegend').innerHTML = legendHtml;
+
+  // Matched quotes
+  const matched = quotes.filter(q =>
+    (q.profiles.includes(profileKey) || q.profiles.includes('all'))
+  ).sort(() => Math.random() - 0.5).slice(0, 3);
+  let qHtml = '<h3>Words From the Legends</h3><p style="color:var(--text-light); margin-bottom:16px;">These quotes were selected for your investor personality:</p>';
+  matched.forEach(q => {
+    qHtml += `<div style="background:var(--parchment); padding:16px 20px; border-radius:var(--radius); margin-bottom:12px; border-left:4px solid var(--terra);">
+      <p style="font-family:var(--font-display); font-style:italic; font-size:1.05rem; margin-bottom:8px;">"${q.text}"</p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">— <strong style="color:var(--terra);">${q.author}</strong> · ${q.source}</p>
+    </div>`;
+  });
+  document.getElementById('quizQuotes').innerHTML = qHtml;
+  document.getElementById('quizProgress').style.width = '100%';
+
+  // Add money market callout for profiles with significant cash/bond allocation
+  const quizResultEl = document.getElementById('quizResult');
+  let mmHtml = '';
+  if (profileKey === 'conservative') {
+    mmHtml = `<div class="card" style="border:2px solid var(--sage);border-left:6px solid var(--forest);">
+      <h3>💰 Your Cash & Bond Allocation: Make It Work Harder</h3>
+      <p>With ${profile.allocation.find(a=>a.name==='Cash').pct}% in cash and ${profile.allocation.find(a=>a.name.includes('Bond')).pct}% in bonds, a big part of your portfolio is in "safe" assets. Make sure that cash isn't sitting idle in a 0.01% savings account.</p>
+      <p style="margin-top:12px;"><strong>Money market funds</strong> (like SWVXX at Schwab, currently ~3.51% yield) and <strong>Treasury Bills</strong> (4%+ range, backed by the U.S. government) are near-zero-risk options that can serve as your "cash" allocation while earning real returns. They're liquid — you can access the money within days.</p>
+      <div class="tip-callout"><span class="tip-icon">🌿</span><span>For your conservative profile, these aren't just nice-to-haves — they're essential. Every dollar earning 0.01% instead of 3-4% is money you're giving away.</span></div>
+    </div>`;
+  } else if (profileKey === 'moderate') {
+    mmHtml = `<div class="info-box" style="margin-top:0;">
+      <div class="info-box-title">💰 Your Cash Allocation</div>
+      <p style="font-size:.92rem;">Even your ${profile.allocation.find(a=>a.name==='Cash').pct}% cash slice should work for you. Park it in a money market fund (like SWVXX, ~3.51%) or Treasury Bills instead of a savings account. Same safety, dramatically better yield.</p>
+    </div>`;
+  }
+  if (mmHtml) {
+    const mmDiv = document.createElement('div');
+    mmDiv.innerHTML = mmHtml;
+    quizResultEl.appendChild(mmDiv);
+  }
+}
+
+renderQuiz();
+
+// ─── GOAL SETTING (Section 2) ───
+function setGoal() {
+  const name = document.getElementById('goalName').value || 'Your Goal';
+  const target = parseFloat(document.getElementById('goalTarget').value) || 50000;
+  const years = parseFloat(document.getElementById('goalYears').value) || 10;
+  const rate = 0.08;
+  const months = years * 12;
+  const monthlyRate = rate / 12;
+  const monthly = (target * monthlyRate) / (Math.pow(1 + monthlyRate, months) - 1);
+
+  const out = document.getElementById('goalOutput');
+  out.style.display = 'block';
+  out.innerHTML = `
+    <h3 style="color:var(--forest-dark);">🌱 Path to "${name}"</h3>
+    <p style="margin-top:8px;">To reach <strong>$${target.toLocaleString()}</strong> in <strong>${years} years</strong> (assuming ~8% annual return), you'd need to invest approximately:</p>
+    <p style="font-size:2rem; font-family:var(--font-display); color:var(--terra); margin:12px 0;">$${Math.ceil(monthly).toLocaleString()}/month</p>
+    <p style="font-size:0.9rem; color:var(--text-muted);">That's about $${Math.ceil(monthly / 4.33).toLocaleString()}/week. You'll contribute $${(Math.ceil(monthly)*months).toLocaleString()} total, and compound growth does the rest.</p>
+  `;
+}
+
+// ─── STORM SHELTER ───
+function selectEmotion(emotion, btn) {
+  document.querySelectorAll('.emotion-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const matched = quotes.filter(q => q.emotions.includes(emotion)).sort(() => Math.random() - 0.5).slice(0, 4);
+  let html = '';
+  matched.forEach(q => {
+    html += `<div class="storm-quote">
+      <blockquote>"${q.text}"</blockquote>
+      <div class="attribution">— <strong>${q.author}</strong></div>
+      <div class="context">${q.source}</div>
+    </div>`;
+  });
+  document.getElementById('stormQuotes').innerHTML = html;
+}
+
+// ─── COMPOUND GROWTH CALCULATOR ───
+function updateCompound() {
+  const monthly = parseFloat(document.getElementById('monthlySlider').value);
+  const annualReturn = parseFloat(document.getElementById('returnSlider').value) / 100;
+  document.getElementById('monthlyVal').textContent = `$${monthly}`;
+  document.getElementById('returnVal').textContent = `${(annualReturn*100).toFixed(1)}%`;
+
+  const retireAge = 65;
+  const ages = [18, 22, 30];
+  const colors = ['#1B2E4A', '#2ECC71', '#5AADCF'];
+  const labels = [];
+  const datasets = [];
+
+  for (let a = 18; a <= retireAge; a++) labels.push(a);
+
+  ages.forEach((startAge, idx) => {
+    const data = [];
+    let balance = 0;
+    const monthlyRate = annualReturn / 12;
+    for (let age = 18; age <= retireAge; age++) {
+      if (age >= startAge) {
+        for (let m = 0; m < 12; m++) {
+          balance = balance * (1 + monthlyRate) + monthly;
+        }
+      }
+      data.push(Math.round(balance));
+    }
+    datasets.push({ startAge, data, color: colors[idx], finalValue: balance });
+  });
+
+  // Draw chart
+  drawCompoundChart(labels, datasets);
+
+  // Summary cards
+  let summaryHtml = '';
+  datasets.forEach(d => {
+    summaryHtml += `<div style="background:var(--parchment); padding:16px; border-radius:var(--radius); text-align:center; border-top:4px solid ${d.color};">
+      <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:4px;">Start at ${d.startAge}</div>
+      <div style="font-size:1.4rem; font-family:var(--font-display); color:var(--forest-dark);">$${Math.round(d.finalValue).toLocaleString()}</div>
+      <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">at age 65</div>
+    </div>`;
+  });
+  document.getElementById('compoundSummary').innerHTML = summaryHtml;
+}
+
+function drawCompoundChart(labels, datasets) {
+  const canvas = document.getElementById('compoundChart');
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+  canvas.width = container.clientWidth * 2;
+  canvas.height = container.clientHeight * 2;
+  ctx.scale(2, 2);
+  const W = container.clientWidth;
+  const H = container.clientHeight;
+  const pad = { top: 30, right: 20, bottom: 40, left: 70 };
+  const plotW = W - pad.left - pad.right;
+  const plotH = H - pad.top - pad.bottom;
+
+  ctx.clearRect(0, 0, W, H);
+
+  const maxVal = Math.max(...datasets.flatMap(d => d.data));
+  const yMax = Math.ceil(maxVal / 100000) * 100000 || 100000;
+
+  // Grid
+  ctx.strokeStyle = '#D1D5DB';
+  ctx.lineWidth = 0.5;
+  ctx.font = '11px Inter, sans-serif';
+  ctx.fillStyle = '#7B8794';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 5; i++) {
+    const y = pad.top + plotH - (i / 5) * plotH;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W - pad.right, y); ctx.stroke();
+    const val = (yMax * i / 5);
+    ctx.fillText(val >= 1000000 ? `$${(val/1000000).toFixed(1)}M` : `$${(val/1000).toFixed(0)}K`, pad.left - 8, y + 4);
+  }
+
+  // X labels
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#7B8794';
+  for (let i = 0; i < labels.length; i += 5) {
+    const x = pad.left + (i / (labels.length - 1)) * plotW;
+    ctx.fillText(labels[i], x, H - pad.bottom + 20);
+  }
+  ctx.fillText('Age', W / 2, H - 4);
+
+  // Lines
+  datasets.forEach(d => {
+    ctx.beginPath();
+    ctx.strokeStyle = d.color;
+    ctx.lineWidth = 2.5;
+    d.data.forEach((val, i) => {
+      const x = pad.left + (i / (labels.length - 1)) * plotW;
+      const y = pad.top + plotH - (val / yMax) * plotH;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Fill area
+    ctx.globalAlpha = 0.08;
+    ctx.lineTo(pad.left + plotW, pad.top + plotH);
+    ctx.lineTo(pad.left, pad.top + plotH);
+    ctx.fillStyle = d.color;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // End label
+    const lastVal = d.data[d.data.length - 1];
+    const endX = pad.left + plotW;
+    const endY = pad.top + plotH - (lastVal / yMax) * plotH;
+    ctx.fillStyle = d.color;
+    ctx.font = 'bold 11px Inter, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(`Age ${d.startAge}`, endX - 50, endY - 8);
+  });
+}
+
+// ─── GOAL TRACKER CALCULATOR ───
+function calculateGoal() {
+  const name = document.getElementById('calcGoalName').value || 'Goal';
+  const target = parseFloat(document.getElementById('calcTarget').value) || 60000;
+  const start = parseFloat(document.getElementById('calcStart').value) || 0;
+  const annualReturn = parseFloat(document.getElementById('calcReturn').value) / 100 || 0.08;
+  const years = parseFloat(document.getElementById('calcTimeframe').value) || 10;
+
+  const monthlyRate = annualReturn / 12;
+  const months = years * 12;
+  const futureStart = start * Math.pow(1 + monthlyRate, months);
+  const needed = target - futureStart;
+  const monthly = needed > 0 ? (needed * monthlyRate) / (Math.pow(1 + monthlyRate, months) - 1) : 0;
+
+  document.getElementById('goalCalcResult').style.display = 'block';
+  document.getElementById('goalCalcSummary').innerHTML = `
+    <p style="opacity:0.8; font-size:0.9rem;">To reach your ${name} goal</p>
+    <h2 style="color:var(--cream); font-size:2.2rem; margin:8px 0;">$${Math.max(0, Math.ceil(monthly)).toLocaleString()}/month</h2>
+    <p style="opacity:0.7;">Starting with $${start.toLocaleString()} → $${target.toLocaleString()} in ${years} years at ${(annualReturn*100).toFixed(1)}% return</p>
+  `;
+
+  // Draw goal chart
+  const canvas = document.getElementById('goalChart');
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+  canvas.width = container.clientWidth * 2;
+  canvas.height = container.clientHeight * 2;
+  ctx.scale(2, 2);
+  const W = container.clientWidth;
+  const H = container.clientHeight;
+  const pad = { top: 30, right: 20, bottom: 40, left: 70 };
+  const plotW = W - pad.left - pad.right;
+  const plotH = H - pad.top - pad.bottom;
+  ctx.clearRect(0, 0, W, H);
+
+  // Calculate data
+  const data = [];
+  const contribs = [];
+  let balance = start;
+  let totalContrib = start;
+  data.push(balance);
+  contribs.push(totalContrib);
+  for (let y = 1; y <= years; y++) {
+    for (let m = 0; m < 12; m++) {
+      balance = balance * (1 + monthlyRate) + Math.max(0, monthly);
+      totalContrib += Math.max(0, monthly);
+    }
+    data.push(Math.round(balance));
+    contribs.push(Math.round(totalContrib));
+  }
+
+  const yMax = Math.ceil(Math.max(target, ...data) * 1.1 / 10000) * 10000 || 100000;
+
+  // Grid
+  ctx.strokeStyle = '#D1D5DB'; ctx.lineWidth = 0.5;
+  ctx.font = '11px Inter, sans-serif'; ctx.fillStyle = '#7B8794'; ctx.textAlign = 'right';
+  for (let i = 0; i <= 5; i++) {
+    const y = pad.top + plotH - (i / 5) * plotH;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(W - pad.right, y); ctx.stroke();
+    const val = yMax * i / 5;
+    ctx.fillText(val >= 1000000 ? `$${(val/1000000).toFixed(1)}M` : `$${(val/1000).toFixed(0)}K`, pad.left - 8, y + 4);
+  }
+
+  // Target line
+  const targetY = pad.top + plotH - (target / yMax) * plotH;
+  ctx.strokeStyle = '#2ECC71'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 4]);
+  ctx.beginPath(); ctx.moveTo(pad.left, targetY); ctx.lineTo(W - pad.right, targetY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#2ECC71'; ctx.textAlign = 'left'; ctx.font = 'bold 11px Inter';
+  ctx.fillText(`Target: $${target.toLocaleString()}`, pad.left + 4, targetY - 8);
+
+  // Contribution area
+  ctx.beginPath(); ctx.fillStyle = 'rgba(52,152,219,0.15)';
+  contribs.forEach((val, i) => {
+    const x = pad.left + (i / years) * plotW;
+    const y = pad.top + plotH - (val / yMax) * plotH;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.lineTo(pad.left + plotW, pad.top + plotH);
+  ctx.lineTo(pad.left, pad.top + plotH);
+  ctx.fill();
+
+  // Growth line
+  ctx.beginPath(); ctx.strokeStyle = 'var(--forest)'; ctx.lineWidth = 3;
+  data.forEach((val, i) => {
+    const x = pad.left + (i / years) * plotW;
+    const y = pad.top + plotH - (val / yMax) * plotH;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Fill under growth
+  ctx.globalAlpha = 0.1;
+  ctx.lineTo(pad.left + plotW, pad.top + plotH);
+  ctx.lineTo(pad.left, pad.top + plotH);
+  ctx.fillStyle = '#1B2E4A'; ctx.fill();
+  ctx.globalAlpha = 1;
+
+  // X labels
+  ctx.textAlign = 'center'; ctx.fillStyle = '#7B8794'; ctx.font = '11px Inter, sans-serif';
+  for (let i = 0; i <= years; i += Math.max(1, Math.floor(years / 5))) {
+    const x = pad.left + (i / years) * plotW;
+    ctx.fillText(`Year ${i}`, x, H - pad.bottom + 20);
+  }
+
+  // Legend
+  ctx.font = '11px Inter, sans-serif';
+  ctx.fillStyle = '#1B2E4A'; ctx.fillRect(W - 180, pad.top, 12, 12);
+  ctx.fillText('Total Value', W - 180 + 16, pad.top + 10);
+  ctx.fillStyle = 'rgba(52,152,219,0.4)'; ctx.fillRect(W - 180, pad.top + 18, 12, 12);
+  ctx.fillStyle = '#7B8794'; ctx.fillText('Your Contributions', W - 180 + 16, pad.top + 28);
+}
+
+// ═══════════════════════════════════════
+// LIFE STAGE CALCULATOR
+// ═══════════════════════════════════════
+function calcLifeStage(){
+  const stages=[
+    {label:'Teen/Student',amt:+document.getElementById('ls1amt').value||0,yrs:+document.getElementById('ls1yrs').value||0,color:'#5AADCF'},
+    {label:'First Job',amt:+document.getElementById('ls2amt').value||0,yrs:+document.getElementById('ls2yrs').value||0,color:'#2A4470'},
+    {label:'Career Growth',amt:+document.getElementById('ls3amt').value||0,yrs:+document.getElementById('ls3yrs').value||0,color:'#1B2E4A'},
+    {label:'Peak Earning',amt:+document.getElementById('ls4amt').value||0,yrs:+document.getElementById('ls4yrs').value||0,color:'#2ECC71'},
+    {label:'Pre-Retirement',amt:+document.getElementById('ls5amt').value||0,yrs:+document.getElementById('ls5yrs').value||0,color:'#1FA855'}
+  ];
+  const annualReturn=parseFloat(document.getElementById('lsReturnSlider').value)/100;
+  const mr=annualReturn/12;
+  let balance=0,totalContrib=0,dataPoints=[{year:0,balance:0,contrib:0}];
+  let yearCounter=0;
+  stages.forEach(st=>{for(let y=0;y<st.yrs;y++){for(let m=0;m<12;m++){balance=balance*(1+mr)+st.amt;totalContrib+=st.amt;}yearCounter++;dataPoints.push({year:yearCounter,balance:Math.round(balance),contrib:Math.round(totalContrib)});}});
+  const totalYears=stages.reduce((s,st)=>s+st.yrs,0);
+  const growthEarned=balance-totalContrib;
+  document.getElementById('lifeStageResult').style.display='block';
+  document.getElementById('lifeStageSummary').innerHTML=`<p style="opacity:.8;font-size:.9rem;">After ${totalYears} years of investing through every life stage</p><h2 style="color:var(--cream);font-size:2.5rem;margin:8px 0;">$${Math.round(balance).toLocaleString()}</h2><p style="opacity:.7;">You contributed $${Math.round(totalContrib).toLocaleString()} · Compound growth added $${Math.round(growthEarned).toLocaleString()}</p>`;
+  // Draw chart
+  const canvas=document.getElementById('lifeStageChart'),ctx=canvas.getContext('2d'),container=canvas.parentElement;
+  canvas.width=container.clientWidth*2;canvas.height=container.clientHeight*2;ctx.scale(2,2);
+  const W=container.clientWidth,H=container.clientHeight,pad={top:30,right:20,bottom:40,left:80},plotW=W-pad.left-pad.right,plotH=H-pad.top-pad.bottom;
+  ctx.clearRect(0,0,W,H);
+  const yMax=Math.ceil(balance*1.1/100000)*100000||100000;
+  ctx.strokeStyle='#D1D5DB';ctx.lineWidth=.5;ctx.font='11px Inter,sans-serif';ctx.fillStyle='#7B8794';ctx.textAlign='right';
+  for(let i=0;i<=5;i++){const y=pad.top+plotH-(i/5)*plotH;ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();const v=yMax*i/5;ctx.fillText(v>=1e6?`$${(v/1e6).toFixed(1)}M`:`$${(v/1000).toFixed(0)}K`,pad.left-8,y+4);}
+  // Stage bands
+  let xS=0;stages.forEach((st,si)=>{const xE=xS+st.yrs;const x1=pad.left+(xS/totalYears)*plotW;const x2=pad.left+(xE/totalYears)*plotW;ctx.fillStyle=si%2===0?'rgba(27,46,74,0.04)':'rgba(46,204,113,0.04)';ctx.fillRect(x1,pad.top,x2-x1,plotH);ctx.fillStyle='#7B8794';ctx.textAlign='center';ctx.font='9px Inter,sans-serif';ctx.fillText(st.label,(x1+x2)/2,pad.top+14);xS=xE;});
+  // Contrib area
+  ctx.beginPath();ctx.fillStyle='rgba(52,152,219,0.18)';
+  dataPoints.forEach((dp,i)=>{const x=pad.left+(dp.year/totalYears)*plotW;const y=pad.top+plotH-(dp.contrib/yMax)*plotH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.lineTo(pad.left+plotW,pad.top+plotH);ctx.lineTo(pad.left,pad.top+plotH);ctx.fill();
+  // Growth line
+  ctx.beginPath();ctx.strokeStyle='#1B2E4A';ctx.lineWidth=3;
+  dataPoints.forEach((dp,i)=>{const x=pad.left+(dp.year/totalYears)*plotW;const y=pad.top+plotH-(dp.balance/yMax)*plotH;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.stroke();
+  ctx.globalAlpha=.1;ctx.lineTo(pad.left+plotW,pad.top+plotH);ctx.lineTo(pad.left,pad.top+plotH);ctx.fillStyle='#1B2E4A';ctx.fill();ctx.globalAlpha=1;
+  // X labels
+  ctx.textAlign='center';ctx.fillStyle='#7B8794';ctx.font='11px Inter,sans-serif';
+  for(let i=0;i<=totalYears;i+=Math.max(1,Math.floor(totalYears/8))){const x=pad.left+(i/totalYears)*plotW;ctx.fillText(`Yr ${i}`,x,H-pad.bottom+20);}
+  // Breakdown cards
+  let bd='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;">';
+  let rBal=0;stages.forEach(st=>{const prev=rBal;for(let y=0;y<st.yrs;y++){for(let m=0;m<12;m++){rBal=rBal*(1+mr)+st.amt;}}
+  bd+=`<div style="background:var(--parchment);padding:14px;border-radius:var(--radius);border-top:4px solid ${st.color};text-align:center;"><div style="font-size:.8rem;color:var(--text-muted);">${st.label}</div><div style="font-size:.85rem;font-weight:600;color:var(--forest-dark);margin-top:4px;">$${st.amt}/mo × ${st.yrs}yr</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--terra);margin-top:4px;">+$${Math.round(rBal-prev).toLocaleString()}</div></div>`;});
+  bd+='</div>';document.getElementById('lifeStageBreakdown').innerHTML=bd;
+}
+
+// ═══════════════════════════════════════
+// PLAN GENERATOR
+// ═══════════════════════════════════════
+function generatePlan(){
+  document.getElementById('planContent').style.display='none';
+  document.getElementById('planGenerated').style.display='block';
+
+  const prof = userProfile ? profiles[userProfile] : profiles.moderate;
+  const profKey = userProfile || 'moderate';
+  const goalName = document.getElementById('goalName').value || 'Long-term wealth';
+  const goalTarget = +document.getElementById('goalTarget').value || 50000;
+  const goalYears = +document.getElementById('goalYears').value || 10;
+
+  const r = readiness;
+  const isMinor = r.age === 'under18';
+  const hasJob = r.job === 'yes_steady' || r.job === 'yes_parttime';
+  const hasBank = r.bank !== 'no' && r.bank !== null;
+  const hasSavings = r.bank === 'checking_savings';
+  const hasEmergency = r.emergency === 'yes_3mo';
+  const hasSomeEmergency = r.emergency === 'yes_some';
+  const hasInvestmentAcct = r.accounts !== 'no' && r.accounts !== null;
+  const hasRoth = r.accounts === 'roth_and_brokerage';
+  const monthlyBudget = r.monthly === '200plus' ? '$200+' : r.monthly === '50_200' ? '$50–200' : r.monthly === '10_50' ? '$10–50' : '$0';
+  const canInvest = r.monthly !== '0' && r.monthly !== null;
+
+  // BUILD STEPS dynamically
+  const steps = [];
+  let stepNum = 0;
+
+  // Step: Bank account
+  if (!hasBank) {
+    steps.push({title:'Open a Bank Account', desc:'Before anything else, you need a checking account with a debit card. Go to a local bank or credit union, or open one online (most require you to be 18, or have a parent co-sign). This is where your paycheck lands and where your investment transfers will come from.'});
+  }
+
+  // Step: Emergency fund
+  if (!hasEmergency) {
+    if (!hasSomeEmergency && r.emergency !== null) {
+      steps.push({title:'Start Your Emergency Buffer', desc:`Before investing a dollar, save at least $500–$1,000 as a starter emergency fund${hasSavings ? ' in your savings account' : ''}. This prevents you from ever having to sell investments to cover an unexpected expense. Once you start investing, keep building this to 1–3 months of expenses. Pro tip: once you open a brokerage, move this into a money market fund (like SWVXX at Schwab, ~3.51% yield) instead of a 0.01% savings account.`});
+    } else {
+      steps.push({title:'Keep Building Your Emergency Buffer', desc:'You have some savings — great start. Keep building toward 1–3 months of expenses before investing aggressively. Consider moving what you have into a money market fund (SWVXX at Schwab, ~3.51%) so it earns real interest while staying liquid.'});
+    }
+  } else {
+    steps.push({title:'✓ Emergency Fund: You\'re Set', desc:'You already have 3+ months saved — that\'s ahead of most adults. Make sure it\'s earning real interest in a money market fund or T-Bills, not sitting at 0.01% in a bank savings account.'});
+  }
+
+  // Step: Gather documents
+  if (!hasInvestmentAcct) {
+    if (isMinor) {
+      steps.push({title:'Gather Your Documents (You + a Parent)', desc:'To open a custodial investment account, you\'ll need: your Social Security Number, your date of birth, a parent/guardian\'s SSN and government-issued ID, and their bank account info for funding. Sit down with your parent and explain what you\'re doing — show them this app if it helps!'});
+    } else {
+      steps.push({title:'Gather Your Documents', desc:'To open an investment account, you\'ll need: your Social Security Number, a government-issued photo ID (driver\'s license or passport), your bank account number and routing number for transfers, and your address and basic employment info. This takes 5 minutes to collect.'});
+    }
+  }
+
+  // Step: Open accounts
+  if (!hasInvestmentAcct) {
+    const schwabNote = 'Schwab currently offers a Starter Kit with $50 in fractional shares for new accounts.';
+    if (isMinor) {
+      steps.push({title:'Open Your Investment Accounts', desc:`Have your parent help you open <strong>two custodial accounts</strong> at Schwab, Fidelity, or Vanguard:\n\n<strong>1. Individual Brokerage Account</strong> — This is your flexible investing account. No contribution limits, no withdrawal restrictions. Use it for goals before retirement or anything you might need before age 59½.\n\n<strong>2. Custodial Roth IRA</strong> (if you have any earned income) — This is your retirement powerhouse. Money grows tax-free forever. You can contribute up to what you earned that year (max $7,000). This is the single best account a teenager can open.\n\n${schwabNote} Both accounts are in your name but managed by your parent until age 18–21 (varies by state).`});
+    } else {
+      steps.push({title:'Open Your Investment Accounts', desc:`Go to schwab.com, fidelity.com, or vanguard.com and open <strong>two accounts</strong>:\n\n<strong>1. Individual Brokerage Account</strong> — Your flexible investing account. No contribution limits, no withdrawal rules. Use it for medium-term goals (house, car, travel) or anything you might need before age 59½. No income requirement to open.\n\n<strong>2. Roth IRA</strong>${hasJob ? '' : ' (once you have earned income)'} — Your retirement account. Money grows completely tax-free. You contribute after-tax dollars now (when your tax rate is low), and never pay taxes on it again — not on the growth, not on withdrawals in retirement. ${hasJob ? 'Since you have income, open this now.' : 'You\'ll need earned income to contribute, but you can open it now and fund it when you start earning.'}\n\n${schwabNote} Opening both takes about 20 minutes total.`});
+    }
+  } else if (!hasRoth && hasJob) {
+    steps.push({title:'Add a Roth IRA to Your Setup', desc:'You have a brokerage account — great. But since you have earned income, you should also open a <strong>Roth IRA</strong>. A brokerage account is for flexible, anytime goals. A Roth IRA is for retirement — and the tax-free growth is the single most powerful advantage available to young investors. Open one at the same brokerage to keep things simple.'});
+  } else {
+    steps.push({title:'✓ Accounts: You\'re Set Up', desc:`You already have ${hasRoth ? 'a Roth IRA and/or brokerage' : 'a brokerage account'} — you're ahead of most people your age. Make sure you're using it and not just letting cash sit idle inside it.`});
+  }
+
+  // Step: Critical concept — accounts are containers, not investments
+  steps.push({title:'⚡ Understand This: Accounts ≠ Investments', desc:`This trips up almost everyone at first: <strong>opening a Roth IRA or brokerage account doesn't mean you're investing yet.</strong> These accounts are just containers — like an empty garden bed. Transferring money into your Roth from your bank account is like bringing soil to the garden. But nothing grows until you actually <strong>plant something</strong>.\n\nThe "planting" is buying investments inside the account: index funds, stocks, money market funds, etc. Until you do that, your money just sits there as cash earning almost nothing. Many people open a Roth, transfer money in, and think they're done — but they're not. The next steps show you exactly what to buy.`});
+
+  // Step: Decline margin and options
+  steps.push({title:'When Asked About Margin & Options: Decline', desc:`During account setup, you may be asked if you want to enable <strong>margin trading</strong> or <strong>options trading</strong>. Say no to both.\n\n<strong>Margin</strong> means borrowing money from your brokerage to invest. It amplifies gains but also amplifies losses — you can lose more money than you put in, and owe your brokerage the difference. People have gone into serious debt this way.\n\n<strong>Options</strong> are contracts that let you bet on price movements. They're complex, time-sensitive, and most beginners who trade options lose money. They're tools for experienced investors with specific strategies, not for building long-term wealth.\n\nYou can always enable these later if you gain experience. For now, a simple cash account is all you need.`});
+
+  // Step: Fund the account
+  steps.push({title:'Fund Your Accounts', desc:`Link your bank account and transfer your first deposit. ${canInvest ? 'Based on your budget of ' + monthlyBudget + '/month, start with that amount.' : 'Even $1 gets the account open and active. You can add more later when your income situation changes.'} At Schwab, there\'s no minimum to open or maintain an account.\n\n<strong>Where to put the money:</strong>\n• <strong>Roth IRA first</strong> (if you have one) — prioritize this because of the annual $7,000 cap and the tax-free growth.\n• <strong>Brokerage second</strong> — for anything beyond your Roth limit or for money you might need before retirement.`});
+
+  // Step: Make first purchase
+  const fundExamples = profKey === 'conservative'
+    ? 'For your conservative profile, consider splitting between SWPPX (S&P 500, 0.02% fee) and SWVXX (money market, ~3.51% yield) to balance growth with stability.'
+    : profKey === 'moderate'
+    ? 'For your balanced profile, SWPPX (S&P 500 Index, 0.02% fee) is an excellent core holding. Consider adding SWISX (international index) for diversification.'
+    : 'For your growth profile, SWPPX (S&P 500, 0.02% fee) as your core, plus SNXFX (small/mid-cap index) for broader exposure and more growth potential.';
+
+  steps.push({title:'Make Your First Investment', desc:`This is the moment. In your brokerage or Roth IRA, purchase your first index fund. At Schwab, examples:\n\n• <strong>SWPPX</strong> — Schwab S&P 500 Index (0.02% fee, top 500 US companies)\n• <strong>SWTSX</strong> — Schwab Total Stock Market Index (0.03% fee, entire US market)\n• <strong>SNXFX</strong> — Schwab 1000 Index (0.05% fee, large + mid cap)\n\n${fundExamples}\n\n<strong>Important:</strong> When you buy, select "Reinvest dividends and capital gains" — this is how compounding works its magic.`});
+
+  // Step: Set up auto-invest
+  steps.push({title:'Set Up Automatic Investing', desc:`After your first purchase, set up automatic investing so it happens without you thinking about it:\n\n1. In your Schwab account, go to the fund → "Automatic Investment"\n2. Choose frequency: monthly is most common (weekly works too)\n3. Set amount: ${canInvest ? monthlyBudget + '/month based on your current budget' : 'start with whatever you can once you have income, even $10'}\n4. Pick a date (payday is ideal)\n5. Confirm "Reinvest dividends and capital gains"\n\nThe money pulls from your bank automatically. You can <strong>increase the amount</strong> anytime you get a raise, or <strong>decrease/pause</strong> if money gets tight — no penalties.`});
+
+  // Step: Review cadence
+  steps.push({title:'Set a Yearly Review Date', desc:'Pick one date per year — your birthday, New Year\'s, whatever sticks. On that date: check if your allocation has drifted, rebalance if needed, increase your automatic contribution if your income has grown. Then close the app for another year. That\'s it.'});
+
+  let sH = '';
+  steps.forEach((s, i) => {
+    const descFormatted = s.desc.replace(/\n/g, '<br>');
+    sH += `<div class="plan-step"><div class="plan-num">${i+1}</div><div><strong style="color:var(--forest-dark);">${s.title}</strong><p style="font-size:.92rem;color:var(--text-light);margin-top:4px;">${descFormatted}</p></div></div>`;
+  });
+  document.getElementById('actionSteps').innerHTML = sH;
+
+  // PHILOSOPHY — dynamic based on quiz answers
+  const timeQ = quizAnswers[2]; // question about time horizon
+  const timeLabel = timeQ === 0 ? '1–3 years' : timeQ === 1 ? '3–7 years' : timeQ === 2 ? '7–15 years' : '15+ years';
+  const phil = [
+    {icon:'🌱', text:`I invest ${canInvest ? monthlyBudget + '/month' : 'what I can, when I can'} consistently, using automatic investing to remove emotion from the equation.`},
+    {icon:'⏳', text:`My time horizon is ${timeQ !== null ? timeLabel : 'long-term'}. I think in decades, not days. Time is my greatest asset.`},
+    {icon:'🧘', text:`I am a ${prof.badge.toLowerCase()} investor. I accept ${profKey === 'conservative' ? 'lower returns for more stability' : profKey === 'moderate' ? 'moderate ups and downs for solid growth' : 'significant volatility in exchange for maximum long-term growth'}.`},
+    {icon:'💰', text:'I keep costs below 0.10% whenever possible. Every dollar in fees is a dollar stolen from my future.'},
+    {icon:'📚', text:"I invest in what I understand. If I can't explain why I own something in one sentence, I don't own it."},
+    {icon:'🚫', text:"I don't try to time the market. I don't chase hot tips. I don't follow finfluencers. I follow my plan."},
+    {icon:'📈', text:'I reinvest all dividends and capital gains. Compound growth is my strategy — I let time do the heavy lifting.'},
+    {icon:'🛡️', text:`${hasEmergency ? 'I maintain my emergency fund so I never have to sell investments at the wrong time.' : 'I am building an emergency fund so I will never be forced to sell investments at the wrong time.'}`}
+  ];
+  let pH = '';
+  phil.forEach(p => { pH += `<div class="philosophy-item"><span style="font-size:1.3rem;flex-shrink:0;">${p.icon}</span><p style="font-size:.95rem;">${p.text}</p></div>`; });
+  document.getElementById('philosophyItems').innerHTML = pH;
+
+  // STATS
+  document.getElementById('planStats').innerHTML = `<h3>📊 Your Snapshot</h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px;">
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--forest);"><div style="font-size:.75rem;color:var(--text-muted);">Risk Profile</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${prof.label}</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--terra);"><div style="font-size:.75rem;color:var(--text-muted);">Monthly Budget</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--terra);margin-top:4px;">${canInvest ? monthlyBudget : 'TBD'}</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--sage);"><div style="font-size:.75rem;color:var(--text-muted);">Goal</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${goalName}</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--gold);"><div style="font-size:.75rem;color:var(--text-muted);">Target / Timeline</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">$${goalTarget.toLocaleString()} / ${goalYears}yr</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid ${hasEmergency?'var(--forest)':'var(--terra)'};"><div style="font-size:.75rem;color:var(--text-muted);">Emergency Fund</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${hasEmergency?'✓ Solid':hasSomeEmergency?'Building':'Needed'}</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid ${hasInvestmentAcct?'var(--forest)':'var(--terra)'};"><div style="font-size:.75rem;color:var(--text-muted);">Accounts</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${hasRoth?'Roth + Brokerage':hasInvestmentAcct?'Brokerage Only':'Need to Open'}</div></div>
+  </div>`;
+
+  // QUOTES
+  const planQ = quotes.filter(q => (q.profiles.includes(profKey) || q.profiles.includes('all'))).sort(() => Math.random() - 0.5).slice(0, 4);
+  let qH = '<h3>💬 Quotes to Remember</h3><p style="color:var(--text-light);margin-bottom:16px;">Keep these close. Revisit when you need grounding.</p>';
+  planQ.forEach(q => { qH += `<div style="background:var(--parchment);padding:14px 18px;border-radius:var(--radius);margin-bottom:10px;border-left:4px solid var(--terra);"><p style="font-family:var(--font-display);font-style:italic;font-size:1rem;margin-bottom:6px;">"${q.text}"</p><p style="font-size:.82rem;color:var(--text-muted);">— <strong style="color:var(--terra);">${q.author}</strong></p></div>`; });
+  document.getElementById('planQuotes').innerHTML = qH;
+}
+function printPlan(){window.print();}
+
+// ─── INIT ───
+document.addEventListener('DOMContentLoaded',()=>{
+  updateCompound();
+  window.addEventListener('resize',()=>{if(currentSection===6)updateCompound();});
+});
+</script>
+</body>
+</html>
