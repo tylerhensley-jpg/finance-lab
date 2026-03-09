@@ -1,12 +1,7 @@
 "use client";
-import { STATS } from "@/data/content";
-import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import AnimatedNumber from "./ui/AnimatedNumber";
 
 export default function ProblemSection() {
-  const [statsRef, statsInView] = useInView();
-
   return (
     <section id="problem" style={{ background: "var(--cream)", padding: "100px clamp(20px,5vw,40px)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -34,45 +29,59 @@ export default function ProblemSection() {
           </p>
         </Reveal>
 
-        {/* Stats row */}
-        <div
-          ref={statsRef}
-          className="stats-grid-responsive"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 40 }}
-        >
-          {STATS.map((s, i) => (
-            <Reveal key={i} delay={i + 1}>
-              <div
-                style={{
-                  background: "var(--navy)", padding: "40px 32px",
-                  position: "relative", overflow: "hidden",
-                  borderRadius: i === 0 ? "12px 0 0 12px" : i === 2 ? "0 12px 12px 0" : 0,
-                }}
-              >
-                <div className="font-display" style={{ fontSize: 56, fontWeight: 900, color: "var(--gold-light)", lineHeight: 1, marginBottom: 12 }}>
-                  {statsInView ? <AnimatedNumber value={s.value} suffix={s.suffix} /> : `0${s.suffix}`}
-                </div>
-                <div style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.7)", lineHeight: 1.55 }}>
-                  {s.desc}
-                </div>
-                <div
-                  className={`stat-bar ${statsInView ? "active" : ""}`}
-                  style={{ transitionDelay: `${0.4 + i * 0.2}s` }}
-                />
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        {/* ── HERO QUOTE — replaces stat cards ── */}
+        <Reveal delay={3}>
+          <div style={{
+            position: "relative", background: "var(--navy)",
+            borderRadius: 16, padding: "clamp(40px, 6vw, 72px) clamp(28px, 5vw, 64px)",
+            marginBottom: 40, overflow: "hidden",
+          }}>
+            {/* Background quotation mark SVG */}
+            <svg
+              viewBox="0 0 120 100"
+              style={{
+                position: "absolute", top: -10, left: -10,
+                width: "clamp(140px, 25vw, 260px)", height: "auto",
+                opacity: 0.07, pointerEvents: "none",
+              }}
+            >
+              <path
+                d="M28 86c-10 0-18-4-22-12C2 66 0 56 0 44 0 18 16 2 48 0l2 12C34 14 26 22 24 36c2 0 6 0 8 2 8 4 14 12 14 22 0 14-8 26-18 26zm64 0c-10 0-18-4-22-12-4-8-6-18-6-30C64 18 80 2 112 0l2 12c-16 2-24 10-26 24 2 0 6 0 8 2 8 4 14 12 14 22 0 14-8 26-18 26z"
+                fill="var(--gold-light)"
+              />
+            </svg>
 
-        {/* Dropout callout */}
+            <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
+              <p className="font-display" style={{
+                fontSize: "clamp(24px, 3.5vw, 38px)", fontWeight: 700,
+                color: "#fff", lineHeight: 1.35, fontStyle: "italic",
+                maxWidth: 720, marginBottom: 24,
+              }}>
+                Nobody in my family has gotten this far in education. These chapters made
+                me realize that everyone has a chance to go to college regardless of their
+                background.
+              </p>
+              <footer style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
+                <cite style={{
+                  fontStyle: "normal", fontSize: 14, fontWeight: 400,
+                  color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: 0.3,
+                }}>
+                  Sofia, first-generation student — Orange County
+                </cite>
+              </footer>
+            </blockquote>
+          </div>
+        </Reveal>
+
+        {/* Dropout callout — preserved */}
         <Reveal>
-          <div
-            style={{
-              background: "#fff", border: "1px solid var(--soft-gray)",
-              borderLeft: "4px solid var(--teal)",
-              borderRadius: "0 12px 12px 0", padding: "28px 32px", maxWidth: 820,
-            }}
-          >
+          <div style={{
+            background: "#fff", border: "1px solid var(--soft-gray)",
+            borderLeft: "4px solid var(--teal)",
+            borderRadius: "0 12px 12px 0", padding: "28px 32px", maxWidth: 820,
+          }}>
             <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--body-text)" }}>
               Research shows that students who{" "}
               <strong style={{ color: "var(--navy)" }}>dropped out</strong> chose their college
@@ -89,15 +98,13 @@ export default function ProblemSection() {
           </div>
         </Reveal>
 
-        {/* Counselor note */}
+        {/* Counselor note — preserved */}
         <Reveal>
-          <div
-            style={{
-              marginTop: 32, background: "rgba(26,122,110,0.06)",
-              border: "1px solid rgba(26,122,110,0.18)",
-              borderRadius: 12, padding: "24px 28px", maxWidth: 820,
-            }}
-          >
+          <div style={{
+            marginTop: 32, background: "rgba(26,122,110,0.06)",
+            border: "1px solid rgba(26,122,110,0.18)",
+            borderRadius: 12, padding: "24px 28px", maxWidth: 820,
+          }}>
             <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--body-text)" }}>
               <strong style={{ color: "var(--teal)" }}>A note to counselors and educators:</strong>{" "}
               We&apos;re not here to replace you — we&apos;re here to extend what you can do. Think

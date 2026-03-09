@@ -1,5 +1,3 @@
-"use client";
-
 import { NAV_LINKS } from "@/data/content";
 
 export default function Footer() {
