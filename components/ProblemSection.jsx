@@ -39,19 +39,26 @@ export default function ProblemSection() {
 
         {/* ── BODY ── */}
         <Reveal delay={2}>
-          <p style={{ 
-            fontSize: 20,                       /* 👈 Increased from 17px */
-            lineHeight: 1.6, 
-            color: "var(--body-text)", 
-            maxWidth: 720, 
-            marginBottom: 64                    /* 👈 Gave more breathing room before the quote */
-          }}>
-            California&apos;s counselor-to-student ratio is{" "}
-            <strong style={{ color: "var(--navy)" }}>1 to 760</strong>. That&apos;s not a criticism of
-            counselors — it&apos;s an impossible situation. No single professional can build a
-            personalized roadmap for every student. The result: most young people make the
-            biggest financial decision of their lives with almost no preparation.
-          </p>
+          <div style={{ maxWidth: 720, marginBottom: 64 }}>
+            <p style={{ 
+              fontSize: 20, 
+              lineHeight: 1.6, 
+              color: "var(--body-text)",
+              marginBottom: 20 /* 👈 Adds space between the two paragraphs */
+            }}>
+              California&apos;s counselor-to-student ratio is{" "}
+              <strong style={{ color: "var(--navy)" }}>1 to 760</strong>. That&apos;s not a criticism of
+              counselors — it&apos;s an impossible situation. No single professional can build a
+              personalized roadmap for every student.
+            </p>
+            <p style={{ 
+              fontSize: 20, 
+              lineHeight: 1.6, 
+              color: "var(--body-text)" 
+            }}>
+              The result: most young people make the biggest financial decision of their lives with almost no preparation.
+            </p>
+          </div>
         </Reveal>
 
         {/* ── HERO QUOTE ── */}

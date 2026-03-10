@@ -124,34 +124,40 @@ export default function JourneySection() {
         <Reveal>
           <div
             style={{
-              marginTop: 64, /* 👈 Pushed down slightly */
+              marginTop: 64,
               background: "linear-gradient(135deg, rgba(26,122,110,0.15), rgba(200,148,42,0.15))",
-              border: "1px solid rgba(255,255,255,0.12)", /* 👈 Made border slightly more visible */
+              border: "1px solid rgba(255,255,255,0.12)",
               borderRadius: 16, 
-              padding: "40px 48px", /* 👈 Increased padding */
-              display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap",
+              padding: "40px 48px",
+              display: "flex", 
+              flexDirection: "column", /* 👈 Changed to column to stack the title row above the paragraph */
+              gap: 12,                 /* 👈 Space between the title row and paragraph */
             }}
           >
-            <span style={{ fontSize: 48, flexShrink: 0 }}>🎓</span> {/* 👈 Bumped emoji size */}
-            <div>
+            {/* ── ALIGNED TITLE ROW ── */}
+            <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <span style={{ fontSize: 48, lineHeight: 1, flexShrink: 0 }}>🎓</span>
               <h4 className="font-display" style={{ 
-                fontSize: 26,             /* 👈 Bumped from 22px */
+                fontSize: 26, 
                 fontWeight: 700, 
                 color: "#fff", 
-                marginBottom: 8 
+                margin: 0              /* 👈 Removed margin, using parent gap instead */
               }}>
                 The Result: Students Who Arrive Ready
               </h4>
-              <p style={{ 
-                fontSize: 16,             /* 👈 Bumped from 14px */
-                color: "rgba(255,255,255,0.75)", 
-                lineHeight: 1.6 
-              }}>
-                A student who completes both programs enters adulthood with something rare: a
-                thoughtful plan for their path forward <em>and</em> a real investment portfolio
-                already growing.
-              </p>
             </div>
+
+            {/* ── PARAGRAPH ── */}
+            <p style={{ 
+              fontSize: 16, 
+              color: "rgba(255,255,255,0.75)", 
+              lineHeight: 1.6, 
+              margin: 0 
+            }}>
+              A student who completes both programs enters adulthood with something rare: a
+              thoughtful plan for their path forward <em>and</em> a real investment portfolio
+              already growing.
+            </p>
           </div>
         </Reveal>
       </div>

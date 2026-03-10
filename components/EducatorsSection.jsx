@@ -144,25 +144,11 @@ export default function EducatorsSection() {
               </div>
             </div>
           </Reveal>
-
-          <Reveal>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <a href="mailto:team@thefinancelab.co" className="btn-teal" style={{
-                padding: "16px 40px",   /* 👈 Chunkier padding */
-                fontSize: "18px",       /* 👈 Bigger text */
-                fontWeight: 600
-              }}>Request a Free Copy</a>
-              <a href="mailto:team@thefinancelab.co" className="btn-outline-navy" style={{
-                padding: "16px 40px",   /* 👈 Chunkier padding */
-                fontSize: "18px",       /* 👈 Bigger text */
-                fontWeight: 600
-              }}>Contact Us to Order</a>
-            </div>
-          </Reveal>
         </div>
 
         {/* ── RIGHT COLUMN ── */}
-        <div style={{ paddingTop: 12 }}>
+        <div style={{ paddingTop: 12, display: "flex", flexDirection: "column" }}>
+          
           <Reveal>
             <div style={{ marginBottom: 40 }}>
               <h4 className="font-mono" style={{ 
@@ -233,6 +219,38 @@ export default function EducatorsSection() {
               </Reveal>
             ))}
           </div>
+
+          {/* ── NEW BUTTON BLOCK (Stacked Vertically) ── */}
+          <Reveal delay={3}>
+            <div style={{ 
+              display: "flex", 
+              flexDirection: "column",  /* 👈 Stacks buttons vertically */
+              gap: 16,                  /* 👈 Space between buttons */
+              marginTop: 40             /* 👈 Spacing above buttons */
+            }}>
+              <a href="mailto:team@thefinancelab.co" className="btn-teal" style={{
+                padding: "18px 40px", 
+                fontSize: "18px", 
+                fontWeight: 600,
+                textAlign: "center",
+                display: "block",
+                textDecoration: "none"
+              }}>
+                Request a Free Copy
+              </a>
+              <a href="mailto:team@thefinancelab.co" className="btn-outline-navy" style={{
+                padding: "18px 40px", 
+                fontSize: "18px", 
+                fontWeight: 600,
+                textAlign: "center",
+                display: "block",
+                textDecoration: "none"
+              }}>
+                Contact Us to Order
+              </a>
+            </div>
+          </Reveal>
+
         </div>
       </div>
     </section>
