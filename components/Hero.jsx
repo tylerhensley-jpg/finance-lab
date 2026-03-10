@@ -135,7 +135,7 @@ export default function Hero() {
         <Reveal delay={2}>
           <p style={{
             fontSize: "clamp(15px, 1.8vw, 19px)", fontWeight: 300,
-            color: "rgba(255,255,255,0.68)", maxWidth: 540,
+            color: "rgba(255,255,255,0.68)", maxWidth: 760,
             lineHeight: 1.7, margin: "0 auto 0",
           }}>
             We meet every student where they are — with a personalized roadmap and
@@ -146,7 +146,7 @@ export default function Hero() {
       </div>
 
       {/* ── TIMELINE: 90% width, centered ── */}
-      <div ref={tlRef} style={{ flex: "1 1 auto", display: "flex", alignItems: "center", width: "min(100%, 1100px)", margin: "0 auto", paddingTop: 28, paddingBottom: 8 }}>
+      <div ref={tlRef} style={{ flex: "1 1 auto", display: "flex", alignItems: "center", width: "min(92%, 1100px)", margin: "0 auto", paddingTop: 28, paddingBottom: 8 }}>
         <Reveal delay={3} className="timeline-horizontal" style={{ width: "100%" }}>
           <div style={{ width: "100%", position: "relative" }}>
 
