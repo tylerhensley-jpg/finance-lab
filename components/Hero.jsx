@@ -162,8 +162,8 @@ export default function Hero() {
 
             {/* Phase labels - Scaled up typography */}
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 24, padding: "0 16px" }}>
-              <span className="font-mono" style={{ fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.7 }}>← The College Project</span>
-              <span className="font-mono" style={{ fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.7 }}>The Finance Lab →</span>
+              <span className="font-mono" style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.8 }}>← The College Project</span>
+              <span className="font-mono" style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Finance Lab →</span>
             </div>
 
             {/* SVG track - Thicker 6px line */}
@@ -279,20 +279,47 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── BOTTOM: CTAs + pills ── */}
-      <div style={{ flex: "0 0 auto" }}>
+      {/* ── BOTTOM: CTAs + pills (SCALED UP) ── */}
+      <div style={{ flex: "0 0 auto", marginTop: "24px" }}>
         <Reveal delay={4}>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 24 }}>
-            <a href="#journey" className="btn-gold">See How It Works</a>
-            <a href="#tcp" className="btn-outline-white">Explore the Book</a>
+          <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap", marginBottom: 32 }}>
+            <a href="#journey" className="btn-gold" style={{ 
+              padding: "16px 40px",   /* 👈 Chunkier padding */
+              fontSize: "18px",       /* 👈 Bigger text */
+              fontWeight: 600,
+              letterSpacing: "0.5px"
+            }}>See How It Works</a>
+            
+            <a href="#tcp" className="btn-outline-white" style={{ 
+              padding: "16px 40px",   /* 👈 Chunkier padding */
+              fontSize: "18px",       /* 👈 Bigger text */
+              fontWeight: 600,
+              letterSpacing: "0.5px"
+            }}>Explore the Book</a>
           </div>
         </Reveal>
 
         <Reveal delay={5}>
           <div className="audience-row-responsive" style={{ display: "flex", justifyContent: "center" }}>
-            <a href="#tcp" className="audience-pill" style={{ borderRadius: "99px 0 0 99px" }}>I&apos;m a Student</a>
-            <a href="#educators" className="audience-pill">I&apos;m an Educator</a>
-            <a href="#impact" className="audience-pill" style={{ borderRadius: "0 99px 99px 0" }}>I Want to Support</a>
+            <a href="#tcp" className="audience-pill" style={{ 
+              borderRadius: "99px 0 0 99px",
+              padding: "14px 28px",   /* 👈 Increased pill height/width */
+              fontSize: "16px",       /* 👈 Bumped up from default */
+              fontWeight: 500
+            }}>I&apos;m a Student</a>
+            
+            <a href="#educators" className="audience-pill" style={{ 
+              padding: "14px 28px",
+              fontSize: "16px",
+              fontWeight: 500
+            }}>I&apos;m an Educator</a>
+            
+            <a href="#impact" className="audience-pill" style={{ 
+              borderRadius: "0 99px 99px 0",
+              padding: "14px 28px",
+              fontSize: "16px",
+              fontWeight: 500
+            }}>I Want to Support</a>
           </div>
         </Reveal>
       </div>
