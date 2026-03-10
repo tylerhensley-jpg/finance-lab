@@ -96,7 +96,7 @@ export default function Hero() {
       style={{
         minHeight: "100vh", background: "var(--navy)",
         display: "flex", flexDirection: "column",
-        alignItems: "center",
+        alignItems: "stretch",
         textAlign: "center", padding: "88px clamp(16px,5vw,40px) 40px",
         position: "relative", overflow: "hidden",
       }}
@@ -111,7 +111,7 @@ export default function Hero() {
       }} />
 
       {/* ── TOP 25%: Headline cluster ── */}
-      <div style={{ flex: "0 0 auto", paddingTop: "2vh" }}>
+      <div style={{ flex: "0 0 auto", paddingTop: "2vh", textAlign: "center", margin: "0 auto" }}>
         <Reveal>
           <p className="font-mono" style={{
             fontSize: 11, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase",
@@ -146,7 +146,7 @@ export default function Hero() {
       </div>
 
       {/* ── TIMELINE: 90% width, centered ── */}
-      <div ref={tlRef} style={{ flex: "1 1 auto", display: "flex", alignItems: "center", width: "90%", maxWidth: 1000, margin: "0 auto", paddingTop: 28, paddingBottom: 8 }}>
+      <div ref={tlRef} style={{ flex: "1 1 auto", display: "flex", alignItems: "center", width: "min(100%, 1100px)", margin: "0 auto", paddingTop: 28, paddingBottom: 8 }}>
         <Reveal delay={3} className="timeline-horizontal" style={{ width: "100%" }}>
           <div style={{ width: "100%", position: "relative" }}>
 
