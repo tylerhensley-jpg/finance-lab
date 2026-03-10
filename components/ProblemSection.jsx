@@ -3,24 +3,49 @@ import Reveal from "./ui/Reveal";
 
 export default function ProblemSection() {
   return (
-    <section id="problem" style={{ background: "var(--cream)", padding: "100px clamp(20px,5vw,40px)" }}>
+    <section id="problem" style={{ background: "var(--cream)", padding: "120px clamp(20px,5vw,40px)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        
+        {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ fontSize: 10, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", marginBottom: 20 }}>
+          <p className="font-mono" style={{ 
+            fontSize: 13,          /* 👈 Increased from 10px */
+            fontWeight: 600,       /* 👈 Made bolder */
+            letterSpacing: 4,      /* 👈 Wider tracking for premium feel */
+            textTransform: "uppercase", 
+            color: "var(--gold)", 
+            marginBottom: 24 
+          }}>
             The Problem
           </p>
         </Reveal>
 
+        {/* ── HEADLINE ── */}
         <Reveal delay={1}>
-          <h2 className="font-display" style={{ fontSize: "clamp(34px, 4.5vw, 54px)", fontWeight: 700, lineHeight: 1.12, color: "var(--navy)", maxWidth: 700, marginBottom: 20 }}>
+          <h2 className="font-display" style={{ 
+            fontSize: "clamp(44px, 5vw, 72px)", /* 👈 Scaled up */
+            fontWeight: 700, 
+            lineHeight: 1.05,                   /* 👈 Tightened spacing between lines */
+            letterSpacing: "-1px",              /* 👈 Pulled letters closer together */
+            color: "var(--navy)", 
+            maxWidth: 800, 
+            marginBottom: 32 
+          }}>
             760 students.<br />
             <em style={{ fontStyle: "italic", color: "var(--teal)" }}>One counselor.</em><br />
             No personalized plan.
           </h2>
         </Reveal>
 
+        {/* ── BODY ── */}
         <Reveal delay={2}>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--body-text)", maxWidth: 680, marginBottom: 56 }}>
+          <p style={{ 
+            fontSize: 20,                       /* 👈 Increased from 17px */
+            lineHeight: 1.6, 
+            color: "var(--body-text)", 
+            maxWidth: 720, 
+            marginBottom: 64                    /* 👈 Gave more breathing room before the quote */
+          }}>
             California&apos;s counselor-to-student ratio is{" "}
             <strong style={{ color: "var(--navy)" }}>1 to 760</strong>. That&apos;s not a criticism of
             counselors — it&apos;s an impossible situation. No single professional can build a
@@ -29,20 +54,22 @@ export default function ProblemSection() {
           </p>
         </Reveal>
 
-        {/* ── HERO QUOTE — replaces stat cards ── */}
+        {/* ── HERO QUOTE ── */}
         <Reveal delay={3}>
           <div style={{
             position: "relative", background: "var(--navy)",
-            borderRadius: 16, padding: "clamp(40px, 6vw, 72px) clamp(28px, 5vw, 64px)",
-            marginBottom: 40, overflow: "hidden",
+            borderRadius: 16, 
+            padding: "clamp(48px, 8vw, 88px) clamp(32px, 6vw, 80px)", /* 👈 Increased padding for breathing room */
+            marginBottom: 48, overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(10, 25, 47, 0.08)" /* 👈 Added a soft drop shadow */
           }}>
             {/* Background quotation mark SVG */}
             <svg
               viewBox="0 0 120 100"
               style={{
                 position: "absolute", top: -10, left: -10,
-                width: "clamp(140px, 25vw, 260px)", height: "auto",
-                opacity: 0.07, pointerEvents: "none",
+                width: "clamp(160px, 25vw, 280px)", height: "auto",
+                opacity: 0.06, pointerEvents: "none",
               }}
             >
               <path
@@ -53,20 +80,20 @@ export default function ProblemSection() {
 
             <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
               <p className="font-display" style={{
-                fontSize: "clamp(24px, 3.5vw, 38px)", fontWeight: 700,
-                color: "#fff", lineHeight: 1.35, fontStyle: "italic",
-                maxWidth: 720, marginBottom: 24,
+                fontSize: "clamp(26px, 3.5vw, 42px)", fontWeight: 700,
+                color: "#fff", lineHeight: 1.3, fontStyle: "italic",
+                maxWidth: 760, marginBottom: 32,
               }}>
                 Nobody in my family has gotten this far in education. These chapters made
                 me realize that everyone has a chance to go to college regardless of their
                 background.
               </p>
-              <footer style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
+              <footer style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                <div style={{ width: 40, height: 2, background: "var(--gold)", borderRadius: 1 }} />
                 <cite style={{
-                  fontStyle: "normal", fontSize: 14, fontWeight: 400,
-                  color: "rgba(255,255,255,0.5)", fontFamily: "'DM Sans', sans-serif",
-                  letterSpacing: 0.3,
+                  fontStyle: "normal", fontSize: 16, fontWeight: 500, /* 👈 Made citation slightly larger */
+                  color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: 0.5,
                 }}>
                   Sofia, first-generation student — Orange County
                 </cite>
@@ -75,14 +102,14 @@ export default function ProblemSection() {
           </div>
         </Reveal>
 
-        {/* Dropout callout — preserved */}
+        {/* ── DROPOUT CALLOUT ── */}
         <Reveal>
           <div style={{
             background: "#fff", border: "1px solid var(--soft-gray)",
             borderLeft: "4px solid var(--teal)",
-            borderRadius: "0 12px 12px 0", padding: "28px 32px", maxWidth: 820,
+            borderRadius: "0 12px 12px 0", padding: "32px 40px", maxWidth: 820,
           }}>
-            <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--body-text)" }}>
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--body-text)" }}> {/* 👈 Bumped to 17px */}
               Research shows that students who{" "}
               <strong style={{ color: "var(--navy)" }}>dropped out</strong> chose their college
               primarily because of convenience — location and schedule. Students who{" "}
@@ -92,20 +119,20 @@ export default function ProblemSection() {
                 The decision-making process before enrollment predicts the outcome after it.
               </strong>
             </p>
-            <p style={{ fontSize: 11, color: "#9CA3AF", marginTop: 10, fontStyle: "italic" }}>
+            <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 12, fontStyle: "italic", fontWeight: 500 }}>
               — Public Agenda, 2009
             </p>
           </div>
         </Reveal>
 
-        {/* Counselor note — preserved */}
+        {/* ── COUNSELOR NOTE ── */}
         <Reveal>
           <div style={{
             marginTop: 32, background: "rgba(26,122,110,0.06)",
             border: "1px solid rgba(26,122,110,0.18)",
-            borderRadius: 12, padding: "24px 28px", maxWidth: 820,
+            borderRadius: 12, padding: "28px 40px", maxWidth: 820,
           }}>
-            <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--body-text)" }}>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--body-text)" }}> {/* 👈 Bumped to 16px */}
               <strong style={{ color: "var(--teal)" }}>A note to counselors and educators:</strong>{" "}
               We&apos;re not here to replace you — we&apos;re here to extend what you can do. Think
               of us as a tool you can put directly in students&apos; hands, so every student gets a

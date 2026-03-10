@@ -7,7 +7,8 @@ export default function JourneySection() {
     <section
       id="journey"
       style={{
-        background: "var(--navy)", padding: "100px clamp(20px,5vw,40px)",
+        background: "var(--navy)", 
+        padding: "120px clamp(20px,5vw,40px)", /* 👈 Bumped to 120px to match spacing */
         position: "relative", overflow: "hidden",
       }}
     >
@@ -21,14 +22,31 @@ export default function JourneySection() {
       />
 
       <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative" }}>
+        
+        {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ fontSize: 10, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", marginBottom: 20 }}>
+          <p className="font-mono" style={{ 
+            fontSize: 13,           /* 👈 Bumped from 10px */
+            fontWeight: 600,        /* 👈 Added weight */
+            letterSpacing: 4,       /* 👈 Wider tracking */
+            textTransform: "uppercase", 
+            color: "var(--gold)", 
+            marginBottom: 24 
+          }}>
             Our Approach
           </p>
         </Reveal>
 
+        {/* ── HEADLINE ── */}
         <Reveal delay={1}>
-          <h2 className="font-display" style={{ fontSize: "clamp(36px, 4.5vw, 56px)", fontWeight: 900, color: "#fff", marginBottom: 16, lineHeight: 1.1 }}>
+          <h2 className="font-display" style={{ 
+            fontSize: "clamp(44px, 5vw, 64px)", /* 👈 Scaled up */
+            fontWeight: 900, 
+            color: "#fff", 
+            marginBottom: 24, 
+            lineHeight: 1.05,                   /* 👈 Tightened spacing */
+            letterSpacing: "-0.5px"             /* 👈 Pulled letters together */
+          }}>
             The <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>Plan</em>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>,</span>
             <br />
@@ -36,8 +54,16 @@ export default function JourneySection() {
           </h2>
         </Reveal>
 
+        {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
-          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", maxWidth: 580, lineHeight: 1.65, marginBottom: 64, fontWeight: 300 }}>
+          <p style={{ 
+            fontSize: 20,                       /* 👈 Bumped from 17px */
+            color: "rgba(255,255,255,0.85)",    /* 👈 Increased contrast slightly */
+            maxWidth: 640, 
+            lineHeight: 1.6, 
+            marginBottom: 72,                   /* 👈 More breathing room before cards */
+            fontWeight: 300 
+          }}>
             Two connected programs. One complete journey — from choosing a path, to building wealth on it.
           </p>
         </Reveal>
@@ -65,14 +91,20 @@ export default function JourneySection() {
             style={{
               display: "flex", flexDirection: "column",
               alignItems: "center", justifyContent: "center",
-              paddingTop: 60, gap: 8,
+              paddingTop: 80, gap: 12, /* 👈 Increased gap and padding slightly for proportion */
             }}
           >
-            <div style={{ width: 1, height: 40, background: "linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.05))" }} />
-            <span className="font-mono" style={{ fontSize: 9, letterSpacing: 2, color: "rgba(255,255,255,0.3)", writingMode: "vertical-rl", textTransform: "uppercase" }}>
+            <div style={{ width: 1, height: 60, background: "linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0.05))" }} />
+            <span className="font-mono" style={{ 
+              fontSize: 11,             /* 👈 Bumped from 9px */
+              letterSpacing: 3, 
+              color: "rgba(255,255,255,0.4)", 
+              writingMode: "vertical-rl", 
+              textTransform: "uppercase" 
+            }}>
               then
             </span>
-            <div style={{ width: 1, height: 40, background: "linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.15))" }} />
+            <div style={{ width: 1, height: 60, background: "linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.2))" }} />
           </div>
 
           {/* Phase 2 — The Finance Lab */}
@@ -92,19 +124,29 @@ export default function JourneySection() {
         <Reveal>
           <div
             style={{
-              marginTop: 48,
+              marginTop: 64, /* 👈 Pushed down slightly */
               background: "linear-gradient(135deg, rgba(26,122,110,0.15), rgba(200,148,42,0.15))",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: 16, padding: "32px 40px",
-              display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap",
+              border: "1px solid rgba(255,255,255,0.12)", /* 👈 Made border slightly more visible */
+              borderRadius: 16, 
+              padding: "40px 48px", /* 👈 Increased padding */
+              display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap",
             }}
           >
-            <span style={{ fontSize: 36, flexShrink: 0 }}>🎓</span>
+            <span style={{ fontSize: 48, flexShrink: 0 }}>🎓</span> {/* 👈 Bumped emoji size */}
             <div>
-              <h4 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 6 }}>
+              <h4 className="font-display" style={{ 
+                fontSize: 26,             /* 👈 Bumped from 22px */
+                fontWeight: 700, 
+                color: "#fff", 
+                marginBottom: 8 
+              }}>
                 The Result: Students Who Arrive Ready
               </h4>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>
+              <p style={{ 
+                fontSize: 16,             /* 👈 Bumped from 14px */
+                color: "rgba(255,255,255,0.75)", 
+                lineHeight: 1.6 
+              }}>
                 A student who completes both programs enters adulthood with something rare: a
                 thoughtful plan for their path forward <em>and</em> a real investment portfolio
                 already growing.
@@ -130,43 +172,77 @@ function PhaseCard({ color, num, title, tag, desc, steps }) {
       style={{
         background: "rgba(255,255,255,0.04)",
         border: "1px solid rgba(255,255,255,0.1)",
-        borderTop: `3px solid ${accentBorder}`,
-        borderRadius: 16, padding: "40px 36px",
+        borderTop: `4px solid ${accentBorder}`, /* 👈 Made the top accent line slightly thicker */
+        borderRadius: 16, 
+        padding: "48px 40px", /* 👈 Increased padding for breathing room */
       }}
     >
-      <p className="font-mono" style={{ fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: accent, marginBottom: 20 }}>
+      <p className="font-mono" style={{ 
+        fontSize: 12,             /* 👈 Bumped from 10px */
+        letterSpacing: 3, 
+        fontWeight: 600,          /* 👈 Added weight */
+        textTransform: "uppercase", 
+        color: accent, 
+        marginBottom: 24 
+      }}>
         {num}
       </p>
-      <h3 className="font-display" style={{ fontSize: 28, fontWeight: 700, color: "#fff", marginBottom: 8 }}>
+
+      <h3 className="font-display" style={{ 
+        fontSize: 36,             /* 👈 Bumped from 28px */
+        fontWeight: 700, 
+        color: "#fff", 
+        marginBottom: 16 
+      }}>
         Build Your <em style={{ fontStyle: "italic", color: accent }}>{title}</em>
       </h3>
+
       <span
         style={{
-          display: "inline-block", fontSize: 11, fontWeight: 600,
-          letterSpacing: 1, textTransform: "uppercase",
-          background: tagBg, color: accent,
-          padding: "4px 10px", borderRadius: 99, marginBottom: 20,
+          display: "inline-block", 
+          fontSize: 13,             /* 👈 Bumped from 11px */
+          fontWeight: 600,
+          letterSpacing: 1, 
+          textTransform: "uppercase",
+          background: tagBg, 
+          color: accent,
+          padding: "6px 14px",      /* 👈 Increased pill padding slightly */
+          borderRadius: 99, 
+          marginBottom: 24,
         }}
       >
         {tag}
       </span>
-      <p style={{ fontSize: 14, lineHeight: 1.7, color: "rgba(255,255,255,0.65)", marginBottom: 24 }}>
+
+      <p style={{ 
+        fontSize: 16,               /* 👈 Bumped from 14px */
+        lineHeight: 1.6, 
+        color: "rgba(255,255,255,0.8)", /* 👈 Made text brighter for readability */
+        marginBottom: 32 
+      }}>
         {desc}
       </p>
-      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}> {/* 👈 Increased gap between steps */}
         {steps.map((s, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
             <div
               style={{
-                width: 24, height: 24, borderRadius: "50%",
+                width: 28, height: 28,  /* 👈 Made circles slightly larger */
+                borderRadius: "50%",
                 background: dotBg, color: accent,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 10, fontWeight: 700, flexShrink: 0,
+                fontSize: 12, fontWeight: 700, flexShrink: 0, /* 👈 Bumped number size */
               }}
             >
               {i + 1}
             </div>
-            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{s}</span>
+            <span style={{ 
+              fontSize: 15,             /* 👈 Bumped from 13px */
+              color: "rgba(255,255,255,0.8)", 
+              lineHeight: 1.5,
+              paddingTop: 4             /* 👈 Aligned text slightly better with the dot */
+            }}>{s}</span>
           </div>
         ))}
       </div>
