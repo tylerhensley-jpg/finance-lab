@@ -68,7 +68,7 @@ export default function ImpactSection() {
 
         <Reveal>
           <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
-            <a href="#" className="btn-white-solid">Make a Donation</a>
+            <a href="https://donorbox.org/the-finance-lab" target="_blank" rel="noopener noreferrer" className="btn-white-solid">Make a Donation</a>
             <a href="mailto:team@thefinancelab.co" className="btn-outline-white">Partner With Us</a>
           </div>
         </Reveal>

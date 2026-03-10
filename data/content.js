@@ -32,9 +32,8 @@ export const PHASE2_STEPS = [
 ];
 
 export const RESULTS = [
-  { before: "17%", after: "49%", label: "understood financial aid after completing the program" },
-  { before: "59%", after: "39%", label: "reported high stress about college costs — a 20-point drop" },
-  { before: "14%", after: "43%", label: "felt confident navigating the application process" },
+  { before: "46.7%", after: "83.3%", label: "believed they could afford a 4-year public university" },
+  { before: "17.6%", after: "69%", label: "believed they could afford a 4-year private university" },
 ];
 
 export const QUOTES = [
@@ -81,14 +80,14 @@ export const TOOLS = [
     name: "The College Project App",
     desc: "A 7-day guided journey to research schools, decode financial aid, and build a personalized plan.",
     link: "Launch the App",
-    href: "#",
+    href: "https://college.thefinancelab.co",
   },
   {
     badge: "Free App", badgeColor: "gold", emoji: "⚡",
     name: "Catalyst",
     desc: "A financial literacy companion app. Concepts, tools, and exercises that meet students where they are.",
     link: "Explore Catalyst",
-    href: "#",
+    href: "/catalyst.html",
   },
 ];
 
