@@ -145,38 +145,46 @@ export default function Hero() {
         </Reveal>
       </div>
 
-      {/* ── TIMELINE: 90% width, centered ── */}
-      <div ref={tlRef} style={{ flex: "1 1 auto", display: "flex", alignItems: "center", width: "min(92%, 1100px)", margin: "0 auto", paddingTop: 28, paddingBottom: 8 }}>
+      {/* ── TIMELINE: 100% width, centered, SCALED UP ── */}
+      <div ref={tlRef} style={{ 
+        flex: "1 1 auto", 
+        display: "flex", 
+        flexDirection: "column",     /* 👈 FIX: Stops the horizontal squishing */
+        justifyContent: "center",    /* 👈 FIX: Centers it vertically */
+        alignItems: "stretch",       /* 👈 FIX: Forces the line to stretch edge-to-edge */
+        width: "min(95%, 1200px)",   /* 👈 FIX: Increased max-width for a bigger stage */
+        margin: "0 auto", 
+        paddingTop: 32, 
+        paddingBottom: 24 
+      }}>
         <Reveal delay={3} className="timeline-horizontal" style={{ width: "100%" }}>
           <div style={{ width: "100%", position: "relative" }}>
 
-            {/* Phase labels */}
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16, padding: "0 8px" }}>
-              <span className="font-mono" style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.55 }}>← The College Project</span>
-              <span className="font-mono" style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--gold)", opacity: 0.55 }}>The Finance Lab →</span>
+            {/* Phase labels - Scaled up typography */}
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 24, padding: "0 16px" }}>
+              <span className="font-mono" style={{ fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.7 }}>← The College Project</span>
+              <span className="font-mono" style={{ fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.7 }}>The Finance Lab →</span>
             </div>
 
-            {/* SVG track with draw animation */}
-            <div style={{ position: "relative", padding: "0 8px" }}>
-              <svg style={{ position: "absolute", top: 22, left: 8, right: 8, width: "calc(100% - 16px)", height: 4, overflow: "visible" }}>
-                {/* Base track */}
-                <line x1="0" y1="2" x2="100%" y2="2" stroke="rgba(255,255,255,0.06)" strokeWidth="3" strokeLinecap="round" />
-                {/* Animated draw line */}
-                <line x1="0" y1="2" x2="100%" y2="2"
-                  stroke="url(#trackGrad)" strokeWidth="3" strokeLinecap="round"
+            {/* SVG track - Thicker 6px line */}
+            <div style={{ position: "relative", padding: "0 16px" }}>
+              <svg style={{ position: "absolute", top: 32, left: 16, right: 16, width: "calc(100% - 32px)", height: 6, overflow: "visible" }}>
+                <line x1="0" y1="3" x2="100%" y2="3" stroke="rgba(255,255,255,0.08)" strokeWidth="6" strokeLinecap="round" />
+                <line x1="0" y1="3" x2="100%" y2="3"
+                  stroke="url(#trackGrad)" strokeWidth="6" strokeLinecap="round"
                   className={`timeline-draw-line ${tlInView ? "animate" : ""}`}
                 />
                 <defs>
                   <linearGradient id="trackGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="var(--teal-light)" stopOpacity="0.55" />
-                    <stop offset="45%" stopColor="var(--teal-light)" stopOpacity="0.55" />
-                    <stop offset="55%" stopColor="var(--gold)" stopOpacity="0.55" />
-                    <stop offset="100%" stopColor="var(--gold)" stopOpacity="0.55" />
+                    <stop offset="0%" stopColor="var(--teal-light)" stopOpacity="0.7" />
+                    <stop offset="45%" stopColor="var(--teal-light)" stopOpacity="0.7" />
+                    <stop offset="55%" stopColor="var(--gold)" stopOpacity="0.7" />
+                    <stop offset="100%" stopColor="var(--gold)" stopOpacity="0.7" />
                   </linearGradient>
                 </defs>
               </svg>
 
-              {/* Nodes */}
+              {/* Nodes - Scaled up from 42px to 64px (and 80px on hover) */}
               <div style={{ display: "flex", justifyContent: "space-between", position: "relative", zIndex: 2 }}>
                 {TIMELINE_NODES.map((node, i) => {
                   const isActive = activeNode === i;
@@ -184,42 +192,50 @@ export default function Hero() {
                   return (
                     <div key={node.id} className="tl-node" style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: "1 1 0", minWidth: 0 }}
                       onMouseEnter={() => setActiveNode(i)} onMouseLeave={() => setActiveNode(null)} onClick={() => setActiveNode(isActive ? null : i)}>
-                      {/* 1.5x dot: 45px active / 38px default */}
+                      
+                      {/* HUGE DOTS */}
                       <div className={`tl-node-dot ${isActive ? getGlowClass(node.phase) : ""}`} style={{
-                        width: isActive ? 48 : 42, height: isActive ? 48 : 42,
+                        width: isActive ? 80 : 64, height: isActive ? 80 : 64,
                         borderRadius: "50%",
                         background: isActive ? color : "var(--navy)",
-                        border: `2.5px solid ${color}`,
+                        border: `3px solid ${color}`,
                         display: "flex", alignItems: "center", justifyContent: "center",
+                        transition: "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)", /* Bouncy pop effect */
+                        cursor: "pointer",
+                        boxShadow: isActive ? `0 0 24px ${color}50` : "none" /* Adds a glow when hovered */
                       }}>
-                        <TimelineIcon iconId={node.iconId} color={isActive ? "var(--navy)" : color} size={isActive ? 24 : 20} />
+                        {/* BIGGER ICONS */}
+                        <TimelineIcon iconId={node.iconId} color={isActive ? "var(--navy)" : color} size={isActive ? 36 : 28} />
                       </div>
-                      <span className="font-mono" style={{ fontSize: 9, letterSpacing: 1.5, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.3)", marginTop: 10, transition: "color 0.3s", whiteSpace: "nowrap" }}>{node.time}</span>
-                      <span style={{ fontSize: 12, fontWeight: isActive ? 700 : 500, color: isActive ? "#fff" : "rgba(255,255,255,0.4)", marginTop: 4, transition: "all 0.3s", textAlign: "center", lineHeight: 1.3, maxWidth: 100 }}>{node.label}</span>
+                      
+                      {/* Bigger Labels */}
+                      <span className="font-mono" style={{ fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.4)", marginTop: 16, transition: "color 0.3s", whiteSpace: "nowrap" }}>{node.time}</span>
+                      <span style={{ fontSize: 16, fontWeight: isActive ? 700 : 500, color: isActive ? "#fff" : "rgba(255,255,255,0.5)", marginTop: 6, transition: "all 0.3s", textAlign: "center", lineHeight: 1.3, maxWidth: 120 }}>{node.label}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Detail card */}
-            <div style={{ marginTop: 20, minHeight: 80 }}>
+            {/* Detail card - More breathing room */}
+            <div style={{ marginTop: 32, minHeight: 90 }}>
               {active ? (
                 <div key={active.id} style={{
                   background: getBg(active.phase),
-                  border: `1px solid ${getColor(active.phase)}25`,
-                  borderRadius: 12, padding: "16px 28px", textAlign: "left",
+                  border: `1px solid ${getColor(active.phase)}30`,
+                  borderRadius: 16, padding: "20px 32px", textAlign: "left",
                   animation: "fadeInCard 0.3s ease forwards",
+                  maxWidth: "800px", margin: "0 auto" /* Keeps the text readable */
                 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                    <span className="font-mono" style={{ fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: getLabelColor(active.phase), background: `${getLabelColor(active.phase)}12`, padding: "3px 8px", borderRadius: 4 }}>{getLabel(active.phase)}</span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{active.label}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                    <span className="font-mono" style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: getLabelColor(active.phase), background: `${getLabelColor(active.phase)}15`, padding: "4px 10px", borderRadius: 4 }}>{getLabel(active.phase)}</span>
+                    <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>{active.label}</span>
                   </div>
-                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>{active.desc}</p>
+                  <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>{active.desc}</p>
                 </div>
               ) : (
-                <div style={{ textAlign: "center", padding: "16px 0" }}>
-                  <p className="font-mono" style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "rgba(255,255,255,0.18)" }}>Hover over a milestone to explore the journey</p>
+                <div style={{ textAlign: "center", padding: "24px 0" }}>
+                  <p className="font-mono" style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.25)" }}>Hover over a milestone to explore the journey</p>
                 </div>
               )}
             </div>
