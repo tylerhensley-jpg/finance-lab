@@ -56,62 +56,73 @@ export default function TCPSection() {
         </Reveal>
 
         {/* ── BEFORE/AFTER CARDS ── */}
-        <div className="results-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, marginBottom: 64 }}>
-          {RESULTS.map((r, i) => (
-            <Reveal key={i} delay={i + 1}>
-              <div
-                className="result-card-wrap"
-                style={{
-                  background: "#fff", 
-                  border: "1px solid var(--soft-gray)",
-                  borderRadius: 16, 
-                  padding: "48px 40px", /* 👈 Increased padding */
-                  boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)" /* 👈 Added subtle shadow */
-                }}
-              >
-                <div className="font-mono" style={{ 
-                  fontSize: 16,           /* 👈 Bumped from 14px */
-                  fontWeight: 500,
-                  color: "#9CA3AF", 
-                  marginBottom: 8 
-                }}>
-                  {r.before} before
-                </div>
-                <span style={{ 
-                  fontSize: 28,           /* 👈 Bumped arrow from 22px */
-                  color: "var(--teal)", 
-                  margin: "8px 0", 
-                  display: "block" 
-                }}>↓</span>
-                <div className="font-display" style={{ 
-                  fontSize: "clamp(56px, 6vw, 72px)", /* 👈 Scaled up for impact */
-                  fontWeight: 900, 
-                  color: "var(--teal)", 
-                  lineHeight: 1, 
-                  marginBottom: 16 
-                }}>
-                  <AnimatedNumber value={r.after.replace("%", "")} suffix="%" />
-                </div>
-                <div style={{ 
-                  fontSize: 18,           /* 👈 Bumped from 15px */
-                  fontWeight: 600,
-                  color: "var(--navy)",   /* 👈 Changed to navy for higher contrast */
-                  lineHeight: 1.5 
-                }}>
-                  {r.label}
-                </div>
-                <p className="font-mono" style={{ 
-                  fontSize: 12,           /* 👈 Bumped from 10px */
-                  color: "#9CA3AF", 
-                  marginTop: 16, 
-                  letterSpacing: 1 
-                }}>
-                  Pre/post matched cohort · n=368 / n=99
-                </p>
-              </div>
-            </Reveal>
-          ))}
+<div className="results-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24, marginBottom: 64 }}>
+  {RESULTS.map((r, i) => (
+    <Reveal key={i} delay={i + 1}>
+      <div
+        className="result-card-wrap"
+        style={{
+          background: "#fff", 
+          border: "1px solid var(--soft-gray)",
+          borderRadius: 16, 
+          padding: "48px 40px", /* 👈 Increased padding */
+          boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)" /* 👈 Added subtle shadow */
+        }}
+      >
+        
+        {/* 1. ANIMATED NUMBER (Moved to top) */}
+        <div className="font-display" style={{ 
+          fontSize: "clamp(56px, 6vw, 72px)", /* 👈 Scaled up for impact */
+          fontWeight: 900, 
+          color: "var(--teal)", 
+          lineHeight: 1, 
+          marginBottom: 8 /* Changed from 16 to 8 to match previous top-element spacing */
+        }}>
+          <AnimatedNumber value={r.after.replace("%", "")} suffix="%" />
         </div>
+
+        {/* 2. ARROW UP (Direction changed) */}
+        <span style={{ 
+          fontSize: 28,           /* 👈 Bumped arrow from 22px */
+          color: "var(--teal)", 
+          margin: "8px 0", 
+          display: "block" 
+        }}>↑</span>
+
+        {/* 3. BEFORE TEXT (Moved below the arrow) */}
+        <div className="font-mono" style={{ 
+          fontSize: 16,           /* 👈 Bumped from 14px */
+          fontWeight: 500,
+          color: "#9CA3AF", 
+          marginBottom: 16 /* Changed from 8 to 16 to give breathing room before the label */
+        }}>
+          {r.before} before
+        </div>
+        
+        {/* 4. LABEL */}
+        <div style={{ 
+          fontSize: 18,           /* 👈 Bumped from 15px */
+          fontWeight: 600,
+          color: "var(--navy)",   /* 👈 Changed to navy for higher contrast */
+          lineHeight: 1.5 
+        }}>
+          {r.label}
+        </div>
+        
+        {/* 5. FOOTER TEXT */}
+        <p className="font-mono" style={{ 
+          fontSize: 12,           /* 👈 Bumped from 10px */
+          color: "#9CA3AF", 
+          marginTop: 16, 
+          letterSpacing: 1 
+        }}>
+          Pre/post matched cohort · n=368 / n=99
+        </p>
+
+      </div>
+    </Reveal>
+  ))}
+</div>
 
         {/* ── STUDENT QUOTES ── */}
         <div style={{ display: "flex", flexDirection: "column", gap: 24, marginBottom: 56 }}>
