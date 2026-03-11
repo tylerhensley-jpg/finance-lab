@@ -65,45 +65,48 @@ export default function TCPSection() {
           background: "#fff", 
           border: "1px solid var(--soft-gray)",
           borderRadius: 16, 
-          padding: "48px 40px", /* 👈 Increased padding */
-          boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)" /* 👈 Added subtle shadow */
+          padding: "48px 40px",
+          boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)"
         }}
       >
         
-        {/* 1. ANIMATED NUMBER (Moved to top) */}
+        {/* 1. ANIMATED NUMBER */}
         <div className="font-display" style={{ 
-          fontSize: "clamp(56px, 6vw, 72px)", /* 👈 Scaled up for impact */
+          fontSize: "clamp(56px, 6vw, 72px)", 
           fontWeight: 900, 
           color: "var(--teal)", 
           lineHeight: 1, 
-          marginBottom: 8 /* Changed from 16 to 8 to match previous top-element spacing */
+          marginBottom: 8,
+          textAlign: "center" /* 👈 Added center alignment */
         }}>
           <AnimatedNumber value={r.after.replace("%", "")} suffix="%" />
         </div>
 
-        {/* 2. ARROW UP (Direction changed) */}
+        {/* 2. ARROW UP */}
         <span style={{ 
-          fontSize: 28,           /* 👈 Bumped arrow from 22px */
+          fontSize: 28,           
           color: "var(--teal)", 
           margin: "8px 0", 
-          display: "block" 
+          display: "block",
+          textAlign: "center" /* 👈 Added center alignment */
         }}>↑</span>
 
-        {/* 3. BEFORE TEXT (Moved below the arrow) */}
+        {/* 3. BEFORE TEXT */}
         <div className="font-mono" style={{ 
-          fontSize: 16,           /* 👈 Bumped from 14px */
+          fontSize: 16,           
           fontWeight: 500,
           color: "#9CA3AF", 
-          marginBottom: 16 /* Changed from 8 to 16 to give breathing room before the label */
+          marginBottom: 16,
+          textAlign: "center" /* 👈 Added center alignment to match the stack */
         }}>
           {r.before} before
         </div>
         
         {/* 4. LABEL */}
         <div style={{ 
-          fontSize: 18,           /* 👈 Bumped from 15px */
+          fontSize: 18,           
           fontWeight: 600,
-          color: "var(--navy)",   /* 👈 Changed to navy for higher contrast */
+          color: "var(--navy)",   
           lineHeight: 1.5 
         }}>
           {r.label}
@@ -111,7 +114,7 @@ export default function TCPSection() {
         
         {/* 5. FOOTER TEXT */}
         <p className="font-mono" style={{ 
-          fontSize: 12,           /* 👈 Bumped from 10px */
+          fontSize: 12,           
           color: "#9CA3AF", 
           marginTop: 16, 
           letterSpacing: 1 
