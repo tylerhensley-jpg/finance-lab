@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Script from "next/script"; // 👈 Required for Next.js to load external scripts safely
+import Script from "next/script"; // 👈 Required for the donorbox script
 import { NAV_LINKS } from "@/data/content";
 
 export default function Footer() {
@@ -46,7 +46,7 @@ export default function Footer() {
           </a>
         ))}
 
-        {/* ── DONATION TRIGGER BUTTON ── */}
+        {/* ── MAKE A DONATION TRIGGER ── */}
         <button
           onClick={() => setShowDonation(true)}
           style={{
@@ -59,10 +59,7 @@ export default function Footer() {
             color: "var(--gold)", 
             padding: 0,
             fontFamily: "inherit",
-            transition: "opacity 0.2s ease"
           }}
-          onMouseEnter={(e) => (e.target.style.opacity = "0.8")}
-          onMouseLeave={(e) => (e.target.style.opacity = "1")}
         >
           Make a Donation
         </button>
@@ -73,61 +70,56 @@ export default function Footer() {
         <div style={{
           position: "fixed",
           top: 0, left: 0, width: "100%", height: "100%",
-          backgroundColor: "rgba(10, 25, 47, 0.9)", // Dark navy overlay
+          backgroundColor: "rgba(10, 25, 47, 0.95)", // Dark overlay
           display: "flex", justifyContent: "center", alignItems: "center",
-          zIndex: 9999, // Ensure it sits on top of everything
+          zIndex: 9999,
           padding: 20
         }}>
+          {/* Modal Container */}
           <div style={{ 
             background: "#fff", 
-            padding: "50px 20px 20px", // Extra padding on top for the close button
             borderRadius: 16, 
             position: "relative",
             width: "100%", 
-            maxWidth: 500, // Kept slightly narrow to match standard donation forms
+            maxWidth: 500, 
             maxHeight: "90vh",
             overflowY: "auto",
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+            padding: "40px 10px 10px 10px" // Space for the close button
           }}>
             {/* Close Button */}
             <button 
               onClick={() => setShowDonation(false)}
               style={{ 
-                position: "absolute", 
-                top: 15, 
-                right: 20, 
-                border: "none", 
-                background: "var(--soft-gray, #f3f4f6)", 
-                borderRadius: "50%",
-                width: 32,
-                height: 32,
-                fontSize: 16, 
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color: "var(--navy, #0a192f)"
+                position: "absolute", top: 10, right: 15, 
+                border: "none", background: "#f3f4f6", 
+                borderRadius: "50%", width: 30, height: 30, 
+                cursor: "pointer", zIndex: 10,
+                fontSize: "14px", fontWeight: "bold"
               }}
-            >
-              ✕
-            </button>
+            >✕</button>
             
-            {/* ── DONORBOX EMBED ── */}
-            {/* The Next.js Script component handles the JS safely */}
-            <Script 
-              type="module" 
-              src="https://donorbox.org/widgets.js" 
-              strategy="lazyOnload" 
-            />
+            {/* ── DONORBOX CLASSIC EMBED ── */}
+            <Script src="https://donorbox.org/widget.js" strategy="lazyOnload" />
             
-            {/* The actual custom widget element */}
-            <dbox-widget 
-              campaign="2026-fellows-and-program-expansion" 
-              type="donation_form" 
-              interval="1 T" 
-              enable-auto-scroll="true"
-            ></dbox-widget>
-
+            <iframe 
+              src="https://donorbox.org/embed/2026-fellows-and-program-expansion?default_interval=o" 
+              name="donorbox" 
+              allowpaymentrequest="allowpaymentrequest" 
+              seamless="seamless" 
+              frameBorder="0" 
+              scrolling="no" 
+              height="900px" 
+              width="100%" 
+              style={{
+                maxWidth: "500px", 
+                minWidth: "250px", 
+                maxHeight: "none!important",
+                display: "block",
+                margin: "0 auto"
+              }} 
+              allow="payment"
+            ></iframe>
           </div>
         </div>
       )}
