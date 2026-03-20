@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
+import { OPENING_LINE, MISSION } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -133,15 +134,25 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={2}>
-          <p style={{
-            fontSize: "clamp(15px, 1.8vw, 19px)", fontWeight: 300,
-            color: "rgba(255,255,255,0.68)", maxWidth: 760,
-            lineHeight: 1.7, margin: "0 auto 0",
-          }}>
-            We meet every student where they are — with a personalized roadmap and
-            real investing skills — so they begin adulthood{" "}
-            <strong style={{ color: "#fff", fontWeight: 600 }}>one step ahead.</strong>
-          </p>
+          <div style={{ maxWidth: 780, margin: "0 auto" }}>
+            {/* Opening line — bold provocation */}
+            <p style={{
+              fontSize: "clamp(17px, 2vw, 22px)", fontWeight: 600,
+              color: "#fff", lineHeight: 1.55, marginBottom: 16,
+              letterSpacing: "-0.2px",
+            }}>
+              {OPENING_LINE}
+            </p>
+            {/* Mission — the response */}
+            <p style={{
+              fontSize: "clamp(14px, 1.6vw, 17px)", fontWeight: 300,
+              color: "rgba(255,255,255,0.62)", lineHeight: 1.75,
+              borderTop: "1px solid rgba(255,255,255,0.12)",
+              paddingTop: 16, margin: 0,
+            }}>
+              {MISSION}
+            </p>
+          </div>
         </Reveal>
       </div>
 

@@ -3,6 +3,22 @@
 // Update text, stats, quotes, etc. in one place.
 // ─────────────────────────────────────────────
 
+// ─────────────────────────────────────────────
+// Mission, Vision & Who We Serve
+// ─────────────────────────────────────────────
+
+export const OPENING_LINE =
+  "Financial education is the most unequally distributed skill in America. We give it to the students who need it most.";
+
+export const MISSION =
+  "We equip first-generation students from underbanked, underserved communities with the real financial skills they need to build wealth — because a plan and a portfolio shouldn't be privileges.";
+
+export const VISION =
+  "Every first-generation student graduates with a plan — and the financial foundation to execute it.";
+
+export const WHO_WE_SERVE =
+  "The Finance Lab serves high school and college students from underserved, underbanked communities — young people who are most often first-generation college students navigating a financial system that was never designed with them in mind. For these students, the gap between knowing and not knowing — about financial aid, investing, and how money works — is the difference between upward mobility and staying stuck. We exist to close that gap.";
+
 export const NAV_LINKS = [
   { label: "Our Approach", href: "#journey" },
   { label: "The College Project", href: "#tcp" },
