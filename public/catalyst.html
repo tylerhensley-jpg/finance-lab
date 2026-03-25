@@ -537,6 +537,18 @@ canvas { width: 100% !important; height: 100% !important; }
 .plan-item .pi-add{margin-left:auto;background:var(--green);color:#fff;border:none;padding:5px 12px;border-radius:50px;font-size:.78rem;font-weight:600;cursor:pointer;flex-shrink:0}
 .plan-item.added .pi-add{background:var(--bg-dark);color:var(--text-muted)}
 
+/* ── Myth/Reality Flip Cards ── */
+.myth-card{background:var(--parchment);border-radius:var(--radius);border:1.5px solid var(--sage-light);margin-bottom:12px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s;user-select:none;}
+.myth-card:hover{border-color:var(--forest);}
+.myth-front,.myth-back{padding:20px;}
+.myth-back{display:none;background:var(--forest-dark);color:var(--cream);border-radius:calc(var(--radius) - 1px);}
+.myth-card.flipped .myth-front{display:none;}
+.myth-card.flipped .myth-back{display:block;}
+.myth-q{font-size:1.05rem;font-family:var(--font-display);margin:10px 0 8px;color:var(--navy);line-height:1.4;}
+.myth-tap{font-size:.8rem;color:var(--terra);font-weight:600;display:block;margin-top:4px;}
+.myth-answer{font-size:.95rem;margin:10px 0 8px;line-height:1.6;}
+.myth-stat{font-size:.85rem;opacity:.8;margin-top:8px;line-height:1.5;}
+
 </style>
 </head>
 <body>
@@ -546,13 +558,9 @@ canvas { width: 100% !important; height: 100% !important; }
   <div class="modal">
     <span class="modal-icon">⚡</span>
     <h2>Welcome to Catalyst</h2>
-    <p>Before we dig in, a quick heads-up in plain English:</p>
-    <div class="highlight-box">
-      <strong>This app is here to teach you about investing concepts</strong> — it's not telling you what to buy, when to sell, or where to put your money. Think of it like a really solid textbook, not a financial advisor.<br><br>
-      Real investing decisions should factor in your specific situation. If you're ever unsure, talk to a fee-only financial advisor (meaning they don't earn commissions from selling you stuff).
-    </div>
-    <p style="font-size:0.9rem; color:var(--text-muted);">We don't sell anything, recommend specific securities, or earn affiliate fees. The brokerages mentioned are examples, not endorsements.</p>
-    <button class="btn btn-primary" onclick="closeModal()" style="width:100%; justify-content:center; margin-top: 16px;">Got it — let's learn ⚡</button>
+    <p style="font-size:1rem;color:var(--text-light);margin-bottom:20px;">This app teaches investing concepts — it's not financial advice and we don't sell anything. Think of it as a really honest textbook.</p>
+    <button class="btn btn-primary" onclick="closeModal()" style="width:100%; justify-content:center;">I'm ready — let's go ⚡</button>
+    <p style="font-size:0.78rem;color:var(--text-muted);margin-top:14px;line-height:1.5;">Not financial advice. Brokerages mentioned are examples, not endorsements. If you're ever unsure about a real money decision, talk to a fee-only financial advisor.</p>
   </div>
 </div>
 
@@ -571,6 +579,7 @@ canvas { width: 100% !important; height: 100% !important; }
     <button onclick="goToSection(5)" id="nav-5">Danger</button>
     <button onclick="goToSection(6)" id="nav-6">Shelter</button>
     <button onclick="goToSection(7)" id="nav-7">Resources</button>
+    <span id="nav-archetype-badge" style="display:none;margin-left:auto;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:20px;background:var(--forest);color:var(--cream);white-space:nowrap;cursor:default;" title="Your investor type"></span>
   </nav>
 </header>
 
@@ -607,8 +616,8 @@ canvas { width: 100% !important; height: 100% !important; }
 <div class="section active" id="section-intro" style="text-align:center;">
   <div style="max-width:660px;margin:0 auto;padding:20px 0 10px;">
     <span style="font-size:3.5rem;display:block;margin-bottom:16px;">⚡</span>
-    <h1 style="font-size:clamp(2.2rem,5vw,3rem);margin-bottom:12px;">Welcome to Catalyst</h1>
-    <p style="font-family:var(--font-display);font-style:italic;font-size:1.2rem;color:var(--terra);margin-bottom:24px;">Your launchpad for investing.</p>
+    <h1 style="font-size:clamp(2.2rem,5vw,3rem);margin-bottom:12px;">Your money is losing value right now.</h1>
+    <p style="font-family:var(--font-display);font-style:italic;font-size:1.2rem;color:var(--terra);margin-bottom:24px;">Let's fix that — in about 20 minutes.</p>
     <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:24px;">A product of <strong>The Finance Lab</strong></p>
     <p style="font-size:1.1rem;color:var(--text-light);line-height:1.7;text-align:left;">
       Let's be real for a second. Nobody teaches you this stuff in school. You learn about the mitochondria (the powerhouse of the cell — thanks, biology) but not about the one thing that will quietly shape your entire adult life: <strong>what you do with your money</strong>.
@@ -664,7 +673,7 @@ canvas { width: 100% !important; height: 100% !important; }
     </div>
 
     <button class="btn btn-primary" onclick="goToSection(0)" style="margin-top:32px;font-size:1.1rem;padding:16px 40px;">
-      Let's Go ⚡
+      I'm ready — let's go ⚡
     </button>
   </div>
 </div>
@@ -683,6 +692,7 @@ canvas { width: 100% !important; height: 100% !important; }
     <button class="depth-btn active" onclick="setDepth(0, 'beginner', this)">I'm New</button>
     <button class="depth-btn" onclick="setDepth(0, 'advanced', this)">I Know the Basics</button>
   </div>
+  <p style="font-size:.78rem;color:var(--text-muted);text-align:center;margin:-8px 0 16px;">Switches between essentials and deeper content — try both</p>
 
   <!-- BEGINNER CONTENT -->
   <div class="content-beginner active" id="depth-0-beginner">
@@ -919,7 +929,7 @@ canvas { width: 100% !important; height: 100% !important; }
   </div>
 
   <button class="complete-section-btn" onclick="completeSection(0)">
-    <span>✓</span> Mark as Complete & Continue →
+    <span>✓</span> Got it — let's find my investor type →
   </button>
 </div>
 
@@ -1030,7 +1040,7 @@ canvas { width: 100% !important; height: 100% !important; }
   </div>
 
   <button class="complete-section-btn" onclick="completeSection(1)">
-    <span>✓</span> Mark as Complete & Continue →
+    <span>✓</span> I know my type — let's pick investments →
   </button>
 </div>
 
@@ -1192,7 +1202,7 @@ canvas { width: 100% !important; height: 100% !important; }
   </div>
 
   <button class="complete-section-btn" onclick="completeSection(2)">
-    <span>✓</span> Mark as Complete & Continue →
+    <span>✓</span> Got it — keep going →
   </button>
 </div>
 
@@ -1204,49 +1214,60 @@ canvas { width: 100% !important; height: 100% !important; }
 <p style="color:var(--text-light);font-size:1.1rem;margin-top:8px;">The investing world is full of people trying to separate you from your money.</p>
 </div>
 
-<div class="danger-card">
-<span class="danger-badge" style="margin-bottom:12px;display:inline-block;">HIGH RISK</span>
-<h3 style="text-align:center;font-size:1.4rem;">🎰 FOMO Investing</h3>
-<p style="margin-top:14px;">When someone posts 500% gains on a meme stock, your brain screams <em>"I need in!"</em></p>
-<p style="margin-top:12px;">Reality: you're seeing <strong>survivorship bias</strong>. The 5 people who won are posting screenshots. The 500 who lost the same bet are silent. This is how casinos work.</p>
-<div class="tip-callout" style="background:var(--danger-bg);margin-top:16px;"><span class="tip-icon">📊</span><span>Studies show individual investors who trade meme stocks lose an average of <strong>30% within 6 months</strong>. Luck is not a strategy.</span></div>
-</div>
+<div style="margin-bottom:8px;">
+  <p style="color:var(--text-light);font-size:.95rem;text-align:center;margin-bottom:16px;">Think you know how this works? Tap each card to find out.</p>
 
-<div class="danger-card">
-<span class="danger-badge" style="margin-bottom:12px;display:inline-block;">SCAM ALERT</span>
-<h3 style="text-align:center;font-size:1.4rem;">🐍 The Modern Snake Oil Salesman</h3>
-<p style="margin-top:14px;">They have podcasts and blue checkmarks now, but the pitch hasn't changed:</p>
-<div style="margin:16px 0;padding:18px;background:var(--danger-bg);border-radius:var(--radius);font-style:italic;color:var(--danger-red);text-align:center;font-size:1.05rem;line-height:1.7;">
-"Secret strategy" · "Inner circle" · "Last chance"<br>"Only $497 for my course" · "Guaranteed returns"
-</div>
-<p style="margin-top:14px;">If they're guaranteed to make money, they wouldn't need yours.</p>
-<p style="margin-top:10px;">If the strategy actually worked, they'd use it quietly — not sell courses about it.</p>
-<p style="margin-top:10px;"><strong>No legitimate investment guarantees returns. Anyone who says otherwise is lying.</strong></p>
-</div>
+  <div class="myth-card" onclick="this.classList.toggle('flipped')">
+    <div class="myth-front">
+      <span class="danger-badge">TRUE OR FALSE?</span>
+      <p class="myth-q">If 5 people post huge gains on a meme stock, that means it's a good bet.</p>
+      <span class="myth-tap">Tap to reveal →</span>
+    </div>
+    <div class="myth-back">
+      <span class="danger-badge" style="background:var(--danger-red);">FALSE — SURVIVORSHIP BIAS</span>
+      <p class="myth-answer">The 500 people who lost the same bet are silent. You only see the winners. That's how casinos stay in business too.</p>
+      <p class="myth-stat">📊 Meme stock traders lose an average of <strong>30% within 6 months</strong>. Luck is not a strategy.</p>
+    </div>
+  </div>
 
-<div class="danger-card">
-<span class="danger-badge" style="margin-bottom:12px;display:inline-block;">CAUTION</span>
-<h3 style="text-align:center;font-size:1.4rem;">📱 Speculating ≠ Investing</h3>
-<table class="comparison-table" style="margin:20px 0;">
-<thead><tr><th>Investing</th><th>Speculating / Gambling</th></tr></thead>
-<tbody>
-<tr><td>Based on fundamentals and long-term value</td><td>Based on hype, momentum, or "feelings"</td></tr>
-<tr><td>You can explain <em>why</em> you own it</td><td>You own it because someone told you to</td></tr>
-<tr><td>You'd hold through a 30% drop</td><td>You'd panic and sell</td></tr>
-<tr><td>Boring and slow — that's the point</td><td>Exciting and fast — that's the trap</td></tr>
-</tbody></table>
-<div class="tip-callout" style="margin-top:16px;"><span class="tip-icon">💡</span><span><strong>The 5% Rule:</strong> Want to speculate? Keep it to 5% max as "play money" you can afford to lose entirely. The other 95% follows your boring, proven strategy.</span></div>
-</div>
+  <div class="myth-card" onclick="this.classList.toggle('flipped')">
+    <div class="myth-front">
+      <span class="danger-badge">TRUE OR FALSE?</span>
+      <p class="myth-q">A course selling a "guaranteed" investing strategy is probably worth checking out.</p>
+      <span class="myth-tap">Tap to reveal →</span>
+    </div>
+    <div class="myth-back">
+      <span class="danger-badge" style="background:var(--danger-red);">FALSE — IT'S A SCAM</span>
+      <p class="myth-answer">If the strategy actually worked, they'd use it quietly — not sell courses about it. No legitimate investment guarantees returns. Anyone who says otherwise is lying.</p>
+      <p class="myth-stat">🐍 Red flags: "secret strategy" · "inner circle" · "only $497" · "guaranteed returns"</p>
+    </div>
+  </div>
 
-<div class="danger-card">
-<span class="danger-badge" style="margin-bottom:12px;display:inline-block;">BEHAVIORAL TRAP</span>
-<h3 style="text-align:center;font-size:1.4rem;">⏰ Other Traps to Avoid</h3>
-<div style="display:grid;gap:16px;margin-top:16px;">
-  <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-size:1.4rem;flex-shrink:0;">🔄</span><div><strong>Day Trading</strong><p style="font-size:.92rem;color:var(--text-light);margin-top:4px;">70-90% of day traders lose money. The profitable ones have institutional-grade technology you don't have access to.</p></div></div>
-  <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-size:1.4rem;flex-shrink:0;">🏋️</span><div><strong>Leverage & Margin</strong><p style="font-size:.92rem;color:var(--text-light);margin-top:4px;">Borrowing money to invest amplifies losses too. You can lose more than you put in and owe your brokerage the difference.</p></div></div>
-  <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-size:1.4rem;flex-shrink:0;">🔮</span><div><strong>YOLO Options Plays</strong><p style="font-size:.92rem;color:var(--text-light);margin-top:4px;">Complex, time-sensitive contracts. Most beginners who trade options lose money. Worse odds than a casino.</p></div></div>
-  <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-size:1.4rem;flex-shrink:0;">👥</span><div><strong>Finfluencers</strong><p style="font-size:.92rem;color:var(--text-light);margin-top:4px;">Many are paid to promote products or pump their own holdings. Their interests are not aligned with yours.</p></div></div>
-</div>
+  <div class="myth-card" onclick="this.classList.toggle('flipped')">
+    <div class="myth-front">
+      <span class="danger-badge">TRUE OR FALSE?</span>
+      <p class="myth-q">Day trading is a smart way for beginners to build wealth faster.</p>
+      <span class="myth-tap">Tap to reveal →</span>
+    </div>
+    <div class="myth-back">
+      <span class="danger-badge" style="background:var(--danger-red);">FALSE — THE ODDS ARE BRUTAL</span>
+      <p class="myth-answer">70–90% of day traders lose money. The profitable ones have institutional-grade technology, algorithms, and data feeds you don't have access to.</p>
+      <p class="myth-stat">⏰ Same result: leverage, YOLO options, margin trading. More excitement, worse odds than a casino.</p>
+    </div>
+  </div>
+
+  <div class="myth-card" onclick="this.classList.toggle('flipped')">
+    <div class="myth-front">
+      <span class="danger-badge">TRUE OR FALSE?</span>
+      <p class="myth-q">If a finfluencer discloses their holdings, their advice is safe to follow.</p>
+      <span class="myth-tap">Tap to reveal →</span>
+    </div>
+    <div class="myth-back">
+      <span class="danger-badge" style="background:var(--danger-red);">FALSE — INCENTIVES ARE MISALIGNED</span>
+      <p class="myth-answer">Many are paid to promote products or pump their own holdings before selling. Disclosure doesn't fix the conflict — it just means you can't sue them.</p>
+      <p class="myth-stat">💡 The 5% Rule: Want to speculate anyway? Cap it at 5% "play money." The other 95% stays boring and proven.</p>
+    </div>
+  </div>
 </div>
 
 <div class="card" style="border:2px solid var(--navy);text-align:center;padding:40px;">
@@ -1263,7 +1284,7 @@ canvas { width: 100% !important; height: 100% !important; }
   <div class="plan-item" id="pi-ignoretips"><span>🔇</span><div><strong>Ignore finfluencers and hot tips</strong></div><button class="pi-add" onclick="togglePlanItem('ignoretips','Ignore finfluencers and hot tips — their interests ≠ mine',this);event.stopPropagation()">+ Add</button></div>
 </div>
 
-<button class="complete-section-btn" onclick="completeSection(5)"><span>✓</span> Mark as Complete →</button>
+<button class="complete-section-btn" onclick="completeSection(5)"><span>✓</span> Got it — keep going →</button>
 </div>
 
 <!-- ═══════════════════════════════════════════════ -->
@@ -1309,7 +1330,7 @@ canvas { width: 100% !important; height: 100% !important; }
 
   <div style="padding: 24px;">
     <button class="complete-section-btn" onclick="completeSection(6)">
-      <span>✓</span> Mark as Complete & Continue →
+      <span>✓</span> Got it — keep going →
     </button>
   </div>
 </div>
@@ -1429,7 +1450,7 @@ canvas { width: 100% !important; height: 100% !important; }
   </div>
 
   <button class="complete-section-btn" onclick="completeSection(5)">
-    <span>✓</span> Mark as Complete — You've finished the trail! 🎉
+    <span>✓</span> Done — show me my plan 🎉
   </button>
 
   <div style="text-align:center;margin-top:20px;">
@@ -1529,6 +1550,11 @@ canvas { width: 100% !important; height: 100% !important; }
   </div>
 </div>
 
+  <button class="complete-section-btn" onclick="saveCalcDataAndContinue()">
+    <span>✓</span> Build My Plan →
+  </button>
+</div>
+
 <!-- ═══════ MY PLAN (now section 7) ═══════ -->
 <div class="section" id="section-4">
   <div class="section-header">
@@ -1544,7 +1570,7 @@ canvas { width: 100% !important; height: 100% !important; }
         <div style="background:var(--parchment);padding:20px;border-radius:var(--radius);"><h4 style="font-size:1rem;">📋 Action Plan</h4><p style="font-size:.9rem;color:var(--text-light);margin-top:8px;">Step-by-step: what to open, where, how much, and how to automate.</p></div>
         <div style="background:var(--forest-dark);color:var(--cream);padding:20px;border-radius:var(--radius);"><h4 style="font-size:1rem;color:var(--cream);">🧭 Philosophy</h4><p style="font-size:.9rem;color:rgba(250,246,240,.7);margin-top:8px;">Your risk profile, principles, and quotes to keep you grounded.</p></div>
       </div>
-      <button class="btn btn-primary" onclick="generatePlan()" style="margin-top:24px;">Generate My Plan Now</button>
+      <button class="btn btn-primary" onclick="generatePlan()" style="margin-top:24px;">Build my investor profile →</button>
     </div>
   </div>
   <div id="planGenerated" style="display:none;">
@@ -1852,7 +1878,7 @@ function updateTrail() {
 function completeSection(idx) {
   completedSections.add(idx);
   const btns = document.querySelectorAll('.complete-section-btn');
-  if (btns[idx]) { btns[idx].classList.add('done'); btns[idx].innerHTML = '<span>✓</span> Completed!'; }
+  if (btns[idx]) { btns[idx].classList.add('done'); btns[idx].innerHTML = '<span>✓</span> Done!'; }
   updateTrail();
   if (idx < 7) setTimeout(() => goToSection(idx + 1), 400);
 }
@@ -1908,6 +1934,17 @@ function showQuizResult() {
   const pct = score / maxScore;
   let profileKey = pct < 0.4 ? 'conservative' : pct < 0.7 ? 'moderate' : 'aggressive';
   const profile = profiles[profileKey];
+
+  // Save to global so generatePlan can use it
+  userProfile = profileKey;
+  saveState();
+
+  // Show the archetype badge in the nav
+  const badge = document.getElementById('nav-archetype-badge');
+  if (badge) {
+    badge.textContent = profile.badge;
+    badge.style.display = 'inline-block';
+  }
 
   document.getElementById('quizCard').style.display = 'none';
   document.getElementById('quizResult').style.display = 'block';
@@ -2043,6 +2080,22 @@ function updateCompound() {
     </div>`;
   });
   document.getElementById('compoundSummary').innerHTML = summaryHtml;
+
+  // "Start today vs. 5 years from now" urgency callout
+  const now18 = datasets.find(d => d.startAge === 18);
+  const at22 = datasets.find(d => d.startAge === 22);
+  const gap = now18 && at22 ? Math.round(now18.finalValue - at22.finalValue) : 0;
+  let urgencyEl = document.getElementById('compoundUrgency');
+  if (!urgencyEl) {
+    urgencyEl = document.createElement('div');
+    urgencyEl.id = 'compoundUrgency';
+    document.getElementById('compoundSummary').insertAdjacentElement('afterend', urgencyEl);
+  }
+  if (gap > 0) {
+    urgencyEl.innerHTML = `<div style="margin-top:14px;background:var(--forest);color:var(--cream);padding:14px 18px;border-radius:var(--radius);font-size:.95rem;line-height:1.5;">
+      ⏰ <strong>Waiting just 4 years costs you $${gap.toLocaleString()}</strong> — for the exact same $${monthly}/month investment. That gap is the price of waiting.
+    </div>`;
+  }
 }
 
 function drawCompoundChart(labels, datasets) {
@@ -2270,6 +2323,47 @@ function calcLifeStage(){
 }
 
 // ═══════════════════════════════════════
+// CALCULATOR → PLAN BRIDGE
+// ═══════════════════════════════════════
+let savedCalcData = {};
+
+function saveCalcDataAndContinue() {
+  // Pull the current values from the goal tracker calculator
+  const goalName = document.getElementById('calcGoalName') ? document.getElementById('calcGoalName').value : '';
+  const target = parseFloat(document.getElementById('calcTarget') ? document.getElementById('calcTarget').value : 0) || 0;
+  const start = parseFloat(document.getElementById('calcStart') ? document.getElementById('calcStart').value : 0) || 0;
+  const annualReturn = parseFloat(document.getElementById('calcReturn') ? document.getElementById('calcReturn').value : 8) || 8;
+  const years = parseFloat(document.getElementById('calcTimeframe') ? document.getElementById('calcTimeframe').value : 10) || 10;
+
+  // Calculate monthly needed
+  const monthlyRate = (annualReturn / 100) / 12;
+  const months = years * 12;
+  const futureStart = start * Math.pow(1 + monthlyRate, months);
+  const needed = target - futureStart;
+  const monthly = needed > 0 ? (needed * monthlyRate) / (Math.pow(1 + monthlyRate, months) - 1) : 0;
+
+  // Also grab the compound calculator monthly slider value
+  const compoundMonthly = document.getElementById('monthlySlider') ? parseFloat(document.getElementById('monthlySlider').value) : 0;
+
+  savedCalcData = {
+    goalName: goalName || null,
+    target: target || null,
+    start: start || null,
+    annualReturn: annualReturn,
+    years: years || null,
+    monthlyNeeded: monthly > 0 ? Math.ceil(monthly) : null,
+    compoundMonthly: compoundMonthly || null,
+  };
+
+  // Mark the calc button done directly (avoids btns[] index mismatch)
+  const calcBtn = document.querySelector('#section-3 .complete-section-btn');
+  if (calcBtn) { calcBtn.classList.add('done'); calcBtn.innerHTML = '<span>✓</span> Done!'; }
+  completedSections.add(3);
+  updateTrail();
+  setTimeout(() => goToSection(4), 400);
+}
+
+// ═══════════════════════════════════════
 // PLAN GENERATOR
 // ═══════════════════════════════════════
 function generatePlan(){
@@ -2362,6 +2456,16 @@ function generatePlan(){
   steps.push({title:'Set a Yearly Review Date', desc:'Pick one date per year — your birthday, New Year\'s, whatever sticks. On that date: check if your allocation has drifted, rebalance if needed, increase your automatic contribution if your income has grown. Then close the app for another year. That\'s it.'});
 
   let sH = '';
+
+  // If student ran the calculator, show their real numbers at the top
+  if (savedCalcData.monthlyNeeded && savedCalcData.goalName) {
+    sH += `<div style="background:var(--forest);color:var(--cream);padding:16px 20px;border-radius:var(--radius);margin-bottom:20px;">
+      <div style="font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">From your calculator</div>
+      <div style="font-size:1.25rem;font-family:var(--font-display);">$${savedCalcData.monthlyNeeded.toLocaleString()}/month → ${savedCalcData.goalName}</div>
+      <div style="font-size:.9rem;opacity:.75;margin-top:4px;">$${(savedCalcData.target||0).toLocaleString()} in ${savedCalcData.years||10} years at ${savedCalcData.annualReturn||8}% return</div>
+    </div>`;
+  }
+
   steps.forEach((s, i) => {
     const descFormatted = s.desc.replace(/\n/g, '<br>');
     sH += `<div class="plan-step"><div class="plan-num">${i+1}</div><div><strong style="color:var(--forest-dark);">${s.title}</strong><p style="font-size:.92rem;color:var(--text-light);margin-top:4px;">${descFormatted}</p></div></div>`;
@@ -2381,7 +2485,7 @@ function generatePlan(){
   const timeQ = quizAnswers[2]; // question about time horizon
   const timeLabel = timeQ === 0 ? '1–3 years' : timeQ === 1 ? '3–7 years' : timeQ === 2 ? '7–15 years' : '15+ years';
   const phil = [
-    {icon:'🌱', text:`I invest ${canInvest ? monthlyBudget + '/month' : 'what I can, when I can'} consistently, using automatic investing to remove emotion from the equation.`},
+    {icon:'🌱', text:`I invest ${savedCalcData.monthlyNeeded ? '$' + savedCalcData.monthlyNeeded.toLocaleString() + '/month' : canInvest ? monthlyBudget + '/month' : 'what I can, when I can'} consistently, using automatic investing to remove emotion from the equation.`},
     {icon:'⏳', text:`My time horizon is ${timeQ !== null ? timeLabel : 'long-term'}. I think in decades, not days. Time is my greatest asset.`},
     {icon:'🧘', text:`I am a ${prof.badge.toLowerCase()} investor. I accept ${profKey === 'conservative' ? 'lower returns for more stability' : profKey === 'moderate' ? 'moderate ups and downs for solid growth' : 'significant volatility in exchange for maximum long-term growth'}.`},
     {icon:'💰', text:'I keep costs below 0.10% whenever possible. Every dollar in fees is a dollar stolen from my future.'},
@@ -2397,9 +2501,9 @@ function generatePlan(){
   // STATS
   document.getElementById('planStats').innerHTML = `<h3>📊 Your Snapshot</h3><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px;">
   <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--forest);"><div style="font-size:.75rem;color:var(--text-muted);">Risk Profile</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${prof.label}</div></div>
-  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--terra);"><div style="font-size:.75rem;color:var(--text-muted);">Monthly Budget</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--terra);margin-top:4px;">${canInvest ? monthlyBudget : 'TBD'}</div></div>
-  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--sage);"><div style="font-size:.75rem;color:var(--text-muted);">Goal</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${goalName}</div></div>
-  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--gold);"><div style="font-size:.75rem;color:var(--text-muted);">Target / Timeline</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">$${goalTarget.toLocaleString()} / ${goalYears}yr</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--terra);"><div style="font-size:.75rem;color:var(--text-muted);">Monthly to Invest</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--terra);margin-top:4px;">${savedCalcData.monthlyNeeded ? '$' + savedCalcData.monthlyNeeded.toLocaleString() + '/mo' : canInvest ? monthlyBudget : 'TBD'}</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--sage);"><div style="font-size:.75rem;color:var(--text-muted);">Your Goal</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${savedCalcData.goalName || goalName}</div></div>
+  <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid var(--gold);"><div style="font-size:.75rem;color:var(--text-muted);">Target / Timeline</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${savedCalcData.target ? '$' + savedCalcData.target.toLocaleString() : '$' + goalTarget.toLocaleString()} / ${savedCalcData.years || goalYears}yr</div></div>
   <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid ${hasEmergency?'var(--forest)':'var(--terra)'};"><div style="font-size:.75rem;color:var(--text-muted);">Emergency Fund</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${hasEmergency?'✓ Solid':hasSomeEmergency?'Building':'Needed'}</div></div>
   <div style="background:var(--parchment);padding:14px;border-radius:var(--radius);text-align:center;border-top:4px solid ${hasInvestmentAcct?'var(--forest)':'var(--terra)'};"><div style="font-size:.75rem;color:var(--text-muted);">Accounts</div><div style="font-size:1.1rem;font-family:var(--font-display);color:var(--forest-dark);margin-top:4px;">${hasRoth?'Roth + Brokerage':hasInvestmentAcct?'Brokerage Only':'Need to Open'}</div></div>
   </div>`;
@@ -2493,6 +2597,11 @@ function loadState() {
     // Restore quiz
     if (state.quizAnswers) quizAnswers = state.quizAnswers;
     if (state.userProfile) userProfile = state.userProfile;
+    // Restore archetype badge in nav
+    if (userProfile && profiles[userProfile]) {
+      const badge = document.getElementById('nav-archetype-badge');
+      if (badge) { badge.textContent = profiles[userProfile].badge; badge.style.display = 'inline-block'; }
+    }
     if (state.completedSections) state.completedSections.forEach(i => completedSections.add(i));
     if (state.planItems) Object.assign(planItems, state.planItems);
     renderPlanChips();
