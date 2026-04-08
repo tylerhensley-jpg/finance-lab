@@ -6,7 +6,7 @@ import { OPENING_LINE, MISSION } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
-  { id: "explore", label: "Explore", time: "Junior Year", phase: "tcp", desc: "Students discover interests, research majors, and start building a personalized plan for life after high school.", iconId: "compass" },
+  { id: "explore", label: "Explore", time: "Junior Year", phase: "tcp", desc: "Students weigh interests, research majors, and start building a personalized plan for life after high school.", iconId: "compass" },
   { id: "plan", label: "Build the Plan", time: "Senior Year", phase: "tcp", desc: "Decode FAFSA, compare real school costs, and lock in a data-driven action plan — not a guess.", iconId: "blueprint" },
   { id: "apply", label: "Apply & Transition", time: "Senior Spring", phase: "bridge", desc: "Students apply for the Finance Lab Scholarship during spring semester, bridging the plan to the portfolio.", iconId: "paperplane" },
   { id: "invest", label: "Learn to Invest", time: "College Year 1", phase: "flab", desc: "Open a real brokerage account, invest real dollars, and earn $1,000 across four competency milestones.", iconId: "seedling" },
