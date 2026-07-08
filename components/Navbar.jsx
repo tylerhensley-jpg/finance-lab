@@ -1,8 +1,12 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/data/content";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const resolveHref = (href) => (href.startsWith("#") && !isHome ? `/${href}` : href);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -28,14 +32,17 @@ export default function Navbar() {
       setModalOpen(true);
       return;
     }
-    // Smooth scroll for anchor links
-    if (href.startsWith("#")) {
+    // Smooth scroll for anchor links, only when already on the homepage —
+    // otherwise let the browser navigate to "/#section" and jump there natively.
+    if (href.startsWith("#") && isHome) {
       e.preventDefault();
       setMobileOpen(false);
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      setMobileOpen(false);
     }
-  }, []);
+  }, [isHome]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,9 +65,14 @@ export default function Navbar() {
       >
         {/* ── LOGO ── */}
         <a
-          href="#"
+          href="/"
           style={{ textDecoration: "none" }}
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          onClick={(e) => {
+            if (isHome) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
         >
           <div className="font-display" style={{ 
             fontSize: 24,           /* 👈 Bumped from 18px */
@@ -77,7 +89,7 @@ export default function Navbar() {
           {NAV_LINKS.map((l) => (
             <a
               key={l.label}
-              href={l.href}
+              href={resolveHref(l.href)}
               onClick={(e) => handleNavClick(e, l.href, l.label)}
               style={{
                 fontSize: 15,           /* 👈 Bumped from 13px */
@@ -94,7 +106,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#impact"
+            href={resolveHref("#impact")}
             onClick={(e) => handleNavClick(e, "#impact", "Support Us")}
             className="btn-gold"
             style={{ 

@@ -1,8 +1,12 @@
 "use client";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/data/content";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const resolveHref = (href) => (href.startsWith("#") && !isHome ? `/${href}` : href);
   return (
     <footer style={{ 
       background: "var(--navy)", 
@@ -30,7 +34,7 @@ export default function Footer() {
         {NAV_LINKS.map((l) => (
           <a
             key={l.label}
-            href={l.href}
+            href={resolveHref(l.href)}
             style={{ 
               fontSize: 15, 
               fontWeight: 500, 

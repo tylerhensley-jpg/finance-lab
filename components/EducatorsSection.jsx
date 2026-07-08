@@ -239,8 +239,8 @@ export default function EducatorsSection() {
                 Request a Free Copy
               </a>
               <a href="mailto:team@thefinancelab.co" className="btn-outline-navy" style={{
-                padding: "18px 40px", 
-                fontSize: "18px", 
+                padding: "18px 40px",
+                fontSize: "18px",
                 fontWeight: 600,
                 textAlign: "center",
                 display: "block",
@@ -249,6 +249,23 @@ export default function EducatorsSection() {
                 Contact Us to Order
               </a>
             </div>
+          </Reveal>
+
+          <Reveal delay={4}>
+            <a
+              href="/guide"
+              style={{
+                display: "block",
+                textAlign: "center",
+                marginTop: 24,
+                fontSize: 15,
+                fontWeight: 600,
+                color: "var(--teal)",
+                textDecoration: "underline",
+              }}
+            >
+              Want to preview it first? Download the free Teacher&apos;s Guide →
+            </a>
           </Reveal>
 
         </div>
