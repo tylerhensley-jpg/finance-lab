@@ -67,13 +67,20 @@ export default function Navbar() {
             }
           }}
         >
-          <div className="font-display" style={{ 
-            fontSize: 24,           /* 👈 Bumped from 18px */
-            fontWeight: 700, 
-            color: "#fff", 
-            letterSpacing: 0.3 
-          }}>
-            The Finance <span style={{ color: "var(--gold)" }}>Lab</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <img
+              src="/images/cubes-white.png"
+              alt=""
+              style={{ height: 30, width: "auto", display: "block" }}
+            />
+            <div className="font-display" style={{
+              fontSize: 24,           /* 👈 Bumped from 18px */
+              fontWeight: 700,
+              color: "#fff",
+              letterSpacing: 0.3
+            }}>
+              The Finance <span style={{ color: "var(--gold)" }}>Lab</span>
+            </div>
           </div>
         </a>
 

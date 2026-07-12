@@ -19,6 +19,11 @@ export default function Footer() {
       <Script type="module" src="https://donorbox.org/widgets.js" strategy="lazyOnload" />
 
       {/* ── LOGO ── */}
+      <img
+        src="/images/cubes-white.png"
+        alt=""
+        style={{ height: 48, width: "auto", display: "block", margin: "0 auto 16px" }}
+      />
       <div className="font-display" style={{ fontSize: 32, fontWeight: 700, color: "#fff", marginBottom: 16 }}>
         The Finance <span style={{ color: "var(--gold)" }}>Lab</span>
       </div>
