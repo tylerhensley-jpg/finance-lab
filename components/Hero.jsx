@@ -120,9 +120,9 @@ export default function Hero() {
             gap: 14, marginBottom: 10,
           }}>
             <img
-              src="/images/flask-white.png"
+              src="/images/cubes-white.png"
               alt=""
-              style={{ height: 42, width: "auto", display: "block" }}
+              style={{ height: 46, width: "auto", display: "block" }}
             />
             <span className="font-mono" style={{
               fontSize: 18, fontWeight: 600, letterSpacing: 6,
@@ -141,8 +141,8 @@ export default function Hero() {
 
         <Reveal delay={1}>
           <h1 className="font-display" style={{
-            fontSize: "clamp(34px, 5.2vw, 62px)", fontWeight: 900,
-            lineHeight: 1.08, color: "#fff", marginBottom: 16,
+            fontSize: "clamp(34px, 5.2vw, 62px)", fontWeight: 700,
+            lineHeight: 1.12, letterSpacing: "0.2px", color: "#fff", marginBottom: 16,
           }}>
             Life&apos;s biggest money decisions come{" "}
             <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>early.</em>
