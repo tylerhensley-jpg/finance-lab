@@ -203,7 +203,8 @@ export const LAUNCHPAD = {
     },
   ],
   workbook:
-    "Coming soon: The Launchpad Activity Workbook, a print companion that collects the quick activities, the Advisor Series, and every Real Take in one place. Its Teacher's Guide is free to download today: an answer key, pacing, and a run sheet for every activity.",
+    "The Launchpad Activity Workbook is here: a print companion that collects the quick activities, the Advisor Series, and every Real Take in one place. The Teacher's Guide is a free download: an answer key, pacing, and a run sheet for every activity.",
+  workbookUrl: "https://www.amazon.com/dp/B0H8KZ2VQ1",
   teachersGuideUrl: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf",
   workbookBulk: "Ordering 10 or more workbooks? Take 10% off. Email us and we'll set it up.",
   workbookBulkMailto:

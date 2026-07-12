@@ -183,17 +183,24 @@ export default function LaunchpadSection() {
             marginBottom: 48,
             maxWidth: 860,
           }}>
-            <img
-              src="/images/launchpad-workbook-cover.jpg"
-              alt="The Launchpad Activity Workbook: front cover"
-              style={{
-                width: 118,
-                height: "auto",
-                borderRadius: 6,
-                boxShadow: "0 12px 28px rgba(0,0,0,0.4)",
-                flexShrink: 0,
-              }}
-            />
+            <a
+              href={LAUNCHPAD.workbookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ flexShrink: 0, display: "block" }}
+            >
+              <img
+                src="/images/launchpad-workbook-cover.jpg"
+                alt="The Launchpad Activity Workbook: front cover"
+                style={{
+                  width: 118,
+                  height: "auto",
+                  borderRadius: 6,
+                  boxShadow: "0 12px 28px rgba(0,0,0,0.4)",
+                  display: "block",
+                }}
+              />
+            </a>
             <div style={{ flex: "1 1 320px" }}>
               <span className="font-mono" style={{
                 display: "inline-block",
@@ -208,7 +215,7 @@ export default function LaunchpadSection() {
                 whiteSpace: "nowrap",
                 marginBottom: 12,
               }}>
-                Print · Coming Soon
+                In Print · Available Now
               </span>
               <p style={{ fontSize: 15, lineHeight: 1.55, color: "rgba(255,255,255,0.85)" }}>
                 {LAUNCHPAD.workbook}
@@ -223,26 +230,51 @@ export default function LaunchpadSection() {
                 </a>
               </p>
             </div>
-            <a
-              href={LAUNCHPAD.teachersGuideUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono"
-              style={{
-                fontSize: 12,
-                fontWeight: 700,
-                letterSpacing: 1,
-                textTransform: "uppercase",
-                padding: "10px 18px",
-                borderRadius: 99,
-                border: "1px solid var(--gold)",
-                color: "var(--gold)",
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Teacher&rsquo;s Guide (free PDF) &darr;
-            </a>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              <a
+                href={LAUNCHPAD.workbookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono"
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: 1,
+                  textTransform: "uppercase",
+                  padding: "10px 18px",
+                  borderRadius: 99,
+                  background: "var(--gold)",
+                  border: "1px solid var(--gold)",
+                  color: "var(--navy)",
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                }}
+              >
+                Get It on Amazon ↗
+              </a>
+              <a
+                href={LAUNCHPAD.teachersGuideUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono"
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  letterSpacing: 1,
+                  textTransform: "uppercase",
+                  padding: "10px 18px",
+                  borderRadius: 99,
+                  border: "1px solid var(--gold)",
+                  color: "var(--gold)",
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                }}
+              >
+                Teacher&rsquo;s Guide (free PDF) &darr;
+              </a>
+            </div>
           </div>
         </Reveal>
 
