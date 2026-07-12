@@ -644,6 +644,15 @@ export default function TCPSection() {
                   }}>
                     Free Teacher&apos;s Guide →
                   </a>
+                  <a href="/college-project" className="btn-outline-navy" style={{
+                    padding: "18px 40px",
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    display: "block",
+                  }}>
+                    Choose Your Format
+                  </a>
                   <a href={BULK_ORDER_MAILTO} className="btn-outline-navy" style={{
                     padding: "18px 40px",
                     fontSize: "18px",
