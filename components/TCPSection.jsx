@@ -166,7 +166,7 @@ export default function TCPSection() {
             borderTop: "4px solid var(--gold)",
             borderRadius: 16,
             padding: "clamp(32px, 5vw, 56px)",
-            marginBottom: 64,
+            marginBottom: 24,
             boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)",
           }}>
             <p className="font-mono" style={{
@@ -203,6 +203,61 @@ export default function TCPSection() {
             }}>
               {TCP_PREVIEW.attribution}
             </p>
+          </div>
+        </Reveal>
+
+        {/* ── FREE DOWNLOADS ROW ── */}
+        <Reveal>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 64 }}>
+            <span className="font-mono" style={{
+              fontSize: 12,
+              fontWeight: 700,
+              letterSpacing: 2,
+              textTransform: "uppercase",
+              color: "#9CA3AF",
+            }}>
+              Free Downloads
+            </span>
+            <a
+              href="/downloads/college-project-sample-chapter.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono"
+              style={{
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                padding: "10px 18px",
+                borderRadius: 99,
+                border: "1px solid var(--teal)",
+                color: "var(--teal)",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Sample Chapter: Free Money ↓
+            </a>
+            <a
+              href="/downloads/college-planning-checklists-senior-year-calendar.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono"
+              style={{
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                padding: "10px 18px",
+                borderRadius: 99,
+                border: "1px solid var(--teal)",
+                color: "var(--teal)",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Checklists &amp; Senior Year Calendar ↓
+            </a>
           </div>
         </Reveal>
 
@@ -588,21 +643,6 @@ export default function TCPSection() {
                     display: "block",
                   }}>
                     Free Teacher&apos;s Guide →
-                  </a>
-                  <a
-                    href="/downloads/college-project-sample-chapter.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-teal"
-                    style={{
-                      padding: "18px 40px",
-                      fontSize: "18px",
-                      fontWeight: 600,
-                      textAlign: "center",
-                      display: "block",
-                    }}
-                  >
-                    Read a Sample Chapter
                   </a>
                   <a href={BULK_ORDER_MAILTO} className="btn-outline-navy" style={{
                     padding: "18px 40px",

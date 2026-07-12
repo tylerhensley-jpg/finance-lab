@@ -114,9 +114,26 @@ export default function Hero() {
       {/* ── TOP 25%: Headline cluster ── */}
       <div style={{ flex: "0 0 auto", paddingTop: "2vh", textAlign: "center", margin: "0 auto" }}>
         <Reveal>
+          {/* Brand lockup */}
+          <div style={{
+            display: "flex", alignItems: "center", justifyContent: "center",
+            gap: 14, marginBottom: 10,
+          }}>
+            <img
+              src="/images/flask-white.png"
+              alt=""
+              style={{ height: 42, width: "auto", display: "block" }}
+            />
+            <span className="font-mono" style={{
+              fontSize: 18, fontWeight: 600, letterSpacing: 6,
+              textTransform: "uppercase", color: "#fff",
+            }}>
+              The Finance Lab
+            </span>
+          </div>
           <p className="font-mono" style={{
             fontSize: 11, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase",
-            color: "var(--gold-light)", marginBottom: 24, opacity: 0.9,
+            color: "var(--gold-light)", marginBottom: 28, opacity: 0.9,
           }}>
             A 501(c)(3) Nonprofit · Roseville, CA
           </p>
@@ -124,17 +141,25 @@ export default function Hero() {
 
         <Reveal delay={1}>
           <h1 className="font-display" style={{
-            fontSize: "clamp(40px, 7vw, 80px)", fontWeight: 900,
-            lineHeight: 1.02, color: "#fff", marginBottom: 16,
+            fontSize: "clamp(34px, 5.2vw, 62px)", fontWeight: 900,
+            lineHeight: 1.08, color: "#fff", marginBottom: 16,
           }}>
-            The <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>Plan.</em>
+            Life&apos;s biggest money decisions come{" "}
+            <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>early.</em>
             <br />
-            Then the <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>Portfolio.</em>
+            We get students <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>ready.</em>
           </h1>
         </Reveal>
 
         <Reveal delay={2}>
           <div style={{ maxWidth: 780, margin: "0 auto" }}>
+            {/* Program line */}
+            <p className="font-display" style={{
+              fontSize: "clamp(18px, 2vw, 23px)", fontWeight: 700, fontStyle: "italic",
+              color: "var(--gold-light)", marginBottom: 16,
+            }}>
+              The Plan. Then the Portfolio.
+            </p>
             {/* Opening line — bold provocation */}
             <p style={{
               fontSize: "clamp(17px, 2vw, 22px)", fontWeight: 600,
