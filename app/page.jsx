@@ -2,11 +2,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProblemSection from "@/components/ProblemSection";
-import JourneySection from "@/components/JourneySection";
 import TCPSection from "@/components/TCPSection";
 import ScholarshipSection from "@/components/ScholarshipSection";
+import LaunchpadSection from "@/components/LaunchpadSection";
 import ToolsSection from "@/components/ToolsSection";
-import EducatorsSection from "@/components/EducatorsSection";
+import LifeStageCalculator from "@/components/LifeStageCalculator";
 import ImpactSection from "@/components/ImpactSection";
 import Footer from "@/components/Footer";
 
@@ -16,11 +16,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ProblemSection />
-      <JourneySection />
       <TCPSection />
       <ScholarshipSection />
+      <LaunchpadSection />
       <ToolsSection />
-      <EducatorsSection />
+      <LifeStageCalculator />
       <ImpactSection />
       <Footer />
     </main>

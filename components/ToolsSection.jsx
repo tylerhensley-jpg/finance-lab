@@ -1,6 +1,7 @@
 "use client";
 import { TOOLS } from "@/data/content";
 import Reveal from "./ui/Reveal";
+import SketchIcon from "./ui/SketchIcon";
 
 export default function ToolsSection() {
   return (
@@ -54,7 +55,7 @@ export default function ToolsSection() {
         </Reveal>
 
         {/* ── TOOLS GRID ── */}
-        <div className="tools-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 /* 👈 Increased gap from 16px */ }}>
+        <div className="tools-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 /* 👈 2×2 now that the calculator makes four tools */ }}>
           {TOOLS.map((t, i) => {
             // 👈 Strip the word "App" from the title so it fits on one line (Fixed comment syntax here!)
             const cleanedTitle = t.name.replace(" App", "");
@@ -93,13 +94,12 @@ export default function ToolsSection() {
                       {t.badge}
                     </span>
 
-                    {/* Emoji */}
-                    <span style={{ 
-                      fontSize: 48,               /* 👈 Bumped from 32px */
-                      lineHeight: 1 
-                    }}>
-                      {t.emoji}
-                    </span>
+                    {/* Sketch icon, colored to match the badge */}
+                    <SketchIcon
+                      iconId={t.iconId}
+                      color={t.badgeColor === "teal" ? "var(--teal-light)" : "var(--gold-light)"}
+                      size={44}
+                    />
                   </div>
 
                   {/* Title */}

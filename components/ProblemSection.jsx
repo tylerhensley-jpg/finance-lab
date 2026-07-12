@@ -6,31 +6,31 @@ export default function ProblemSection() {
   return (
     <section id="problem" style={{ background: "var(--cream)", padding: "120px clamp(20px,5vw,40px)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        
+
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ 
+          <p className="font-mono" style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 4,
-            textTransform: "uppercase", 
-            color: "var(--gold)", 
-            marginBottom: 24 
+            textTransform: "uppercase",
+            color: "var(--gold)",
+            marginBottom: 24
           }}>
-            The Problem
+            Our Story
           </p>
         </Reveal>
 
         {/* ── HEADLINE ── */}
         <Reveal delay={1}>
-          <h2 className="font-display" style={{ 
+          <h2 className="font-display" style={{
             fontSize: "clamp(44px, 5vw, 72px)",
-            fontWeight: 700, 
+            fontWeight: 700,
             lineHeight: 1.05,
             letterSpacing: "-1px",
-            color: "var(--navy)", 
-            maxWidth: 800, 
-            marginBottom: 32 
+            color: "var(--navy)",
+            maxWidth: 800,
+            marginBottom: 32
           }}>
             760 students.<br />
             <em style={{ fontStyle: "italic", color: "var(--teal)" }}>One counselor.</em><br />
@@ -40,145 +40,182 @@ export default function ProblemSection() {
 
         {/* ── BODY ── */}
         <Reveal delay={2}>
-          <div style={{ maxWidth: 720, marginBottom: 64 }}>
-            <p style={{ 
-              fontSize: 20, 
-              lineHeight: 1.6, 
+          <div style={{ maxWidth: 720, marginBottom: 72 }}>
+            <p style={{
+              fontSize: 18,
+              lineHeight: 1.65,
               color: "var(--body-text)",
               marginBottom: 20
             }}>
               California&apos;s counselor-to-student ratio is{" "}
               <strong style={{ color: "var(--navy)" }}>1 to 760</strong>. That&apos;s not a criticism of
-              counselors — it&apos;s an impossible situation. No single professional can build a
+              counselors; it&apos;s an impossible situation. No single professional can build a
               personalized roadmap for every student.
             </p>
-            <p style={{ 
-              fontSize: 20, 
-              lineHeight: 1.6, 
-              color: "var(--body-text)" 
+            <p style={{
+              fontSize: 18,
+              lineHeight: 1.65,
+              color: "var(--body-text)"
             }}>
               The result: most young people make the biggest financial decision of their lives with almost no preparation.
             </p>
           </div>
         </Reveal>
 
-        {/* ── WHO WE SERVE ── */}
-        <Reveal delay={3}>
-          <div style={{
-            background: "var(--navy)", borderRadius: 16,
-            padding: "clamp(32px, 5vw, 56px) clamp(28px, 5vw, 64px)",
+        {/* ── WHO WE SERVE + STUDENT VOICE (side by side) ── */}
+        <div
+          className="problem-grid-responsive"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.1fr 1fr",
+            gap: 48,
+            alignItems: "center",
             marginBottom: 48,
-            position: "relative", overflow: "hidden",
-          }}>
-            {/* Subtle teal accent bar */}
-            <div style={{
-              position: "absolute", top: 0, left: 0,
-              width: 4, height: "100%",
-              background: "linear-gradient(to bottom, var(--teal-light), var(--gold))",
-              borderRadius: "16px 0 0 16px",
-            }} />
-            <p className="font-mono" style={{
-              fontSize: 11, fontWeight: 600, letterSpacing: 3,
-              textTransform: "uppercase", color: "var(--gold)",
-              marginBottom: 20, opacity: 0.85,
-            }}>
-              Who We Serve
-            </p>
-            <p style={{
-              fontSize: "clamp(16px, 1.8vw, 20px)", lineHeight: 1.75,
-              color: "rgba(255,255,255,0.78)", margin: 0, maxWidth: 780,
-            }}>
-              {WHO_WE_SERVE}
-            </p>
-          </div>
-        </Reveal>
-
-        {/* ── HERO QUOTE ── */}
-        <Reveal delay={4}>
-          <div style={{
-            position: "relative", background: "var(--navy)",
-            borderRadius: 16, 
-            padding: "clamp(48px, 8vw, 88px) clamp(32px, 6vw, 80px)",
-            marginBottom: 48, overflow: "hidden",
-            boxShadow: "0 20px 40px rgba(10, 25, 47, 0.08)"
-          }}>
-            {/* Background quotation mark SVG */}
-            <svg
-              viewBox="0 0 120 100"
-              style={{
-                position: "absolute", top: -10, left: -10,
-                width: "clamp(160px, 25vw, 280px)", height: "auto",
-                opacity: 0.06, pointerEvents: "none",
-              }}
-            >
-              <path
-                d="M28 86c-10 0-18-4-22-12C2 66 0 56 0 44 0 18 16 2 48 0l2 12C34 14 26 22 24 36c2 0 6 0 8 2 8 4 14 12 14 22 0 14-8 26-18 26zm64 0c-10 0-18-4-22-12-4-8-6-18-6-30C64 18 80 2 112 0l2 12c-16 2-24 10-26 24 2 0 6 0 8 2 8 4 14 12 14 22 0 14-8 26-18 26z"
-                fill="var(--gold-light)"
-              />
-            </svg>
-
-            <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
-              <p className="font-display" style={{
-                fontSize: "clamp(26px, 3.5vw, 42px)", fontWeight: 700,
-                color: "#fff", lineHeight: 1.3, fontStyle: "italic",
-                maxWidth: 760, marginBottom: 32,
+          }}
+        >
+          {/* Who we serve: open text with a rule, no box */}
+          <Reveal>
+            <div style={{ borderLeft: "4px solid var(--teal)", paddingLeft: 28 }}>
+              <p className="font-mono" style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "var(--teal)",
+                marginBottom: 16,
               }}>
-                Nobody in my family has gotten this far in education. These chapters made
-                me realize that everyone has a chance to go to college regardless of their
-                background.
+                Who We Serve
               </p>
-              <footer style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ width: 40, height: 2, background: "var(--gold)", borderRadius: 1 }} />
-                <cite style={{
-                  fontStyle: "normal", fontSize: 16, fontWeight: 500,
-                  color: "rgba(255,255,255,0.6)", fontFamily: "'DM Sans', sans-serif",
-                  letterSpacing: 0.5,
+              <p style={{
+                fontSize: 17,
+                lineHeight: 1.75,
+                color: "var(--body-text)",
+                margin: 0,
+              }}>
+                {WHO_WE_SERVE}
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Student voice: one navy card, quieter type */}
+          <Reveal delay={1}>
+            <div style={{
+              background: "var(--navy)",
+              borderRadius: 16,
+              padding: "clamp(32px, 4vw, 48px)",
+              position: "relative",
+              overflow: "hidden",
+              boxShadow: "0 20px 40px rgba(10, 25, 47, 0.08)",
+            }}>
+              <span className="font-display" style={{
+                position: "absolute", top: 4, left: 16,
+                fontSize: 100, lineHeight: 1,
+                color: "rgba(240,201,107,0.12)",
+                pointerEvents: "none",
+              }}>
+                &ldquo;
+              </span>
+              <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
+                <p className="font-display" style={{
+                  fontSize: "clamp(19px, 2.2vw, 24px)",
+                  fontWeight: 700,
+                  fontStyle: "italic",
+                  color: "rgba(255,255,255,0.95)",
+                  lineHeight: 1.45,
+                  marginBottom: 20,
                 }}>
-                  Sofia, first-generation student — Orange County
-                </cite>
-              </footer>
-            </blockquote>
-          </div>
-        </Reveal>
+                  Nobody in my family has gotten this far in education. These chapters made
+                  me realize that everyone has a chance to go to college regardless of their
+                  background.
+                </p>
+                <footer style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
+                  <cite style={{
+                    fontStyle: "normal", fontSize: 14, fontWeight: 600,
+                    color: "var(--gold)", fontFamily: "'DM Sans', sans-serif",
+                    letterSpacing: 0.5,
+                  }}>
+                    Sofia · First-generation student, Orange County
+                  </cite>
+                </footer>
+              </blockquote>
+            </div>
+          </Reveal>
+        </div>
 
-        {/* ── DROPOUT CALLOUT ── */}
-        <Reveal>
-          <div style={{
-            background: "#fff", border: "1px solid var(--soft-gray)",
-            borderLeft: "4px solid var(--teal)",
-            borderRadius: "0 12px 12px 0", padding: "32px 40px", maxWidth: 820,
-          }}>
-            <p style={{ fontSize: 17, lineHeight: 1.6, color: "var(--body-text)" }}>
-              Research shows that students who{" "}
-              <strong style={{ color: "var(--navy)" }}>dropped out</strong> chose their college
-              primarily because of convenience — location and schedule. Students who{" "}
-              <strong style={{ color: "var(--navy)" }}>graduated</strong> chose because they
-              believed it would help them get a job.{" "}
-              <strong style={{ color: "var(--navy)" }}>
-                The decision-making process before enrollment predicts the outcome after it.
-              </strong>
-            </p>
-            <p style={{ fontSize: 13, color: "#9CA3AF", marginTop: 12, fontStyle: "italic", fontWeight: 500 }}>
-              — Public Agenda, 2009
-            </p>
-          </div>
-        </Reveal>
+        {/* ── EVIDENCE ROW: research + counselor note, side by side ── */}
+        <div
+          className="problem-grid-responsive"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 24,
+            alignItems: "stretch",
+          }}
+        >
+          <Reveal>
+            <div style={{
+              background: "#fff",
+              border: "1px solid var(--soft-gray)",
+              borderTop: "4px solid var(--gold)",
+              borderRadius: 12,
+              padding: "28px 32px",
+              height: "100%",
+            }}>
+              <p className="font-mono" style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "var(--gold)",
+                marginBottom: 14,
+              }}>
+                Why It Matters
+              </p>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)" }}>
+                What a student does after high school is{" "}
+                <strong style={{ color: "var(--navy)" }}>one of the most important decisions
+                they&apos;ll ever make</strong>. Yet many make it without a personal plan, or the
+                tools, research, and guidance to build one they&apos;ll follow through on. Of
+                everything we teach in high school, this decision deserves better support:{" "}
+                <strong style={{ color: "var(--navy)" }}>
+                  so students can own it, modify it, and live it.
+                </strong>
+              </p>
+              <p className="font-mono" style={{ fontSize: 12, color: "#9CA3AF", marginTop: 14, letterSpacing: 1, lineHeight: 1.5 }}>
+                The research agrees: how students decide before enrollment predicts their
+                outcomes after it (Public Agenda, 2009).
+              </p>
+            </div>
+          </Reveal>
 
-        {/* ── COUNSELOR NOTE ── */}
-        <Reveal>
-          <div style={{
-            marginTop: 32, background: "rgba(26,122,110,0.06)",
-            border: "1px solid rgba(26,122,110,0.18)",
-            borderRadius: 12, padding: "28px 40px", maxWidth: 820,
-          }}>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--body-text)" }}>
-              <strong style={{ color: "var(--teal)" }}>A note to counselors and educators:</strong>{" "}
-              We&apos;re not here to replace you — we&apos;re here to extend what you can do. Think
-              of us as a tool you can put directly in students&apos; hands, so every student gets a
-              personalized experience regardless of caseload size.
-            </p>
-          </div>
-        </Reveal>
+          <Reveal delay={1}>
+            <div style={{
+              background: "rgba(26,122,110,0.06)",
+              border: "1px solid rgba(26,122,110,0.18)",
+              borderTop: "4px solid var(--teal)",
+              borderRadius: 12,
+              padding: "28px 32px",
+              height: "100%",
+            }}>
+              <p className="font-mono" style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 3,
+                textTransform: "uppercase",
+                color: "var(--teal)",
+                marginBottom: 14,
+              }}>
+                To Counselors &amp; Educators
+              </p>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)" }}>
+                We&apos;re not here to replace you. We&apos;re here to extend what you can do:
+                a tool you can put directly in students&apos; hands, so every student gets a
+                personalized experience regardless of caseload size.
+              </p>
+            </div>
+          </Reveal>
+        </div>
 
       </div>
     </section>

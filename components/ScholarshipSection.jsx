@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import { MILESTONES, DIFFERENTIATORS } from "@/data/content";
+import { MILESTONES, DIFFERENTIATORS, SCHOLARS } from "@/data/content";
 import Reveal from "./ui/Reveal";
+import SketchIcon from "./ui/SketchIcon";
 
 export default function ScholarshipSection() {
   const [activeMilestone, setActiveMilestone] = useState(null);
@@ -52,8 +53,9 @@ export default function ScholarshipSection() {
             maxWidth: 680, 
             marginBottom: 64                    /* 👈 More breathing room before the grid */
           }}>
-            Our $1,000 scholarship is disbursed across four milestones — not handed over all
-            at once. Students earn each increment by demonstrating real competency.
+            The plan is step one. The portfolio is step two: our $1,000 scholarship is
+            disbursed across four milestones, not handed over all at once. Students earn
+            each increment by demonstrating real competency.
           </p>
         </Reveal>
 
@@ -120,6 +122,85 @@ export default function ScholarshipSection() {
           </div>
         </Reveal>
 
+        {/* ── CURRENT SCHOLARS ── */}
+        <Reveal>
+          <p className="font-mono" style={{
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: 3,
+            textTransform: "uppercase",
+            color: "var(--gold)",
+            marginBottom: 24,
+          }}>
+            Meet Our Current Scholars
+          </p>
+        </Reveal>
+        <div
+          className="scholars-grid-responsive"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 530px))",
+            gap: 24,
+            marginBottom: 64,
+          }}
+        >
+          {SCHOLARS.map((sc, i) => (
+            <Reveal key={sc.name} delay={i + 1}>
+              <div
+                className="scholar-card-responsive"
+                style={{
+                  display: "flex",
+                  gap: 28,
+                  alignItems: "center",
+                  background: "#fff",
+                  border: "1px solid var(--soft-gray)",
+                  borderRadius: 16,
+                  padding: "32px 36px",
+                  height: "100%",
+                  boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)",
+                }}
+              >
+                <img
+                  src={sc.photo}
+                  alt={sc.alt}
+                  style={{
+                    width: 128,
+                    height: 128,
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    flexShrink: 0,
+                    border: "3px solid var(--gold)",
+                  }}
+                />
+                <div>
+                  <p className="font-display" style={{
+                    fontSize: 19,
+                    fontWeight: 700,
+                    fontStyle: "italic",
+                    color: "var(--navy)",
+                    lineHeight: 1.45,
+                    marginBottom: 14,
+                  }}>
+                    &ldquo;{sc.quote}&rdquo;
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ width: 24, height: 2, background: "var(--gold)", borderRadius: 1 }} />
+                    <cite style={{
+                      fontStyle: "normal",
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: "var(--gold)",
+                      letterSpacing: 0.5,
+                    }}>
+                      {sc.name} · {sc.attr}
+                    </cite>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
         {/* ── DIFFERENTIATORS GRID ── */}
         <div className="diff-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 56 }}>
           {DIFFERENTIATORS.map((d, i) => (
@@ -134,7 +215,9 @@ export default function ScholarshipSection() {
                   borderRadius: 12,     /* 👈 Smoother corners */
                 }}
               >
-                <span style={{ fontSize: 28, flexShrink: 0 }}>{d.icon}</span> {/* 👈 Bumped icon size */}
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  <SketchIcon iconId={d.iconId} color="var(--gold)" size={30} />
+                </div>
                 <div>
                   <h4 style={{ 
                     fontSize: 16,         /* 👈 Bumped from 13px */
@@ -160,12 +243,27 @@ export default function ScholarshipSection() {
 
         {/* ── CTA BUTTON ── */}
         <Reveal>
-          <a href="#" className="btn-gold" style={{
-            display: "inline-block",
-            padding: "16px 40px",   /* 👈 Chunkier padding */
-            fontSize: "18px",       /* 👈 Bigger text */
-            fontWeight: 600
-          }}>Apply for the Scholarship</a>
+          <a
+            href="mailto:team@thefinancelab.co?subject=Notify%20me%3A%20Finance%20Lab%20Scholarship&body=Name%3A%0ASchool%20(optional)%3A%0A"
+            className="btn-gold"
+            style={{
+              display: "inline-block",
+              padding: "16px 40px",
+              fontSize: "18px",
+              fontWeight: 600
+            }}
+          >
+            Get Notified When Applications Open
+          </a>
+          <p style={{ fontSize: 14, color: "var(--body-text)", marginTop: 16 }}>
+            Or email us directly:{" "}
+            <a
+              href="mailto:team@thefinancelab.co?subject=Notify%20me%3A%20Finance%20Lab%20Scholarship&body=Name%3A%0ASchool%20(optional)%3A%0A"
+              style={{ color: "var(--teal)", fontWeight: 700, textDecoration: "underline" }}
+            >
+              team@thefinancelab.co
+            </a>
+          </p>
         </Reveal>
       </div>
     </section>

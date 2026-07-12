@@ -10,8 +10,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -43,11 +41,6 @@ export default function Navbar() {
       setMobileOpen(false);
     }
   }, [isHome]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email.trim()) setSubmitted(true);
-  };
 
   return (
     <>
@@ -179,98 +172,62 @@ export default function Navbar() {
       {/* ── COMING SOON MODAL ── */}
       <div
         className={`modal-overlay ${modalOpen ? "open" : ""}`}
-        onClick={(e) => { if (e.target === e.currentTarget) { setModalOpen(false); setSubmitted(false); setEmail(""); } }}
+        onClick={(e) => { if (e.target === e.currentTarget) setModalOpen(false); }}
       >
-        <div className="modal-box" style={{ padding: "48px 40px" /* 👈 Assumes modal-box class exists, overriding inner padding if needed */ }}>
-          {!submitted ? (
-            <>
-              <p className="font-mono" style={{ 
-                fontSize: 13,           /* 👈 Standardized from 10px */
-                fontWeight: 600,
-                letterSpacing: 4, 
-                textTransform: "uppercase", 
-                color: "var(--gold)", 
-                marginBottom: 20 
-              }}>
-                Coming Soon
-              </p>
-              <h3 className="font-display" style={{ 
-                fontSize: 36,           /* 👈 Bumped from 28px */
-                fontWeight: 700, 
-                color: "#fff", 
-                marginBottom: 16, 
-                lineHeight: 1.1 
-              }}>
-                Scholarship applications open soon.
-              </h3>
-              <p style={{ 
-                fontSize: 16,           /* 👈 Bumped from 14px */
-                color: "rgba(255,255,255,0.7)", 
-                lineHeight: 1.6, 
-                marginBottom: 32 
-              }}>
-                Be the first to know when The Finance Lab Scholarship opens for the next cohort. Drop your email and we&apos;ll notify you.
-              </p>
-              <form onSubmit={handleSubmit} style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="modal-input"
-                  style={{ 
-                    flex: "1 1 220px", 
-                    minWidth: 0,
-                    padding: "16px 20px", /* 👈 Chunkier input */
-                    fontSize: 16          /* 👈 Bigger text */
-                  }}
-                />
-                <button type="submit" className="btn-gold" style={{ 
-                  padding: "16px 32px",   /* 👈 Chunkier button */
-                  fontSize: 16, 
-                  fontWeight: 600,
-                  whiteSpace: "nowrap" 
-                }}>
-                  Notify Me
-                </button>
-              </form>
-            </>
-          ) : (
-            <>
-              <div style={{ 
-                fontSize: 56,             /* 👈 Bumped from 40px */
-                color: "var(--gold)", 
-                marginBottom: 20 
-              }}>✓</div>
-              <h3 className="font-display" style={{ 
-                fontSize: 32,             /* 👈 Bumped from 24px */
-                fontWeight: 700, 
-                color: "#fff", 
-                marginBottom: 12 
-              }}>
-                You&apos;re on the list.
-              </h3>
-              <p style={{ 
-                fontSize: 16,             /* 👈 Bumped from 14px */
-                color: "rgba(255,255,255,0.7)", 
-                marginBottom: 32 
-              }}>
-                We&apos;ll reach out to <strong style={{ color: "var(--gold)" }}>{email}</strong> when applications open.
-              </p>
-              <button
-                onClick={() => { setModalOpen(false); setSubmitted(false); setEmail(""); }}
-                className="btn-outline-white"
-                style={{ 
-                  padding: "12px 32px",   /* 👈 Chunkier close button */
-                  fontSize: 16,
-                  fontWeight: 600
-                }}
-              >
-                Close
-              </button>
-            </>
-          )}
+        <div className="modal-box" style={{ padding: "48px 40px" }}>
+          <p className="font-mono" style={{
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            color: "var(--gold)",
+            marginBottom: 20
+          }}>
+            Coming Soon
+          </p>
+          <h3 className="font-display" style={{
+            fontSize: 36,
+            fontWeight: 700,
+            color: "#fff",
+            marginBottom: 16,
+            lineHeight: 1.1
+          }}>
+            Scholarship applications open soon.
+          </h3>
+          <p style={{
+            fontSize: 16,
+            color: "rgba(255,255,255,0.7)",
+            lineHeight: 1.6,
+            marginBottom: 32
+          }}>
+            Want to be first to know when The Finance Lab Scholarship opens for the next
+            cohort? Send us a quick email and we&apos;ll reach out.
+          </p>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+            <a
+              href="mailto:team@thefinancelab.co?subject=Notify%20me%3A%20Finance%20Lab%20Scholarship&body=Name%3A%0ASchool%20(optional)%3A%0A"
+              className="btn-gold"
+              style={{ padding: "16px 32px", fontSize: 16, fontWeight: 600, whiteSpace: "nowrap" }}
+            >
+              Email to Get Notified
+            </a>
+            <button
+              onClick={() => setModalOpen(false)}
+              className="btn-outline-white"
+              style={{ padding: "16px 32px", fontSize: 16, fontWeight: 600 }}
+            >
+              Close
+            </button>
+          </div>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", marginTop: 24 }}>
+            Or write to us directly:{" "}
+            <a
+              href="mailto:team@thefinancelab.co"
+              style={{ color: "var(--gold-light)", fontWeight: 600, textDecoration: "underline" }}
+            >
+              team@thefinancelab.co
+            </a>
+          </p>
         </div>
       </div>
     </>

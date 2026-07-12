@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "The Finance Lab — The Plan, Then the Portfolio",
+  title: "The Finance Lab: The Plan, Then the Portfolio",
   description:
-    "A 501(c)(3) nonprofit teaching students to invest and build wealth through experiential education. Two connected programs — The College Project and The Finance Lab Scholarship — give underserved students a personalized roadmap and a real investment portfolio.",
+    "A 501(c)(3) nonprofit teaching students to invest and build wealth through experiential education. The College Project, The Launchpad, and The Finance Lab Scholarship give underserved students a personalized roadmap and a real investment portfolio.",
   keywords: [
     "financial literacy",
     "student investing",
@@ -12,9 +12,10 @@ export const metadata = {
     "college planning",
     "The Finance Lab",
     "The College Project",
+    "The Launchpad",
   ],
   openGraph: {
-    title: "The Finance Lab — The Plan, Then the Portfolio",
+    title: "The Finance Lab: The Plan, Then the Portfolio",
     description:
       "Two connected programs. One complete student journey. We teach students to plan for college and invest real money.",
     type: "website",

@@ -223,6 +223,19 @@ body {
   .diff-grid-responsive { grid-template-columns: 1fr !important; }
   .tools-grid-responsive { grid-template-columns: 1fr !important; }
   .edu-grid-responsive { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .tcp-grid-responsive { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .problem-grid-responsive { grid-template-columns: 1fr !important; }
+  .scholars-grid-responsive { grid-template-columns: 1fr !important; }
+  .scholar-card-responsive { flex-direction: column !important; align-items: flex-start !important; }
+  .tcp-grid-responsive img { max-width: 320px; margin: 0 auto; }
+  .launchpad-grid-responsive { grid-template-columns: 1fr !important; }
+  .launchpad-cta-responsive { grid-template-columns: 1fr !important; }
+  .calc-grid-responsive { grid-template-columns: 1fr !important; }
+  .calc-breakdown-responsive { grid-template-columns: 1fr 1fr !important; }
+  .calc-header-row { display: none !important; }
+  .calc-row-responsive { grid-template-columns: 1fr 1fr 1fr !important; }
+  .calc-row-responsive .calc-row-label { grid-column: 1 / -1 !important; }
+  .calc-input-caption { display: block !important; }
   .impact-stats-responsive { grid-template-columns: 1fr 1fr !important; }
   .impact-stats-responsive > * > div { border-radius: 0 !important; }
   .audience-row-responsive { flex-direction: column !important; gap: 8px !important; align-items: center !important; }
@@ -236,7 +249,8 @@ body {
   .timeline-vertical { display: none !important; }
 }
 
-@media (max-width: 900px) {
+/* 1160px (was 900px): six nav links need the extra room before collapsing */
+@media (max-width: 1160px) {
   .desktop-nav { display: none !important; }
   .mobile-toggle { display: block !important; }
 }

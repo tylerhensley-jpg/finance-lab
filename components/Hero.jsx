@@ -7,7 +7,7 @@ import { OPENING_LINE, MISSION } from "../data/content";
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
   { id: "explore", label: "Explore", time: "Junior Year", phase: "tcp", desc: "Students weigh interests, research majors, and start building a personalized plan for life after high school.", iconId: "compass" },
-  { id: "plan", label: "Build the Plan", time: "Senior Year", phase: "tcp", desc: "Decode FAFSA, compare real school costs, and lock in a data-driven action plan — not a guess.", iconId: "blueprint" },
+  { id: "plan", label: "Build the Plan", time: "Senior Year", phase: "tcp", desc: "Decode FAFSA, compare real school costs, and lock in a data-driven action plan, not a guess.", iconId: "blueprint" },
   { id: "apply", label: "Apply & Transition", time: "Senior Spring", phase: "bridge", desc: "Students apply for the Finance Lab Scholarship during spring semester, bridging the plan to the portfolio.", iconId: "paperplane" },
   { id: "invest", label: "Learn to Invest", time: "College Year 1", phase: "flab", desc: "Open a real brokerage account, invest real dollars, and earn $1,000 across four competency milestones.", iconId: "seedling" },
   { id: "present", label: "Arrive Ready", time: "Year 1 Complete", phase: "flab", desc: "Present investment strategy to professionals. Enter adulthood with a direction and a portfolio already growing.", iconId: "shield" },
@@ -294,19 +294,19 @@ export default function Hero() {
       <div style={{ flex: "0 0 auto", marginTop: "24px" }}>
         <Reveal delay={4}>
           <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap", marginBottom: 32 }}>
-            <a href="#journey" className="btn-gold" style={{ 
-              padding: "16px 40px",   /* 👈 Chunkier padding */
-              fontSize: "18px",       /* 👈 Bigger text */
-              fontWeight: 600,
-              letterSpacing: "0.5px"
-            }}>See How It Works</a>
-            
-            <a href="#tcp" className="btn-outline-white" style={{ 
+            <a href="#tcp" className="btn-gold" style={{
               padding: "16px 40px",   /* 👈 Chunkier padding */
               fontSize: "18px",       /* 👈 Bigger text */
               fontWeight: 600,
               letterSpacing: "0.5px"
             }}>Explore the Book</a>
+
+            <a href="#launchpad" className="btn-outline-white" style={{
+              padding: "16px 40px",   /* 👈 Chunkier padding */
+              fontSize: "18px",       /* 👈 Bigger text */
+              fontWeight: 600,
+              letterSpacing: "0.5px"
+            }}>Meet The Launchpad</a>
           </div>
         </Reveal>
 
