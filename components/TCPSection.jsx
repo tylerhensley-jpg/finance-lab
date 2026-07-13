@@ -120,7 +120,7 @@ export default function TCPSection() {
             </Reveal>
 
             <Reveal delay={1}>
-              <p style={{ fontSize: 18, lineHeight: 1.6, color: "var(--body-text)", marginBottom: 32 }}>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 32 }}>
                 {TCP_POSITIONING}
               </p>
             </Reveal>
@@ -148,10 +148,10 @@ export default function TCPSection() {
             </div>
 
             <Reveal delay={4}>
-              <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--body-text)", marginBottom: 12 }}>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 12 }}>
                 {TCP_ARTIFACTS}
               </p>
-              <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--body-text)", fontStyle: "italic" }}>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", fontStyle: "italic" }}>
                 {TCP_CREDIBILITY}
               </p>
             </Reveal>
@@ -361,7 +361,7 @@ export default function TCPSection() {
                 <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
                   <p className="font-display" style={{
                     fontSize: "clamp(24px, 3.5vw, 36px)", /* 👈 Scaled up to match Hero Quote */
-                    fontWeight: 700,
+                    fontWeight: 400,
                     fontStyle: "italic", 
                     color: "rgba(255,255,255,0.95)",
                     lineHeight: 1.35, 
@@ -452,7 +452,7 @@ export default function TCPSection() {
               <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
                 <p className="font-display" style={{
                   fontSize: "clamp(24px, 3.5vw, 36px)",
-                  fontWeight: 700,
+                  fontWeight: 400,
                   fontStyle: "italic",
                   color: "rgba(255,255,255,0.95)",
                   lineHeight: 1.35,

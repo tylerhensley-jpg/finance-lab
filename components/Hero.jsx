@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import { OPENING_LINE, MISSION } from "../data/content";
+import { OPENING_LINE, HERO_METHOD_LINE, HERO_RESOURCES } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -163,20 +163,44 @@ export default function Hero() {
             {/* Opening line — bold provocation */}
             <p style={{
               fontSize: "clamp(17px, 2vw, 22px)", fontWeight: 600,
-              color: "#fff", lineHeight: 1.55, marginBottom: 16,
+              color: "#fff", lineHeight: 1.55, marginBottom: 8,
               letterSpacing: "-0.2px",
             }}>
               {OPENING_LINE}
             </p>
-            {/* Mission — the response */}
+            {/* Method line — how we do it */}
             <p style={{
-              fontSize: "clamp(14px, 1.6vw, 17px)", fontWeight: 300,
-              color: "rgba(255,255,255,0.62)", lineHeight: 1.75,
-              borderTop: "1px solid rgba(255,255,255,0.12)",
-              paddingTop: 16, margin: 0,
+              fontSize: "clamp(15px, 1.7vw, 18px)", fontWeight: 400,
+              color: "rgba(255,255,255,0.72)", lineHeight: 1.6,
+              margin: "0 0 22px",
             }}>
-              {MISSION}
+              {HERO_METHOD_LINE}
             </p>
+            {/* Resource menu — teachers pick where to start */}
+            <div style={{
+              display: "flex", flexWrap: "wrap", gap: 10,
+              justifyContent: "center", alignItems: "center",
+              borderTop: "1px solid rgba(255,255,255,0.12)",
+              paddingTop: 18,
+            }}>
+              {HERO_RESOURCES.map((r) => (
+                <a
+                  key={r.label}
+                  href={r.href}
+                  style={{
+                    fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.85)",
+                    textDecoration: "none", padding: "9px 18px", borderRadius: 99,
+                    border: "1px solid rgba(255,255,255,0.22)",
+                    background: "rgba(255,255,255,0.05)",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = "var(--gold-light)"; e.target.style.color = "var(--gold-light)"; }}
+                  onMouseLeave={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.22)"; e.target.style.color = "rgba(255,255,255,0.85)"; }}
+                >
+                  {r.label}
+                </a>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>

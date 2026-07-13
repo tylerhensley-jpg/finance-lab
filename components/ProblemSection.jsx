@@ -118,7 +118,7 @@ export default function ProblemSection() {
               <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
                 <p className="font-display" style={{
                   fontSize: "clamp(19px, 2.2vw, 24px)",
-                  fontWeight: 700,
+                  fontWeight: 400,
                   fontStyle: "italic",
                   color: "rgba(255,255,255,0.95)",
                   lineHeight: 1.45,
@@ -182,7 +182,7 @@ export default function ProblemSection() {
                   so students can own it, modify it, and live it.
                 </strong>
               </p>
-              <p className="font-mono" style={{ fontSize: 12, color: "#9CA3AF", marginTop: 14, letterSpacing: 1, lineHeight: 1.5 }}>
+              <p style={{ fontSize: 13, color: "var(--mid-gray)", marginTop: 14, lineHeight: 1.6 }}>
                 The research agrees: how students decide before enrollment predicts their
                 outcomes after it (Public Agenda, 2009).
               </p>

@@ -8,7 +8,20 @@
 // ─────────────────────────────────────────────
 
 export const OPENING_LINE =
-  "Financial education is the most unequally distributed skill in America. We give it to the students who need it most.";
+  "The money decisions of adult life, practiced before they're real.";
+
+export const HERO_METHOD_LINE =
+  "Hands-on, data-driven, and honest enough for the modern teen.";
+
+// Hero resource menu — teachers and administrators are the primary viewers.
+export const HERO_RESOURCES = [
+  { label: "The College Project Book", href: "#tcp" },
+  { label: "Free Teacher's Guide", href: "/guide" },
+  { label: "The Launchpad Curriculum", href: "#launchpad" },
+  { label: "The College Project App", href: "https://college.thefinancelab.co" },
+  { label: "One-Period Lessons", href: "/college-project" },
+  { label: "Family Resources", href: "/college-project" },
+];
 
 export const MISSION =
   "We equip first-generation students from underbanked, underserved communities with the real financial skills they need to build wealth, because a plan and a portfolio shouldn't be privileges.";

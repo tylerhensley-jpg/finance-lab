@@ -175,7 +175,7 @@ export default function ScholarshipSection() {
                 <div>
                   <p className="font-display" style={{
                     fontSize: 19,
-                    fontWeight: 700,
+                    fontWeight: 400,
                     fontStyle: "italic",
                     color: "var(--navy)",
                     lineHeight: 1.45,
