@@ -21,6 +21,7 @@ const CONTENTS = [
   { title: "Standards alignment", desc: "Chapter-by-chapter mapping to relevant academic standards." },
   { title: "Pacing guides", desc: "Suggested timing for a full semester or a condensed course." },
   { title: "Rubrics", desc: "Scoring guides for the book's reflection and project-based work." },
+  { title: "Choose Your Format appendix", desc: "The six formats of The College Project and how to pick by the time and setting you have." },
 ];
 
 const PDF_HREF = "/downloads/the-college-project-teachers-guide-5th-edition.pdf";
@@ -71,7 +72,7 @@ export default function GuidePage() {
             className="font-mono"
             style={{ fontSize: 14, color: "#9CA3AF", letterSpacing: 0.5, marginBottom: 48 }}
           >
-            54 pages · PDF, ~900 KB · Free for classroom use, no sign-up required
+            58 pages · PDF, ~930 KB · Free for classroom use, no sign-up required
           </p>
 
           {/* ── PRIMARY CTA ── */}
