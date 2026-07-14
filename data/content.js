@@ -23,7 +23,7 @@ export const HERO_PROJECTS = [
     tagline: "Find your fit. Afford your future.",
     desc: "One decision, taught end to end: choosing a college that fits and knowing you can afford it before you commit.",
     resources: [
-      { label: "The Book, 5th Edition", href: "#tcp" },
+      { label: "The Book, 5th Edition", href: "https://www.amazon.com/dp/B0H85W1K1J" },
       { label: "Teacher's Guide (free)", href: "/guide" },
       { label: "The App: college.thefinancelab.co", href: "https://college.thefinancelab.co" },
       { label: "The Launchpad Unit", href: "#launchpad" },
@@ -154,6 +154,8 @@ export const TOOLS = [
 // ─────────────────────────────────────────────
 
 export const TCP_EDITION = "Fifth Edition · Updated for the 2026–27 school year";
+
+export const TCP_BOOK_URL = "https://www.amazon.com/dp/B0H85W1K1J";
 
 export const TCP_TAGLINE = "Find Your Fit. Afford Your Future.";
 

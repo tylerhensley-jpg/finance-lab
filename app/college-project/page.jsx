@@ -22,7 +22,7 @@ const FORMATS = [
     meta: "Time: a quarter or a semester · Tech: none",
     bestFor: "A dedicated college unit in AVID, advisory, economics, or English; classrooms that want everything on paper.",
     links: [
-      { label: "About the book →", href: "/#tcp" },
+      { label: "The book on Amazon →", href: "https://www.amazon.com/dp/B0H85W1K1J" },
       { label: "Free Teacher's Guide →", href: "/guide" },
     ],
   },

@@ -1,7 +1,7 @@
 "use client";
 import {
   RESULTS, QUOTES, TCP_EDITION, TCP_TAGLINE, TCP_POSITIONING, TCP_PILLARS,
-  TCP_CREDIBILITY, TCP_ARTIFACTS, TCP_PREVIEW, BULK_ORDER_MAILTO,
+  TCP_CREDIBILITY, TCP_ARTIFACTS, TCP_PREVIEW, BULK_ORDER_MAILTO, TCP_BOOK_URL,
   TEACHER_QUOTE, COURSE_TAGS, FEATURES, PRICING,
 } from "@/data/content";
 import Reveal from "./ui/Reveal";
@@ -635,7 +635,16 @@ export default function TCPSection() {
 
               <Reveal delay={1}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  <a href="/guide" className="btn-gold" style={{
+                  <a href={TCP_BOOK_URL} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{
+                    padding: "18px 40px",
+                    fontSize: "18px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                    display: "block",
+                  }}>
+                    Get the Book on Amazon →
+                  </a>
+                  <a href="/guide" className="btn-outline-navy" style={{
                     padding: "18px 40px",
                     fontSize: "18px",
                     fontWeight: 600,
