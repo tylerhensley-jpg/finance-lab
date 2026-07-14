@@ -62,7 +62,7 @@ export default function GuidePage() {
             <em style={{ fontStyle: "italic", color: "var(--teal)" }}>Teacher&apos;s Guide</em>
           </h1>
 
-          <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 16 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 16 }}>
             Fifth Edition. The full companion for teaching <em>The College Project</em> in your
             classroom. A Kickoff session plus 19 chapters, with everything you need to plan and run
             the course: lesson flows, exit tickets, standards alignment, pacing guides, and rubrics.
@@ -129,7 +129,7 @@ export default function GuidePage() {
                 >
                   ✓
                 </div>
-                <p style={{ fontSize: 16, color: "var(--body-text)", lineHeight: 1.6 }}>
+                <p style={{ fontSize: 17, color: "var(--body-text)", lineHeight: 1.6 }}>
                   <strong style={{ color: "var(--navy)", fontWeight: 700 }}>{item.title}.</strong>{" "}
                   {item.desc}
                 </p>
@@ -152,7 +152,7 @@ export default function GuidePage() {
             >
               Ordering copies for your class?
             </h2>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 24 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 24 }}>
               Schools can order <em>The College Project</em> student book in bulk at a discount off
               Amazon&apos;s retail price. Every copy funds The Finance Lab&apos;s mission, and the
               Scholarship Tier turns a portion of each order into on-site scholarships for students
@@ -188,7 +188,7 @@ export default function GuidePage() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
+                    <div style={{ fontSize: 17, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
                     <div style={{ fontSize: 13, color: "var(--body-text)", marginTop: 4 }}>{p.note}</div>
                   </div>
                   <div className="font-display" style={{ fontSize: 26, fontWeight: 800, color: "var(--gold)" }}>
@@ -201,7 +201,7 @@ export default function GuidePage() {
             <a
               href="mailto:team@thefinancelab.co?subject=Bulk%20order%3A%20The%20College%20Project"
               className="btn-outline-navy"
-              style={{ padding: "16px 32px", fontSize: 16, fontWeight: 600 }}
+              style={{ padding: "16px 32px", fontSize: 17, fontWeight: 600 }}
             >
               Contact Us for Bulk Pricing
             </a>

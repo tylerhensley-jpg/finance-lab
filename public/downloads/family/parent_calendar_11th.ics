@@ -1,0 +1,92 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Finance Lab//College Project Parent Calendar//EN
+X-WR-CALNAME:College Project: 11th Grade Parent Calendar
+X-WR-TIMEZONE:America/Los_Angeles
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:11-1@thefinancelab.co
+DTSTART;VALUE=DATE:20250825
+DTEND;VALUE=DATE:20250826
+SUMMARY:📅 Meet with school counselor
+DESCRIPTION:Introduce yourself. Ask what 11th grade milestones to plan for.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-2@thefinancelab.co
+DTSTART;VALUE=DATE:20250915
+DTEND;VALUE=DATE:20250916
+SUMMARY:💬 Revisit college list
+DESCRIPTION:5-10 schools? Help think about reach, match, and safety categories.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-3@thefinancelab.co
+DTSTART;VALUE=DATE:20251001
+DTEND;VALUE=DATE:20251002
+SUMMARY:💰 Net price for every school on the list
+DESCRIPTION:Use net price calculators for each school. This changes everything.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-4@thefinancelab.co
+DTSTART;VALUE=DATE:20251015
+DTEND;VALUE=DATE:20251016
+SUMMARY:📅 PSAT/SAT — confirm participation
+DESCRIPTION:Many schools offer the SAT at no cost in October.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-5@thefinancelab.co
+DTSTART;VALUE=DATE:20251101
+DTEND;VALUE=DATE:20251102
+SUMMARY:🎓 College rep visits season
+DESCRIPTION:Many colleges send reps to high schools in fall. Encourage attendance.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-6@thefinancelab.co
+DTSTART;VALUE=DATE:20251201
+DTEND;VALUE=DATE:20251202
+SUMMARY:💰 Scholarship deadline research
+DESCRIPTION:Many major scholarships open in fall and close December-January. Start a list.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-7@thefinancelab.co
+DTSTART;VALUE=DATE:20260115
+DTEND;VALUE=DATE:20260116
+SUMMARY:💬 Discuss what matters most
+DESCRIPTION:Ask: If you could only pick one thing in a college, what would it be?
+END:VEVENT
+BEGIN:VEVENT
+UID:11-8@thefinancelab.co
+DTSTART;VALUE=DATE:20260301
+DTEND;VALUE=DATE:20260302
+SUMMARY:🎓 Spring college fair season
+DESCRIPTION:Prioritize schools on your student's list.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-9@thefinancelab.co
+DTSTART;VALUE=DATE:20260401
+DTEND;VALUE=DATE:20260402
+SUMMARY:📅 AP exams approaching
+DESCRIPTION:AP scores can earn college credit — saving real money. Encourage serious prep.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-10@thefinancelab.co
+DTSTART;VALUE=DATE:20260515
+DTEND;VALUE=DATE:20260516
+SUMMARY:💰 Start FAFSA prep
+DESCRIPTION:FAFSA opens October 1 of senior year. Gather: tax returns, FSA ID, asset info.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-11@thefinancelab.co
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+SUMMARY:📅 Request letters of recommendation NOW
+DESCRIPTION:Encourage your student to ask teachers before the school year ends.
+END:VEVENT
+BEGIN:VEVENT
+UID:11-12@thefinancelab.co
+DTSTART;VALUE=DATE:20260615
+DTEND;VALUE=DATE:20260616
+SUMMARY:📅 Finalize college list over summer
+DESCRIPTION:6-10 schools (reach/match/safety) heading into senior year reduces stress.
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,64 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Finance Lab//College Project Parent Calendar//EN
+X-WR-CALNAME:College Project: 10th Grade Parent Calendar
+X-WR-TIMEZONE:America/Los_Angeles
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:10-1@thefinancelab.co
+DTSTART;VALUE=DATE:20250901
+DTEND;VALUE=DATE:20250902
+SUMMARY:🎓 Sophomore grades count too
+DESCRIPTION:Keep building the GPA and good habits. Colleges look at all four years.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-2@thefinancelab.co
+DTSTART;VALUE=DATE:20251001
+DTEND;VALUE=DATE:20251002
+SUMMARY:📚 Take the PSAT
+DESCRIPTION:Many schools offer the PSAT in October. It is low-stakes practice and a useful baseline. Ask the counselor.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-3@thefinancelab.co
+DTSTART;VALUE=DATE:20251015
+DTEND;VALUE=DATE:20251016
+SUMMARY:💬 Explore careers and majors
+DESCRIPTION:Talk about what your student is curious about. The app shows what majors can lead where.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-4@thefinancelab.co
+DTSTART;VALUE=DATE:20251101
+DTEND;VALUE=DATE:20251102
+SUMMARY:🎓 Visit a campus
+DESCRIPTION:Even a local college visit makes college feel real. Walk around, grab lunch, ask questions.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-5@thefinancelab.co
+DTSTART;VALUE=DATE:20260115
+DTEND;VALUE=DATE:20260116
+SUMMARY:💰 Run a net price calculator
+DESCRIPTION:Pick a dream school and run its net price calculator together. The real number is often far below the sticker price.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-6@thefinancelab.co
+DTSTART;VALUE=DATE:20260215
+DTEND;VALUE=DATE:20260216
+SUMMARY:📅 Plan a balanced junior schedule
+DESCRIPTION:Junior year is the big one. Help your student choose challenging but realistic courses.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-7@thefinancelab.co
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260502
+SUMMARY:📚 Start an activity log
+DESCRIPTION:Keep a running list of activities, roles, and accomplishments. It makes applications far easier later.
+END:VEVENT
+BEGIN:VEVENT
+UID:10-8@thefinancelab.co
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+SUMMARY:📚 Make the summer count
+DESCRIPTION:A job, internship, program, or volunteering builds skills and direction before junior year.
+END:VEVENT
+END:VCALENDAR

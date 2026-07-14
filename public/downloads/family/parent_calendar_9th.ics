@@ -1,0 +1,64 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Finance Lab//College Project Parent Calendar//EN
+X-WR-CALNAME:College Project: 9th Grade Parent Calendar
+X-WR-TIMEZONE:America/Los_Angeles
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:9-1@thefinancelab.co
+DTSTART;VALUE=DATE:20250901
+DTEND;VALUE=DATE:20250902
+SUMMARY:🎓 Grades start counting now
+DESCRIPTION:Freshman grades are part of the GPA colleges see. Help your student build good study habits early.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-2@thefinancelab.co
+DTSTART;VALUE=DATE:20250915
+DTEND;VALUE=DATE:20250916
+SUMMARY:💬 Talk about why college
+DESCRIPTION:Ask: what do you think college is for, and is it worth it for you? No pressure, just curiosity.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-3@thefinancelab.co
+DTSTART;VALUE=DATE:20251001
+DTEND;VALUE=DATE:20251002
+SUMMARY:📅 Meet the counselor and learn A-G
+DESCRIPTION:Introduce yourself to the counselor. Ask which courses (the A-G list) keep UC and CSU options open.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-4@thefinancelab.co
+DTSTART;VALUE=DATE:20251101
+DTEND;VALUE=DATE:20251102
+SUMMARY:📚 Explore one or two real interests
+DESCRIPTION:Encourage activities your student actually enjoys. Depth beats a long list of clubs.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-5@thefinancelab.co
+DTSTART;VALUE=DATE:20260115
+DTEND;VALUE=DATE:20260116
+SUMMARY:💰 Bust the cost myth early
+DESCRIPTION:Most families overestimate college cost. Look up one school's net price together so sticker shock does not steer decisions.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-6@thefinancelab.co
+DTSTART;VALUE=DATE:20260201
+DTEND;VALUE=DATE:20260202
+SUMMARY:💰 Start a small savings habit
+DESCRIPTION:Even a small automatic monthly amount adds up over four years. Anything is better than nothing.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-7@thefinancelab.co
+DTSTART;VALUE=DATE:20260401
+DTEND;VALUE=DATE:20260402
+SUMMARY:🎓 Aim for some rigor next year
+DESCRIPTION:When choosing 10th-grade classes, encourage one challenging course your student can handle. Growth matters more than a perfect GPA.
+END:VEVENT
+BEGIN:VEVENT
+UID:9-8@thefinancelab.co
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+SUMMARY:📚 Make the summer count
+DESCRIPTION:A job, volunteering, or a free program helps your student explore interests and build a story for later.
+END:VEVENT
+END:VCALENDAR

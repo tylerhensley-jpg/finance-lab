@@ -107,7 +107,7 @@ export default function LifeStageCalculator() {
   const inputStyle = {
     width: "100%",
     padding: "12px 14px",
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: 600,
     color: "var(--navy)",
     background: "#fff",
@@ -166,7 +166,7 @@ export default function LifeStageCalculator() {
 
         <Reveal delay={2}>
           <p style={{
-            fontSize: 16,
+            fontSize: 17,
             lineHeight: 1.65,
             color: "var(--body-text)",
             maxWidth: 680,
@@ -218,7 +218,7 @@ export default function LifeStageCalculator() {
                   borderBottom: i < STAGE_DEFS.length - 1 ? "1px solid var(--soft-gray)" : "none",
                 }}>
                   <div className="calc-row-label">
-                    <div style={{ fontSize: 16, fontWeight: 700, color: "var(--navy)" }}>
+                    <div style={{ fontSize: 17, fontWeight: 700, color: "var(--navy)" }}>
                       {def.emoji} {def.label}
                     </div>
                     <div style={{ fontSize: 13, color: "var(--mid-gray)" }}>{def.note}</div>
@@ -282,7 +282,7 @@ export default function LifeStageCalculator() {
               boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)",
             }}>
               {/* Headline number */}
-              <p style={{ fontSize: 16, color: "var(--body-text)", marginBottom: 4 }}>
+              <p style={{ fontSize: 17, color: "var(--body-text)", marginBottom: 4 }}>
                 After {result.totalYears} years of investing through every life stage
               </p>
               <div className="font-display" style={{
@@ -294,7 +294,7 @@ export default function LifeStageCalculator() {
               }}>
                 {fmt(result.balance)}
               </div>
-              <p style={{ fontSize: 16, color: "var(--body-text)", marginBottom: 24 }}>
+              <p style={{ fontSize: 17, color: "var(--body-text)", marginBottom: 24 }}>
                 You contributed <strong style={{ color: CONTRIB_COLOR }}>{fmt(result.totalContrib)}</strong>
                 {" "}· Compound growth added <strong style={{ color: BALANCE_COLOR }}>{fmt(result.growth)}</strong>
               </p>

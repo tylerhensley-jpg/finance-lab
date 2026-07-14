@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import { OPENING_LINE, HERO_METHOD_LINE, HERO_RESOURCES } from "../data/content";
+import { OPENING_LINE, HERO_METHOD_LINE, HERO_PROJECTS } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -176,31 +176,66 @@ export default function Hero() {
             }}>
               {HERO_METHOD_LINE}
             </p>
-            {/* Resource menu — teachers pick where to start */}
-            <div style={{
-              display: "flex", flexWrap: "wrap", gap: 10,
-              justifyContent: "center", alignItems: "center",
-              borderTop: "1px solid rgba(255,255,255,0.12)",
-              paddingTop: 18,
-            }}>
-              {HERO_RESOURCES.map((r) => (
-                <a
-                  key={r.label}
-                  href={r.href}
-                  style={{
-                    fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.85)",
-                    textDecoration: "none", padding: "9px 18px", borderRadius: 99,
-                    border: "1px solid rgba(255,255,255,0.22)",
-                    background: "rgba(255,255,255,0.05)",
-                    transition: "all 0.2s",
-                  }}
-                  onMouseEnter={(e) => { e.target.style.borderColor = "var(--gold-light)"; e.target.style.color = "var(--gold-light)"; }}
-                  onMouseLeave={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.22)"; e.target.style.color = "rgba(255,255,255,0.85)"; }}
-                >
-                  {r.label}
-                </a>
-              ))}
-            </div>
+          </div>
+        </Reveal>
+
+        {/* ── THE TWO PROJECTS: everything flows from one of these ── */}
+        <Reveal delay={3}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: 20,
+            width: "min(95%, 980px)",
+            margin: "28px auto 0",
+            textAlign: "left",
+          }}>
+            {HERO_PROJECTS.map((proj) => (
+              <div key={proj.id} style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderTop: `3px solid ${proj.accent}`,
+                borderRadius: 16,
+                padding: "26px 28px 22px",
+              }}>
+                <h2 className="font-display" style={{
+                  fontSize: 24, fontWeight: 700, color: "#fff",
+                  lineHeight: 1.2, marginBottom: 4,
+                }}>
+                  {proj.name}
+                </h2>
+                <p className="font-display" style={{
+                  fontSize: 17, fontWeight: 400, fontStyle: "italic",
+                  color: proj.accent, marginBottom: 10,
+                }}>
+                  {proj.tagline}
+                </p>
+                <p style={{
+                  fontSize: 14, lineHeight: 1.6,
+                  color: "rgba(255,255,255,0.65)", marginBottom: 16,
+                }}>
+                  {proj.desc}
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  {proj.resources.map((r) => (
+                    <a
+                      key={r.label}
+                      href={r.href}
+                      style={{
+                        display: "flex", alignItems: "baseline", gap: 8,
+                        fontSize: 14, fontWeight: 500, color: "rgba(255,255,255,0.85)",
+                        textDecoration: "none", padding: "6px 8px", borderRadius: 8,
+                        transition: "all 0.15s",
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.color = proj.accent; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; e.currentTarget.style.background = "transparent"; }}
+                    >
+                      <span style={{ color: proj.accent, flexShrink: 0 }}>→</span>
+                      <span>{r.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>
@@ -220,10 +255,19 @@ export default function Hero() {
         <Reveal delay={3} className="timeline-horizontal" style={{ width: "100%" }}>
           <div style={{ width: "100%", position: "relative" }}>
 
+            {/* Connector: the two projects are one student journey */}
+            <p style={{
+              textAlign: "center", fontSize: 13, fontWeight: 600,
+              letterSpacing: 3, textTransform: "uppercase",
+              color: "rgba(255,255,255,0.45)", marginBottom: 20,
+            }}>
+              One student journey: from the plan to the portfolio
+            </p>
+
             {/* Phase labels - Scaled up typography */}
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 24, padding: "0 16px" }}>
-              <span style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.8 }}>← The College Project</span>
-              <span style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Finance Lab →</span>
+              <span style={{ fontSize: 17, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.8 }}>← The College Project</span>
+              <span style={{ fontSize: 17, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Finance Lab →</span>
             </div>
 
             {/* SVG track - Thicker 6px line */}
@@ -270,7 +314,7 @@ export default function Hero() {
                       
                       {/* Bigger Labels */}
                       <span style={{ fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.4)", marginTop: 16, transition: "color 0.3s", whiteSpace: "nowrap" }}>{node.time}</span>
-                      <span style={{ fontSize: 16, fontWeight: isActive ? 700 : 500, color: isActive ? "#fff" : "rgba(255,255,255,0.5)", marginTop: 6, transition: "all 0.3s", textAlign: "center", lineHeight: 1.3, maxWidth: 120 }}>{node.label}</span>
+                      <span style={{ fontSize: 17, fontWeight: isActive ? 700 : 500, color: isActive ? "#fff" : "rgba(255,255,255,0.5)", marginTop: 6, transition: "all 0.3s", textAlign: "center", lineHeight: 1.3, maxWidth: 120 }}>{node.label}</span>
                     </div>
                   );
                 })}
@@ -289,9 +333,9 @@ export default function Hero() {
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                     <span style={{ fontSize: 13, letterSpacing: 2, textTransform: "uppercase", color: getLabelColor(active.phase), background: `${getLabelColor(active.phase)}15`, padding: "4px 10px", borderRadius: 4 }}>{getLabel(active.phase)}</span>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>{active.label}</span>
+                    <span style={{ fontSize: 17, fontWeight: 700, color: "#fff" }}>{active.label}</span>
                   </div>
-                  <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>{active.desc}</p>
+                  <p style={{ fontSize: 17, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>{active.desc}</p>
                 </div>
               ) : (
                 <div style={{ textAlign: "center", padding: "24px 0" }}>
@@ -339,26 +383,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── BOTTOM: CTAs + pills (SCALED UP) ── */}
+      {/* ── BOTTOM: audience pills ── */}
       <div style={{ flex: "0 0 auto", marginTop: "24px" }}>
-        <Reveal delay={4}>
-          <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap", marginBottom: 32 }}>
-            <a href="#tcp" className="btn-gold" style={{
-              padding: "16px 40px",   /* 👈 Chunkier padding */
-              fontSize: "18px",       /* 👈 Bigger text */
-              fontWeight: 600,
-              letterSpacing: "0.5px"
-            }}>Explore the Book</a>
-
-            <a href="#launchpad" className="btn-outline-white" style={{
-              padding: "16px 40px",   /* 👈 Chunkier padding */
-              fontSize: "18px",       /* 👈 Bigger text */
-              fontWeight: 600,
-              letterSpacing: "0.5px"
-            }}>Meet The Launchpad</a>
-          </div>
-        </Reveal>
-
         <Reveal delay={5}>
           <div className="audience-row-responsive" style={{ display: "flex", justifyContent: "center" }}>
             <a href="#tcp" className="audience-pill" style={{ 

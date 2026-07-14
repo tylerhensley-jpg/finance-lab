@@ -1,0 +1,113 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Finance Lab//College Project Parent Calendar//EN
+X-WR-CALNAME:College Project: 12th Grade Parent Calendar
+X-WR-TIMEZONE:America/Los_Angeles
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:12-1@thefinancelab.co
+DTSTART;VALUE=DATE:20260825
+DTEND;VALUE=DATE:20260826
+SUMMARY:📅 Confirm final college list
+DESCRIPTION:Reach, match, safety schools confirmed. Use the app comparison tool together.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-2@thefinancelab.co
+DTSTART;VALUE=DATE:20260901
+DTEND;VALUE=DATE:20260902
+SUMMARY:💬 Have the real budget conversation
+DESCRIPTION:What can your family realistically contribute per year? Your student needs to know.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-3@thefinancelab.co
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+SUMMARY:💰 Create your FSA ID NOW
+DESCRIPTION:Go to studentaid.gov. You need your own login to co-sign the FAFSA. Don't wait.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-4@thefinancelab.co
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:📅 Early Decision/Action deadlines
+DESCRIPTION:ED/EA applications due Nov 1-15. Discuss financial risk of ED before committing.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-5@thefinancelab.co
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:💰 FAFSA OPENS TODAY — file immediately
+DESCRIPTION:File FAFSA as early as possible. Earlier = earlier aid offers. Cal Grant deadline is March 2.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-6@thefinancelab.co
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:📅 CA Dream Act Application opens
+DESCRIPTION:For undocumented students: CA Dream Act Application opens October 1. Deadline March 2.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-7@thefinancelab.co
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:📅 Regular Decision deadlines (Jan 1-15)
+DESCRIPTION:Most RD applications due January 1 or 15. Confirm your student's specific deadlines.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-8@thefinancelab.co
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:💰 File taxes ASAP
+DESCRIPTION:Early tax filing = FAFSA verification = faster aid offers.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-9@thefinancelab.co
+DTSTART;VALUE=DATE:20270302
+DTEND;VALUE=DATE:20270303
+SUMMARY:💰 CAL GRANT DEADLINE — TODAY
+DESCRIPTION:California Cal Grant requires verified GPA + completed FAFSA by March 2. Do not miss.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-10@thefinancelab.co
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+SUMMARY:📅 Admission decisions arrive
+DESCRIPTION:Most RD schools notify by April 1. Celebrate every acceptance.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-11@thefinancelab.co
+DTSTART;VALUE=DATE:20270405
+DTEND;VALUE=DATE:20270406
+SUMMARY:💰 Compare financial aid offer letters
+DESCRIPTION:Look at: net price, grants vs loans, whether aid renews, total 4-year cost.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-12@thefinancelab.co
+DTSTART;VALUE=DATE:20270420
+DTEND;VALUE=DATE:20270421
+SUMMARY:💰 Appeal financial aid if appropriate
+DESCRIPTION:Changed financial situation? Another school offered more? A polite appeal is often worth sending.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-13@thefinancelab.co
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:📅 NATIONAL COLLEGE DECISION DAY
+DESCRIPTION:Enrollment deposit due at chosen school. Celebrate the decision!
+END:VEVENT
+BEGIN:VEVENT
+UID:12-14@thefinancelab.co
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+SUMMARY:💰 Set up student bank account + budget
+DESCRIPTION:Before college: bank account, basic budget, and understanding of aid package.
+END:VEVENT
+BEGIN:VEVENT
+UID:12-15@thefinancelab.co
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271002
+SUMMARY:💰 FAFSA renewal reminder (Year 2)
+DESCRIPTION:Student must renew FAFSA every year of college. Set this reminder to repeat annually.
+END:VEVENT
+END:VCALENDAR

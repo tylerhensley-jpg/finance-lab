@@ -92,7 +92,7 @@ export default function Navbar() {
               href={resolveHref(l.href)}
               onClick={(e) => handleNavClick(e, l.href, l.label)}
               style={{
-                fontSize: 16,           /* 👈 Bumped from 13px */
+                fontSize: 17,           /* 👈 Bumped from 13px */
                 fontWeight: 500, 
                 color: "rgba(255,255,255,0.65)",
                 textDecoration: "none", 
@@ -202,7 +202,7 @@ export default function Navbar() {
             Scholarship applications open soon.
           </h3>
           <p style={{
-            fontSize: 16,
+            fontSize: 17,
             color: "rgba(255,255,255,0.7)",
             lineHeight: 1.6,
             marginBottom: 32
@@ -214,14 +214,14 @@ export default function Navbar() {
             <a
               href="mailto:team@thefinancelab.co?subject=Notify%20me%3A%20Finance%20Lab%20Scholarship&body=Name%3A%0ASchool%20(optional)%3A%0A"
               className="btn-gold"
-              style={{ padding: "16px 32px", fontSize: 16, fontWeight: 600, whiteSpace: "nowrap" }}
+              style={{ padding: "16px 32px", fontSize: 17, fontWeight: 600, whiteSpace: "nowrap" }}
             >
               Email to Get Notified
             </a>
             <button
               onClick={() => setModalOpen(false)}
               className="btn-outline-white"
-              style={{ padding: "16px 32px", fontSize: 16, fontWeight: 600 }}
+              style={{ padding: "16px 32px", fontSize: 17, fontWeight: 600 }}
             >
               Close
             </button>

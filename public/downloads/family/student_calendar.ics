@@ -1,0 +1,180 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Finance Lab//College Project Student Calendar//EN
+X-WR-CALNAME:College Project: Your Senior Year Deadlines
+X-WR-CALDESC:Key California college and financial aid deadlines, with reminders. Repeats every year.
+X-WR-TIMEZONE:America/Los_Angeles
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:sr-apps-open@thefinancelab.co
+DTSTART;VALUE=DATE:20260801
+DTEND;VALUE=DATE:20260802
+RRULE:FREQ=YEARLY
+SUMMARY:📅 UC & CSU applications open
+DESCRIPTION:You can start filling out your UC and CSU applications now. Build your college list (reach, match, safety).
+BEGIN:VALARM
+TRIGGER:-P2D
+ACTION:DISPLAY
+DESCRIPTION:UC & CSU applications open soon
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-rec-letters@thefinancelab.co
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+RRULE:FREQ=YEARLY
+SUMMARY:📝 Ask teachers for letters of recommendation
+DESCRIPTION:Ask early, while teachers still have time. Junior-year teachers are ideal. Give them your brag sheet.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Ask for rec letters this week
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-fafsa-open@thefinancelab.co
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+RRULE:FREQ=YEARLY
+SUMMARY:💰 FAFSA & CA Dream Act open — file as early as you can
+DESCRIPTION:The FAFSA and CA Dream Act Application (CADAA) both open October 1. Filing early means earlier aid offers. You need this for Cal Grant (deadline March 2).
+BEGIN:VALARM
+TRIGGER:-P2D
+ACTION:DISPLAY
+DESCRIPTION:FAFSA / CADAA opens in 2 days
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-ea-ed@thefinancelab.co
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+RRULE:FREQ=YEARLY
+SUMMARY:📅 Early Action / Early Decision deadlines (many Nov 1–15)
+DESCRIPTION:If you are applying early to private or out-of-state schools, those deadlines are usually Nov 1–15. Early Decision is binding, so know the financial risk first.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Early deadlines coming up
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-uc-csu-deadline@thefinancelab.co
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+RRULE:FREQ=YEARLY
+SUMMARY:📅 UC & CSU application deadline — submit by today
+DESCRIPTION:Both the UC and CSU applications are due November 30. Submit before the site gets slow on the last day.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:UC & CSU apps due in 1 week
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:UC & CSU apps due TOMORROW
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-rd-deadline@thefinancelab.co
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+RRULE:FREQ=YEARLY
+SUMMARY:📅 Regular Decision deadlines (many Jan 1–15)
+DESCRIPTION:Most private and out-of-state Regular Decision applications are due January 1 or 15. Confirm each school's exact date.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Regular Decision deadlines this week
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-fa-priority@thefinancelab.co
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+RRULE:FREQ=YEARLY
+SUMMARY:💰 Check each college's financial aid priority deadline
+DESCRIPTION:Many colleges have their own financial aid priority deadlines in January and February. Complete the CSS Profile if a school requires it.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Check financial aid priority deadlines
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-cal-grant@thefinancelab.co
+DTSTART;VALUE=DATE:20270302
+DTEND;VALUE=DATE:20270303
+RRULE:FREQ=YEARLY
+SUMMARY:💰 CAL GRANT DEADLINE — today (firm)
+DESCRIPTION:To qualify for Cal Grant, your FAFSA or CADAA AND your school-certified GPA must be submitted by March 2. This deadline does not move.
+BEGIN:VALARM
+TRIGGER:-P14D
+ACTION:DISPLAY
+DESCRIPTION:Cal Grant deadline in 2 weeks — check your FAFSA & GPA
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P2D
+ACTION:DISPLAY
+DESCRIPTION:Cal Grant deadline in 2 days
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-decisions@thefinancelab.co
+DTSTART;VALUE=DATE:20270401
+DTEND;VALUE=DATE:20270402
+RRULE:FREQ=YEARLY
+SUMMARY:📅 Decisions arrive — compare your aid offers
+DESCRIPTION:Most schools notify by early April. Put your offers side by side: net price, grants vs loans, whether aid renews, total cost. Keep your head up if a no comes.
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Decisions and aid offers arriving
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-decision-day@thefinancelab.co
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+RRULE:FREQ=YEARLY
+SUMMARY:🎓 College Decision Day — submit your SIR & deposit
+DESCRIPTION:May 1 is the national deadline to accept your offer. Submit your Statement of Intent to Register (SIR) and enrollment deposit. Cannot afford the deposit? Ask about a fee waiver.
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Decision Day in 1 week
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Decision Day is TOMORROW
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-final-transcript@thefinancelab.co
+DTSTART;VALUE=DATE:20270610
+DTEND;VALUE=DATE:20270611
+RRULE:FREQ=YEARLY
+SUMMARY:🎓 Send your final transcript & sign up for orientation
+DESCRIPTION:Most colleges require your final high school transcript before you can enroll. Ask your counselor to send it, then sign up for orientation and placement tests.
+BEGIN:VALARM
+TRIGGER:-P2D
+ACTION:DISPLAY
+DESCRIPTION:Send final transcript, sign up for orientation
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sr-summer-melt@thefinancelab.co
+DTSTART;VALUE=DATE:20270701
+DTEND;VALUE=DATE:20270702
+RRULE:FREQ=YEARLY
+SUMMARY:💰 Summer: check your portal & email every week
+DESCRIPTION:Most students who get in but never start missed one summer email about aid, housing, or verification. Check weekly. If money gets scary, call the financial aid office, do not walk away.
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Keep checking your college portal this summer
+END:VALARM
+END:VEVENT
+END:VCALENDAR

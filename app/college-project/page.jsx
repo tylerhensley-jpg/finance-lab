@@ -22,7 +22,7 @@ const FORMATS = [
     meta: "Time: a quarter or a semester · Tech: none",
     bestFor: "A dedicated college unit in AVID, advisory, economics, or English; classrooms that want everything on paper.",
     links: [
-      { label: "The workbook on Amazon →", href: "https://www.amazon.com/dp/B0H8KZ2VQ1" },
+      { label: "About the book →", href: "/#tcp" },
       { label: "Free Teacher's Guide →", href: "/guide" },
     ],
   },
@@ -69,7 +69,7 @@ const FORMATS = [
     body: "Grade-by-grade parent calendars (9th through 12th, phone-importable and printable) and a one-page letter home in English and Spanish.",
     meta: "Time: five minutes to share · Tech: none",
     bestFor: "Back-to-school night, counselor newsletters, family nights.",
-    links: [{ label: "In the Launchpad teacher Resources tab →", href: "https://learn.thefinancelab.co" }],
+    links: [{ label: "Download the family resources →", href: "/family" }],
   },
 ];
 
@@ -131,7 +131,7 @@ export default function CollegeProjectFormatsPage() {
             One project. <em style={{ fontStyle: "italic", color: "var(--teal)" }}>Pick your format.</em>
           </h1>
 
-          <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 64, maxWidth: 720 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 64, maxWidth: 720 }}>
             The College Project teaches one decision: finding a college that fits and knowing you
             can afford it before you commit. Every format below teaches that same project with the
             same data and the same voice. They differ in time, setting, and paper versus screen.
@@ -168,7 +168,7 @@ export default function CollegeProjectFormatsPage() {
                 <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--navy)", marginBottom: 12 }}>
                   {f.name}
                 </h2>
-                <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 14 }}>{f.body}</p>
+                <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 14 }}>{f.body}</p>
                 <p style={{ fontSize: 13, color: "#9CA3AF", letterSpacing: 0.3, marginBottom: 10 }}>
                   {f.meta}
                 </p>
@@ -180,7 +180,7 @@ export default function CollegeProjectFormatsPage() {
                     <a
                       key={l.href + l.label}
                       href={l.href}
-                      style={{ fontSize: 16, fontWeight: 700, color: "var(--teal)", textDecoration: "none" }}
+                      style={{ fontSize: 17, fontWeight: 700, color: "var(--teal)", textDecoration: "none" }}
                     >
                       {l.label}
                     </a>
@@ -209,8 +209,8 @@ export default function CollegeProjectFormatsPage() {
                   borderRadius: 12,
                 }}
               >
-                <span style={{ fontSize: 16, color: "var(--body-text)" }}>{have}:</span>
-                <span style={{ fontSize: 16, fontWeight: 700, color: "var(--navy)" }}>{use}</span>
+                <span style={{ fontSize: 17, color: "var(--body-text)" }}>{have}:</span>
+                <span style={{ fontSize: 17, fontWeight: 700, color: "var(--navy)" }}>{use}</span>
               </div>
             ))}
           </div>
@@ -219,7 +219,7 @@ export default function CollegeProjectFormatsPage() {
           <h2 className="font-display" style={{ fontSize: 28, fontWeight: 700, color: "var(--navy)", marginBottom: 12 }}>
             What&apos;s covered where
           </h2>
-          <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 24, maxWidth: 720 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 24, maxWidth: 720 }}>
             The formats mix well. Many classrooms run the workbook and send students to the app for
             the live data, or run the Launchpad unit and use the print Real Takes on no-device days.
           </p>

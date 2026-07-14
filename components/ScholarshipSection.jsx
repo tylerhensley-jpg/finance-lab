@@ -47,7 +47,7 @@ export default function ScholarshipSection() {
         {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 16,
+            fontSize: 17,
             lineHeight: 1.6, 
             color: "var(--body-text)", 
             maxWidth: 680, 
@@ -101,7 +101,7 @@ export default function ScholarshipSection() {
                   {m.amount}
                 </div>
                 <div style={{ 
-                  fontSize: 16,             /* 👈 Bumped from 13px */
+                  fontSize: 17,             /* 👈 Bumped from 13px */
                   fontWeight: 700, 
                   color: "var(--navy)", 
                   marginBottom: 12, 
@@ -110,7 +110,7 @@ export default function ScholarshipSection() {
                   {m.title}
                 </div>
                 <div style={{ 
-                  fontSize: 16,             /* 👈 Bumped from 12px */
+                  fontSize: 17,             /* 👈 Bumped from 12px */
                   color: "var(--body-text)", 
                   lineHeight: 1.6, 
                   opacity: 0.85 
@@ -220,7 +220,7 @@ export default function ScholarshipSection() {
                 </div>
                 <div>
                   <h4 style={{ 
-                    fontSize: 16,         /* 👈 Bumped from 13px */
+                    fontSize: 17,         /* 👈 Bumped from 13px */
                     fontWeight: 700, 
                     color: "var(--navy)", 
                     marginBottom: 8 
@@ -228,7 +228,7 @@ export default function ScholarshipSection() {
                     {d.title}
                   </h4>
                   <p style={{ 
-                    fontSize: 16,         /* 👈 Bumped from 12px */
+                    fontSize: 17,         /* 👈 Bumped from 12px */
                     color: "var(--body-text)", 
                     lineHeight: 1.6, 
                     opacity: 0.85 

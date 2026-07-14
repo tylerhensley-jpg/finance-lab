@@ -29,7 +29,7 @@ export default function Footer() {
       </div>
 
       {/* ── MISSION / LOCATION ── */}
-      <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", lineHeight: 1.65, maxWidth: 480, margin: "0 auto" }}>
+      <p style={{ fontSize: 17, color: "rgba(255,255,255,0.6)", lineHeight: 1.65, maxWidth: 480, margin: "0 auto" }}>
         A 501(c)(3) nonprofit teaching students to invest and build wealth through
         experiential education. Roseville, California.
       </p>
@@ -41,7 +41,7 @@ export default function Footer() {
             key={l.label}
             href={resolveHref(l.href)}
             style={{ 
-              fontSize: 16, 
+              fontSize: 17, 
               fontWeight: 500, 
               letterSpacing: 0.5, 
               color: "rgba(255,255,255,0.6)", 

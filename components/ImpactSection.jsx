@@ -56,7 +56,7 @@ export default function ImpactSection() {
         {/* ── BODY ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 16,
+            fontSize: 17,
             color: "rgba(255,255,255,0.85)",    /* 👈 Increased contrast slightly */
             maxWidth: 640, 
             margin: "0 auto 64px",              /* 👈 More breathing room below */
@@ -94,7 +94,7 @@ export default function ImpactSection() {
                   {s.value}
                 </div>
                 <div style={{ 
-                  fontSize: 16,                 /* 👈 Bumped from 13px */
+                  fontSize: 17,                 /* 👈 Bumped from 13px */
                   fontWeight: 500,              /* 👈 Made slightly bolder */
                   color: "rgba(255,255,255,0.8)", 
                   lineHeight: 1.5 

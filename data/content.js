@@ -13,14 +13,37 @@ export const OPENING_LINE =
 export const HERO_METHOD_LINE =
   "Hands-on, data-driven, and honest enough for the modern teen.";
 
-// Hero resource menu — teachers and administrators are the primary viewers.
-export const HERO_RESOURCES = [
-  { label: "The College Project Book", href: "#tcp" },
-  { label: "Free Teacher's Guide", href: "/guide" },
-  { label: "The Launchpad Curriculum", href: "#launchpad" },
-  { label: "The College Project App", href: "https://college.thefinancelab.co" },
-  { label: "One-Period Lessons", href: "/college-project" },
-  { label: "Family Resources", href: "/college-project" },
+// Hero: the two main projects and the resources that flow from each.
+// Teachers and administrators are the primary viewers.
+export const HERO_PROJECTS = [
+  {
+    id: "tcp",
+    accent: "var(--teal-light)",
+    name: "The College Project",
+    tagline: "Find your fit. Afford your future.",
+    desc: "One decision, taught end to end: choosing a college that fits and knowing you can afford it before you commit.",
+    resources: [
+      { label: "The Book, 5th Edition", href: "#tcp" },
+      { label: "Teacher's Guide (free)", href: "/guide" },
+      { label: "The App: college.thefinancelab.co", href: "https://college.thefinancelab.co" },
+      { label: "The Launchpad Unit", href: "#launchpad" },
+      { label: "The One Hour (a single class period)", href: "/college-project" },
+      { label: "Family Resources", href: "/family" },
+    ],
+  },
+  {
+    id: "launchpad",
+    accent: "var(--gold-light)",
+    name: "The Launchpad",
+    tagline: "Comprehensive personal finance education.",
+    desc: "Six units of real money decisions on real data, with a live teacher dashboard. Built for 11th and 12th grade.",
+    resources: [
+      { label: "Access The Launchpad", href: "https://learn.thefinancelab.co" },
+      { label: "Activity Workbook: every Real Take + the Advisor Series", href: "https://www.amazon.com/dp/B0H8KZ2VQ1" },
+      { label: "Workbook Teacher's Guide (free)", href: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf" },
+      { label: "Compound Interest Calculator", href: "#calculator" },
+    ],
+  },
 ];
 
 export const MISSION =

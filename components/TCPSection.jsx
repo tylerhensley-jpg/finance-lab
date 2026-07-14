@@ -67,7 +67,7 @@ export default function TCPSection() {
         {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 16,
+            fontSize: 17,
             lineHeight: 1.6, 
             color: "var(--body-text)", 
             maxWidth: 680, 
@@ -120,7 +120,7 @@ export default function TCPSection() {
             </Reveal>
 
             <Reveal delay={1}>
-              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 32 }}>
+              <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 32 }}>
                 {TCP_POSITIONING}
               </p>
             </Reveal>
@@ -138,7 +138,7 @@ export default function TCPSection() {
                     }}>
                       ✓
                     </div>
-                    <p style={{ fontSize: 16, lineHeight: 1.55, color: "var(--body-text)" }}>
+                    <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--body-text)" }}>
                       <strong style={{ color: "var(--navy)", fontWeight: 700 }}>{p.title}.</strong>{" "}
                       {p.desc}
                     </p>
@@ -148,10 +148,10 @@ export default function TCPSection() {
             </div>
 
             <Reveal delay={4}>
-              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 12 }}>
+              <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 12 }}>
                 {TCP_ARTIFACTS}
               </p>
-              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", fontStyle: "italic" }}>
+              <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)", fontStyle: "italic" }}>
                 {TCP_CREDIBILITY}
               </p>
             </Reveal>
@@ -194,7 +194,7 @@ export default function TCPSection() {
               }}>
                 {TCP_PREVIEW.stat}
               </div>
-              <p style={{ fontSize: 16, lineHeight: 1.5, color: "var(--body-text)", maxWidth: 420 }}>
+              <p style={{ fontSize: 17, lineHeight: 1.5, color: "var(--body-text)", maxWidth: 420 }}>
                 {TCP_PREVIEW.statCaption}
               </p>
             </div>
@@ -299,7 +299,7 @@ export default function TCPSection() {
 
         {/* 3. BEFORE TEXT */}
         <div style={{ 
-          fontSize: 16,           
+          fontSize: 17,           
           fontWeight: 500,
           color: "#9CA3AF", 
           marginBottom: 16,
@@ -310,7 +310,7 @@ export default function TCPSection() {
         
         {/* 4. LABEL */}
         <div style={{ 
-          fontSize: 16,
+          fontSize: 17,
           fontWeight: 600,
           color: "var(--navy)",   
           lineHeight: 1.5 
@@ -374,7 +374,7 @@ export default function TCPSection() {
                     <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
                     <cite style={{
                       fontStyle: "normal", 
-                      fontSize: 16,           /* 👈 Bumped from 13px */
+                      fontSize: 17,           /* 👈 Bumped from 13px */
                       fontWeight: 600,
                       color: "var(--gold)", 
                       letterSpacing: 0.5,
@@ -419,7 +419,7 @@ export default function TCPSection() {
 
           <Reveal delay={2}>
             <p style={{
-              fontSize: 16,
+              fontSize: 17,
               lineHeight: 1.65,
               color: "var(--body-text)",
               maxWidth: 680,
@@ -465,7 +465,7 @@ export default function TCPSection() {
                   <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
                   <cite style={{
                     fontStyle: "normal",
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: 600,
                     color: "var(--gold)",
                     letterSpacing: 0.5,
@@ -549,7 +549,7 @@ export default function TCPSection() {
                       >
                         ✓
                       </div>
-                      <p style={{ fontSize: 16, color: "var(--body-text)", lineHeight: 1.6 }}>
+                      <p style={{ fontSize: 17, color: "var(--body-text)", lineHeight: 1.6 }}>
                         <strong style={{ color: "var(--navy)", fontWeight: 700 }}>{f.title}.</strong>{" "}
                         {f.desc}
                       </p>
@@ -592,7 +592,7 @@ export default function TCPSection() {
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                       >
                         <div>
-                          <div style={{ fontSize: 16, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
+                          <div style={{ fontSize: 17, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
                           <div style={{ fontSize: 13, color: "var(--body-text)", marginTop: 4 }}>{p.note}</div>
                         </div>
                         <div className="font-display" style={{ fontSize: 32, fontWeight: 800, color: "var(--gold)" }}>
@@ -618,11 +618,11 @@ export default function TCPSection() {
                   gap: 16,
                   flexWrap: "wrap",
                 }}>
-                  <p style={{ fontSize: 16, fontWeight: 600, color: "var(--navy)", lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 17, fontWeight: 600, color: "var(--navy)", lineHeight: 1.5 }}>
                     Ordering 25+ copies? Email us and we&apos;ll set it up.
                   </p>
                   <a href={BULK_ORDER_MAILTO} style={{
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: 700,
                     color: "var(--teal)",
                     textDecoration: "underline",
@@ -672,7 +672,7 @@ export default function TCPSection() {
         <Reveal>
           <p style={{
             marginTop: 64,
-            fontSize: 16,
+            fontSize: 17,
             lineHeight: 1.6,
             color: "var(--body-text)",
             textAlign: "center",
@@ -729,14 +729,14 @@ export default function TCPSection() {
               }}>
                 Step Two
               </p>
-              <p style={{ fontSize: 16, fontWeight: 600, color: "var(--navy)", lineHeight: 1.55 }}>
+              <p style={{ fontSize: 17, fontWeight: 600, color: "var(--navy)", lineHeight: 1.55 }}>
                 Finish the plan, then build the portfolio. Students who complete The College
                 Project can apply for The Finance Lab Scholarship: $1,000, earned across four
                 milestones.
               </p>
             </div>
             <span style={{
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: 700,
               color: "var(--teal)",
               whiteSpace: "nowrap",

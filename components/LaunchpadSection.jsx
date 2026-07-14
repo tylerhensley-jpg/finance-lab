@@ -75,7 +75,7 @@ export default function LaunchpadSection() {
         {/* ── INTRO ── */}
         <Reveal delay={3}>
           <p style={{
-            fontSize: 16,
+            fontSize: 17,
             lineHeight: 1.65,
             color: "rgba(255,255,255,0.88)",
             maxWidth: 720,
@@ -124,7 +124,7 @@ export default function LaunchpadSection() {
             }}>
               {LAUNCHPAD.ab2927.title}
             </p>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.88)" }}>
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.88)" }}>
               {LAUNCHPAD.ab2927.body}
             </p>
           </div>
@@ -161,7 +161,7 @@ export default function LaunchpadSection() {
                 }}>
                   {f.title}
                 </h3>
-                <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.75)" }}>
+                <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.75)" }}>
                   {f.desc}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function LaunchpadSection() {
               }}>
                 In Print · Available Now
               </span>
-              <p style={{ fontSize: 16, lineHeight: 1.55, color: "rgba(255,255,255,0.85)" }}>
+              <p style={{ fontSize: 17, lineHeight: 1.55, color: "rgba(255,255,255,0.85)" }}>
                 {LAUNCHPAD.workbook}
               </p>
               <p style={{ fontSize: 13, lineHeight: 1.55, color: "rgba(255,255,255,0.7)", marginTop: 10 }}>
@@ -301,7 +301,7 @@ export default function LaunchpadSection() {
                 className="btn-gold"
                 style={{ padding: "16px 40px", fontSize: 18, fontWeight: 600 }}
               >
-                Explore The Launchpad
+                Access The Launchpad
               </a>
               <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(255,255,255,0.65)" }}>
                 {LAUNCHPAD.appCaption}

@@ -42,7 +42,7 @@ export default function ToolsSection() {
         {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 16,
+            fontSize: 17,
             color: "rgba(255,255,255,0.85)",    /* 👈 Increased contrast slightly */
             maxWidth: 640, 
             lineHeight: 1.6, 
@@ -114,7 +114,7 @@ export default function ToolsSection() {
 
                   {/* Description */}
                   <p style={{ 
-                    fontSize: 16,               /* 👈 Bumped from 13px */
+                    fontSize: 17,               /* 👈 Bumped from 13px */
                     color: "rgba(255,255,255,0.75)", 
                     lineHeight: 1.6, 
                     marginBottom: 32            /* 👈 Pushed the link down a bit more */

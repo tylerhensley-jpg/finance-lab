@@ -42,7 +42,7 @@ export default function ProblemSection() {
         <Reveal delay={2}>
           <div style={{ maxWidth: 720, marginBottom: 72 }}>
             <p style={{
-              fontSize: 16,
+              fontSize: 17,
               lineHeight: 1.65,
               color: "var(--body-text)",
               marginBottom: 20
@@ -53,7 +53,7 @@ export default function ProblemSection() {
               personalized roadmap for every student.
             </p>
             <p style={{
-              fontSize: 16,
+              fontSize: 17,
               lineHeight: 1.65,
               color: "var(--body-text)"
             }}>
@@ -87,7 +87,7 @@ export default function ProblemSection() {
                 Who We Serve
               </p>
               <p style={{
-                fontSize: 16,
+                fontSize: 17,
                 lineHeight: 1.75,
                 color: "var(--body-text)",
                 margin: 0,
@@ -172,7 +172,7 @@ export default function ProblemSection() {
               }}>
                 Why It Matters
               </p>
-              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)" }}>
+              <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)" }}>
                 What a student does after high school is{" "}
                 <strong style={{ color: "var(--navy)" }}>one of the most important decisions
                 they&apos;ll ever make</strong>. Yet many make it without a personal plan, or the
@@ -208,7 +208,7 @@ export default function ProblemSection() {
               }}>
                 To Counselors &amp; Educators
               </p>
-              <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)" }}>
+              <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--body-text)" }}>
                 We&apos;re not here to replace you. We&apos;re here to extend what you can do:
                 a tool you can put directly in students&apos; hands, so every student gets a
                 personalized experience regardless of caseload size.
