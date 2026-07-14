@@ -8,7 +8,7 @@
 // ─────────────────────────────────────────────
 
 export const HERO_SUBHEAD =
-  "The loudest money advice often comes from feeds and people with something to sell. Our resources are honest and hands-on: real numbers, real practice, including the college decision most curricula skip.";
+  "For many students, the loudest money advice comes from feeds and people with something to sell. Our resources are honest and hands-on: real numbers, real practice, including the college decision most curricula skip.";
 
 export const HERO_PROJECTS_INTRO = "Everything we make flows from two projects:";
 

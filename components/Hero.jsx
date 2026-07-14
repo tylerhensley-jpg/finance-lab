@@ -144,11 +144,13 @@ export default function Hero() {
             fontSize: "clamp(34px, 5.2vw, 62px)", fontWeight: 700,
             lineHeight: 1.12, letterSpacing: "0.2px", color: "#fff", marginBottom: 16,
           }}>
-            Preparing every student for{" "}
+            Preparing{" "}
+            <span style={{ fontWeight: 700, color: "var(--cream)" }}>every student</span> for
+            <br />
             <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>financial independence.</em>
             <br />
             Real-world learning.{" "}
-            <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>Measurable results.</em>
+            <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>Measurable outcomes.</em>
           </h1>
         </Reveal>
 
