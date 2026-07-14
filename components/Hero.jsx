@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import { HERO_SUBHEAD, HERO_PROJECTS } from "../data/content";
+import { HERO_SUBHEAD, HERO_PROJECTS_INTRO, HERO_PROJECTS } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -160,6 +160,13 @@ export default function Hero() {
             }}>
               {HERO_SUBHEAD}
             </p>
+            <p style={{
+              fontSize: "clamp(16px, 1.9vw, 19px)", fontWeight: 400,
+              color: "rgba(255,255,255,0.8)", lineHeight: 1.6,
+              margin: "14px 0 0",
+            }}>
+              {HERO_PROJECTS_INTRO}
+            </p>
           </div>
         </Reveal>
 
@@ -194,12 +201,12 @@ export default function Hero() {
                   {proj.tagline}
                 </p>
                 <p style={{
-                  fontSize: 14, lineHeight: 1.6,
-                  color: "rgba(255,255,255,0.65)", marginBottom: 16,
+                  fontSize: 16, lineHeight: 1.6,
+                  color: "rgba(255,255,255,0.7)", marginBottom: 16,
                 }}>
                   {proj.desc}
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   {proj.resources.map((r) => (
                     <a
                       key={r.label}
@@ -207,11 +214,13 @@ export default function Hero() {
                       style={{
                         display: "flex", alignItems: "baseline", gap: 8,
                         fontSize: 14, fontWeight: 500, color: "rgba(255,255,255,0.85)",
-                        textDecoration: "none", padding: "6px 8px", borderRadius: 8,
+                        textDecoration: "none", padding: "8px 10px", borderRadius: 8,
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(255,255,255,0.06)",
                         transition: "all 0.15s",
                       }}
-                      onMouseEnter={(e) => { e.currentTarget.style.color = proj.accent; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; e.currentTarget.style.background = "transparent"; }}
+                      onMouseEnter={(e) => { e.currentTarget.style.color = proj.accent; e.currentTarget.style.background = "rgba(255,255,255,0.09)"; e.currentTarget.style.borderColor = `${proj.accent}40`; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; e.currentTarget.style.background = "rgba(255,255,255,0.04)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"; }}
                     >
                       <span style={{ color: proj.accent, flexShrink: 0 }}>→</span>
                       <span>{r.label}</span>

@@ -697,62 +697,17 @@ export default function TCPSection() {
             >
               college.thefinancelab.co
             </a>
-            , built to support them from 9th grade through graduation. Teaching a class?
-            The same chapters run as a full unit inside{" "}
+            , built to support them from 9th grade through graduation. Teaching a class? A
+            shortened version of these chapters runs as a full unit inside{" "}
             <a
               href="#launchpad"
               style={{ color: "var(--teal)", fontWeight: 700, textDecoration: "underline" }}
             >
               The Launchpad
             </a>
-            , teacher dashboard included.
+            , teacher dashboard included. The book remains the most complete version, for
+            students who have more time.
           </p>
-        </Reveal>
-
-        {/* ── BRIDGE TO THE SCHOLARSHIP ── */}
-        <Reveal>
-          <a
-            href="#scholarship"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 24,
-              flexWrap: "wrap",
-              marginTop: 96,
-              background: "linear-gradient(135deg, rgba(26,122,110,0.08), rgba(200,148,42,0.10))",
-              border: "1px solid var(--soft-gray)",
-              borderRadius: 16,
-              padding: "32px 40px",
-              textDecoration: "none",
-            }}
-          >
-            <div style={{ maxWidth: 720 }}>
-              <p style={{
-                fontSize: 13,
-                fontWeight: 700,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                color: "var(--gold)",
-                marginBottom: 8,
-              }}>
-                Step Two
-              </p>
-              <p style={{ fontSize: 17, fontWeight: 600, color: "var(--navy)", lineHeight: 1.55 }}>
-                Finish the plan, then build the portfolio. Students who complete The College
-                Project can apply for The Finance Lab Scholarship: $1,000, earned across four
-                milestones.
-              </p>
-            </div>
-            <span style={{
-              fontSize: 17,
-              fontWeight: 700,
-              color: "var(--teal)",
-              whiteSpace: "nowrap",
-            }}>
-              See how it works →
-            </span>
-          </a>
         </Reveal>
       </div>
     </section>

@@ -8,7 +8,9 @@
 // ─────────────────────────────────────────────
 
 export const HERO_SUBHEAD =
-  "Outside school, the loudest money advice comes from feeds and people with something to sell. Our resources are honest and hands-on: real numbers, real practice, including the college decision most curricula skip. Everything we make flows from two projects:";
+  "The loudest money advice often comes from feeds and people with something to sell. Our resources are honest and hands-on: real numbers, real practice, including the college decision most curricula skip.";
+
+export const HERO_PROJECTS_INTRO = "Everything we make flows from two projects:";
 
 // Hero: the two main projects and the resources that flow from each.
 // Teachers and administrators are the primary viewers.
@@ -20,6 +22,7 @@ export const HERO_PROJECTS = [
     tagline: "Find your fit. Afford your future.",
     desc: "One decision, taught end to end: choosing a college that fits and knowing you can afford it before you commit.",
     resources: [
+      { label: "Explore The College Project", href: "#tcp" },
       { label: "The Book, 5th Edition", href: "https://www.amazon.com/dp/B0H85W1K1J" },
       { label: "Teacher's Guide", href: "/guide" },
       { label: "The App: college.thefinancelab.co", href: "https://college.thefinancelab.co" },
@@ -35,6 +38,7 @@ export const HERO_PROJECTS = [
     tagline: "Comprehensive personal finance education.",
     desc: "Six units of real money decisions on real data, with a live teacher dashboard. Built for 11th and 12th grade.",
     resources: [
+      { label: "Explore The Launchpad", href: "#launchpad" },
       { label: "Access The Launchpad", href: "https://learn.thefinancelab.co" },
       { label: "Activity Workbook: every Real Take + the Advisor Series", href: "https://www.amazon.com/dp/B0H8KZ2VQ1" },
       { label: "Workbook Teacher's Guide", href: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf" },
