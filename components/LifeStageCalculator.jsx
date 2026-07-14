@@ -173,7 +173,12 @@ export default function LifeStageCalculator() {
             marginBottom: 56,
           }}>
             Contributions and risk change as your career grows. Set what each stage of
-            life invests, and see what compounding does with it.
+            life invests, and see what compounding does with it. Teachers: there is a
+            ready-to-assign lesson built on this calculator,{" "}
+            <a href="/life-stage-experiment" style={{ color: "var(--teal)", fontWeight: 700, textDecoration: "none" }}>
+              The Life Stage Experiment
+            </a>
+            .
           </p>
         </Reveal>
 

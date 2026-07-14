@@ -96,6 +96,26 @@ export default function FamilyPage() {
             </a>
           </div>
 
+          {/* ── FAMILY LETTER ── */}
+          <h2 className="font-display" style={{ fontSize: 24, fontWeight: 700, color: "var(--navy)", marginBottom: 16 }}>
+            The Family Letter
+          </h2>
+          <div style={{
+            display: "flex", flexWrap: "wrap", alignItems: "center", gap: 14,
+            padding: "20px 24px", background: "#fff",
+            border: "1px solid var(--soft-gray)", borderRadius: 12, marginBottom: 56,
+          }}>
+            <div style={{ flex: "1 1 260px" }}>
+              <div style={{ fontSize: 17, fontWeight: 700, color: "var(--navy)" }}>Fall Edition · English and Spanish</div>
+              <div style={{ fontSize: 13, color: "var(--body-text)", marginTop: 3 }}>
+                What students are learning, how real prices work, and this season&apos;s moves for every grade. Teachers: an editable version is in the Launchpad Resources tab.
+              </div>
+            </div>
+            <a href="/downloads/family/college-project-family-letter-fall.pdf" target="_blank" rel="noopener noreferrer" className="btn-teal" style={{ padding: "10px 20px", fontSize: 13, fontWeight: 600 }}>
+              Read (PDF)
+            </a>
+          </div>
+
           {/* ── MORE FOR FAMILIES ── */}
           <div style={{
             border: "1px solid var(--soft-gray)", borderRadius: 16,

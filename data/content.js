@@ -42,6 +42,7 @@ export const HERO_PROJECTS = [
       { label: "Activity Workbook: every Real Take + the Advisor Series", href: "https://www.amazon.com/dp/B0H8KZ2VQ1" },
       { label: "Workbook Teacher's Guide (free)", href: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf" },
       { label: "Compound Interest Calculator", href: "#calculator" },
+      { label: "The Life Stage Experiment (a one-period assignment)", href: "/life-stage-experiment" },
     ],
   },
 ];
