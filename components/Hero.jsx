@@ -135,7 +135,7 @@ export default function Hero() {
             fontSize: 13, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase",
             color: "var(--gold-light)", marginBottom: 28, opacity: 0.9,
           }}>
-            A 501(c)(3) Nonprofit · Roseville, CA
+            A 501(c)(3) Nonprofit
           </p>
         </Reveal>
 
