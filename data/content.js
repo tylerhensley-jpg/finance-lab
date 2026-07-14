@@ -7,14 +7,8 @@
 // Mission, Vision & Who We Serve
 // ─────────────────────────────────────────────
 
-export const OPENING_LINE =
-  "Outside school, the loudest money advice often comes from feeds and from people with something to sell.";
-
-export const HERO_METHOD_LINE =
-  "The Finance Lab's resources are honest, nuanced, student-centered, and hands-on. Students practice with real numbers and leave with plans they built themselves.";
-
-export const HERO_CARDS_INTRO =
-  "Few personal finance curricula teach college access and affordability. Here, fully understanding that decision is a pillar. Everything we make flows from two projects:";
+export const HERO_SUBHEAD =
+  "Outside school, the loudest money advice comes from feeds and people with something to sell. Our resources are honest and hands-on: real numbers, real practice, including the college decision most curricula skip. Everything we make flows from two projects:";
 
 // Hero: the two main projects and the resources that flow from each.
 // Teachers and administrators are the primary viewers.

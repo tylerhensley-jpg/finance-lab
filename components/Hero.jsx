@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import { OPENING_LINE, HERO_METHOD_LINE, HERO_PROJECTS, HERO_CARDS_INTRO } from "../data/content";
+import { HERO_SUBHEAD, HERO_PROJECTS } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -152,34 +152,19 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={2}>
-          <div style={{ maxWidth: 780, margin: "0 auto" }}>
-            {/* Opening line — bold provocation */}
+          <div style={{ maxWidth: 700, margin: "0 auto" }}>
             <p style={{
-              fontSize: "clamp(17px, 2vw, 22px)", fontWeight: 600,
-              color: "#fff", lineHeight: 1.55, marginBottom: 8,
-              letterSpacing: "-0.2px",
+              fontSize: "clamp(16px, 1.9vw, 19px)", fontWeight: 400,
+              color: "rgba(255,255,255,0.8)", lineHeight: 1.6,
+              margin: 0,
             }}>
-              {OPENING_LINE}
-            </p>
-            {/* Method line — how we do it */}
-            <p style={{
-              fontSize: "clamp(15px, 1.7vw, 18px)", fontWeight: 400,
-              color: "rgba(255,255,255,0.72)", lineHeight: 1.6,
-              margin: "0 0 22px",
-            }}>
-              {HERO_METHOD_LINE}
+              {HERO_SUBHEAD}
             </p>
           </div>
         </Reveal>
 
         {/* ── THE TWO PROJECTS: everything flows from one of these ── */}
         <Reveal delay={3}>
-          <p style={{
-            fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.6)",
-            maxWidth: 620, margin: "26px auto 0",
-          }}>
-            {HERO_CARDS_INTRO}
-          </p>
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
