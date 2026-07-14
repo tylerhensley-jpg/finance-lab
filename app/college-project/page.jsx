@@ -51,7 +51,10 @@ const FORMATS = [
     body: "The College Project One Hour student handout with a facilitation guide: a condensed 60-minute version of the project's core moves.",
     meta: "Time: one class period · Tech: none",
     bestFor: "A single seminar, assembly follow-up, or sub day with no devices.",
-    links: [{ label: "In the Launchpad teacher Resources tab →", href: "https://learn.thefinancelab.co" }],
+    links: [
+      { label: "Download the handout (PDF) →", href: "/downloads/college-project/college-project-one-hour-handout.pdf" },
+      { label: "Editable version (Word) →", href: "/downloads/college-project/college-project-one-hour-handout.docx" },
+    ],
   },
   {
     tag: "One Period · Digital",
