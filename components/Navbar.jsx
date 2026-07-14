@@ -92,7 +92,7 @@ export default function Navbar() {
               href={resolveHref(l.href)}
               onClick={(e) => handleNavClick(e, l.href, l.label)}
               style={{
-                fontSize: 15,           /* 👈 Bumped from 13px */
+                fontSize: 16,           /* 👈 Bumped from 13px */
                 fontWeight: 500, 
                 color: "rgba(255,255,255,0.65)",
                 textDecoration: "none", 
@@ -111,7 +111,7 @@ export default function Navbar() {
             className="btn-gold"
             style={{ 
               padding: "12px 24px",     /* 👈 Chunkier padding */
-              fontSize: 14,             /* 👈 Bumped from 11px */
+              fontSize: 13,             /* 👈 Bumped from 11px */
               fontWeight: 600,
               letterSpacing: 1 
             }}
@@ -182,7 +182,7 @@ export default function Navbar() {
         onClick={(e) => { if (e.target === e.currentTarget) setModalOpen(false); }}
       >
         <div className="modal-box" style={{ padding: "48px 40px" }}>
-          <p className="font-mono" style={{
+          <p style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 4,
@@ -226,7 +226,7 @@ export default function Navbar() {
               Close
             </button>
           </div>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", marginTop: 24 }}>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", marginTop: 24 }}>
             Or write to us directly:{" "}
             <a
               href="mailto:team@thefinancelab.co"

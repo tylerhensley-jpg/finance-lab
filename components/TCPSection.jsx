@@ -17,7 +17,7 @@ export default function TCPSection() {
         
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ 
+          <p style={{ 
             fontSize: 13,           /* 👈 Bumped from 10px */
             fontWeight: 600,        /* 👈 Added weight */
             letterSpacing: 4,       /* 👈 Wider tracking */
@@ -31,7 +31,7 @@ export default function TCPSection() {
 
         {/* ── EDITION BADGE ── */}
         <Reveal>
-          <span className="font-mono" style={{
+          <span style={{
             display: "inline-block",
             fontSize: 13,
             fontWeight: 700,
@@ -67,7 +67,7 @@ export default function TCPSection() {
         {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 20,                       /* 👈 Bumped from 16px */
+            fontSize: 16,
             lineHeight: 1.6, 
             color: "var(--body-text)", 
             maxWidth: 680, 
@@ -169,7 +169,7 @@ export default function TCPSection() {
             marginBottom: 24,
             boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)",
           }}>
-            <p className="font-mono" style={{
+            <p style={{
               fontSize: 13, fontWeight: 700, letterSpacing: 3,
               textTransform: "uppercase", color: "var(--gold)", marginBottom: 24,
             }}>
@@ -194,12 +194,12 @@ export default function TCPSection() {
               }}>
                 {TCP_PREVIEW.stat}
               </div>
-              <p style={{ fontSize: 15, lineHeight: 1.5, color: "var(--body-text)", maxWidth: 420 }}>
+              <p style={{ fontSize: 16, lineHeight: 1.5, color: "var(--body-text)", maxWidth: 420 }}>
                 {TCP_PREVIEW.statCaption}
               </p>
             </div>
-            <p className="font-mono" style={{
-              fontSize: 12, color: "#9CA3AF", marginTop: 24, letterSpacing: 1,
+            <p style={{
+              fontSize: 13, color: "#9CA3AF", marginTop: 24, letterSpacing: 1,
             }}>
               {TCP_PREVIEW.attribution}
             </p>
@@ -209,8 +209,8 @@ export default function TCPSection() {
         {/* ── FREE DOWNLOADS ROW ── */}
         <Reveal>
           <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", marginBottom: 64 }}>
-            <span className="font-mono" style={{
-              fontSize: 12,
+            <span style={{
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: 2,
               textTransform: "uppercase",
@@ -222,7 +222,7 @@ export default function TCPSection() {
               href="/downloads/college-project-sample-chapter.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono"
+              
               style={{
                 fontSize: 13,
                 fontWeight: 700,
@@ -242,7 +242,7 @@ export default function TCPSection() {
               href="/downloads/college-planning-checklists-senior-year-calendar.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono"
+              
               style={{
                 fontSize: 13,
                 fontWeight: 700,
@@ -298,7 +298,7 @@ export default function TCPSection() {
         }}>↑</span>
 
         {/* 3. BEFORE TEXT */}
-        <div className="font-mono" style={{ 
+        <div style={{ 
           fontSize: 16,           
           fontWeight: 500,
           color: "#9CA3AF", 
@@ -310,7 +310,7 @@ export default function TCPSection() {
         
         {/* 4. LABEL */}
         <div style={{ 
-          fontSize: 18,           
+          fontSize: 16,
           fontWeight: 600,
           color: "var(--navy)",   
           lineHeight: 1.5 
@@ -319,8 +319,8 @@ export default function TCPSection() {
         </div>
         
         {/* 5. FOOTER TEXT */}
-        <p className="font-mono" style={{ 
-          fontSize: 12,           
+        <p style={{ 
+          fontSize: 13,           
           color: "#9CA3AF", 
           marginTop: 16, 
           letterSpacing: 1 
@@ -392,7 +392,7 @@ export default function TCPSection() {
         {/* ══════ FOR EDUCATORS (merged sub-block) ══════ */}
         <div id="educators" style={{ marginTop: 112 }}>
           <Reveal>
-            <p className="font-mono" style={{
+            <p style={{
               fontSize: 13,
               fontWeight: 600,
               letterSpacing: 4,
@@ -419,8 +419,8 @@ export default function TCPSection() {
 
           <Reveal delay={2}>
             <p style={{
-              fontSize: 18,
-              lineHeight: 1.6,
+              fontSize: 16,
+              lineHeight: 1.65,
               color: "var(--body-text)",
               maxWidth: 680,
               marginBottom: 48,
@@ -492,7 +492,7 @@ export default function TCPSection() {
             <div>
               <Reveal>
                 <div style={{ marginBottom: 40 }}>
-                  <h4 className="font-mono" style={{
+                  <h4 style={{
                     fontSize: 13,
                     fontWeight: 700,
                     letterSpacing: 3,
@@ -507,7 +507,7 @@ export default function TCPSection() {
                       <span
                         key={tag}
                         style={{
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: 600,
                           padding: "8px 18px",
                           borderRadius: 99,
@@ -541,7 +541,7 @@ export default function TCPSection() {
                           borderRadius: "50%",
                           background: "rgba(26,122,110,0.12)",
                           color: "var(--teal)",
-                          fontSize: 14,
+                          fontSize: 13,
                           display: "flex", alignItems: "center",
                           justifyContent: "center", flexShrink: 0, fontWeight: 700,
                           marginTop: 2,
@@ -568,7 +568,7 @@ export default function TCPSection() {
                       display: "grid", gridTemplateColumns: "1fr auto",
                       padding: "16px 24px",
                       background: "var(--navy)",
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: 700,
                       letterSpacing: 2,
                       textTransform: "uppercase",
@@ -592,8 +592,8 @@ export default function TCPSection() {
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                       >
                         <div>
-                          <div style={{ fontSize: 18, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
-                          <div style={{ fontSize: 14, color: "var(--body-text)", marginTop: 4 }}>{p.note}</div>
+                          <div style={{ fontSize: 16, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
+                          <div style={{ fontSize: 13, color: "var(--body-text)", marginTop: 4 }}>{p.note}</div>
                         </div>
                         <div className="font-display" style={{ fontSize: 32, fontWeight: 800, color: "var(--gold)" }}>
                           {p.price}
@@ -622,7 +622,7 @@ export default function TCPSection() {
                     Ordering 25+ copies? Email us and we&apos;ll set it up.
                   </p>
                   <a href={BULK_ORDER_MAILTO} style={{
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: 700,
                     color: "var(--teal)",
                     textDecoration: "underline",
@@ -719,8 +719,8 @@ export default function TCPSection() {
             }}
           >
             <div style={{ maxWidth: 720 }}>
-              <p className="font-mono" style={{
-                fontSize: 12,
+              <p style={{
+                fontSize: 13,
                 fontWeight: 700,
                 letterSpacing: 3,
                 textTransform: "uppercase",
@@ -729,7 +729,7 @@ export default function TCPSection() {
               }}>
                 Step Two
               </p>
-              <p style={{ fontSize: 18, fontWeight: 600, color: "var(--navy)", lineHeight: 1.55 }}>
+              <p style={{ fontSize: 16, fontWeight: 600, color: "var(--navy)", lineHeight: 1.55 }}>
                 Finish the plan, then build the portfolio. Students who complete The College
                 Project can apply for The Finance Lab Scholarship: $1,000, earned across four
                 milestones.

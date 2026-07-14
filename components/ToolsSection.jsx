@@ -13,7 +13,7 @@ export default function ToolsSection() {
         
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ 
+          <p style={{ 
             fontSize: 13,           /* 👈 Bumped from 10px */
             fontWeight: 600,        /* 👈 Added weight */
             letterSpacing: 4,       /* 👈 Wider tracking */
@@ -42,7 +42,7 @@ export default function ToolsSection() {
         {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 20,                       /* 👈 Bumped from 16px */
+            fontSize: 16,
             color: "rgba(255,255,255,0.85)",    /* 👈 Increased contrast slightly */
             maxWidth: 640, 
             lineHeight: 1.6, 
@@ -81,7 +81,7 @@ export default function ToolsSection() {
                     {/* Badge */}
                     <span
                       style={{
-                        fontSize: 12,             /* 👈 Bumped from 10px */
+                        fontSize: 13,             /* 👈 Bumped from 10px */
                         fontWeight: 700, 
                         letterSpacing: 1.5,
                         textTransform: "uppercase", 
@@ -125,7 +125,7 @@ export default function ToolsSection() {
                   {/* Link Text */}
                   <span
                     style={{
-                      fontSize: 14,             /* 👈 Bumped from 12px */
+                      fontSize: 13,             /* 👈 Bumped from 12px */
                       fontWeight: 700, 
                       letterSpacing: 1,         /* 👈 Widened tracking for a CTA feel */
                       textTransform: "uppercase",

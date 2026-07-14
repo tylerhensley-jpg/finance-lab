@@ -9,7 +9,7 @@ export default function ProblemSection() {
 
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{
+          <p style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 4,
@@ -42,7 +42,7 @@ export default function ProblemSection() {
         <Reveal delay={2}>
           <div style={{ maxWidth: 720, marginBottom: 72 }}>
             <p style={{
-              fontSize: 18,
+              fontSize: 16,
               lineHeight: 1.65,
               color: "var(--body-text)",
               marginBottom: 20
@@ -53,7 +53,7 @@ export default function ProblemSection() {
               personalized roadmap for every student.
             </p>
             <p style={{
-              fontSize: 18,
+              fontSize: 16,
               lineHeight: 1.65,
               color: "var(--body-text)"
             }}>
@@ -76,7 +76,7 @@ export default function ProblemSection() {
           {/* Who we serve: open text with a rule, no box */}
           <Reveal>
             <div style={{ borderLeft: "4px solid var(--teal)", paddingLeft: 28 }}>
-              <p className="font-mono" style={{
+              <p style={{
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: 3,
@@ -87,7 +87,7 @@ export default function ProblemSection() {
                 Who We Serve
               </p>
               <p style={{
-                fontSize: 17,
+                fontSize: 16,
                 lineHeight: 1.75,
                 color: "var(--body-text)",
                 margin: 0,
@@ -131,7 +131,7 @@ export default function ProblemSection() {
                 <footer style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
                   <cite style={{
-                    fontStyle: "normal", fontSize: 14, fontWeight: 600,
+                    fontStyle: "normal", fontSize: 13, fontWeight: 600,
                     color: "var(--gold)", fontFamily: "'DM Sans', sans-serif",
                     letterSpacing: 0.5,
                   }}>
@@ -162,7 +162,7 @@ export default function ProblemSection() {
               padding: "28px 32px",
               height: "100%",
             }}>
-              <p className="font-mono" style={{
+              <p style={{
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: 3,
@@ -198,7 +198,7 @@ export default function ProblemSection() {
               padding: "28px 32px",
               height: "100%",
             }}>
-              <p className="font-mono" style={{
+              <p style={{
                 fontSize: 13,
                 fontWeight: 600,
                 letterSpacing: 3,

@@ -124,15 +124,15 @@ export default function Hero() {
               alt=""
               style={{ height: 46, width: "auto", display: "block" }}
             />
-            <span className="font-mono" style={{
+            <span style={{
               fontSize: 18, fontWeight: 600, letterSpacing: 6,
               textTransform: "uppercase", color: "#fff",
             }}>
               The Finance Lab
             </span>
           </div>
-          <p className="font-mono" style={{
-            fontSize: 11, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase",
+          <p style={{
+            fontSize: 13, fontWeight: 500, letterSpacing: 3, textTransform: "uppercase",
             color: "var(--gold-light)", marginBottom: 28, opacity: 0.9,
           }}>
             A 501(c)(3) Nonprofit · Roseville, CA
@@ -188,7 +188,7 @@ export default function Hero() {
                   key={r.label}
                   href={r.href}
                   style={{
-                    fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.85)",
+                    fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.85)",
                     textDecoration: "none", padding: "9px 18px", borderRadius: 99,
                     border: "1px solid rgba(255,255,255,0.22)",
                     background: "rgba(255,255,255,0.05)",
@@ -222,8 +222,8 @@ export default function Hero() {
 
             {/* Phase labels - Scaled up typography */}
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 24, padding: "0 16px" }}>
-              <span className="font-mono" style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.8 }}>← The College Project</span>
-              <span className="font-mono" style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Finance Lab →</span>
+              <span style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.8 }}>← The College Project</span>
+              <span style={{ fontSize: 16, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Finance Lab →</span>
             </div>
 
             {/* SVG track - Thicker 6px line */}
@@ -269,7 +269,7 @@ export default function Hero() {
                       </div>
                       
                       {/* Bigger Labels */}
-                      <span className="font-mono" style={{ fontSize: 11, letterSpacing: 1.5, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.4)", marginTop: 16, transition: "color 0.3s", whiteSpace: "nowrap" }}>{node.time}</span>
+                      <span style={{ fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.4)", marginTop: 16, transition: "color 0.3s", whiteSpace: "nowrap" }}>{node.time}</span>
                       <span style={{ fontSize: 16, fontWeight: isActive ? 700 : 500, color: isActive ? "#fff" : "rgba(255,255,255,0.5)", marginTop: 6, transition: "all 0.3s", textAlign: "center", lineHeight: 1.3, maxWidth: 120 }}>{node.label}</span>
                     </div>
                   );
@@ -288,14 +288,14 @@ export default function Hero() {
                   maxWidth: "800px", margin: "0 auto" /* Keeps the text readable */
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                    <span className="font-mono" style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: getLabelColor(active.phase), background: `${getLabelColor(active.phase)}15`, padding: "4px 10px", borderRadius: 4 }}>{getLabel(active.phase)}</span>
+                    <span style={{ fontSize: 13, letterSpacing: 2, textTransform: "uppercase", color: getLabelColor(active.phase), background: `${getLabelColor(active.phase)}15`, padding: "4px 10px", borderRadius: 4 }}>{getLabel(active.phase)}</span>
                     <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>{active.label}</span>
                   </div>
-                  <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>{active.desc}</p>
+                  <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>{active.desc}</p>
                 </div>
               ) : (
                 <div style={{ textAlign: "center", padding: "24px 0" }}>
-                  <p className="font-mono" style={{ fontSize: 11, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.25)" }}>Hover over a milestone to explore the journey</p>
+                  <p style={{ fontSize: 13, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.25)" }}>Hover over a milestone to explore the journey</p>
                 </div>
               )}
             </div>
@@ -327,8 +327,8 @@ export default function Hero() {
                 </div>
                 {/* Right: text */}
                 <div style={{ paddingTop: 6, paddingBottom: isLast ? 0 : 24 }}>
-                  <span className="font-mono" style={{ fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.35)" }}>{node.time}</span>
-                  <h4 style={{ fontSize: 14, fontWeight: 700, color: isActive ? "#fff" : "rgba(255,255,255,0.6)", marginTop: 2, marginBottom: 4 }}>{node.label}</h4>
+                  <span style={{ fontSize: 13, letterSpacing: 2, textTransform: "uppercase", color: isActive ? color : "rgba(255,255,255,0.35)" }}>{node.time}</span>
+                  <h4 style={{ fontSize: 13, fontWeight: 700, color: isActive ? "#fff" : "rgba(255,255,255,0.6)", marginTop: 2, marginBottom: 4 }}>{node.label}</h4>
                   {isActive && (
                     <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: 0, animation: "fadeInCard 0.3s ease forwards" }}>{node.desc}</p>
                   )}

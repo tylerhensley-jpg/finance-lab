@@ -120,7 +120,7 @@ export default function LifeStageCalculator() {
   const captionStyle = {
     display: "none", // shown under 768px via .calc-input-caption override
 
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: 700,
     letterSpacing: 1,
     textTransform: "uppercase",
@@ -137,7 +137,7 @@ export default function LifeStageCalculator() {
 
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{
+          <p style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 4,
@@ -166,8 +166,8 @@ export default function LifeStageCalculator() {
 
         <Reveal delay={2}>
           <p style={{
-            fontSize: 20,
-            lineHeight: 1.6,
+            fontSize: 16,
+            lineHeight: 1.65,
             color: "var(--body-text)",
             maxWidth: 680,
             marginBottom: 56,
@@ -199,8 +199,8 @@ export default function LifeStageCalculator() {
                 marginBottom: 8,
               }}>
                 {["Life Stage", "Monthly $", "Years", "Return %"].map((h) => (
-                  <span key={h} className="font-mono" style={{
-                    fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                  <span key={h} style={{
+                    fontSize: 13, fontWeight: 700, letterSpacing: 1,
                     textTransform: "uppercase", color: "var(--mid-gray)",
                   }}>
                     {h}
@@ -218,10 +218,10 @@ export default function LifeStageCalculator() {
                   borderBottom: i < STAGE_DEFS.length - 1 ? "1px solid var(--soft-gray)" : "none",
                 }}>
                   <div className="calc-row-label">
-                    <div style={{ fontSize: 15, fontWeight: 700, color: "var(--navy)" }}>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: "var(--navy)" }}>
                       {def.emoji} {def.label}
                     </div>
-                    <div style={{ fontSize: 12, color: "var(--mid-gray)" }}>{def.note}</div>
+                    <div style={{ fontSize: 13, color: "var(--mid-gray)" }}>{def.note}</div>
                   </div>
                   <div>
                     <span className="calc-input-caption" style={captionStyle}>Monthly $</span>
@@ -259,10 +259,10 @@ export default function LifeStageCalculator() {
                 borderRadius: 12,
                 padding: "16px 20px",
               }}>
-                <p style={{ fontSize: 14, fontWeight: 700, color: "var(--navy)", marginBottom: 6 }}>
+                <p style={{ fontSize: 13, fontWeight: 700, color: "var(--navy)", marginBottom: 6 }}>
                   Why do return rates change?
                 </p>
-                <p style={{ fontSize: 14, lineHeight: 1.55, color: "var(--body-text)" }}>
+                <p style={{ fontSize: 13, lineHeight: 1.55, color: "var(--body-text)" }}>
                   When you&apos;re young with decades ahead, you can be nearly all stocks
                   (historically about 10% per year). As you age, you shift toward bonds and
                   stable investments for safety: lower returns, less volatility. This is how
@@ -282,7 +282,7 @@ export default function LifeStageCalculator() {
               boxShadow: "0 10px 30px rgba(10, 25, 47, 0.03)",
             }}>
               {/* Headline number */}
-              <p style={{ fontSize: 15, color: "var(--body-text)", marginBottom: 4 }}>
+              <p style={{ fontSize: 16, color: "var(--body-text)", marginBottom: 4 }}>
                 After {result.totalYears} years of investing through every life stage
               </p>
               <div className="font-display" style={{
@@ -294,7 +294,7 @@ export default function LifeStageCalculator() {
               }}>
                 {fmt(result.balance)}
               </div>
-              <p style={{ fontSize: 15, color: "var(--body-text)", marginBottom: 24 }}>
+              <p style={{ fontSize: 16, color: "var(--body-text)", marginBottom: 24 }}>
                 You contributed <strong style={{ color: CONTRIB_COLOR }}>{fmt(result.totalContrib)}</strong>
                 {" "}· Compound growth added <strong style={{ color: BALANCE_COLOR }}>{fmt(result.growth)}</strong>
               </p>

@@ -104,7 +104,7 @@ export default function CollegeProjectFormatsPage() {
       <section style={{ background: "var(--warm-white)", padding: "120px clamp(20px,5vw,40px) 80px" }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
           <p
-            className="font-mono"
+            
             style={{
               fontSize: 13,
               fontWeight: 600,
@@ -131,7 +131,7 @@ export default function CollegeProjectFormatsPage() {
             One project. <em style={{ fontStyle: "italic", color: "var(--teal)" }}>Pick your format.</em>
           </h1>
 
-          <p style={{ fontSize: 19, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 64, maxWidth: 720 }}>
+          <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 64, maxWidth: 720 }}>
             The College Project teaches one decision: finding a college that fits and knowing you
             can afford it before you commit. Every format below teaches that same project with the
             same data and the same voice. They differ in time, setting, and paper versus screen.
@@ -153,9 +153,9 @@ export default function CollegeProjectFormatsPage() {
                 }}
               >
                 <p
-                  className="font-mono"
+                  
                   style={{
-                    fontSize: 11,
+                    fontSize: 13,
                     fontWeight: 700,
                     letterSpacing: 2,
                     textTransform: "uppercase",
@@ -168,11 +168,11 @@ export default function CollegeProjectFormatsPage() {
                 <h2 className="font-display" style={{ fontSize: 22, fontWeight: 700, color: "var(--navy)", marginBottom: 12 }}>
                   {f.name}
                 </h2>
-                <p style={{ fontSize: 15, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 14 }}>{f.body}</p>
-                <p className="font-mono" style={{ fontSize: 12.5, color: "#9CA3AF", letterSpacing: 0.3, marginBottom: 10 }}>
+                <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 14 }}>{f.body}</p>
+                <p style={{ fontSize: 13, color: "#9CA3AF", letterSpacing: 0.3, marginBottom: 10 }}>
                   {f.meta}
                 </p>
-                <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--body-text)", marginBottom: 18 }}>
+                <p style={{ fontSize: 13, lineHeight: 1.6, color: "var(--body-text)", marginBottom: 18 }}>
                   <strong style={{ color: "var(--navy)" }}>Best for:</strong> {f.bestFor}
                 </p>
                 <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 6 }}>
@@ -180,7 +180,7 @@ export default function CollegeProjectFormatsPage() {
                     <a
                       key={l.href + l.label}
                       href={l.href}
-                      style={{ fontSize: 15, fontWeight: 700, color: "var(--teal)", textDecoration: "none" }}
+                      style={{ fontSize: 16, fontWeight: 700, color: "var(--teal)", textDecoration: "none" }}
                     >
                       {l.label}
                     </a>
@@ -234,7 +234,7 @@ export default function CollegeProjectFormatsPage() {
                       style={{
                         textAlign: "left",
                         padding: "12px 16px",
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: 700,
                         letterSpacing: 1.5,
                         textTransform: "uppercase",
@@ -254,7 +254,7 @@ export default function CollegeProjectFormatsPage() {
                         key={j}
                         style={{
                           padding: "12px 16px",
-                          fontSize: 14.5,
+                          fontSize: 13,
                           lineHeight: 1.5,
                           color: j === 0 ? "var(--navy)" : "var(--body-text)",
                           fontWeight: j === 0 ? 600 : 400,
@@ -269,7 +269,7 @@ export default function CollegeProjectFormatsPage() {
             </table>
           </div>
 
-          <p style={{ fontSize: 14, lineHeight: 1.6, color: "#9CA3AF" }}>
+          <p style={{ fontSize: 13, lineHeight: 1.6, color: "#9CA3AF" }}>
             Questions about which format fits your setting? Email{" "}
             <a href="mailto:team@thefinancelab.co" style={{ color: "var(--teal)", textDecoration: "underline" }}>
               team@thefinancelab.co

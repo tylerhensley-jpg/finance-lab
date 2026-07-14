@@ -23,7 +23,7 @@ export default function LaunchpadSection() {
 
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{
+          <p style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 4,
@@ -47,8 +47,8 @@ export default function LaunchpadSection() {
           }}>
             {LAUNCHPAD.name}
           </h2>
-          <p className="font-mono" style={{
-            fontSize: 14,
+          <p style={{
+            fontSize: 13,
             fontWeight: 600,
             letterSpacing: 2,
             textTransform: "uppercase",
@@ -75,7 +75,7 @@ export default function LaunchpadSection() {
         {/* ── INTRO ── */}
         <Reveal delay={3}>
           <p style={{
-            fontSize: 20,
+            fontSize: 16,
             lineHeight: 1.65,
             color: "rgba(255,255,255,0.88)",
             maxWidth: 720,
@@ -90,7 +90,7 @@ export default function LaunchpadSection() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 48 }}>
             {LAUNCHPAD.units.map((u) => (
               <span key={u} style={{
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: 600,
                 padding: "8px 18px",
                 borderRadius: 99,
@@ -114,7 +114,7 @@ export default function LaunchpadSection() {
             marginBottom: 48,
             maxWidth: 860,
           }}>
-            <p className="font-mono" style={{
+            <p style={{
               fontSize: 13,
               fontWeight: 700,
               letterSpacing: 2,
@@ -124,7 +124,7 @@ export default function LaunchpadSection() {
             }}>
               {LAUNCHPAD.ab2927.title}
             </p>
-            <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.88)" }}>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.88)" }}>
               {LAUNCHPAD.ab2927.body}
             </p>
           </div>
@@ -202,9 +202,9 @@ export default function LaunchpadSection() {
               />
             </a>
             <div style={{ flex: "1 1 320px" }}>
-              <span className="font-mono" style={{
+              <span style={{
                 display: "inline-block",
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 700,
                 letterSpacing: 1.5,
                 textTransform: "uppercase",
@@ -217,10 +217,10 @@ export default function LaunchpadSection() {
               }}>
                 In Print · Available Now
               </span>
-              <p style={{ fontSize: 15, lineHeight: 1.55, color: "rgba(255,255,255,0.85)" }}>
+              <p style={{ fontSize: 16, lineHeight: 1.55, color: "rgba(255,255,255,0.85)" }}>
                 {LAUNCHPAD.workbook}
               </p>
-              <p style={{ fontSize: 14, lineHeight: 1.55, color: "rgba(255,255,255,0.7)", marginTop: 10 }}>
+              <p style={{ fontSize: 13, lineHeight: 1.55, color: "rgba(255,255,255,0.7)", marginTop: 10 }}>
                 {LAUNCHPAD.workbookBulk}{" "}
                 <a
                   href={LAUNCHPAD.workbookBulkMailto}
@@ -235,9 +235,9 @@ export default function LaunchpadSection() {
                 href={LAUNCHPAD.workbookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono"
+                
                 style={{
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: 700,
                   letterSpacing: 1,
                   textTransform: "uppercase",
@@ -257,9 +257,9 @@ export default function LaunchpadSection() {
                 href={LAUNCHPAD.teachersGuideUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono"
+                
                 style={{
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: 700,
                   letterSpacing: 1,
                   textTransform: "uppercase",
@@ -303,7 +303,7 @@ export default function LaunchpadSection() {
               >
                 Explore The Launchpad
               </a>
-              <p style={{ fontSize: 14, lineHeight: 1.5, color: "rgba(255,255,255,0.65)" }}>
+              <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(255,255,255,0.65)" }}>
                 {LAUNCHPAD.appCaption}
               </p>
             </div>
@@ -327,7 +327,7 @@ export default function LaunchpadSection() {
               >
                 Preview the Teacher Demo
               </a>
-              <p style={{ fontSize: 14, lineHeight: 1.5, color: "rgba(255,255,255,0.65)" }}>
+              <p style={{ fontSize: 13, lineHeight: 1.5, color: "rgba(255,255,255,0.65)" }}>
                 {LAUNCHPAD.demoCaption}
               </p>
             </div>

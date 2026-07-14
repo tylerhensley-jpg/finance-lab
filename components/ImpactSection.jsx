@@ -25,7 +25,7 @@ export default function ImpactSection() {
         
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ 
+          <p style={{ 
             fontSize: 13,           /* 👈 Bumped from 10px */
             fontWeight: 600,        /* 👈 Made bolder */
             letterSpacing: 4,       /* 👈 Wider tracking */
@@ -56,7 +56,7 @@ export default function ImpactSection() {
         {/* ── BODY ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 20,                       /* 👈 Bumped from 16px */
+            fontSize: 16,
             color: "rgba(255,255,255,0.85)",    /* 👈 Increased contrast slightly */
             maxWidth: 640, 
             margin: "0 auto 64px",              /* 👈 More breathing room below */
@@ -94,7 +94,7 @@ export default function ImpactSection() {
                   {s.value}
                 </div>
                 <div style={{ 
-                  fontSize: 15,                 /* 👈 Bumped from 13px */
+                  fontSize: 16,                 /* 👈 Bumped from 13px */
                   fontWeight: 500,              /* 👈 Made slightly bolder */
                   color: "rgba(255,255,255,0.8)", 
                   lineHeight: 1.5 

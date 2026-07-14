@@ -34,7 +34,7 @@ export default function GuidePage() {
       <section style={{ background: "var(--warm-white)", padding: "120px clamp(20px,5vw,40px) 80px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <p
-            className="font-mono"
+            
             style={{
               fontSize: 13,
               fontWeight: 600,
@@ -62,15 +62,15 @@ export default function GuidePage() {
             <em style={{ fontStyle: "italic", color: "var(--teal)" }}>Teacher&apos;s Guide</em>
           </h1>
 
-          <p style={{ fontSize: 19, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 16 }}>
+          <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--body-text)", marginBottom: 16 }}>
             Fifth Edition. The full companion for teaching <em>The College Project</em> in your
             classroom. A Kickoff session plus 19 chapters, with everything you need to plan and run
             the course: lesson flows, exit tickets, standards alignment, pacing guides, and rubrics.
           </p>
 
           <p
-            className="font-mono"
-            style={{ fontSize: 14, color: "#9CA3AF", letterSpacing: 0.5, marginBottom: 48 }}
+            
+            style={{ fontSize: 13, color: "#9CA3AF", letterSpacing: 0.5, marginBottom: 48 }}
           >
             58 pages · PDF, ~930 KB · Free for classroom use, no sign-up required
           </p>
@@ -118,7 +118,7 @@ export default function GuidePage() {
                     borderRadius: "50%",
                     background: "rgba(26,122,110,0.12)",
                     color: "var(--teal)",
-                    fontSize: 14,
+                    fontSize: 13,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -166,7 +166,7 @@ export default function GuidePage() {
                   gridTemplateColumns: "1fr auto",
                   padding: "14px 20px",
                   background: "var(--navy)",
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: 700,
                   letterSpacing: 2,
                   textTransform: "uppercase",

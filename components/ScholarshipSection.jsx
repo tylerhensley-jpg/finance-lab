@@ -16,7 +16,7 @@ export default function ScholarshipSection() {
         
         {/* ── EYEBROW ── */}
         <Reveal>
-          <p className="font-mono" style={{ 
+          <p style={{ 
             fontSize: 13,           /* 👈 Bumped from 10px */
             fontWeight: 600,        /* 👈 Added weight */
             letterSpacing: 4,       /* 👈 Wider tracking */
@@ -47,7 +47,7 @@ export default function ScholarshipSection() {
         {/* ── SUBTITLE ── */}
         <Reveal delay={2}>
           <p style={{ 
-            fontSize: 20,                       /* 👈 Bumped from 16px */
+            fontSize: 16,
             lineHeight: 1.6, 
             color: "var(--body-text)", 
             maxWidth: 680, 
@@ -83,8 +83,8 @@ export default function ScholarshipSection() {
                 onMouseEnter={() => setActiveMilestone(i)}
                 onMouseLeave={() => setActiveMilestone(null)}
               >
-                <div className="font-mono" style={{ 
-                  fontSize: 12,             /* 👈 Bumped from 11px */
+                <div style={{ 
+                  fontSize: 13,             /* 👈 Bumped from 11px */
                   fontWeight: 600,
                   letterSpacing: 2, 
                   color: "var(--gold)", 
@@ -110,7 +110,7 @@ export default function ScholarshipSection() {
                   {m.title}
                 </div>
                 <div style={{ 
-                  fontSize: 15,             /* 👈 Bumped from 12px */
+                  fontSize: 16,             /* 👈 Bumped from 12px */
                   color: "var(--body-text)", 
                   lineHeight: 1.6, 
                   opacity: 0.85 
@@ -124,7 +124,7 @@ export default function ScholarshipSection() {
 
         {/* ── CURRENT SCHOLARS ── */}
         <Reveal>
-          <p className="font-mono" style={{
+          <p style={{
             fontSize: 13,
             fontWeight: 600,
             letterSpacing: 3,
@@ -187,7 +187,7 @@ export default function ScholarshipSection() {
                     <div style={{ width: 24, height: 2, background: "var(--gold)", borderRadius: 1 }} />
                     <cite style={{
                       fontStyle: "normal",
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: 600,
                       color: "var(--gold)",
                       letterSpacing: 0.5,
@@ -228,7 +228,7 @@ export default function ScholarshipSection() {
                     {d.title}
                   </h4>
                   <p style={{ 
-                    fontSize: 15,         /* 👈 Bumped from 12px */
+                    fontSize: 16,         /* 👈 Bumped from 12px */
                     color: "var(--body-text)", 
                     lineHeight: 1.6, 
                     opacity: 0.85 
@@ -255,7 +255,7 @@ export default function ScholarshipSection() {
           >
             Get Notified When Applications Open
           </a>
-          <p style={{ fontSize: 14, color: "var(--body-text)", marginTop: 16 }}>
+          <p style={{ fontSize: 13, color: "var(--body-text)", marginTop: 16 }}>
             Or email us directly:{" "}
             <a
               href="mailto:team@thefinancelab.co?subject=Notify%20me%3A%20Finance%20Lab%20Scholarship&body=Name%3A%0ASchool%20(optional)%3A%0A"

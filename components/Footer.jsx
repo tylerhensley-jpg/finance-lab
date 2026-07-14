@@ -41,7 +41,7 @@ export default function Footer() {
             key={l.label}
             href={resolveHref(l.href)}
             style={{ 
-              fontSize: 15, 
+              fontSize: 16, 
               fontWeight: 500, 
               letterSpacing: 0.5, 
               color: "rgba(255,255,255,0.6)", 
@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       {/* ── COPYRIGHT ── */}
-      <p style={{ marginTop: 56, fontSize: 14, color: "rgba(255,255,255,0.3)", letterSpacing: 0.5 }}>
+      <p style={{ marginTop: 56, fontSize: 13, color: "rgba(255,255,255,0.3)", letterSpacing: 0.5 }}>
         © {new Date().getFullYear()} The Finance Lab. All rights reserved.
       </p>
     </footer>
