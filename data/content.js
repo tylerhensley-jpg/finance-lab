@@ -24,7 +24,7 @@ export const HERO_PROJECTS = [
     desc: "One decision, taught end to end: choosing a college that fits and knowing you can afford it before you commit.",
     resources: [
       { label: "The Book, 5th Edition", href: "https://www.amazon.com/dp/B0H85W1K1J" },
-      { label: "Teacher's Guide (free)", href: "/guide" },
+      { label: "Teacher's Guide", href: "/guide" },
       { label: "The App: college.thefinancelab.co", href: "https://college.thefinancelab.co" },
       { label: "The Launchpad Unit", href: "#launchpad" },
       { label: "The One Hour (a single class period)", href: "/college-project" },
@@ -40,7 +40,7 @@ export const HERO_PROJECTS = [
     resources: [
       { label: "Access The Launchpad", href: "https://learn.thefinancelab.co" },
       { label: "Activity Workbook: every Real Take + the Advisor Series", href: "https://www.amazon.com/dp/B0H8KZ2VQ1" },
-      { label: "Workbook Teacher's Guide (free)", href: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf" },
+      { label: "Workbook Teacher's Guide", href: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf" },
       { label: "Compound Interest Calculator", href: "#calculator" },
       { label: "The Life Stage Experiment (a one-period assignment)", href: "/life-stage-experiment" },
     ],
@@ -54,7 +54,7 @@ export const VISION =
   "Every first-generation student graduates with a plan, and the financial foundation to execute it.";
 
 export const WHO_WE_SERVE =
-  "The Finance Lab serves high school and college students from underserved, underbanked communities: young people who are most often first-generation college students navigating a financial system that was never designed with them in mind. For these students, the gap between knowing and not knowing (about financial aid, investing, and how money works) is the difference between upward mobility and staying stuck. We exist to close that gap.";
+  "The Finance Lab serves high school and college students, predominantly from underserved, underbanked communities: young people who are often first-generation college students navigating a financial system that was never designed with them in mind. For these students, the gap between knowing and not knowing (about financial aid, investing, and how money works) is the difference between upward mobility and staying stuck. We exist to close that gap.";
 
 export const NAV_LINKS = [
   { label: "Our Story", href: "#problem" },

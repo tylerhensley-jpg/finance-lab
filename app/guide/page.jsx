@@ -44,7 +44,7 @@ export default function GuidePage() {
               marginBottom: 24,
             }}
           >
-            Free Classroom Resource
+            Classroom Resource
           </p>
 
           <h1

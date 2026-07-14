@@ -18,12 +18,12 @@ const FORMATS = [
     tag: "Paper · Full Course",
     tagColor: "var(--gold)",
     name: "The Workbook + Teacher's Guide",
-    body: "A 202-page hands-on workbook (The College Project, 5th edition): students build a Money Map, a Running List, a Decision Dashboard, and leave with My Plan. The free Teacher's Guide adds 9-week and 18-week pacing, chapter-by-chapter lesson flows, and a grading rubric.",
+    body: "A 202-page hands-on workbook (The College Project, 5th edition): students build a Money Map, a Running List, a Decision Dashboard, and leave with My Plan. The Teacher's Guide adds 9-week and 18-week pacing, chapter-by-chapter lesson flows, and a grading rubric.",
     meta: "Time: a quarter or a semester · Tech: none",
     bestFor: "A dedicated college unit in AVID, advisory, economics, or English; classrooms that want everything on paper.",
     links: [
       { label: "The book on Amazon →", href: "https://www.amazon.com/dp/B0H85W1K1J" },
-      { label: "Free Teacher's Guide →", href: "/guide" },
+      { label: "Teacher's Guide →", href: "/guide" },
     ],
   },
   {

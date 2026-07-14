@@ -651,7 +651,7 @@ export default function TCPSection() {
                     textAlign: "center",
                     display: "block",
                   }}>
-                    Free Teacher&apos;s Guide →
+                    Teacher&apos;s Guide →
                   </a>
                   <a href="/college-project" className="btn-outline-navy" style={{
                     padding: "18px 40px",
