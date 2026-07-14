@@ -8,10 +8,13 @@
 // ─────────────────────────────────────────────
 
 export const OPENING_LINE =
-  "The money decisions of adult life, practiced before they're real.";
+  "Outside school, the loudest money advice often comes from feeds and from people with something to sell.";
 
 export const HERO_METHOD_LINE =
-  "Hands-on, data-driven, and honest enough for the modern teen.";
+  "This is the other voice: honest, nuanced, and hands-on. Students practice on real numbers and leave with plans they built themselves.";
+
+export const HERO_CARDS_INTRO =
+  "Few personal finance curricula teach college access and affordability. Here, fully understanding that decision is a pillar. Everything we make flows from two projects:";
 
 // Hero: the two main projects and the resources that flow from each.
 // Teachers and administrators are the primary viewers.

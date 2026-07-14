@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import { OPENING_LINE, HERO_METHOD_LINE, HERO_PROJECTS } from "../data/content";
+import { OPENING_LINE, HERO_METHOD_LINE, HERO_PROJECTS, HERO_CARDS_INTRO } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -144,22 +144,15 @@ export default function Hero() {
             fontSize: "clamp(34px, 5.2vw, 62px)", fontWeight: 700,
             lineHeight: 1.12, letterSpacing: "0.2px", color: "#fff", marginBottom: 16,
           }}>
-            Life&apos;s biggest money decisions come{" "}
-            <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>early.</em>
+            Every student should learn personal finance{" "}
+            <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>before graduation.</em>
             <br />
-            We get students <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>ready.</em>
+            Here, they learn it by <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>doing.</em>
           </h1>
         </Reveal>
 
         <Reveal delay={2}>
           <div style={{ maxWidth: 780, margin: "0 auto" }}>
-            {/* Program line */}
-            <p className="font-display" style={{
-              fontSize: "clamp(18px, 2vw, 23px)", fontWeight: 700, fontStyle: "italic",
-              color: "var(--gold-light)", marginBottom: 16,
-            }}>
-              The Plan. Then the Portfolio.
-            </p>
             {/* Opening line — bold provocation */}
             <p style={{
               fontSize: "clamp(17px, 2vw, 22px)", fontWeight: 600,
@@ -181,6 +174,12 @@ export default function Hero() {
 
         {/* ── THE TWO PROJECTS: everything flows from one of these ── */}
         <Reveal delay={3}>
+          <p style={{
+            fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.6)",
+            maxWidth: 620, margin: "26px auto 0",
+          }}>
+            {HERO_CARDS_INTRO}
+          </p>
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
