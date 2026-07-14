@@ -11,7 +11,7 @@ export const OPENING_LINE =
   "Outside school, the loudest money advice often comes from feeds and from people with something to sell.";
 
 export const HERO_METHOD_LINE =
-  "The Finance Lab's resources are honest, nuanced, student-centered, and hands-on. Students practice on real numbers and leave with plans they built themselves.";
+  "The Finance Lab's resources are honest, nuanced, student-centered, and hands-on. Students practice with real numbers and leave with plans they built themselves.";
 
 export const HERO_CARDS_INTRO =
   "Few personal finance curricula teach college access and affordability. Here, fully understanding that decision is a pillar. Everything we make flows from two projects:";
