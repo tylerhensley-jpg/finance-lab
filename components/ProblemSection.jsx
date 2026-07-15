@@ -1,6 +1,6 @@
 "use client";
 import Reveal from "./ui/Reveal";
-import { WHO_WE_SERVE } from "../data/content";
+import { WHO_WE_SERVE, WHO_WE_SERVE_KICKER } from "../data/content";
 
 export default function ProblemSection() {
   return (
@@ -90,9 +90,18 @@ export default function ProblemSection() {
                 fontSize: 17,
                 lineHeight: 1.75,
                 color: "var(--body-text)",
-                margin: 0,
+                marginBottom: 16,
               }}>
                 {WHO_WE_SERVE}
+              </p>
+              <p style={{
+                fontSize: 17,
+                lineHeight: 1.75,
+                fontWeight: 700,
+                color: "var(--navy)",
+                margin: 0,
+              }}>
+                {WHO_WE_SERVE_KICKER}
               </p>
             </div>
           </Reveal>

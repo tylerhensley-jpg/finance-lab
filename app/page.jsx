@@ -17,8 +17,8 @@ export default function Home() {
       <Hero />
       <ProblemSection />
       <TCPSection />
-      <ScholarshipSection />
       <LaunchpadSection />
+      <ScholarshipSection />
       <ToolsSection />
       <LifeStageCalculator />
       <ImpactSection />

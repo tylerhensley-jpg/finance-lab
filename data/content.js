@@ -10,10 +10,16 @@
 export const HERO_SUBHEAD =
   "For many students, the loudest money advice comes from feeds and people with something to sell. Our resources are honest and hands-on: real numbers, real practice, including the college decision most curricula skip.";
 
+export const HERO_AB2927 = {
+  label: "Ready for AB 2927 · California's personal finance requirement",
+  href: "#launchpad",
+};
+
 export const HERO_PROJECTS_INTRO = "Everything we make flows from two projects:";
 
-// Hero: the two main projects and the resources that flow from each.
-// Teachers and administrators are the primary viewers.
+// Hero: the two main projects and the top resource links for each.
+// Teachers and administrators are the primary viewers; the full resource
+// list lives on /college-project and in each project's section.
 export const HERO_PROJECTS = [
   {
     id: "tcp",
@@ -24,11 +30,7 @@ export const HERO_PROJECTS = [
     resources: [
       { label: "Explore The College Project", href: "#tcp" },
       { label: "The Book, 5th Edition", href: "https://www.amazon.com/dp/B0H85W1K1J" },
-      { label: "Teacher's Guide", href: "/guide" },
-      { label: "The App: college.thefinancelab.co", href: "https://college.thefinancelab.co" },
-      { label: "The Launchpad Unit", href: "#launchpad" },
-      { label: "The One Hour (a single class period)", href: "/college-project" },
-      { label: "Family Resources", href: "/family" },
+      { label: "All six formats, from one period to a semester", href: "/college-project" },
     ],
   },
   {
@@ -40,10 +42,7 @@ export const HERO_PROJECTS = [
     resources: [
       { label: "Explore The Launchpad", href: "#launchpad" },
       { label: "Access The Launchpad", href: "https://learn.thefinancelab.co" },
-      { label: "Activity Workbook: every Real Take + the Advisor Series", href: "https://www.amazon.com/dp/B0H8KZ2VQ1" },
-      { label: "Workbook Teacher's Guide", href: "/downloads/the-launchpad-activity-workbook-teachers-guide.pdf" },
-      { label: "Compound Interest Calculator", href: "#calculator" },
-      { label: "The Life Stage Experiment (a one-period assignment)", href: "/life-stage-experiment" },
+      { label: "Preview the teacher demo: no signup, no email", href: "https://learn.thefinancelab.co/teacher?guest=1" },
     ],
   },
 ];
@@ -55,21 +54,18 @@ export const VISION =
   "Every first-generation student graduates with a plan, and the financial foundation to execute it.";
 
 export const WHO_WE_SERVE =
-  "The Finance Lab serves high school and college students, predominantly from underserved, underbanked communities: young people who are often first-generation college students navigating a financial system that was never designed with them in mind. For these students, the gap between knowing and not knowing (about financial aid, investing, and how money works) is the difference between upward mobility and staying stuck. We exist to close that gap.";
+  "We serve high school and college students from underserved, underbanked communities: young people who are often the first in their families to navigate college, and a financial system that was never designed with them in mind.";
+
+export const WHO_WE_SERVE_KICKER =
+  "The gap between knowing and not knowing is the difference between upward mobility and staying stuck. We exist to close that gap.";
 
 export const NAV_LINKS = [
   { label: "Our Story", href: "#problem" },
   { label: "The College Project", href: "#tcp" },
-  { label: "Teacher's Guide", href: "/guide" },
-  { label: "Scholarship", href: "#scholarship" },
   { label: "The Launchpad", href: "#launchpad" },
+  { label: "Scholarship", href: "#scholarship" },
+  { label: "For Educators", href: "/college-project" },
   { label: "Free Tools", href: "#tools" },
-];
-
-export const STATS = [
-  { value: "70", suffix: "%", desc: "of students say money is their #1 worry about college" },
-  { value: "83", suffix: "%", desc: "cannot explain how financial aid works before our program" },
-  { value: "59", suffix: "%", desc: "report high or very high stress about the cost of college" },
 ];
 
 export const RESULTS = [
@@ -77,20 +73,10 @@ export const RESULTS = [
   { before: "17.6%", after: "69%", label: "believed they could afford a 4-year private university" },
 ];
 
-export const QUOTES = [
-  {
-    text: "Nobody in my family has gotten this far in education. These chapters made me realize that everyone has a chance to go to college regardless of their background.",
-    attr: "First-generation student, Orange County",
-  },
-  {
-    text: "I started thinking I probably wouldn't be able to afford the college I wanted. But after this book, I definitely think it changed my mind.",
-    attr: "11th grader, post-survey",
-  },
-  {
-    text: "For once we weren't being left alone in the dark.",
-    attr: "Undocumented student, on the DACA/Dream Act chapter",
-  },
-];
+export const TCP_STUDENT_QUOTE = {
+  text: "For once we weren't being left alone in the dark.",
+  attr: "Undocumented student, on the DACA/Dream Act chapter",
+};
 
 export const MILESTONES = [
   { num: "01", amount: "$250", title: "Set Your Goals", desc: "Complete self-paced modules on financial goal-setting. Define what wealth means for your life." },
@@ -134,13 +120,6 @@ export const TOOLS = [
     desc: "The book's self-paced companion for students on their own: research schools, decode financial aid, and build a plan, from 9th grade through graduation.",
     link: "Launch the App",
     href: "https://college.thefinancelab.co",
-  },
-  {
-    badge: "Free App", badgeColor: "gold", iconId: "flask",
-    name: "Catalyst",
-    desc: "A financial literacy companion app. Concepts, tools, and exercises that meet students where they are.",
-    link: "Explore Catalyst",
-    href: "/catalyst.html",
   },
   {
     badge: "Free · On This Page", badgeColor: "teal", iconId: "chart",
@@ -279,7 +258,25 @@ export const IMPACT_STATS = [
   { value: "368", label: "students surveyed in our research cohort" },
   { value: "3×", label: "increase in financial aid understanding" },
   { value: "20pt", label: "drop in high stress about college costs" },
-  { value: "83%", label: "believed they could afford a 4-year public university after the program, up from 47%" },
+];
+
+// The people behind The Finance Lab. Krista's full bio and headshot are
+// coming; swap `photo` in and the card upgrades from monogram to photo.
+export const PEOPLE = [
+  {
+    name: "Tyler Hensley",
+    initials: "TH",
+    accent: "teal",
+    title: "Founder & Executive Director",
+    bio: "A former wealth manager turned California classroom teacher. Tyler designs, writes, and builds every Finance Lab resource, and teaches them to his own students daily.",
+  },
+  {
+    name: "Krista Meyers",
+    initials: "KM",
+    accent: "gold",
+    title: "Director of Programs",
+    bio: "Krista leads The Finance Lab's programs, from classroom rollouts to the scholarship.",
+  },
 ];
 
 export const PRICING = [

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useInView } from "./ui/useInView";
 import Reveal from "./ui/Reveal";
-import { HERO_SUBHEAD, HERO_PROJECTS_INTRO, HERO_PROJECTS } from "../data/content";
+import { HERO_SUBHEAD, HERO_AB2927, HERO_PROJECTS_INTRO, HERO_PROJECTS } from "../data/content";
 
 /* ─── TIMELINE DATA ─── */
 const TIMELINE_NODES = [
@@ -83,7 +83,7 @@ function TimelineIcon({ iconId, color, size = 24 }) {
 function getColor(ph) { return ph === "tcp" ? "var(--teal-light)" : "var(--gold-light)"; }
 function getGlowClass(ph) { return ph === "tcp" ? "active-teal" : "active-gold"; }
 function getBg(ph) { if (ph === "tcp") return "rgba(42,168,154,0.12)"; if (ph === "flab") return "rgba(200,148,42,0.12)"; return "linear-gradient(135deg, rgba(42,168,154,0.12), rgba(200,148,42,0.12))"; }
-function getLabel(ph) { if (ph === "tcp") return "The College Project"; if (ph === "flab") return "The Finance Lab"; return "The Bridge"; }
+function getLabel(ph) { if (ph === "tcp") return "The College Project"; if (ph === "flab") return "The Scholarship"; return "The Bridge"; }
 function getLabelColor(ph) { return ph === "tcp" ? "var(--teal-light)" : "var(--gold)"; }
 
 
@@ -148,9 +148,6 @@ export default function Hero() {
             <span style={{ fontWeight: 700, color: "var(--cream)" }}>every student</span> for
             <br />
             <em style={{ fontStyle: "italic", color: "var(--teal-light)" }}>financial independence.</em>
-            <br />
-            Real-world learning.{" "}
-            <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>Measurable outcomes.</em>
           </h1>
         </Reveal>
 
@@ -163,10 +160,27 @@ export default function Hero() {
             }}>
               {HERO_SUBHEAD}
             </p>
+            <a
+              href={HERO_AB2927.href}
+              style={{
+                display: "inline-block",
+                fontSize: 13, fontWeight: 700, letterSpacing: 1.2,
+                textTransform: "uppercase",
+                color: "var(--gold-light)",
+                background: "rgba(200,148,42,0.12)",
+                border: "1px solid rgba(240,201,107,0.4)",
+                borderRadius: 99,
+                padding: "8px 18px",
+                margin: "18px 0 0",
+                textDecoration: "none",
+              }}
+            >
+              {HERO_AB2927.label} →
+            </a>
             <p style={{
               fontSize: "clamp(16px, 1.9vw, 19px)", fontWeight: 400,
               color: "rgba(255,255,255,0.8)", lineHeight: 1.6,
-              margin: "14px 0 0",
+              margin: "18px 0 0",
             }}>
               {HERO_PROJECTS_INTRO}
             </p>
@@ -263,7 +277,7 @@ export default function Hero() {
             {/* Phase labels - Scaled up typography */}
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 24, padding: "0 16px" }}>
               <span style={{ fontSize: 17, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--teal-light)", opacity: 0.8 }}>← The College Project</span>
-              <span style={{ fontSize: 17, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Finance Lab →</span>
+              <span style={{ fontSize: 17, fontWeight:600, letterSpacing: 3, textTransform: "uppercase", color: "var(--gold)", opacity: 0.8 }}>The Scholarship →</span>
             </div>
 
             {/* SVG track - Thicker 6px line */}
@@ -383,7 +397,7 @@ export default function Hero() {
       <div style={{ flex: "0 0 auto", marginTop: "24px" }}>
         <Reveal delay={5}>
           <div className="audience-row-responsive" style={{ display: "flex", justifyContent: "center" }}>
-            <a href="#tcp" className="audience-pill" style={{ 
+            <a href="#tools" className="audience-pill" style={{
               borderRadius: "99px 0 0 99px",
               padding: "14px 28px",   /* 👈 Increased pill height/width */
               fontSize: "16px",       /* 👈 Bumped up from default */

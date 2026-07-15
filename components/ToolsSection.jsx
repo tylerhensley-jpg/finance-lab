@@ -35,7 +35,7 @@ export default function ToolsSection() {
             color: "#fff", 
             marginBottom: 24 
           }}>
-            Start here. No cost. No catch.
+            Everything here is free. No catch.
           </h2>
         </Reveal>
 
@@ -55,7 +55,7 @@ export default function ToolsSection() {
         </Reveal>
 
         {/* ── TOOLS GRID ── */}
-        <div className="tools-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 /* 👈 2×2 now that the calculator makes four tools */ }}>
+        <div className="tools-grid-responsive" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
           {TOOLS.map((t, i) => {
             // 👈 Strip the word "App" from the title so it fits on one line (Fixed comment syntax here!)
             const cleanedTitle = t.name.replace(" App", "");

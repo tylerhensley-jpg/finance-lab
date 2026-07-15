@@ -1,8 +1,8 @@
 "use client";
 import {
-  RESULTS, QUOTES, TCP_EDITION, TCP_TAGLINE, TCP_POSITIONING, TCP_PILLARS,
-  TCP_CREDIBILITY, TCP_ARTIFACTS, TCP_PREVIEW, BULK_ORDER_MAILTO, TCP_BOOK_URL,
-  TEACHER_QUOTE, COURSE_TAGS, FEATURES, PRICING,
+  RESULTS, TCP_EDITION, TCP_TAGLINE, TCP_POSITIONING, TCP_PILLARS,
+  TCP_CREDIBILITY, TCP_ARTIFACTS, TCP_PREVIEW, TCP_BOOK_URL,
+  TEACHER_QUOTE, COURSE_TAGS, FEATURES, TCP_STUDENT_QUOTE,
 } from "@/data/content";
 import Reveal from "./ui/Reveal";
 import AnimatedNumber from "./ui/AnimatedNumber";
@@ -93,7 +93,7 @@ export default function TCPSection() {
         >
           <Reveal>
             <img
-              src="/images/college-project-cover.png"
+              src="/images/college-project-cover.jpg"
               alt="The College Project, Fifth Edition: front cover"
               style={{
                 width: "100%",
@@ -333,62 +333,6 @@ export default function TCPSection() {
   ))}
 </div>
 
-        {/* ── STUDENT QUOTES ── */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 24, marginBottom: 56 }}>
-          {QUOTES.map((q, i) => (
-            <Reveal key={i} delay={i + 1}>
-              <div
-                style={{
-                  background: "var(--navy)", 
-                  borderRadius: 16,
-                  padding: "clamp(40px, 6vw, 64px) clamp(32px, 5vw, 64px)", /* 👈 Increased padding */
-                  position: "relative", overflow: "hidden",
-                }}
-              >
-                {/* Background quotation mark */}
-                <span
-                  className="font-display"
-                  style={{
-                    position: "absolute", top: 12, left: 20,
-                    fontSize: 120,          /* 👈 Bumped from 80px */
-                    lineHeight: 1, 
-                    color: "rgba(200,148,42,0.1)", /* 👈 Softened opacity slightly */
-                    pointerEvents: "none",
-                  }}
-                >
-                  &ldquo;
-                </span>
-                <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
-                  <p className="font-display" style={{
-                    fontSize: "clamp(24px, 3.5vw, 36px)", /* 👈 Scaled up to match Hero Quote */
-                    fontWeight: 400,
-                    fontStyle: "italic", 
-                    color: "rgba(255,255,255,0.95)",
-                    lineHeight: 1.35, 
-                    marginBottom: 24, 
-                    maxWidth: 860,
-                  }}>
-                    &ldquo;{q.text}&rdquo;
-                  </p>
-                  <footer style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
-                    <cite style={{
-                      fontStyle: "normal", 
-                      fontSize: 17,           /* 👈 Bumped from 13px */
-                      fontWeight: 600,
-                      color: "var(--gold)", 
-                      letterSpacing: 0.5,
-                      fontFamily: "'DM Sans', sans-serif",
-                    }}>
-                      {q.attr}
-                    </cite>
-                  </footer>
-                </blockquote>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
         {/* ══════ FOR EDUCATORS (merged sub-block) ══════ */}
         <div id="educators" style={{ marginTop: 112 }}>
           <Reveal>
@@ -559,77 +503,50 @@ export default function TCPSection() {
               </div>
             </div>
 
-            {/* Right: pricing + ordering */}
+            {/* Right: student voice + ordering */}
             <div>
               <Reveal>
-                <div style={{ border: "1px solid var(--soft-gray)", borderRadius: 16, overflow: "hidden", marginBottom: 24 }}>
-                  <div
-                    style={{
-                      display: "grid", gridTemplateColumns: "1fr auto",
-                      padding: "16px 24px",
-                      background: "var(--navy)",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      letterSpacing: 2,
-                      textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.8)",
-                    }}
-                  >
-                    <span>Option</span>
-                    <span>Per Copy</span>
-                  </div>
-                  <div>
-                    {PRICING.map((p, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          display: "grid", gridTemplateColumns: "1fr auto",
-                          padding: "20px 24px",
-                          borderBottom: i < PRICING.length - 1 ? "1px solid var(--soft-gray)" : "none",
-                          alignItems: "center", transition: "background 0.2s",
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "var(--cream)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                      >
-                        <div>
-                          <div style={{ fontSize: 17, fontWeight: 700, color: "var(--navy)" }}>{p.tier}</div>
-                          <div style={{ fontSize: 13, color: "var(--body-text)", marginTop: 4 }}>{p.note}</div>
-                        </div>
-                        <div className="font-display" style={{ fontSize: 32, fontWeight: 800, color: "var(--gold)" }}>
-                          {p.price}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Bulk order callout */}
-              <Reveal>
                 <div style={{
-                  background: "var(--cream)",
-                  border: "1px dashed var(--gold)",
-                  borderRadius: 12,
-                  padding: "20px 24px",
+                  background: "var(--navy)",
+                  borderRadius: 16,
+                  padding: "32px 36px",
+                  position: "relative",
+                  overflow: "hidden",
                   marginBottom: 32,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 16,
-                  flexWrap: "wrap",
                 }}>
-                  <p style={{ fontSize: 17, fontWeight: 600, color: "var(--navy)", lineHeight: 1.5 }}>
-                    Ordering 25+ copies? Email us and we&apos;ll set it up.
-                  </p>
-                  <a href={BULK_ORDER_MAILTO} style={{
-                    fontSize: 17,
-                    fontWeight: 700,
-                    color: "var(--teal)",
-                    textDecoration: "underline",
-                    whiteSpace: "nowrap",
+                  <span className="font-display" style={{
+                    position: "absolute", top: 4, left: 16,
+                    fontSize: 90, lineHeight: 1,
+                    color: "rgba(200,148,42,0.12)",
+                    pointerEvents: "none",
                   }}>
-                    team@thefinancelab.co →
-                  </a>
+                    &ldquo;
+                  </span>
+                  <blockquote style={{ position: "relative", zIndex: 1, margin: 0, padding: 0 }}>
+                    <p className="font-display" style={{
+                      fontSize: "clamp(20px, 2.4vw, 26px)",
+                      fontWeight: 400,
+                      fontStyle: "italic",
+                      color: "rgba(255,255,255,0.95)",
+                      lineHeight: 1.4,
+                      marginBottom: 16,
+                    }}>
+                      &ldquo;{TCP_STUDENT_QUOTE.text}&rdquo;
+                    </p>
+                    <footer style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 32, height: 2, background: "var(--gold)", borderRadius: 1 }} />
+                      <cite style={{
+                        fontStyle: "normal",
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: "var(--gold)",
+                        letterSpacing: 0.5,
+                        fontFamily: "'DM Sans', sans-serif",
+                      }}>
+                        {TCP_STUDENT_QUOTE.attr}
+                      </cite>
+                    </footer>
+                  </blockquote>
                 </div>
               </Reveal>
 
@@ -653,24 +570,17 @@ export default function TCPSection() {
                   }}>
                     Teacher&apos;s Guide →
                   </a>
-                  <a href="/college-project" className="btn-outline-navy" style={{
-                    padding: "18px 40px",
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    textAlign: "center",
-                    display: "block",
-                  }}>
-                    Choose Your Format
-                  </a>
-                  <a href={BULK_ORDER_MAILTO} className="btn-outline-navy" style={{
-                    padding: "18px 40px",
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    textAlign: "center",
-                    display: "block",
-                  }}>
-                    Bulk Orders (25+)
-                  </a>
+                  <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--body-text)", marginTop: 8 }}>
+                    Six formats, from one class period to a full semester:{" "}
+                    <a href="/college-project" style={{ color: "var(--teal)", fontWeight: 700, textDecoration: "underline" }}>
+                      pick what fits your setting
+                    </a>
+                    . Ordering for a class or a school?{" "}
+                    <a href="/guide" style={{ color: "var(--teal)", fontWeight: 700, textDecoration: "underline" }}>
+                      School pricing and bulk orders
+                    </a>
+                    .
+                  </p>
                 </div>
               </Reveal>
             </div>
