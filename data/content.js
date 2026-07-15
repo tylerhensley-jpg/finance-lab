@@ -275,7 +275,7 @@ export const PEOPLE = [
     initials: "KM",
     accent: "gold",
     title: "Director of Programs",
-    bio: "Krista leads The Finance Lab's programs, from classroom rollouts to the scholarship.",
+    bio: "A veteran classroom teacher with a counseling credential, Krista has taught everything from AP Psychology to Dual Enrollment College Seminar. She leads The Finance Lab's programs, from classroom rollouts to the scholarship.",
   },
 ];
 
