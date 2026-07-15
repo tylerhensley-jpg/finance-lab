@@ -35,55 +35,81 @@ export default function LaunchpadSection() {
           </p>
         </Reveal>
 
-        {/* ── LOCKUP ── */}
-        <Reveal delay={1}>
-          <h2 className="font-display" style={{
-            fontSize: "clamp(52px, 6vw, 76px)",
-            fontWeight: 700,
-            lineHeight: 1.02,
-            letterSpacing: "-0.5px",
-            color: "#fff",
-            marginBottom: 8,
-          }}>
-            {LAUNCHPAD.name}
-          </h2>
-          <p style={{
-            fontSize: 13,
-            fontWeight: 600,
-            letterSpacing: 2,
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.55)",
-            marginBottom: 24,
-          }}>
-            {LAUNCHPAD.lockup}
-          </p>
-        </Reveal>
-
-        <Reveal delay={2}>
-          <p className="font-display" style={{
-            fontSize: "clamp(22px, 2.8vw, 30px)",
-            fontWeight: 700,
-            fontStyle: "italic",
-            color: "var(--teal-light)",
-            marginBottom: 24,
-            lineHeight: 1.25,
-          }}>
-            {LAUNCHPAD.tagline}
-          </p>
-        </Reveal>
-
-        {/* ── INTRO ── */}
-        <Reveal delay={3}>
-          <p style={{
-            fontSize: 17,
-            lineHeight: 1.65,
-            color: "rgba(255,255,255,0.88)",
-            maxWidth: 720,
+        {/* ── LOCKUP + ROCKET EMBLEM ── */}
+        <div
+          className="launchpad-header-responsive"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr minmax(220px, 300px)",
+            gap: 48,
+            alignItems: "center",
             marginBottom: 32,
-          }}>
-            {LAUNCHPAD.intro}
-          </p>
-        </Reveal>
+          }}
+        >
+          <div>
+            <Reveal delay={1}>
+              <h2 className="font-display" style={{
+                fontSize: "clamp(52px, 6vw, 76px)",
+                fontWeight: 700,
+                lineHeight: 1.02,
+                letterSpacing: "-0.5px",
+                color: "#fff",
+                marginBottom: 8,
+              }}>
+                {LAUNCHPAD.name}
+              </h2>
+              <p style={{
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 2,
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.55)",
+                marginBottom: 24,
+              }}>
+                {LAUNCHPAD.lockup}
+              </p>
+            </Reveal>
+
+            <Reveal delay={2}>
+              <p className="font-display" style={{
+                fontSize: "clamp(22px, 2.8vw, 30px)",
+                fontWeight: 700,
+                fontStyle: "italic",
+                color: "var(--teal-light)",
+                marginBottom: 24,
+                lineHeight: 1.25,
+              }}>
+                {LAUNCHPAD.tagline}
+              </p>
+            </Reveal>
+
+            <Reveal delay={3}>
+              <p style={{
+                fontSize: 17,
+                lineHeight: 1.65,
+                color: "rgba(255,255,255,0.88)",
+                maxWidth: 720,
+                margin: 0,
+              }}>
+                {LAUNCHPAD.intro}
+              </p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={2}>
+            <img
+              src="/images/launchpad-rocket.jpg"
+              alt="The Launchpad paper-rocket emblem"
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+                borderRadius: 16,
+                boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
+              }}
+            />
+          </Reveal>
+        </div>
 
         {/* ── UNIT PILLS ── */}
         <Reveal delay={4}>

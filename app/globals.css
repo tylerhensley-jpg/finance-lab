@@ -229,6 +229,8 @@ body {
   .scholar-card-responsive { flex-direction: column !important; align-items: flex-start !important; }
   .tcp-grid-responsive img { max-width: 320px; margin: 0 auto; }
   .launchpad-grid-responsive { grid-template-columns: 1fr !important; }
+  .launchpad-header-responsive { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .launchpad-header-responsive img { max-width: 280px; margin: 0 auto; }
   .launchpad-cta-responsive { grid-template-columns: 1fr !important; }
   .calc-grid-responsive { grid-template-columns: 1fr !important; }
   .calc-breakdown-responsive { grid-template-columns: 1fr 1fr !important; }
