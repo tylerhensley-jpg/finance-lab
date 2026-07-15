@@ -48,13 +48,13 @@ export const HERO_PROJECTS = [
 ];
 
 export const MISSION =
-  "We equip first-generation students from underbanked, underserved communities with the real financial skills they need to build wealth, because a plan and a portfolio shouldn't be privileges.";
+  "We equip students with the real financial skills they need to build wealth, because a plan and a portfolio shouldn't be privileges. Our scholarship reserves that head start for students from low-income, underserved communities, particularly those from first-generation families.";
 
 export const VISION =
-  "Every first-generation student graduates with a plan, and the financial foundation to execute it.";
+  "Every student graduates with a plan, and the financial foundation to execute it.";
 
 export const WHO_WE_SERVE =
-  "We serve high school and college students from underserved, underbanked communities: young people who are often the first in their families to navigate college, and a financial system that was never designed with them in mind.";
+  "Our resources are built for every student, in every kind of classroom. Our scholarship and student programming focus on young people from low-income, underserved communities, particularly those from first-generation families: students navigating a financial system that was never designed with them in mind.";
 
 export const WHO_WE_SERVE_KICKER =
   "The gap between knowing and not knowing is the difference between upward mobility and staying stuck. We exist to close that gap.";

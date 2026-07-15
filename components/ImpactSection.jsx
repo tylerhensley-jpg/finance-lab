@@ -65,7 +65,7 @@ export default function ImpactSection() {
           }}>
             The Finance Lab is a 501(c)(3) nonprofit. Your support funds scholarships,
             classroom programs, and the work of bringing real financial education to
-            students from underserved communities.
+            every student.
           </p>
         </Reveal>
 

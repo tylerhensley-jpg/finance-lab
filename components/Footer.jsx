@@ -27,7 +27,7 @@ export default function Footer() {
       {/* ── MISSION / LOCATION ── */}
       <p style={{ fontSize: 17, color: "rgba(255,255,255,0.6)", lineHeight: 1.65, maxWidth: 480, margin: "0 auto" }}>
         A 501(c)(3) nonprofit teaching students to invest and build wealth through
-        experiential education. Roseville, California.
+        experiential education.
       </p>
 
       {/* ── NAV LINKS & DONATION BUTTON ── */}

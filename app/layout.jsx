@@ -25,7 +25,7 @@ export const metadata = {
   metadataBase: new URL("https://www.thefinancelab.co"),
   title: "The Finance Lab: The Plan, Then the Portfolio",
   description:
-    "A 501(c)(3) nonprofit teaching students to invest and build wealth through experiential education. The College Project, The Launchpad, and The Finance Lab Scholarship give underserved students a personalized roadmap and a real investment portfolio.",
+    "A 501(c)(3) nonprofit teaching students to invest and build wealth through experiential education. The College Project, The Launchpad, and The Finance Lab Scholarship give students a personalized roadmap and a real investment portfolio.",
   keywords: [
     "financial literacy",
     "student investing",
