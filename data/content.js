@@ -156,7 +156,7 @@ export const TEACHER_QUOTE = {
 };
 
 export const TCP_CREDIBILITY =
-  "Built and classroom-tested by a former wealth manager turned high school teacher. Every worksheet has already been used by real students choosing real colleges.";
+  "Built and classroom-tested by a high school teacher who began his career in wealth management. Every worksheet has already been used by real students choosing real colleges.";
 
 export const TCP_ARTIFACTS =
   "Along the way, students build three artifacts: a Money Map, a Running List, and a Decision Dashboard.";
@@ -268,7 +268,7 @@ export const PEOPLE = [
     initials: "TH",
     accent: "teal",
     title: "Founder & Executive Director",
-    bio: "A former wealth manager turned California classroom teacher. Tyler designs, writes, and builds every Finance Lab resource, and teaches them to his own students daily.",
+    bio: "A California classroom teacher who began his career in wealth management, Tyler designs, writes, and builds every Finance Lab resource, and teaches them to his own students daily.",
   },
   {
     name: "Krista Meyers",
