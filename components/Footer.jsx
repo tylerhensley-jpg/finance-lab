@@ -1,5 +1,4 @@
 "use client";
-import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/data/content";
 
@@ -15,9 +14,6 @@ export default function Footer() {
       position: "relative" 
     }}>
       
-      {/* ── DONORBOX SCRIPT ── */}
-      <Script type="module" src="https://donorbox.org/widgets.js" strategy="lazyOnload" />
-
       {/* ── LOGO ── */}
       <img
         src="/images/cubes-white.png"
@@ -55,18 +51,16 @@ export default function Footer() {
           </a>
         ))}
 
-        {/* ── DONORBOX POPUP WIDGET ── */}
-        {/* Changed button-label and updated button-color to a Gold Hex (#D4AF37) */}
-        <dbox-widget 
-          campaign="the-finance-lab" 
-          type="popup" 
-          button-label="Make a Donation" 
-          button-type="regular" 
-          button-color="#D4AF37" 
-          button-size="medium" 
-          regular-position="left" 
-          show-icon=""
-        ></dbox-widget>
+        {/* Direct link keeps the Donorbox widget's PayPal/fingerprinting
+            scripts off every page; donors give on donorbox.org instead. */}
+        <a
+          href="https://donorbox.org/the-finance-lab"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold"
+        >
+          ♥ Make a Donation
+        </a>
       </div>
 
       {/* ── COPYRIGHT ── */}
