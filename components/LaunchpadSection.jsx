@@ -153,6 +153,20 @@ export default function LaunchpadSection() {
             <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.88)" }}>
               {LAUNCHPAD.ab2927.body}
             </p>
+            <a
+              href={LAUNCHPAD.ab2927.linkHref}
+              style={{
+                display: "inline-block",
+                marginTop: 14,
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: 0.5,
+                color: "var(--gold-light)",
+                textDecoration: "none",
+              }}
+            >
+              {LAUNCHPAD.ab2927.linkLabel} →
+            </a>
           </div>
         </Reveal>
 

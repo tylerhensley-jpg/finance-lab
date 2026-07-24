@@ -65,7 +65,13 @@ export default function Footer() {
 
       {/* ── COPYRIGHT ── */}
       <p style={{ marginTop: 56, fontSize: 13, color: "rgba(255,255,255,0.3)", letterSpacing: 0.5 }}>
-        © {new Date().getFullYear()} The Finance Lab. All rights reserved.
+        © {new Date().getFullYear()} The Finance Lab. All rights reserved. ·{" "}
+        <a
+          href="/privacy"
+          style={{ color: "rgba(255,255,255,0.45)", textDecoration: "underline", textUnderlineOffset: 3 }}
+        >
+          Student Data &amp; Privacy
+        </a>
       </p>
     </footer>
   );

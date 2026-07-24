@@ -12,7 +12,7 @@ export const HERO_SUBHEAD =
 
 export const HERO_AB2927 = {
   label: "Ready for AB 2927 · California's personal finance requirement",
-  href: "#launchpad",
+  href: "/ab-2927",
 };
 
 export const HERO_PROJECTS_INTRO = "Everything we make flows from two projects:";
@@ -188,6 +188,8 @@ export const LAUNCHPAD = {
   ab2927: {
     title: "Ready for AB 2927",
     body: "Under AB 2927, California high schools must offer a standalone personal finance course starting in 2027, and personal finance becomes a graduation requirement. The Launchpad gives your school a complete, no-cost way to meet it.",
+    linkLabel: "See every required topic mapped to its module",
+    linkHref: "/ab-2927",
   },
   features: [
     {
