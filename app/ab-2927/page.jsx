@@ -116,9 +116,9 @@ const CROSSWALK = [
   {
     n: 12,
     topic: "Charitable giving",
-    partial: true,
     map: [
-      { unit: "Taxes", modules: "Appears briefly where donations meet deductions in How Taxes Work" },
+      { unit: "Wrapping Up (capstone)", modules: "More or Less?, a dedicated Real Take: giving trends over time, who gives and what share of their income, and the math of donating appreciated stock" },
+      { unit: "Taxes", modules: "Donations in the deductions walkthrough of How Taxes Work" },
     ],
   },
   {
@@ -217,17 +217,6 @@ export default function AB2927Page() {
                         <span style={{ fontWeight: 700, color: "var(--navy)" }}>{m.unit}:</span> {m.modules}
                       </div>
                     ))}
-                    {row.partial && (
-                      <div style={{
-                        fontSize: 13, lineHeight: 1.6, color: "var(--body-text)",
-                        marginTop: 10, paddingTop: 10, borderTop: "1px dashed var(--soft-gray)",
-                      }}>
-                        Honest note: this is the one required topic The Launchpad does not yet
-                        cover in depth. We would rather tell you that plainly than pad the
-                        table, and most teachers pair it with a class discussion or advisory
-                        lesson of their own.
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
